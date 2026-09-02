@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Business/Business.csproj" Id="25c4c31b-49bc-4405-93f2-d82e737200b1" />
+  <Project Path="Data/Data.csproj" Id="9dc063dc-5615-4fae-b6c8-d1f59aa9dad8" />
+  <Project Path="Entities/Entities.csproj" Id="16152f83-8e53-497a-bc6e-1ac35d975f5c" />
+  <Project Path="SistemaJugueteria/SistemaJugueteria.csproj" />
+</Solution>
