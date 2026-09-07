@@ -121,34 +121,37 @@
   <data name="icono-backup-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-backup-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono-candado-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-candado-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono-clientes-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-clientes-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono-productos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-productos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono-empleados-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-empleados-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono-pedidos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-pedidos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono-productos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-productos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono-reportes-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-reportes-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icono-salir-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-salir-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-clientes-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-clientes-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono-usuario-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-usuario-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono-ventas-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-ventas-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono-candado-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-candado-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-pedidos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-pedidos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-reportes-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-reportes-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo-tntoys" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo-tntoys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-ventas-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-ventas-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-lupa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-lupa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

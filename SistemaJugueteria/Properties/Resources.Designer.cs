@@ -103,6 +103,16 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_lupa {
+            get {
+                object obj = ResourceManager.GetObject("icono-lupa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_pedidos_menu {
             get {
                 object obj = ResourceManager.GetObject("icono-pedidos-menu", resourceCulture);

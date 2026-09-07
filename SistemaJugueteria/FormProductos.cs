@@ -14,5 +14,30 @@ namespace SistemaJugueteria
         {
             InitializeComponent();
         }
+
+        private void aloneTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crownTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormProductos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
