@@ -39,5 +39,10 @@ namespace SistemaJugueteria
         {
 
         }
+
+        private void hopeTextBox9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

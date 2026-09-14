@@ -81,7 +81,7 @@
             panel5.BackColor = Color.FromArgb(35, 53, 78);
             panel5.Dock = DockStyle.Top;
             panel5.ForeColor = Color.FromArgb(35, 53, 78);
-            panel5.Location = new Point(0, 621);
+            panel5.Location = new Point(0, 624);
             panel5.Name = "panel5";
             panel5.Size = new Size(111, 3);
             panel5.TabIndex = 16;
@@ -95,7 +95,7 @@
             btnSalir.Image = Properties.Resources.icono_salir_menu;
             btnSalir.Location = new Point(0, 546);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(111, 75);
+            btnSalir.Size = new Size(111, 78);
             btnSalir.TabIndex = 15;
             btnSalir.Text = "Salir";
             btnSalir.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -296,6 +296,7 @@
             panelContenedor.Name = "panelContenedor";
             panelContenedor.Size = new Size(913, 624);
             panelContenedor.TabIndex = 2;
+            panelContenedor.Paint += panelContenedor_Paint;
             // 
             // menuPrincipal
             // 

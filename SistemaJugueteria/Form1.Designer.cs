@@ -175,7 +175,7 @@
             hopeButton1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hopeButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton1.Location = new Point(86, 330);
+            hopeButton1.Location = new Point(99, 331);
             hopeButton1.Name = "hopeButton1";
             hopeButton1.PrimaryColor = Color.FromArgb(255, 151, 133);
             hopeButton1.Size = new Size(191, 37);

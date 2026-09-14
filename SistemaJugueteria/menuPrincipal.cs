@@ -127,6 +127,11 @@ namespace SistemaJugueteria
             btnBackup.Height = altoBoton;
             btnSalir.Height = altoBoton;
         }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

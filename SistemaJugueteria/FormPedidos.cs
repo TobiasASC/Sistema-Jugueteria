@@ -14,5 +14,20 @@ namespace SistemaJugueteria
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hopeTextBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPedidos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
