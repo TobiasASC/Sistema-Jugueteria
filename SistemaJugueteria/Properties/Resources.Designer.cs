@@ -63,6 +63,96 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap akar_icons__circle_check {
+            get {
+                object obj = ResourceManager.GetObject("akar-icons--circle-check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap akar_icons__shipping_box_01 {
+            get {
+                object obj = ResourceManager.GetObject("akar-icons--shipping-box-01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ant_design__bars_outlined {
+            get {
+                object obj = ResourceManager.GetObject("ant-design--bars-outlined", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ant_design__calendar_filled {
+            get {
+                object obj = ResourceManager.GetObject("ant-design--calendar-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bi__cash_coin {
+            get {
+                object obj = ResourceManager.GetObject("bi--cash-coin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bi__cash_coin__1_ {
+            get {
+                object obj = ResourceManager.GetObject("bi--cash-coin (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bi__person_fill_add {
+            get {
+                object obj = ResourceManager.GetObject("bi--person-fill-add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boxicons__search_alt {
+            get {
+                object obj = ResourceManager.GetObject("boxicons--search-alt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boxicons__user_filled {
+            get {
+                object obj = ResourceManager.GetObject("boxicons--user-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check {
             get {
                 object obj = ResourceManager.GetObject("check", resourceCulture);
@@ -83,6 +173,16 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_park_solid__bill {
+            get {
+                object obj = ResourceManager.GetObject("icon-park-solid--bill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_backup_menu {
             get {
                 object obj = ResourceManager.GetObject("icono-backup-menu", resourceCulture);
@@ -96,6 +196,16 @@ namespace SistemaJugueteria.Properties {
         internal static System.Drawing.Bitmap icono_candado_login {
             get {
                 object obj = ResourceManager.GetObject("icono-candado-login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_check {
+            get {
+                object obj = ResourceManager.GetObject("icono-check", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +296,16 @@ namespace SistemaJugueteria.Properties {
         internal static System.Drawing.Bitmap icono_ventas_menu {
             get {
                 object obj = ResourceManager.GetObject("icono-ventas-menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lets_icons__arhive_load_fill {
+            get {
+                object obj = ResourceManager.GetObject("lets-icons--arhive-load-fill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

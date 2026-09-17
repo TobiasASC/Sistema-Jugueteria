@@ -28,628 +28,899 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            label1 = new Label();
-            hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            hopeTextBox2 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox3 = new ReaLTaiizor.Controls.HopeTextBox();
-            label5 = new Label();
-            label6 = new Label();
-            hopeTextBox4 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox5 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox6 = new ReaLTaiizor.Controls.HopeTextBox();
-            label7 = new Label();
-            hopeTextBox7 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox8 = new ReaLTaiizor.Controls.HopeTextBox();
-            dataGridView1 = new DataGridView();
-            descripcionProducto = new DataGridViewTextBoxColumn();
-            precioProducto = new DataGridViewTextBoxColumn();
-            stockProducto = new DataGridViewTextBoxColumn();
-            categoriaProducto = new DataGridViewTextBoxColumn();
-            eliminarProducto = new DataGridViewButtonColumn();
-            label8 = new Label();
-            hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
-            hopeButton2 = new ReaLTaiizor.Controls.HopeButton();
-            label9 = new Label();
+            panel3 = new ReaLTaiizor.Controls.Panel();
             label10 = new Label();
-            hopeTextBox10 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox11 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeButton3 = new ReaLTaiizor.Controls.HopeButton();
-            hopeButton4 = new ReaLTaiizor.Controls.HopeButton();
-            hopeTextBox9 = new ReaLTaiizor.Controls.HopeTextBox();
+            cyberTextBox7 = new ReaLTaiizor.Controls.CyberTextBox();
+            button5 = new Button();
+            label9 = new Label();
+            cyberTextBox6 = new ReaLTaiizor.Controls.CyberTextBox();
+            label8 = new Label();
+            cyberTextBox9 = new ReaLTaiizor.Controls.CyberTextBox();
+            label5 = new Label();
+            button3 = new Button();
+            label7 = new Label();
+            panel2 = new ReaLTaiizor.Controls.Panel();
+            cyberButton3 = new ReaLTaiizor.Controls.CyberButton();
+            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
+            cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
+            label4 = new Label();
+            label3 = new Label();
+            cyberTextBox3 = new ReaLTaiizor.Controls.CyberTextBox();
+            label2 = new Label();
+            label1 = new Label();
+            cyberTextBox1 = new ReaLTaiizor.Controls.CyberTextBox();
+            label13 = new Label();
+            label12 = new Label();
+            label14 = new Label();
+            cyberTextBox10 = new ReaLTaiizor.Controls.CyberTextBox();
+            cyberComboBox1 = new ReaLTaiizor.Controls.CyberComboBox();
+            dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
+            dungeonNumeric2 = new ReaLTaiizor.Controls.DungeonNumeric();
+            cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
+            cyberButton5 = new ReaLTaiizor.Controls.CyberButton();
+            cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
+            button6 = new Button();
             button1 = new Button();
-            button2 = new Button();
+            dataGridView1 = new DataGridView();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            precioColum = new DataGridViewTextBoxColumn();
+            StockColum = new DataGridViewTextBoxColumn();
+            ColumStockM = new DataGridViewTextBoxColumn();
+            columModificar = new DataGridViewTextBoxColumn();
+            eliminarColum = new DataGridViewTextBoxColumn();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // panel3
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(18, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(157, 21);
-            label1.TabIndex = 0;
-            label1.Text = "NUEVO PRODUCTO";
-            label1.Click += label1_Click;
-            // 
-            // hopeTextBox1
-            // 
-            hopeTextBox1.BackColor = Color.White;
-            hopeTextBox1.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox1.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox1.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox1.Font = new Font("Segoe UI", 12F);
-            hopeTextBox1.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox1.Hint = "";
-            hopeTextBox1.Location = new Point(114, 54);
-            hopeTextBox1.MaxLength = 32767;
-            hopeTextBox1.Multiline = false;
-            hopeTextBox1.Name = "hopeTextBox1";
-            hopeTextBox1.PasswordChar = '\0';
-            hopeTextBox1.ScrollBars = ScrollBars.None;
-            hopeTextBox1.SelectedText = "";
-            hopeTextBox1.SelectionLength = 0;
-            hopeTextBox1.SelectionStart = 0;
-            hopeTextBox1.Size = new Size(152, 38);
-            hopeTextBox1.TabIndex = 1;
-            hopeTextBox1.TabStop = false;
-            hopeTextBox1.UseSystemPasswordChar = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(18, 63);
-            label2.Name = "label2";
-            label2.Size = new Size(58, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Codigo";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(18, 107);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Descripción";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(18, 152);
-            label4.Name = "label4";
-            label4.Size = new Size(52, 20);
-            label4.TabIndex = 4;
-            label4.Text = "Precio";
-            // 
-            // hopeTextBox2
-            // 
-            hopeTextBox2.BackColor = Color.White;
-            hopeTextBox2.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox2.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox2.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox2.Font = new Font("Segoe UI", 12F);
-            hopeTextBox2.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox2.Hint = "";
-            hopeTextBox2.Location = new Point(114, 98);
-            hopeTextBox2.MaxLength = 32767;
-            hopeTextBox2.Multiline = false;
-            hopeTextBox2.Name = "hopeTextBox2";
-            hopeTextBox2.PasswordChar = '\0';
-            hopeTextBox2.ScrollBars = ScrollBars.None;
-            hopeTextBox2.SelectedText = "";
-            hopeTextBox2.SelectionLength = 0;
-            hopeTextBox2.SelectionStart = 0;
-            hopeTextBox2.Size = new Size(152, 38);
-            hopeTextBox2.TabIndex = 4;
-            hopeTextBox2.TabStop = false;
-            hopeTextBox2.UseSystemPasswordChar = false;
-            // 
-            // hopeTextBox3
-            // 
-            hopeTextBox3.BackColor = Color.White;
-            hopeTextBox3.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox3.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox3.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox3.Font = new Font("Segoe UI", 12F);
-            hopeTextBox3.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox3.Hint = "";
-            hopeTextBox3.Location = new Point(114, 142);
-            hopeTextBox3.MaxLength = 32767;
-            hopeTextBox3.Multiline = false;
-            hopeTextBox3.Name = "hopeTextBox3";
-            hopeTextBox3.PasswordChar = '\0';
-            hopeTextBox3.ScrollBars = ScrollBars.None;
-            hopeTextBox3.SelectedText = "";
-            hopeTextBox3.SelectionLength = 0;
-            hopeTextBox3.SelectionStart = 0;
-            hopeTextBox3.Size = new Size(152, 38);
-            hopeTextBox3.TabIndex = 6;
-            hopeTextBox3.TabStop = false;
-            hopeTextBox3.UseSystemPasswordChar = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(312, 63);
-            label5.Name = "label5";
-            label5.Size = new Size(47, 20);
-            label5.TabIndex = 7;
-            label5.Text = "Stock";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(312, 107);
-            label6.Name = "label6";
-            label6.Size = new Size(76, 20);
-            label6.TabIndex = 8;
-            label6.Text = "Categoria";
-            // 
-            // hopeTextBox4
-            // 
-            hopeTextBox4.BackColor = Color.White;
-            hopeTextBox4.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox4.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox4.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox4.Font = new Font("Segoe UI", 12F);
-            hopeTextBox4.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox4.Hint = "Max";
-            hopeTextBox4.Location = new Point(394, 54);
-            hopeTextBox4.MaxLength = 32767;
-            hopeTextBox4.Multiline = false;
-            hopeTextBox4.Name = "hopeTextBox4";
-            hopeTextBox4.PasswordChar = '\0';
-            hopeTextBox4.ScrollBars = ScrollBars.None;
-            hopeTextBox4.SelectedText = "";
-            hopeTextBox4.SelectionLength = 0;
-            hopeTextBox4.SelectionStart = 0;
-            hopeTextBox4.Size = new Size(60, 38);
-            hopeTextBox4.TabIndex = 9;
-            hopeTextBox4.TabStop = false;
-            hopeTextBox4.UseSystemPasswordChar = false;
-            // 
-            // hopeTextBox5
-            // 
-            hopeTextBox5.BackColor = Color.White;
-            hopeTextBox5.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox5.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox5.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox5.Font = new Font("Segoe UI", 12F);
-            hopeTextBox5.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox5.Hint = "";
-            hopeTextBox5.Location = new Point(394, 98);
-            hopeTextBox5.MaxLength = 32767;
-            hopeTextBox5.Multiline = false;
-            hopeTextBox5.Name = "hopeTextBox5";
-            hopeTextBox5.PasswordChar = '\0';
-            hopeTextBox5.ScrollBars = ScrollBars.None;
-            hopeTextBox5.SelectedText = "";
-            hopeTextBox5.SelectionLength = 0;
-            hopeTextBox5.SelectionStart = 0;
-            hopeTextBox5.Size = new Size(172, 38);
-            hopeTextBox5.TabIndex = 10;
-            hopeTextBox5.TabStop = false;
-            hopeTextBox5.UseSystemPasswordChar = false;
-            // 
-            // hopeTextBox6
-            // 
-            hopeTextBox6.BackColor = Color.White;
-            hopeTextBox6.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox6.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox6.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox6.Font = new Font("Segoe UI", 12F);
-            hopeTextBox6.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox6.Hint = "Min";
-            hopeTextBox6.Location = new Point(506, 54);
-            hopeTextBox6.MaxLength = 32767;
-            hopeTextBox6.Multiline = false;
-            hopeTextBox6.Name = "hopeTextBox6";
-            hopeTextBox6.PasswordChar = '\0';
-            hopeTextBox6.ScrollBars = ScrollBars.None;
-            hopeTextBox6.SelectedText = "";
-            hopeTextBox6.SelectionLength = 0;
-            hopeTextBox6.SelectionStart = 0;
-            hopeTextBox6.Size = new Size(60, 38);
-            hopeTextBox6.TabIndex = 11;
-            hopeTextBox6.TabStop = false;
-            hopeTextBox6.UseSystemPasswordChar = false;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(18, 198);
-            label7.Name = "label7";
-            label7.Size = new Size(162, 21);
-            label7.TabIndex = 12;
-            label7.Text = "BUSCAR PRODUCTO";
-            // 
-            // hopeTextBox7
-            // 
-            hopeTextBox7.BackColor = Color.White;
-            hopeTextBox7.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox7.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox7.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox7.Font = new Font("Segoe UI", 12F);
-            hopeTextBox7.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox7.Hint = "Codigo";
-            hopeTextBox7.Location = new Point(18, 253);
-            hopeTextBox7.MaxLength = 32767;
-            hopeTextBox7.Multiline = false;
-            hopeTextBox7.Name = "hopeTextBox7";
-            hopeTextBox7.PasswordChar = '\0';
-            hopeTextBox7.ScrollBars = ScrollBars.None;
-            hopeTextBox7.SelectedText = "";
-            hopeTextBox7.SelectionLength = 0;
-            hopeTextBox7.SelectionStart = 0;
-            hopeTextBox7.Size = new Size(102, 38);
-            hopeTextBox7.TabIndex = 13;
-            hopeTextBox7.TabStop = false;
-            hopeTextBox7.UseSystemPasswordChar = false;
-            // 
-            // hopeTextBox8
-            // 
-            hopeTextBox8.BackColor = Color.White;
-            hopeTextBox8.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox8.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox8.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox8.Font = new Font("Segoe UI", 12F);
-            hopeTextBox8.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox8.Hint = "Descripción";
-            hopeTextBox8.Location = new Point(126, 253);
-            hopeTextBox8.MaxLength = 32767;
-            hopeTextBox8.Multiline = false;
-            hopeTextBox8.Name = "hopeTextBox8";
-            hopeTextBox8.PasswordChar = '\0';
-            hopeTextBox8.ScrollBars = ScrollBars.None;
-            hopeTextBox8.SelectedText = "";
-            hopeTextBox8.SelectionLength = 0;
-            hopeTextBox8.SelectionStart = 0;
-            hopeTextBox8.Size = new Size(277, 38);
-            hopeTextBox8.TabIndex = 14;
-            hopeTextBox8.TabStop = false;
-            hopeTextBox8.UseSystemPasswordChar = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Silver;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { descripcionProducto, precioProducto, stockProducto, categoriaProducto, eliminarProducto });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ButtonShadow;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(18, 307);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(777, 108);
-            dataGridView1.TabIndex = 16;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // descripcionProducto
-            // 
-            descripcionProducto.HeaderText = "Descripción";
-            descripcionProducto.Name = "descripcionProducto";
-            // 
-            // precioProducto
-            // 
-            precioProducto.HeaderText = "Precio";
-            precioProducto.Name = "precioProducto";
-            // 
-            // stockProducto
-            // 
-            stockProducto.HeaderText = "Stock";
-            stockProducto.Name = "stockProducto";
-            // 
-            // categoriaProducto
-            // 
-            categoriaProducto.HeaderText = "Categoria";
-            categoriaProducto.Name = "categoriaProducto";
-            // 
-            // eliminarProducto
-            // 
-            eliminarProducto.HeaderText = "Eliminar";
-            eliminarProducto.Name = "eliminarProducto";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(18, 230);
-            label8.Name = "label8";
-            label8.Size = new Size(73, 20);
-            label8.TabIndex = 17;
-            label8.Text = "Producto";
-            // 
-            // hopeButton1
-            // 
-            hopeButton1.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton1.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton1.Location = new Point(394, 142);
-            hopeButton1.Name = "hopeButton1";
-            hopeButton1.PrimaryColor = Color.FromArgb(128, 239, 128);
-            hopeButton1.Size = new Size(86, 30);
-            hopeButton1.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton1.TabIndex = 18;
-            hopeButton1.Text = "Confirmar";
-            hopeButton1.TextColor = Color.White;
-            hopeButton1.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // hopeButton2
-            // 
-            hopeButton2.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton2.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton2.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton2.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton2.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton2.Location = new Point(486, 142);
-            hopeButton2.Name = "hopeButton2";
-            hopeButton2.PrimaryColor = Color.FromArgb(255, 116, 108);
-            hopeButton2.Size = new Size(80, 30);
-            hopeButton2.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton2.TabIndex = 19;
-            hopeButton2.Text = "Cancelar";
-            hopeButton2.TextColor = Color.White;
-            hopeButton2.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(12, 431);
-            label9.Name = "label9";
-            label9.Size = new Size(163, 21);
-            label9.TabIndex = 20;
-            label9.Text = "BUSCAR CATEGORIA";
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.BackColor = Color.FromArgb(255, 227, 227);
+            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(button1);
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(cyberTextBox7);
+            panel3.Controls.Add(button5);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(cyberTextBox6);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(cyberTextBox9);
+            panel3.Controls.Add(label5);
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(label7);
+            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.Location = new Point(8, 206);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(8);
+            panel3.Size = new Size(893, 334);
+            panel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel3.TabIndex = 58;
+            panel3.Text = "panel3";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(12, 466);
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(246, 61);
             label10.Name = "label10";
-            label10.Size = new Size(76, 20);
-            label10.TabIndex = 21;
-            label10.Text = "Categoria";
+            label10.Size = new Size(72, 15);
+            label10.TabIndex = 60;
+            label10.Text = "Descripción";
+            label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // hopeTextBox10
+            // cyberTextBox7
             // 
-            hopeTextBox10.BackColor = Color.White;
-            hopeTextBox10.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox10.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox10.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox10.Font = new Font("Segoe UI", 12F);
-            hopeTextBox10.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox10.Hint = "Nombre";
-            hopeTextBox10.Location = new Point(94, 455);
-            hopeTextBox10.MaxLength = 32767;
-            hopeTextBox10.Multiline = false;
-            hopeTextBox10.Name = "hopeTextBox10";
-            hopeTextBox10.PasswordChar = '\0';
-            hopeTextBox10.ScrollBars = ScrollBars.None;
-            hopeTextBox10.SelectedText = "";
-            hopeTextBox10.SelectionLength = 0;
-            hopeTextBox10.SelectionStart = 0;
-            hopeTextBox10.Size = new Size(243, 38);
-            hopeTextBox10.TabIndex = 22;
-            hopeTextBox10.TabStop = false;
-            hopeTextBox10.UseSystemPasswordChar = false;
+            cyberTextBox7.Alpha = 20;
+            cyberTextBox7.BackColor = Color.Transparent;
+            cyberTextBox7.Background_WidthPen = 3F;
+            cyberTextBox7.BackgroundPen = true;
+            cyberTextBox7.ColorBackground = Color.White;
+            cyberTextBox7.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox7.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox7.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox7.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox7.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox7.Font = new Font("Arial", 8F);
+            cyberTextBox7.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox7.Lighting = false;
+            cyberTextBox7.LinearGradientPen = false;
+            cyberTextBox7.Location = new Point(242, 79);
+            cyberTextBox7.Name = "cyberTextBox7";
+            cyberTextBox7.PenWidth = 15;
+            cyberTextBox7.RGB = false;
+            cyberTextBox7.Rounding = true;
+            cyberTextBox7.RoundingInt = 60;
+            cyberTextBox7.Size = new Size(358, 32);
+            cyberTextBox7.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox7.TabIndex = 66;
+            cyberTextBox7.Tag = "Cyber";
+            cyberTextBox7.TextButton = "";
+            cyberTextBox7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox7.Timer_RGB = 300;
             // 
-            // hopeTextBox11
+            // button5
             // 
-            hopeTextBox11.BackColor = Color.White;
-            hopeTextBox11.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox11.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox11.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox11.Font = new Font("Segoe UI", 12F);
-            hopeTextBox11.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox11.Hint = "";
-            hopeTextBox11.Location = new Point(365, 455);
-            hopeTextBox11.MaxLength = 32767;
-            hopeTextBox11.Multiline = false;
-            hopeTextBox11.Name = "hopeTextBox11";
-            hopeTextBox11.PasswordChar = '\0';
-            hopeTextBox11.ScrollBars = ScrollBars.None;
-            hopeTextBox11.SelectedText = "";
-            hopeTextBox11.SelectionLength = 0;
-            hopeTextBox11.SelectionStart = 0;
-            hopeTextBox11.Size = new Size(243, 38);
-            hopeTextBox11.TabIndex = 23;
-            hopeTextBox11.TabStop = false;
-            hopeTextBox11.UseSystemPasswordChar = false;
+            button5.BackColor = Color.FromArgb(255, 227, 227);
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Image = Properties.Resources.boxicons__search_alt;
+            button5.Location = new Point(618, 79);
+            button5.Name = "button5";
+            button5.Size = new Size(34, 32);
+            button5.TabIndex = 61;
+            button5.UseVisualStyleBackColor = false;
             // 
-            // hopeButton3
+            // label9
             // 
-            hopeButton3.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton3.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton3.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton3.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton3.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton3.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton3.Location = new Point(94, 499);
-            hopeButton3.Name = "hopeButton3";
-            hopeButton3.PrimaryColor = Color.FromArgb(128, 239, 128);
-            hopeButton3.Size = new Size(86, 32);
-            hopeButton3.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton3.TabIndex = 24;
-            hopeButton3.Text = "Modificar";
-            hopeButton3.TextColor = Color.White;
-            hopeButton3.WarningColor = Color.FromArgb(230, 162, 60);
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(23, 61);
+            label9.Name = "label9";
+            label9.Size = new Size(45, 15);
+            label9.TabIndex = 64;
+            label9.Text = "Codigo";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // hopeButton4
+            // cyberTextBox6
             // 
-            hopeButton4.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton4.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton4.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton4.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton4.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton4.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton4.Location = new Point(204, 499);
-            hopeButton4.Name = "hopeButton4";
-            hopeButton4.PrimaryColor = Color.FromArgb(255, 116, 108);
-            hopeButton4.Size = new Size(83, 32);
-            hopeButton4.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton4.TabIndex = 25;
-            hopeButton4.Text = "Eliminar";
-            hopeButton4.TextColor = Color.White;
-            hopeButton4.WarningColor = Color.FromArgb(230, 162, 60);
+            cyberTextBox6.Alpha = 20;
+            cyberTextBox6.BackColor = Color.Transparent;
+            cyberTextBox6.Background_WidthPen = 3F;
+            cyberTextBox6.BackgroundPen = true;
+            cyberTextBox6.ColorBackground = Color.White;
+            cyberTextBox6.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox6.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox6.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox6.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox6.Font = new Font("Arial", 8F);
+            cyberTextBox6.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox6.Lighting = false;
+            cyberTextBox6.LinearGradientPen = false;
+            cyberTextBox6.Location = new Point(20, 79);
+            cyberTextBox6.Name = "cyberTextBox6";
+            cyberTextBox6.PenWidth = 15;
+            cyberTextBox6.RGB = false;
+            cyberTextBox6.Rounding = true;
+            cyberTextBox6.RoundingInt = 60;
+            cyberTextBox6.Size = new Size(194, 32);
+            cyberTextBox6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox6.TabIndex = 63;
+            cyberTextBox6.Tag = "Cyber";
+            cyberTextBox6.TextButton = "";
+            cyberTextBox6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox6.Timer_RGB = 300;
             // 
-            // hopeTextBox9
+            // label8
             // 
-            hopeTextBox9.BackColor = Color.White;
-            hopeTextBox9.BaseColor = Color.FromArgb(252, 173, 159);
-            hopeTextBox9.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox9.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox9.Font = new Font("Segoe UI", 12F);
-            hopeTextBox9.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox9.Hint = "Filtrar por...";
-            hopeTextBox9.Location = new Point(475, 253);
-            hopeTextBox9.MaxLength = 32767;
-            hopeTextBox9.Multiline = false;
-            hopeTextBox9.Name = "hopeTextBox9";
-            hopeTextBox9.PasswordChar = '\0';
-            hopeTextBox9.ScrollBars = ScrollBars.None;
-            hopeTextBox9.SelectedText = "";
-            hopeTextBox9.SelectionLength = 0;
-            hopeTextBox9.SelectionStart = 0;
-            hopeTextBox9.Size = new Size(277, 38);
-            hopeTextBox9.TabIndex = 26;
-            hopeTextBox9.TabStop = false;
-            hopeTextBox9.UseSystemPasswordChar = false;
-            hopeTextBox9.Click += hopeTextBox9_Click;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(57, 28);
+            label8.Name = "label8";
+            label8.Size = new Size(152, 20);
+            label8.TabIndex = 65;
+            label8.Text = "BUSCAR PRODUCTO";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // cyberTextBox9
+            // 
+            cyberTextBox9.Alpha = 20;
+            cyberTextBox9.BackColor = Color.Transparent;
+            cyberTextBox9.Background_WidthPen = 3F;
+            cyberTextBox9.BackgroundPen = true;
+            cyberTextBox9.ColorBackground = Color.White;
+            cyberTextBox9.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox9.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox9.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox9.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox9.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox9.Font = new Font("Arial", 8F);
+            cyberTextBox9.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox9.Lighting = false;
+            cyberTextBox9.LinearGradientPen = false;
+            cyberTextBox9.Location = new Point(155, 291);
+            cyberTextBox9.Name = "cyberTextBox9";
+            cyberTextBox9.PenWidth = 15;
+            cyberTextBox9.RGB = false;
+            cyberTextBox9.Rounding = true;
+            cyberTextBox9.RoundingInt = 60;
+            cyberTextBox9.Size = new Size(59, 32);
+            cyberTextBox9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox9.TabIndex = 59;
+            cyberTextBox9.Tag = "Cyber";
+            cyberTextBox9.TextButton = "";
+            cyberTextBox9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox9.Timer_RGB = 300;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 300);
+            label5.Name = "label5";
+            label5.Size = new Size(134, 15);
+            label5.TabIndex = 58;
+            label5.Text = "Cantidad de Productos:";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button3
+            // 
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Image = Properties.Resources.ant_design__bars_outlined;
+            button3.Location = new Point(11, 124);
+            button3.Name = "button3";
+            button3.Size = new Size(34, 26);
+            button3.TabIndex = 14;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(51, 130);
+            label7.Name = "label7";
+            label7.Size = new Size(164, 20);
+            label7.TabIndex = 15;
+            label7.Text = "LISTA DE PRODUCTOS";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(button6);
+            panel2.Controls.Add(cyberButton4);
+            panel2.Controls.Add(dungeonNumeric2);
+            panel2.Controls.Add(cyberButton5);
+            panel2.Controls.Add(dungeonNumeric1);
+            panel2.Controls.Add(cyberButton6);
+            panel2.Controls.Add(cyberComboBox1);
+            panel2.Controls.Add(cyberButton3);
+            panel2.Controls.Add(cyberButton1);
+            panel2.Controls.Add(cyberButton2);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(cyberTextBox3);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(cyberTextBox1);
+            panel2.Controls.Add(label13);
+            panel2.Controls.Add(label12);
+            panel2.Controls.Add(label14);
+            panel2.Controls.Add(cyberTextBox10);
+            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.Location = new Point(8, 12);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(8);
+            panel2.Size = new Size(893, 188);
+            panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel2.TabIndex = 57;
+            panel2.Text = "panel2";
+            // 
+            // cyberButton3
+            // 
+            cyberButton3.Alpha = 20;
+            cyberButton3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton3.BackColor = Color.Transparent;
+            cyberButton3.Background = true;
+            cyberButton3.Background_WidthPen = 4F;
+            cyberButton3.BackgroundPen = true;
+            cyberButton3.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton3.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton3.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton3.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton3.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton3.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton3.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton3.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton3.Effect_1 = true;
+            cyberButton3.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton3.Effect_1_Transparency = 25;
+            cyberButton3.Effect_2 = true;
+            cyberButton3.Effect_2_ColorBackground = Color.White;
+            cyberButton3.Effect_2_Transparency = 20;
+            cyberButton3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton3.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton3.Lighting = false;
+            cyberButton3.LinearGradient_Background = false;
+            cyberButton3.LinearGradientPen = false;
+            cyberButton3.Location = new Point(1408, 191);
+            cyberButton3.Name = "cyberButton3";
+            cyberButton3.PenWidth = 15;
+            cyberButton3.Rounding = true;
+            cyberButton3.RoundingInt = 70;
+            cyberButton3.Size = new Size(141, 38);
+            cyberButton3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton3.TabIndex = 62;
+            cyberButton3.Tag = "Cyber";
+            cyberButton3.TextButton = "ELIMINAR";
+            cyberButton3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton3.Timer_Effect_1 = 5;
+            cyberButton3.Timer_RGB = 300;
+            // 
+            // cyberButton1
+            // 
+            cyberButton1.Alpha = 20;
+            cyberButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton1.BackColor = Color.Transparent;
+            cyberButton1.Background = true;
+            cyberButton1.Background_WidthPen = 4F;
+            cyberButton1.BackgroundPen = true;
+            cyberButton1.ColorBackground = Color.FromArgb(128, 128, 255);
+            cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton1.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton1.Effect_1 = true;
+            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton1.Effect_1_Transparency = 25;
+            cyberButton1.Effect_2 = true;
+            cyberButton1.Effect_2_ColorBackground = Color.White;
+            cyberButton1.Effect_2_Transparency = 20;
+            cyberButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton1.Lighting = false;
+            cyberButton1.LinearGradient_Background = false;
+            cyberButton1.LinearGradientPen = false;
+            cyberButton1.Location = new Point(1408, 147);
+            cyberButton1.Name = "cyberButton1";
+            cyberButton1.PenWidth = 15;
+            cyberButton1.Rounding = true;
+            cyberButton1.RoundingInt = 70;
+            cyberButton1.Size = new Size(141, 38);
+            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton1.TabIndex = 62;
+            cyberButton1.Tag = "Cyber";
+            cyberButton1.TextButton = "GUARDAR";
+            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton1.Timer_Effect_1 = 5;
+            cyberButton1.Timer_RGB = 300;
+            // 
+            // cyberButton2
+            // 
+            cyberButton2.Alpha = 20;
+            cyberButton2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton2.BackColor = Color.Transparent;
+            cyberButton2.Background = true;
+            cyberButton2.Background_WidthPen = 4F;
+            cyberButton2.BackgroundPen = true;
+            cyberButton2.ColorBackground = Color.FromArgb(0, 192, 0);
+            cyberButton2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton2.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton2.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton2.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton2.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton2.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton2.Effect_1 = true;
+            cyberButton2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton2.Effect_1_Transparency = 25;
+            cyberButton2.Effect_2 = true;
+            cyberButton2.Effect_2_ColorBackground = Color.White;
+            cyberButton2.Effect_2_Transparency = 20;
+            cyberButton2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton2.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton2.Lighting = false;
+            cyberButton2.LinearGradient_Background = false;
+            cyberButton2.LinearGradientPen = false;
+            cyberButton2.Location = new Point(1408, 99);
+            cyberButton2.Name = "cyberButton2";
+            cyberButton2.PenWidth = 15;
+            cyberButton2.Rounding = true;
+            cyberButton2.RoundingInt = 70;
+            cyberButton2.Size = new Size(141, 38);
+            cyberButton2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton2.TabIndex = 61;
+            cyberButton2.Tag = "Cyber";
+            cyberButton2.TextButton = "NUEVO";
+            cyberButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton2.Timer_Effect_1 = 5;
+            cyberButton2.Timer_RGB = 300;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(243, 111);
+            label4.Name = "label4";
+            label4.Size = new Size(60, 15);
+            label4.TabIndex = 27;
+            label4.Text = "Categoria";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(473, 54);
+            label3.Name = "label3";
+            label3.Size = new Size(84, 15);
+            label3.TabIndex = 25;
+            label3.Text = "Stock Minimo";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // cyberTextBox3
+            // 
+            cyberTextBox3.Alpha = 20;
+            cyberTextBox3.BackColor = Color.Transparent;
+            cyberTextBox3.Background_WidthPen = 3F;
+            cyberTextBox3.BackgroundPen = true;
+            cyberTextBox3.ColorBackground = Color.White;
+            cyberTextBox3.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox3.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox3.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox3.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox3.Font = new Font("Arial", 8F);
+            cyberTextBox3.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox3.Lighting = false;
+            cyberTextBox3.LinearGradientPen = false;
+            cyberTextBox3.Location = new Point(17, 126);
+            cyberTextBox3.Name = "cyberTextBox3";
+            cyberTextBox3.PenWidth = 15;
+            cyberTextBox3.RGB = false;
+            cyberTextBox3.Rounding = true;
+            cyberTextBox3.RoundingInt = 60;
+            cyberTextBox3.Size = new Size(191, 32);
+            cyberTextBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox3.TabIndex = 24;
+            cyberTextBox3.Tag = "Cyber";
+            cyberTextBox3.TextButton = "";
+            cyberTextBox3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox3.Timer_RGB = 300;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(20, 111);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 23;
+            label2.Text = "Precio";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(473, 112);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 15);
+            label1.TabIndex = 21;
+            label1.Text = "Stock Actual";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // cyberTextBox1
+            // 
+            cyberTextBox1.Alpha = 20;
+            cyberTextBox1.BackColor = Color.Transparent;
+            cyberTextBox1.Background_WidthPen = 3F;
+            cyberTextBox1.BackgroundPen = true;
+            cyberTextBox1.ColorBackground = Color.White;
+            cyberTextBox1.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox1.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox1.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox1.Font = new Font("Arial", 8F);
+            cyberTextBox1.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox1.Lighting = false;
+            cyberTextBox1.LinearGradientPen = false;
+            cyberTextBox1.Location = new Point(242, 72);
+            cyberTextBox1.Name = "cyberTextBox1";
+            cyberTextBox1.PenWidth = 15;
+            cyberTextBox1.RGB = false;
+            cyberTextBox1.Rounding = true;
+            cyberTextBox1.RoundingInt = 60;
+            cyberTextBox1.Size = new Size(191, 32);
+            cyberTextBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox1.TabIndex = 20;
+            cyberTextBox1.Tag = "Cyber";
+            cyberTextBox1.TextButton = "";
+            cyberTextBox1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox1.Timer_RGB = 300;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(245, 57);
+            label13.Name = "label13";
+            label13.Size = new Size(72, 15);
+            label13.TabIndex = 17;
+            label13.Text = "Descripción";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(54, 21);
+            label12.Name = "label12";
+            label12.Size = new Size(172, 20);
+            label12.TabIndex = 19;
+            label12.Text = "DATOS DEL PRODUCTO";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(20, 57);
+            label14.Name = "label14";
+            label14.Size = new Size(45, 15);
+            label14.TabIndex = 15;
+            label14.Text = "Codigo";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // cyberTextBox10
+            // 
+            cyberTextBox10.Alpha = 20;
+            cyberTextBox10.BackColor = Color.Transparent;
+            cyberTextBox10.Background_WidthPen = 3F;
+            cyberTextBox10.BackgroundPen = true;
+            cyberTextBox10.ColorBackground = Color.White;
+            cyberTextBox10.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            cyberTextBox10.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberTextBox10.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberTextBox10.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberTextBox10.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox10.Font = new Font("Arial", 8F);
+            cyberTextBox10.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox10.Lighting = false;
+            cyberTextBox10.LinearGradientPen = false;
+            cyberTextBox10.Location = new Point(17, 72);
+            cyberTextBox10.Name = "cyberTextBox10";
+            cyberTextBox10.PenWidth = 15;
+            cyberTextBox10.RGB = false;
+            cyberTextBox10.Rounding = true;
+            cyberTextBox10.RoundingInt = 60;
+            cyberTextBox10.Size = new Size(191, 32);
+            cyberTextBox10.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberTextBox10.TabIndex = 14;
+            cyberTextBox10.Tag = "Cyber";
+            cyberTextBox10.TextButton = "";
+            cyberTextBox10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberTextBox10.Timer_RGB = 300;
+            // 
+            // cyberComboBox1
+            // 
+            cyberComboBox1.BackColor = Color.White;
+            cyberComboBox1.ColorArrow = Color.FromArgb(252, 173, 159);
+            cyberComboBox1.ColorBackground = Color.White;
+            cyberComboBox1.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            cyberComboBox1.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cyberComboBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberComboBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberComboBox1.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            cyberComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            cyberComboBox1.FlatStyle = FlatStyle.Flat;
+            cyberComboBox1.Font = new Font("Arial", 11F);
+            cyberComboBox1.ForeColor = Color.FromArgb(255, 227, 227);
+            cyberComboBox1.FormattingEnabled = true;
+            cyberComboBox1.ItemHeight = 28;
+            cyberComboBox1.Location = new Point(245, 126);
+            cyberComboBox1.Name = "cyberComboBox1";
+            cyberComboBox1.RGB = false;
+            cyberComboBox1.Size = new Size(188, 34);
+            cyberComboBox1.TabIndex = 69;
+            cyberComboBox1.Timer_RGB = 300;
+            // 
+            // dungeonNumeric1
+            // 
+            dungeonNumeric1.BackColor = Color.Transparent;
+            dungeonNumeric1.BackColorA = Color.FromArgb(246, 246, 246);
+            dungeonNumeric1.BackColorB = Color.FromArgb(254, 254, 254);
+            dungeonNumeric1.BorderColor = Color.FromArgb(180, 180, 180);
+            dungeonNumeric1.ButtonForeColorA = Color.FromArgb(75, 75, 75);
+            dungeonNumeric1.ButtonForeColorB = Color.FromArgb(75, 75, 75);
+            dungeonNumeric1.Font = new Font("Tahoma", 11F);
+            dungeonNumeric1.ForeColor = Color.FromArgb(76, 76, 76);
+            dungeonNumeric1.Location = new Point(473, 130);
+            dungeonNumeric1.Maximum = 100L;
+            dungeonNumeric1.Minimum = 0L;
+            dungeonNumeric1.MinimumSize = new Size(93, 28);
+            dungeonNumeric1.Name = "dungeonNumeric1";
+            dungeonNumeric1.Size = new Size(188, 28);
+            dungeonNumeric1.TabIndex = 70;
+            dungeonNumeric1.Text = "dungeonNumeric1";
+            dungeonNumeric1.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
+            dungeonNumeric1.Value = 0L;
+            // 
+            // dungeonNumeric2
+            // 
+            dungeonNumeric2.BackColor = Color.Transparent;
+            dungeonNumeric2.BackColorA = Color.FromArgb(246, 246, 246);
+            dungeonNumeric2.BackColorB = Color.FromArgb(254, 254, 254);
+            dungeonNumeric2.BorderColor = Color.FromArgb(180, 180, 180);
+            dungeonNumeric2.ButtonForeColorA = Color.FromArgb(75, 75, 75);
+            dungeonNumeric2.ButtonForeColorB = Color.FromArgb(75, 75, 75);
+            dungeonNumeric2.Font = new Font("Tahoma", 11F);
+            dungeonNumeric2.ForeColor = Color.FromArgb(76, 76, 76);
+            dungeonNumeric2.Location = new Point(473, 72);
+            dungeonNumeric2.Maximum = 100L;
+            dungeonNumeric2.Minimum = 0L;
+            dungeonNumeric2.MinimumSize = new Size(93, 28);
+            dungeonNumeric2.Name = "dungeonNumeric2";
+            dungeonNumeric2.Size = new Size(188, 28);
+            dungeonNumeric2.TabIndex = 71;
+            dungeonNumeric2.Text = "dungeonNumeric2";
+            dungeonNumeric2.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
+            dungeonNumeric2.Value = 0L;
+            // 
+            // cyberButton4
+            // 
+            cyberButton4.Alpha = 20;
+            cyberButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton4.BackColor = Color.Transparent;
+            cyberButton4.Background = true;
+            cyberButton4.Background_WidthPen = 4F;
+            cyberButton4.BackgroundPen = true;
+            cyberButton4.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton4.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton4.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton4.Effect_1 = true;
+            cyberButton4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton4.Effect_1_Transparency = 25;
+            cyberButton4.Effect_2 = true;
+            cyberButton4.Effect_2_ColorBackground = Color.White;
+            cyberButton4.Effect_2_Transparency = 20;
+            cyberButton4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton4.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton4.Lighting = false;
+            cyberButton4.LinearGradient_Background = false;
+            cyberButton4.LinearGradientPen = false;
+            cyberButton4.Location = new Point(702, 123);
+            cyberButton4.Name = "cyberButton4";
+            cyberButton4.PenWidth = 15;
+            cyberButton4.Rounding = true;
+            cyberButton4.RoundingInt = 70;
+            cyberButton4.Size = new Size(141, 38);
+            cyberButton4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton4.TabIndex = 65;
+            cyberButton4.Tag = "Cyber";
+            cyberButton4.TextButton = "ELIMINAR";
+            cyberButton4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton4.Timer_Effect_1 = 5;
+            cyberButton4.Timer_RGB = 300;
+            // 
+            // cyberButton5
+            // 
+            cyberButton5.Alpha = 20;
+            cyberButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton5.BackColor = Color.Transparent;
+            cyberButton5.Background = true;
+            cyberButton5.Background_WidthPen = 4F;
+            cyberButton5.BackgroundPen = true;
+            cyberButton5.ColorBackground = Color.FromArgb(128, 128, 255);
+            cyberButton5.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton5.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton5.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton5.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton5.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton5.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton5.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton5.Effect_1 = true;
+            cyberButton5.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton5.Effect_1_Transparency = 25;
+            cyberButton5.Effect_2 = true;
+            cyberButton5.Effect_2_ColorBackground = Color.White;
+            cyberButton5.Effect_2_Transparency = 20;
+            cyberButton5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton5.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton5.Lighting = false;
+            cyberButton5.LinearGradient_Background = false;
+            cyberButton5.LinearGradientPen = false;
+            cyberButton5.Location = new Point(702, 79);
+            cyberButton5.Name = "cyberButton5";
+            cyberButton5.PenWidth = 15;
+            cyberButton5.Rounding = true;
+            cyberButton5.RoundingInt = 70;
+            cyberButton5.Size = new Size(141, 38);
+            cyberButton5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton5.TabIndex = 64;
+            cyberButton5.Tag = "Cyber";
+            cyberButton5.TextButton = "GUARDAR";
+            cyberButton5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton5.Timer_Effect_1 = 5;
+            cyberButton5.Timer_RGB = 300;
+            // 
+            // cyberButton6
+            // 
+            cyberButton6.Alpha = 20;
+            cyberButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton6.BackColor = Color.Transparent;
+            cyberButton6.Background = true;
+            cyberButton6.Background_WidthPen = 4F;
+            cyberButton6.BackgroundPen = true;
+            cyberButton6.ColorBackground = Color.FromArgb(0, 192, 0);
+            cyberButton6.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton6.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton6.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton6.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton6.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton6.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton6.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton6.Effect_1 = true;
+            cyberButton6.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton6.Effect_1_Transparency = 25;
+            cyberButton6.Effect_2 = true;
+            cyberButton6.Effect_2_ColorBackground = Color.White;
+            cyberButton6.Effect_2_Transparency = 20;
+            cyberButton6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton6.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton6.Lighting = false;
+            cyberButton6.LinearGradient_Background = false;
+            cyberButton6.LinearGradientPen = false;
+            cyberButton6.Location = new Point(702, 31);
+            cyberButton6.Name = "cyberButton6";
+            cyberButton6.PenWidth = 15;
+            cyberButton6.Rounding = true;
+            cyberButton6.RoundingInt = 70;
+            cyberButton6.Size = new Size(141, 38);
+            cyberButton6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton6.TabIndex = 63;
+            cyberButton6.Tag = "Cyber";
+            cyberButton6.TextButton = "NUEVO";
+            cyberButton6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton6.Timer_Effect_1 = 5;
+            cyberButton6.Timer_RGB = 300;
+            // 
+            // button6
+            // 
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Image = Properties.Resources.akar_icons__shipping_box_01;
+            button6.Location = new Point(17, 15);
+            button6.Name = "button6";
+            button6.Size = new Size(34, 26);
+            button6.TabIndex = 72;
+            button6.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.icono_lupa;
-            button1.Location = new Point(409, 253);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.akar_icons__shipping_box_01;
+            button1.Location = new Point(20, 22);
             button1.Name = "button1";
-            button1.Size = new Size(37, 38);
-            button1.TabIndex = 27;
+            button1.Size = new Size(34, 26);
+            button1.TabIndex = 73;
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // dataGridView1
             // 
-            button2.Image = Properties.Resources.icono_lupa;
-            button2.Location = new Point(758, 253);
-            button2.Name = "button2";
-            button2.Size = new Size(37, 38);
-            button2.TabIndex = 28;
-            button2.UseVisualStyleBackColor = true;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, precioColum, StockColum, ColumStockM, columModificar, eliminarColum });
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = SystemColors.ScrollBar;
+            dataGridView1.Location = new Point(17, 160);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(868, 122);
+            dataGridView1.TabIndex = 74;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            // 
+            // precioColum
+            // 
+            precioColum.HeaderText = "Precio";
+            precioColum.Name = "precioColum";
+            // 
+            // StockColum
+            // 
+            StockColum.HeaderText = "Stock Actual";
+            StockColum.Name = "StockColum";
+            // 
+            // ColumStockM
+            // 
+            ColumStockM.HeaderText = "Stock Minimo";
+            ColumStockM.Name = "ColumStockM";
+            // 
+            // columModificar
+            // 
+            columModificar.HeaderText = "Modificar";
+            columModificar.Name = "columModificar";
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
             // 
             // FormProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(252, 173, 159);
-            ClientSize = new Size(822, 536);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(hopeButton4);
-            Controls.Add(hopeTextBox9);
-            Controls.Add(hopeButton3);
-            Controls.Add(hopeTextBox11);
-            Controls.Add(hopeTextBox1);
-            Controls.Add(hopeTextBox10);
-            Controls.Add(label1);
-            Controls.Add(label9);
-            Controls.Add(label10);
-            Controls.Add(label2);
-            Controls.Add(label3);
-            Controls.Add(dataGridView1);
-            Controls.Add(hopeTextBox2);
-            Controls.Add(label4);
-            Controls.Add(label8);
-            Controls.Add(hopeTextBox8);
-            Controls.Add(hopeButton2);
-            Controls.Add(hopeTextBox3);
-            Controls.Add(hopeButton1);
-            Controls.Add(hopeTextBox7);
-            Controls.Add(label5);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(hopeTextBox4);
-            Controls.Add(hopeTextBox6);
-            Controls.Add(hopeTextBox5);
+            ClientSize = new Size(913, 566);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
             Name = "FormProductos";
             Text = "FormProductos";
             Load += FormProductos_Load;
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox3;
-        private Label label5;
-        private Label label6;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox4;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox5;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox6;
-        private Label label7;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox7;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox8;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn descripcionProducto;
-        private DataGridViewTextBoxColumn precioProducto;
-        private DataGridViewTextBoxColumn stockProducto;
-        private DataGridViewTextBoxColumn categoriaProducto;
-        private DataGridViewButtonColumn eliminarProducto;
-        private Label label8;
-        private ReaLTaiizor.Controls.HopeButton hopeButton1;
-        private ReaLTaiizor.Controls.HopeButton hopeButton2;
-        private Label label9;
+        private ReaLTaiizor.Controls.Panel panel3;
         private Label label10;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox10;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox11;
-        private ReaLTaiizor.Controls.HopeButton hopeButton3;
-        private ReaLTaiizor.Controls.HopeButton hopeButton4;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox9;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox7;
+        private Button button5;
+        private Label label9;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox6;
+        private Label label8;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox9;
+        private Label label5;
+        private Button button3;
+        private Label label7;
+        private ReaLTaiizor.Controls.Panel panel2;
+        private ReaLTaiizor.Controls.CyberButton cyberButton3;
+        private ReaLTaiizor.Controls.CyberButton cyberButton1;
+        private ReaLTaiizor.Controls.CyberButton cyberButton2;
+        private Label label4;
+        private Label label3;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox3;
+        private Label label2;
+        private Label label1;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox1;
+        private Label label13;
+        private Label label12;
+        private Label label14;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox10;
+        private ReaLTaiizor.Controls.CyberComboBox cyberComboBox1;
+        private ReaLTaiizor.Controls.DungeonNumeric dungeonNumeric1;
+        private ReaLTaiizor.Controls.DungeonNumeric dungeonNumeric2;
+        private ReaLTaiizor.Controls.CyberButton cyberButton4;
+        private ReaLTaiizor.Controls.CyberButton cyberButton5;
+        private ReaLTaiizor.Controls.CyberButton cyberButton6;
         private Button button1;
-        private Button button2;
+        private Button button6;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ColumCodigo;
+        private DataGridViewTextBoxColumn DescripColum;
+        private DataGridViewTextBoxColumn CategoriaColum;
+        private DataGridViewTextBoxColumn precioColum;
+        private DataGridViewTextBoxColumn StockColum;
+        private DataGridViewTextBoxColumn ColumStockM;
+        private DataGridViewTextBoxColumn columModificar;
+        private DataGridViewTextBoxColumn eliminarColum;
     }
 }

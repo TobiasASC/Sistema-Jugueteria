@@ -24,5 +24,20 @@ namespace SistemaJugueteria
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cyberTextBox10_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

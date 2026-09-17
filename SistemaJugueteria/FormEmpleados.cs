@@ -14,5 +14,25 @@ namespace SistemaJugueteria
         {
             InitializeComponent();
         }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cyberButton8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
