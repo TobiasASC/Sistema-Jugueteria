@@ -31,8 +31,8 @@
             menuPrincipal = new ReaLTaiizor.Controls.MaterialCard();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
-            hopeTextBox2 = new ReaLTaiizor.Controls.HopeTextBox();
-            hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
+            txtContraseña = new ReaLTaiizor.Controls.HopeTextBox();
+            txtUsuario = new ReaLTaiizor.Controls.HopeTextBox();
             bigLabel2 = new ReaLTaiizor.Controls.BigLabel();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox1 = new PictureBox();
@@ -49,8 +49,8 @@
             menuPrincipal.BackColor = Color.FromArgb(255, 255, 255);
             menuPrincipal.Controls.Add(pictureBox3);
             menuPrincipal.Controls.Add(pictureBox2);
-            menuPrincipal.Controls.Add(hopeTextBox2);
-            menuPrincipal.Controls.Add(hopeTextBox1);
+            menuPrincipal.Controls.Add(txtContraseña);
+            menuPrincipal.Controls.Add(txtUsuario);
             menuPrincipal.Controls.Add(bigLabel2);
             menuPrincipal.Controls.Add(bigLabel1);
             menuPrincipal.Controls.Add(pictureBox1);
@@ -83,52 +83,52 @@
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
-            // hopeTextBox2
+            // txtContraseña
             // 
-            hopeTextBox2.BackColor = Color.White;
-            hopeTextBox2.BaseColor = Color.White;
-            hopeTextBox2.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox2.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox2.Font = new Font("Segoe UI", 12F);
-            hopeTextBox2.ForeColor = Color.Gray;
-            hopeTextBox2.Hint = "contraseña";
-            hopeTextBox2.Location = new Point(86, 274);
-            hopeTextBox2.MaxLength = 32767;
-            hopeTextBox2.Multiline = false;
-            hopeTextBox2.Name = "hopeTextBox2";
-            hopeTextBox2.PasswordChar = '*';
-            hopeTextBox2.ScrollBars = ScrollBars.None;
-            hopeTextBox2.SelectedText = "";
-            hopeTextBox2.SelectionLength = 0;
-            hopeTextBox2.SelectionStart = 0;
-            hopeTextBox2.Size = new Size(245, 38);
-            hopeTextBox2.TabIndex = 5;
-            hopeTextBox2.TabStop = false;
-            hopeTextBox2.UseSystemPasswordChar = false;
-            hopeTextBox2.Click += hopeTextBox2_Click;
+            txtContraseña.BackColor = Color.White;
+            txtContraseña.BaseColor = Color.White;
+            txtContraseña.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtContraseña.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtContraseña.Font = new Font("Segoe UI", 12F);
+            txtContraseña.ForeColor = Color.Gray;
+            txtContraseña.Hint = "contraseña";
+            txtContraseña.Location = new Point(86, 274);
+            txtContraseña.MaxLength = 32767;
+            txtContraseña.Multiline = false;
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.PasswordChar = '*';
+            txtContraseña.ScrollBars = ScrollBars.None;
+            txtContraseña.SelectedText = "";
+            txtContraseña.SelectionLength = 0;
+            txtContraseña.SelectionStart = 0;
+            txtContraseña.Size = new Size(245, 38);
+            txtContraseña.TabIndex = 5;
+            txtContraseña.TabStop = false;
+            txtContraseña.UseSystemPasswordChar = false;
+            txtContraseña.Click += hopeTextBox2_Click;
             // 
-            // hopeTextBox1
+            // txtUsuario
             // 
-            hopeTextBox1.BackColor = Color.White;
-            hopeTextBox1.BaseColor = Color.White;
-            hopeTextBox1.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox1.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox1.Font = new Font("Segoe UI", 12F);
-            hopeTextBox1.ForeColor = Color.Gray;
-            hopeTextBox1.Hint = "usuario";
-            hopeTextBox1.Location = new Point(86, 230);
-            hopeTextBox1.MaxLength = 32767;
-            hopeTextBox1.Multiline = false;
-            hopeTextBox1.Name = "hopeTextBox1";
-            hopeTextBox1.PasswordChar = '\0';
-            hopeTextBox1.ScrollBars = ScrollBars.None;
-            hopeTextBox1.SelectedText = "";
-            hopeTextBox1.SelectionLength = 0;
-            hopeTextBox1.SelectionStart = 0;
-            hopeTextBox1.Size = new Size(245, 38);
-            hopeTextBox1.TabIndex = 4;
-            hopeTextBox1.TabStop = false;
-            hopeTextBox1.UseSystemPasswordChar = false;
+            txtUsuario.BackColor = Color.White;
+            txtUsuario.BaseColor = Color.White;
+            txtUsuario.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtUsuario.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtUsuario.Font = new Font("Segoe UI", 12F);
+            txtUsuario.ForeColor = Color.Gray;
+            txtUsuario.Hint = "usuario";
+            txtUsuario.Location = new Point(86, 230);
+            txtUsuario.MaxLength = 32767;
+            txtUsuario.Multiline = false;
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.PasswordChar = '\0';
+            txtUsuario.ScrollBars = ScrollBars.None;
+            txtUsuario.SelectedText = "";
+            txtUsuario.SelectionLength = 0;
+            txtUsuario.SelectionStart = 0;
+            txtUsuario.Size = new Size(245, 38);
+            txtUsuario.TabIndex = 4;
+            txtUsuario.TabStop = false;
+            txtUsuario.UseSystemPasswordChar = false;
             // 
             // bigLabel2
             // 
@@ -213,8 +213,8 @@
         private ReaLTaiizor.Controls.BigLabel bigLabel2;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
         private PictureBox pictureBox1;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
+        private ReaLTaiizor.Controls.HopeTextBox txtContraseña;
+        private ReaLTaiizor.Controls.HopeTextBox txtUsuario;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
     }

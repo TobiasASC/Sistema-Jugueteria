@@ -13,7 +13,9 @@ namespace SistemaJugueteria.Entities
         public int IdRol { get; set; }
         public int IdEmpleado { get; set; }
 
-        // Opcional: Propiedad de navegación para tener los datos del rol cargados si se necesitan
+        
         public Rol RolAsignado { get; set; }
+
+        public int Estado { get; set; } 
     }
 }

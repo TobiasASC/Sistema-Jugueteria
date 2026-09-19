@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReaLTaiizor.Controls;
+using SistemaJugueteria.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +12,45 @@ namespace SistemaJugueteria
 {
     public partial class menuPrincipal : Form
     {
-        public menuPrincipal()
+        private bool cerrandoSesion = false;
+        private Usuario usuarioActual; // Guardaremos aquí al usuario
+        public menuPrincipal(Usuario usuarioLogueado)
         {
             InitializeComponent();
+            usuarioActual = usuarioLogueado;
+
+            // Llamamos a un método que revisa los permisos
+            ConfigurarPermisos();
+        }
+
+        private void ConfigurarPermisos()
+        {
+            if (usuarioActual.IdRol == 1) // 1 = ADMINISTRADOR
+            {
+                // El admin tiene todo habilitado. Le abrimos la pantalla de Empleados por defecto.
+                AbrirFormularioHijo(new FormEmpleados());
+                // O si prefieres simular el clic: btnEmpleados_Click(null, null);
+            }
+
+            if (usuarioActual.IdRol == 2) // EMPLEADO
+            {
+                DeshabilitarBoton(btnBackup);
+                DeshabilitarBoton(btnEmpleados);
+                DeshabilitarBoton(btnProductos);
+                DeshabilitarBoton(btnPedidos);
+
+                AbrirFormularioHijo(new FormVentas());
+            }
+            else if (usuarioActual.IdRol == 3) // GERENTE
+            {
+                // El gerente ve reportes, ventas e inventario, pero no administra el sistema
+                btnEmpleados.Enabled = false;
+                btnBackup.Enabled = false;
+                btnVentas.Enabled = false;
+
+                AbrirFormularioHijo(new FormProductos());
+
+            }
         }
 
         // Variable para recordar qué formulario está abierto actualmente
@@ -98,7 +136,21 @@ namespace SistemaJugueteria
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // 1. Mostrar el mensaje de sesión cerrada
+            MessageBox.Show("Sesión cerrada.", "Desconexión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            cerrandoSesion = true;
+
+            // 2. Recuperar el formulario de login (Form1) que estaba oculto
+            Form login = Application.OpenForms["Form1"];
+            if (login != null)
+            {
+                login.Show(); // Lo volvemos a mostrar
+            }
+
+            // 3. Cerrar la ventana actual (menuPrincipal)
+            this.Close();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -131,6 +183,23 @@ namespace SistemaJugueteria
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void DeshabilitarBoton(System.Windows.Forms.Button btn)
+        {
+            btn.Enabled = false;
+            btn.ForeColor = System.Drawing.Color.DimGray;
+            btn.Cursor = Cursors.No;
+            btn.Tag = "bloqueado";
+        }
+
+        private void menuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Solo cierra la aplicación completa si NO fue el botón de cerrar sesión
+            if (!cerrandoSesion)
+            {
+                Application.Exit();
+            }
         }
     }
 }

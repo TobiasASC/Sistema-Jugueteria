@@ -29,65 +29,68 @@
         private void InitializeComponent()
         {
             panel3 = new ReaLTaiizor.Controls.Panel();
-            cyberComboBox1 = new ReaLTaiizor.Controls.CyberComboBox();
-            dataGridView1 = new DataGridView();
-            dniColum = new DataGridViewTextBoxColumn();
-            nombreColum = new DataGridViewTextBoxColumn();
-            DirecColum = new DataGridViewTextBoxColumn();
-            emailColum = new DataGridViewTextBoxColumn();
-            modifColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
+            label18 = new Label();
+            chkEstado = new ReaLTaiizor.Controls.CyberSwitch();
+            dgvEmpleados = new DataGridView();
             label10 = new Label();
-            cyberTextBox7 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtNombreBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
             label9 = new Label();
             button4 = new Button();
-            cyberTextBox6 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtDniBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             label8 = new Label();
-            cyberTextBox9 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtCantidadEmpleados = new ReaLTaiizor.Controls.CyberTextBox();
             label5 = new Label();
             button3 = new Button();
             label7 = new Label();
-            cyberTextBox10 = new ReaLTaiizor.Controls.CyberTextBox();
+            cmbRol = new ReaLTaiizor.Controls.CyberComboBox();
             label14 = new Label();
             label12 = new Label();
             label13 = new Label();
             button1 = new Button();
-            cyberTextBox1 = new ReaLTaiizor.Controls.CyberTextBox();
             label1 = new Label();
-            cyberTextBox2 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtApellidoEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
             label2 = new Label();
-            cyberTextBox3 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtEmailEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
             label3 = new Label();
-            cyberTextBox4 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtDireccionEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton3 = new ReaLTaiizor.Controls.CyberButton();
             panel2 = new ReaLTaiizor.Controls.Panel();
-            cyberButton11 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton8 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton7 = new ReaLTaiizor.Controls.CyberButton();
+            label19 = new Label();
+            txtTelefonoEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
+            txtNombreEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
+            txtDniEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
+            btnGuardarEmpleado = new ReaLTaiizor.Controls.CyberButton();
+            btnCancelarEmpleado = new ReaLTaiizor.Controls.CyberButton();
             panel1 = new ReaLTaiizor.Controls.Panel();
-            cyberButton9 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton10 = new ReaLTaiizor.Controls.CyberButton();
-            button6 = new Button();
-            cyberTextBox13 = new ReaLTaiizor.Controls.CyberTextBox();
+            btnCancelarUsuario = new ReaLTaiizor.Controls.CyberButton();
+            btnAgregarUsuario = new ReaLTaiizor.Controls.CyberButton();
+            btnLupaDniEmpleado = new Button();
+            txtDniEmpleadoBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             label17 = new Label();
-            cyberTextBox5 = new ReaLTaiizor.Controls.CyberTextBox();
             label4 = new Label();
-            cyberTextBox8 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtConfirmarContraseña = new ReaLTaiizor.Controls.CyberTextBox();
             label6 = new Label();
-            cyberTextBox11 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtContraseña = new ReaLTaiizor.Controls.CyberTextBox();
             label11 = new Label();
             label15 = new Label();
-            cyberTextBox12 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtUsuario = new ReaLTaiizor.Controls.CyberTextBox();
             cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton5 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
             button2 = new Button();
             label16 = new Label();
+            Rol = new DataGridViewTextBoxColumn();
+            dniColum = new DataGridViewTextBoxColumn();
+            nombreColum = new DataGridViewTextBoxColumn();
+            DirecColum = new DataGridViewTextBoxColumn();
+            emailColum = new DataGridViewTextBoxColumn();
+            Telefono = new DataGridViewTextBoxColumn();
+            Modificar = new DataGridViewButtonColumn();
+            Eliminar = new DataGridViewButtonColumn();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -96,98 +99,103 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(255, 227, 227);
-            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(label18);
+            panel3.Controls.Add(chkEstado);
+            panel3.Controls.Add(dgvEmpleados);
             panel3.Controls.Add(label10);
-            panel3.Controls.Add(cyberTextBox7);
+            panel3.Controls.Add(txtNombreBuscar);
             panel3.Controls.Add(button5);
-            panel3.Controls.Add(cyberTextBox5);
             panel3.Controls.Add(label9);
             panel3.Controls.Add(button4);
-            panel3.Controls.Add(cyberTextBox6);
+            panel3.Controls.Add(txtDniBuscar);
             panel3.Controls.Add(label8);
-            panel3.Controls.Add(cyberTextBox9);
+            panel3.Controls.Add(txtCantidadEmpleados);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
             panel3.EdgeColor = Color.FromArgb(32, 41, 50);
-            panel3.Location = new Point(12, 256);
+            panel3.Location = new Point(12, 276);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);
-            panel3.Size = new Size(893, 334);
+            panel3.Size = new Size(893, 329);
             panel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel3.TabIndex = 57;
             panel3.Text = "panel3";
+            panel3.Click += panel3_Click;
             // 
-            // cyberComboBox1
+            // label18
             // 
-            cyberComboBox1.BackColor = Color.FromArgb(255, 227, 227);
-            cyberComboBox1.ColorArrow = Color.FromArgb(252, 173, 159);
-            cyberComboBox1.ColorBackground = Color.White;
-            cyberComboBox1.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cyberComboBox1.ColorItemHover = Color.FromArgb(50, 70, 90);
-            cyberComboBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberComboBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberComboBox1.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            cyberComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            cyberComboBox1.FlatStyle = FlatStyle.Flat;
-            cyberComboBox1.Font = new Font("Arial", 11F);
-            cyberComboBox1.ForeColor = Color.FromArgb(255, 227, 227);
-            cyberComboBox1.FormattingEnabled = true;
-            cyberComboBox1.ItemHeight = 28;
-            cyberComboBox1.Location = new Point(223, 94);
-            cyberComboBox1.Name = "cyberComboBox1";
-            cyberComboBox1.RGB = false;
-            cyberComboBox1.Size = new Size(188, 34);
-            cyberComboBox1.TabIndex = 68;
-            cyberComboBox1.Timer_RGB = 300;
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(252, 130);
+            label18.Name = "label18";
+            label18.Size = new Size(109, 15);
+            label18.TabIndex = 71;
+            label18.Text = "Activos / Inactivos";
+            label18.TextAlign = ContentAlignment.MiddleCenter;
+            label18.Click += label18_Click;
             // 
-            // dataGridView1
+            // chkEstado
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dniColum, nombreColum, DirecColum, emailColum, modifColum, eliminarColum });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = SystemColors.ScrollBar;
-            dataGridView1.Location = new Point(17, 156);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(868, 126);
-            dataGridView1.TabIndex = 67;
+            chkEstado.Alpha = 50;
+            chkEstado.BackColor = Color.Transparent;
+            chkEstado.Background = true;
+            chkEstado.Background_WidthPen = 2F;
+            chkEstado.BackgroundPen = true;
+            chkEstado.Checked = false;
+            chkEstado.ColorBackground = Color.White;
+            chkEstado.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            chkEstado.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            chkEstado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorBackground_Value_1 = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorBackground_Value_2 = Color.FromArgb(100, 208, 232);
+            chkEstado.ColorLighting = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            chkEstado.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            chkEstado.ColorValue = Color.FromArgb(255, 192, 192);
+            chkEstado.CyberSwitchStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            chkEstado.Font = new Font("Arial", 11F);
+            chkEstado.ForeColor = Color.FromArgb(245, 245, 245);
+            chkEstado.Lighting = false;
+            chkEstado.LinearGradient_Background = false;
+            chkEstado.LinearGradient_Value = false;
+            chkEstado.LinearGradientPen = false;
+            chkEstado.Location = new Point(367, 124);
+            chkEstado.Name = "chkEstado";
+            chkEstado.PenWidth = 10;
+            chkEstado.RGB = false;
+            chkEstado.Rounding = true;
+            chkEstado.RoundingInt = 90;
+            chkEstado.Size = new Size(53, 26);
+            chkEstado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            chkEstado.TabIndex = 70;
+            chkEstado.Tag = "Cyber";
+            chkEstado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            chkEstado.Timer_RGB = 300;
+            chkEstado.Click += chkEstado_Click;
             // 
-            // dniColum
+            // dgvEmpleados
             // 
-            dniColum.HeaderText = "DNI";
-            dniColum.Name = "dniColum";
-            // 
-            // nombreColum
-            // 
-            nombreColum.HeaderText = "Nom y Ape";
-            nombreColum.Name = "nombreColum";
-            // 
-            // DirecColum
-            // 
-            DirecColum.HeaderText = "Dirección";
-            DirecColum.Name = "DirecColum";
-            // 
-            // emailColum
-            // 
-            emailColum.HeaderText = "Email";
-            emailColum.Name = "emailColum";
-            // 
-            // modifColum
-            // 
-            modifColum.HeaderText = "Modificar";
-            modifColum.Name = "modifColum";
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
+            dgvEmpleados.AllowUserToAddRows = false;
+            dgvEmpleados.AllowUserToDeleteRows = false;
+            dgvEmpleados.AllowUserToResizeColumns = false;
+            dgvEmpleados.AllowUserToResizeRows = false;
+            dgvEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmpleados.BackgroundColor = Color.White;
+            dgvEmpleados.BorderStyle = BorderStyle.None;
+            dgvEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { Rol, dniColum, nombreColum, DirecColum, emailColum, Telefono, Modificar, Eliminar });
+            dgvEmpleados.EnableHeadersVisualStyles = false;
+            dgvEmpleados.GridColor = SystemColors.ScrollBar;
+            dgvEmpleados.Location = new Point(17, 156);
+            dgvEmpleados.Name = "dgvEmpleados";
+            dgvEmpleados.ReadOnly = true;
+            dgvEmpleados.RowHeadersVisible = false;
+            dgvEmpleados.Size = new Size(868, 121);
+            dgvEmpleados.TabIndex = 67;
+            dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
             // 
             // label10
             // 
@@ -200,35 +208,35 @@
             label10.Text = "Nombre";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox7
+            // txtNombreBuscar
             // 
-            cyberTextBox7.Alpha = 20;
-            cyberTextBox7.BackColor = Color.Transparent;
-            cyberTextBox7.Background_WidthPen = 3F;
-            cyberTextBox7.BackgroundPen = true;
-            cyberTextBox7.ColorBackground = Color.White;
-            cyberTextBox7.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox7.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox7.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox7.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox7.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox7.Font = new Font("Arial", 8F);
-            cyberTextBox7.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox7.Lighting = false;
-            cyberTextBox7.LinearGradientPen = false;
-            cyberTextBox7.Location = new Point(240, 73);
-            cyberTextBox7.Name = "cyberTextBox7";
-            cyberTextBox7.PenWidth = 15;
-            cyberTextBox7.RGB = false;
-            cyberTextBox7.Rounding = true;
-            cyberTextBox7.RoundingInt = 60;
-            cyberTextBox7.Size = new Size(358, 32);
-            cyberTextBox7.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox7.TabIndex = 66;
-            cyberTextBox7.Tag = "Cyber";
-            cyberTextBox7.TextButton = "";
-            cyberTextBox7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox7.Timer_RGB = 300;
+            txtNombreBuscar.Alpha = 20;
+            txtNombreBuscar.BackColor = Color.Transparent;
+            txtNombreBuscar.Background_WidthPen = 3F;
+            txtNombreBuscar.BackgroundPen = true;
+            txtNombreBuscar.ColorBackground = Color.White;
+            txtNombreBuscar.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtNombreBuscar.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtNombreBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtNombreBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtNombreBuscar.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtNombreBuscar.Font = new Font("Arial", 8F);
+            txtNombreBuscar.ForeColor = Color.Black;
+            txtNombreBuscar.Lighting = false;
+            txtNombreBuscar.LinearGradientPen = false;
+            txtNombreBuscar.Location = new Point(240, 73);
+            txtNombreBuscar.Name = "txtNombreBuscar";
+            txtNombreBuscar.PenWidth = 15;
+            txtNombreBuscar.RGB = false;
+            txtNombreBuscar.Rounding = true;
+            txtNombreBuscar.RoundingInt = 60;
+            txtNombreBuscar.Size = new Size(358, 32);
+            txtNombreBuscar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtNombreBuscar.TabIndex = 66;
+            txtNombreBuscar.Tag = "Cyber";
+            txtNombreBuscar.TextButton = "";
+            txtNombreBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtNombreBuscar.Timer_RGB = 300;
             // 
             // button5
             // 
@@ -264,35 +272,35 @@
             button4.TabIndex = 62;
             button4.UseVisualStyleBackColor = true;
             // 
-            // cyberTextBox6
+            // txtDniBuscar
             // 
-            cyberTextBox6.Alpha = 20;
-            cyberTextBox6.BackColor = Color.Transparent;
-            cyberTextBox6.Background_WidthPen = 3F;
-            cyberTextBox6.BackgroundPen = true;
-            cyberTextBox6.ColorBackground = Color.White;
-            cyberTextBox6.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox6.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox6.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox6.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox6.Font = new Font("Arial", 8F);
-            cyberTextBox6.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox6.Lighting = false;
-            cyberTextBox6.LinearGradientPen = false;
-            cyberTextBox6.Location = new Point(17, 73);
-            cyberTextBox6.Name = "cyberTextBox6";
-            cyberTextBox6.PenWidth = 15;
-            cyberTextBox6.RGB = false;
-            cyberTextBox6.Rounding = true;
-            cyberTextBox6.RoundingInt = 60;
-            cyberTextBox6.Size = new Size(194, 32);
-            cyberTextBox6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox6.TabIndex = 63;
-            cyberTextBox6.Tag = "Cyber";
-            cyberTextBox6.TextButton = "";
-            cyberTextBox6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox6.Timer_RGB = 300;
+            txtDniBuscar.Alpha = 20;
+            txtDniBuscar.BackColor = Color.Transparent;
+            txtDniBuscar.Background_WidthPen = 3F;
+            txtDniBuscar.BackgroundPen = true;
+            txtDniBuscar.ColorBackground = Color.White;
+            txtDniBuscar.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtDniBuscar.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtDniBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtDniBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtDniBuscar.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtDniBuscar.Font = new Font("Arial", 8F);
+            txtDniBuscar.ForeColor = Color.Black;
+            txtDniBuscar.Lighting = false;
+            txtDniBuscar.LinearGradientPen = false;
+            txtDniBuscar.Location = new Point(17, 73);
+            txtDniBuscar.Name = "txtDniBuscar";
+            txtDniBuscar.PenWidth = 15;
+            txtDniBuscar.RGB = false;
+            txtDniBuscar.Rounding = true;
+            txtDniBuscar.RoundingInt = 60;
+            txtDniBuscar.Size = new Size(194, 32);
+            txtDniBuscar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtDniBuscar.TabIndex = 63;
+            txtDniBuscar.Tag = "Cyber";
+            txtDniBuscar.TextButton = "";
+            txtDniBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtDniBuscar.Timer_RGB = 300;
             // 
             // label8
             // 
@@ -305,35 +313,36 @@
             label8.Text = "BUSCAR EMPLEADO";
             label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox9
+            // txtCantidadEmpleados
             // 
-            cyberTextBox9.Alpha = 20;
-            cyberTextBox9.BackColor = Color.Transparent;
-            cyberTextBox9.Background_WidthPen = 3F;
-            cyberTextBox9.BackgroundPen = true;
-            cyberTextBox9.ColorBackground = Color.White;
-            cyberTextBox9.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox9.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox9.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox9.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox9.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox9.Font = new Font("Arial", 8F);
-            cyberTextBox9.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox9.Lighting = false;
-            cyberTextBox9.LinearGradientPen = false;
-            cyberTextBox9.Location = new Point(156, 288);
-            cyberTextBox9.Name = "cyberTextBox9";
-            cyberTextBox9.PenWidth = 15;
-            cyberTextBox9.RGB = false;
-            cyberTextBox9.Rounding = true;
-            cyberTextBox9.RoundingInt = 60;
-            cyberTextBox9.Size = new Size(59, 32);
-            cyberTextBox9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox9.TabIndex = 59;
-            cyberTextBox9.Tag = "Cyber";
-            cyberTextBox9.TextButton = "";
-            cyberTextBox9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox9.Timer_RGB = 300;
+            txtCantidadEmpleados.Alpha = 20;
+            txtCantidadEmpleados.BackColor = Color.Transparent;
+            txtCantidadEmpleados.Background_WidthPen = 3F;
+            txtCantidadEmpleados.BackgroundPen = true;
+            txtCantidadEmpleados.ColorBackground = Color.White;
+            txtCantidadEmpleados.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtCantidadEmpleados.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtCantidadEmpleados.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtCantidadEmpleados.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtCantidadEmpleados.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtCantidadEmpleados.Enabled = false;
+            txtCantidadEmpleados.Font = new Font("Arial", 8F);
+            txtCantidadEmpleados.ForeColor = Color.FromArgb(245, 245, 245);
+            txtCantidadEmpleados.Lighting = false;
+            txtCantidadEmpleados.LinearGradientPen = false;
+            txtCantidadEmpleados.Location = new Point(156, 288);
+            txtCantidadEmpleados.Name = "txtCantidadEmpleados";
+            txtCantidadEmpleados.PenWidth = 15;
+            txtCantidadEmpleados.RGB = false;
+            txtCantidadEmpleados.Rounding = true;
+            txtCantidadEmpleados.RoundingInt = 60;
+            txtCantidadEmpleados.Size = new Size(59, 32);
+            txtCantidadEmpleados.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtCantidadEmpleados.TabIndex = 59;
+            txtCantidadEmpleados.Tag = "Cyber";
+            txtCantidadEmpleados.TextButton = "";
+            txtCantidadEmpleados.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtCantidadEmpleados.Timer_RGB = 300;
             // 
             // label5
             // 
@@ -368,35 +377,29 @@
             label7.Text = "LISTA DE EMPLEADOS";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox10
+            // cmbRol
             // 
-            cyberTextBox10.Alpha = 20;
-            cyberTextBox10.BackColor = Color.Transparent;
-            cyberTextBox10.Background_WidthPen = 3F;
-            cyberTextBox10.BackgroundPen = true;
-            cyberTextBox10.ColorBackground = Color.White;
-            cyberTextBox10.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox10.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox10.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox10.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox10.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox10.Font = new Font("Arial", 8F);
-            cyberTextBox10.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox10.Lighting = false;
-            cyberTextBox10.LinearGradientPen = false;
-            cyberTextBox10.Location = new Point(15, 70);
-            cyberTextBox10.Name = "cyberTextBox10";
-            cyberTextBox10.PenWidth = 15;
-            cyberTextBox10.RGB = false;
-            cyberTextBox10.Rounding = true;
-            cyberTextBox10.RoundingInt = 60;
-            cyberTextBox10.Size = new Size(182, 32);
-            cyberTextBox10.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox10.TabIndex = 14;
-            cyberTextBox10.Tag = "Cyber";
-            cyberTextBox10.TextButton = "";
-            cyberTextBox10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox10.Timer_RGB = 300;
+            cmbRol.BackColor = Color.White;
+            cmbRol.ColorArrow = Color.FromArgb(252, 173, 159);
+            cmbRol.ColorBackground = Color.White;
+            cmbRol.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            cmbRol.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cmbRol.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cmbRol.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cmbRol.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cmbRol.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRol.FlatStyle = FlatStyle.Flat;
+            cmbRol.Font = new Font("Arial", 11F);
+            cmbRol.ForeColor = Color.FromArgb(255, 227, 227);
+            cmbRol.FormattingEnabled = true;
+            cmbRol.ItemHeight = 28;
+            cmbRol.Location = new Point(223, 94);
+            cmbRol.Name = "cmbRol";
+            cmbRol.RGB = false;
+            cmbRol.Size = new Size(188, 34);
+            cmbRol.TabIndex = 68;
+            cmbRol.Timer_RGB = 300;
             // 
             // label14
             // 
@@ -443,36 +446,6 @@
             button1.TabIndex = 17;
             button1.UseVisualStyleBackColor = true;
             // 
-            // cyberTextBox1
-            // 
-            cyberTextBox1.Alpha = 20;
-            cyberTextBox1.BackColor = Color.Transparent;
-            cyberTextBox1.Background_WidthPen = 3F;
-            cyberTextBox1.BackgroundPen = true;
-            cyberTextBox1.ColorBackground = Color.White;
-            cyberTextBox1.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox1.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox1.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox1.Font = new Font("Arial", 8F);
-            cyberTextBox1.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox1.Lighting = false;
-            cyberTextBox1.LinearGradientPen = false;
-            cyberTextBox1.Location = new Point(15, 126);
-            cyberTextBox1.Name = "cyberTextBox1";
-            cyberTextBox1.PenWidth = 15;
-            cyberTextBox1.RGB = false;
-            cyberTextBox1.Rounding = true;
-            cyberTextBox1.RoundingInt = 60;
-            cyberTextBox1.Size = new Size(183, 32);
-            cyberTextBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox1.TabIndex = 20;
-            cyberTextBox1.Tag = "Cyber";
-            cyberTextBox1.TextButton = "";
-            cyberTextBox1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox1.Timer_RGB = 300;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -484,35 +457,35 @@
             label1.Text = "Apellido/s";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox2
+            // txtApellidoEmpleado
             // 
-            cyberTextBox2.Alpha = 20;
-            cyberTextBox2.BackColor = Color.Transparent;
-            cyberTextBox2.Background_WidthPen = 3F;
-            cyberTextBox2.BackgroundPen = true;
-            cyberTextBox2.ColorBackground = Color.White;
-            cyberTextBox2.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox2.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox2.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox2.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox2.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox2.Font = new Font("Arial", 8F);
-            cyberTextBox2.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox2.Lighting = false;
-            cyberTextBox2.LinearGradientPen = false;
-            cyberTextBox2.Location = new Point(15, 180);
-            cyberTextBox2.Name = "cyberTextBox2";
-            cyberTextBox2.PenWidth = 15;
-            cyberTextBox2.RGB = false;
-            cyberTextBox2.Rounding = true;
-            cyberTextBox2.RoundingInt = 60;
-            cyberTextBox2.Size = new Size(182, 32);
-            cyberTextBox2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox2.TabIndex = 22;
-            cyberTextBox2.Tag = "Cyber";
-            cyberTextBox2.TextButton = "";
-            cyberTextBox2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox2.Timer_RGB = 300;
+            txtApellidoEmpleado.Alpha = 20;
+            txtApellidoEmpleado.BackColor = Color.Transparent;
+            txtApellidoEmpleado.Background_WidthPen = 3F;
+            txtApellidoEmpleado.BackgroundPen = true;
+            txtApellidoEmpleado.ColorBackground = Color.White;
+            txtApellidoEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtApellidoEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtApellidoEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtApellidoEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtApellidoEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtApellidoEmpleado.Font = new Font("Arial", 8F);
+            txtApellidoEmpleado.ForeColor = Color.Black;
+            txtApellidoEmpleado.Lighting = false;
+            txtApellidoEmpleado.LinearGradientPen = false;
+            txtApellidoEmpleado.Location = new Point(15, 180);
+            txtApellidoEmpleado.Name = "txtApellidoEmpleado";
+            txtApellidoEmpleado.PenWidth = 15;
+            txtApellidoEmpleado.RGB = false;
+            txtApellidoEmpleado.Rounding = true;
+            txtApellidoEmpleado.RoundingInt = 60;
+            txtApellidoEmpleado.Size = new Size(182, 32);
+            txtApellidoEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtApellidoEmpleado.TabIndex = 22;
+            txtApellidoEmpleado.Tag = "Cyber";
+            txtApellidoEmpleado.TextButton = "";
+            txtApellidoEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtApellidoEmpleado.Timer_RGB = 300;
             // 
             // label2
             // 
@@ -525,35 +498,35 @@
             label2.Text = "Email";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox3
+            // txtEmailEmpleado
             // 
-            cyberTextBox3.Alpha = 20;
-            cyberTextBox3.BackColor = Color.Transparent;
-            cyberTextBox3.Background_WidthPen = 3F;
-            cyberTextBox3.BackgroundPen = true;
-            cyberTextBox3.ColorBackground = Color.White;
-            cyberTextBox3.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox3.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox3.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox3.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox3.Font = new Font("Arial", 8F);
-            cyberTextBox3.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox3.Lighting = false;
-            cyberTextBox3.LinearGradientPen = false;
-            cyberTextBox3.Location = new Point(220, 124);
-            cyberTextBox3.Name = "cyberTextBox3";
-            cyberTextBox3.PenWidth = 15;
-            cyberTextBox3.RGB = false;
-            cyberTextBox3.Rounding = true;
-            cyberTextBox3.RoundingInt = 60;
-            cyberTextBox3.Size = new Size(191, 32);
-            cyberTextBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox3.TabIndex = 24;
-            cyberTextBox3.Tag = "Cyber";
-            cyberTextBox3.TextButton = "";
-            cyberTextBox3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox3.Timer_RGB = 300;
+            txtEmailEmpleado.Alpha = 20;
+            txtEmailEmpleado.BackColor = Color.Transparent;
+            txtEmailEmpleado.Background_WidthPen = 3F;
+            txtEmailEmpleado.BackgroundPen = true;
+            txtEmailEmpleado.ColorBackground = Color.White;
+            txtEmailEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtEmailEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtEmailEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtEmailEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtEmailEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtEmailEmpleado.Font = new Font("Arial", 8F);
+            txtEmailEmpleado.ForeColor = Color.Black;
+            txtEmailEmpleado.Lighting = false;
+            txtEmailEmpleado.LinearGradientPen = false;
+            txtEmailEmpleado.Location = new Point(220, 124);
+            txtEmailEmpleado.Name = "txtEmailEmpleado";
+            txtEmailEmpleado.PenWidth = 15;
+            txtEmailEmpleado.RGB = false;
+            txtEmailEmpleado.Rounding = true;
+            txtEmailEmpleado.RoundingInt = 60;
+            txtEmailEmpleado.Size = new Size(191, 32);
+            txtEmailEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtEmailEmpleado.TabIndex = 24;
+            txtEmailEmpleado.Tag = "Cyber";
+            txtEmailEmpleado.TextButton = "";
+            txtEmailEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtEmailEmpleado.Timer_RGB = 300;
             // 
             // label3
             // 
@@ -566,35 +539,35 @@
             label3.Text = "Dirección";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox4
+            // txtDireccionEmpleado
             // 
-            cyberTextBox4.Alpha = 20;
-            cyberTextBox4.BackColor = Color.Transparent;
-            cyberTextBox4.Background_WidthPen = 3F;
-            cyberTextBox4.BackgroundPen = true;
-            cyberTextBox4.ColorBackground = Color.White;
-            cyberTextBox4.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox4.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox4.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox4.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox4.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox4.Font = new Font("Arial", 8F);
-            cyberTextBox4.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox4.Lighting = false;
-            cyberTextBox4.LinearGradientPen = false;
-            cyberTextBox4.Location = new Point(220, 70);
-            cyberTextBox4.Name = "cyberTextBox4";
-            cyberTextBox4.PenWidth = 15;
-            cyberTextBox4.RGB = false;
-            cyberTextBox4.Rounding = true;
-            cyberTextBox4.RoundingInt = 60;
-            cyberTextBox4.Size = new Size(191, 32);
-            cyberTextBox4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox4.TabIndex = 26;
-            cyberTextBox4.Tag = "Cyber";
-            cyberTextBox4.TextButton = "";
-            cyberTextBox4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox4.Timer_RGB = 300;
+            txtDireccionEmpleado.Alpha = 20;
+            txtDireccionEmpleado.BackColor = Color.Transparent;
+            txtDireccionEmpleado.Background_WidthPen = 3F;
+            txtDireccionEmpleado.BackgroundPen = true;
+            txtDireccionEmpleado.ColorBackground = Color.White;
+            txtDireccionEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtDireccionEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtDireccionEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtDireccionEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtDireccionEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtDireccionEmpleado.Font = new Font("Arial", 8F);
+            txtDireccionEmpleado.ForeColor = Color.Black;
+            txtDireccionEmpleado.Lighting = false;
+            txtDireccionEmpleado.LinearGradientPen = false;
+            txtDireccionEmpleado.Location = new Point(220, 70);
+            txtDireccionEmpleado.Name = "txtDireccionEmpleado";
+            txtDireccionEmpleado.PenWidth = 15;
+            txtDireccionEmpleado.RGB = false;
+            txtDireccionEmpleado.Rounding = true;
+            txtDireccionEmpleado.RoundingInt = 60;
+            txtDireccionEmpleado.Size = new Size(191, 32);
+            txtDireccionEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtDireccionEmpleado.TabIndex = 26;
+            txtDireccionEmpleado.Tag = "Cyber";
+            txtDireccionEmpleado.TextButton = "";
+            txtDireccionEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtDireccionEmpleado.Timer_RGB = 300;
             // 
             // cyberButton2
             // 
@@ -623,7 +596,7 @@
             cyberButton2.Lighting = false;
             cyberButton2.LinearGradient_Background = false;
             cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(962, 149);
+            cyberButton2.Location = new Point(962, 169);
             cyberButton2.Name = "cyberButton2";
             cyberButton2.PenWidth = 15;
             cyberButton2.Rounding = true;
@@ -636,47 +609,6 @@
             cyberButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberButton2.Timer_Effect_1 = 5;
             cyberButton2.Timer_RGB = 300;
-            // 
-            // cyberButton1
-            // 
-            cyberButton1.Alpha = 20;
-            cyberButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton1.BackColor = Color.Transparent;
-            cyberButton1.Background = true;
-            cyberButton1.Background_WidthPen = 4F;
-            cyberButton1.BackgroundPen = true;
-            cyberButton1.ColorBackground = Color.FromArgb(128, 128, 255);
-            cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton1.Effect_1 = true;
-            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton1.Effect_1_Transparency = 25;
-            cyberButton1.Effect_2 = true;
-            cyberButton1.Effect_2_ColorBackground = Color.White;
-            cyberButton1.Effect_2_Transparency = 20;
-            cyberButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton1.Lighting = false;
-            cyberButton1.LinearGradient_Background = false;
-            cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(962, 197);
-            cyberButton1.Name = "cyberButton1";
-            cyberButton1.PenWidth = 15;
-            cyberButton1.Rounding = true;
-            cyberButton1.RoundingInt = 70;
-            cyberButton1.Size = new Size(141, 38);
-            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton1.TabIndex = 62;
-            cyberButton1.Tag = "Cyber";
-            cyberButton1.TextButton = "GUARDAR";
-            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton1.Timer_Effect_1 = 5;
-            cyberButton1.Timer_RGB = 300;
             // 
             // cyberButton3
             // 
@@ -705,7 +637,7 @@
             cyberButton3.Lighting = false;
             cyberButton3.LinearGradient_Background = false;
             cyberButton3.LinearGradientPen = false;
-            cyberButton3.Location = new Point(962, 241);
+            cyberButton3.Location = new Point(962, 261);
             cyberButton3.Name = "cyberButton3";
             cyberButton3.PenWidth = 15;
             cyberButton3.Rounding = true;
@@ -723,171 +655,235 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
-            panel2.Controls.Add(cyberButton11);
-            panel2.Controls.Add(cyberButton8);
-            panel2.Controls.Add(cyberButton7);
+            panel2.Controls.Add(label19);
+            panel2.Controls.Add(txtTelefonoEmpleado);
+            panel2.Controls.Add(txtNombreEmpleado);
+            panel2.Controls.Add(txtDniEmpleado);
+            panel2.Controls.Add(btnGuardarEmpleado);
+            panel2.Controls.Add(btnCancelarEmpleado);
             panel2.Controls.Add(cyberButton3);
-            panel2.Controls.Add(cyberButton1);
             panel2.Controls.Add(cyberButton2);
-            panel2.Controls.Add(cyberTextBox4);
+            panel2.Controls.Add(txtDireccionEmpleado);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(cyberTextBox3);
+            panel2.Controls.Add(txtEmailEmpleado);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(cyberTextBox2);
+            panel2.Controls.Add(txtApellidoEmpleado);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(cyberTextBox1);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
-            panel2.Controls.Add(cyberTextBox10);
             panel2.EdgeColor = Color.FromArgb(32, 41, 50);
             panel2.Location = new Point(12, 12);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
-            panel2.Size = new Size(447, 238);
+            panel2.Size = new Size(447, 258);
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 56;
             panel2.Text = "panel2";
             // 
-            // cyberButton11
+            // label19
             // 
-            cyberButton11.Alpha = 20;
-            cyberButton11.BackColor = Color.Transparent;
-            cyberButton11.Background = true;
-            cyberButton11.Background_WidthPen = 4F;
-            cyberButton11.BackgroundPen = true;
-            cyberButton11.ColorBackground = Color.FromArgb(128, 128, 255);
-            cyberButton11.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton11.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton11.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton11.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton11.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton11.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton11.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton11.Effect_1 = true;
-            cyberButton11.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton11.Effect_1_Transparency = 25;
-            cyberButton11.Effect_2 = true;
-            cyberButton11.Effect_2_ColorBackground = Color.White;
-            cyberButton11.Effect_2_Transparency = 20;
-            cyberButton11.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton11.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton11.Lighting = false;
-            cyberButton11.LinearGradient_Background = false;
-            cyberButton11.LinearGradientPen = false;
-            cyberButton11.Location = new Point(314, 165);
-            cyberButton11.Name = "cyberButton11";
-            cyberButton11.PenWidth = 15;
-            cyberButton11.Rounding = true;
-            cyberButton11.RoundingInt = 70;
-            cyberButton11.Size = new Size(97, 32);
-            cyberButton11.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton11.TabIndex = 65;
-            cyberButton11.Tag = "Cyber";
-            cyberButton11.TextButton = "GUARDAR";
-            cyberButton11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton11.Timer_Effect_1 = 5;
-            cyberButton11.Timer_RGB = 300;
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Location = new Point(223, 165);
+            label19.Name = "label19";
+            label19.Size = new Size(56, 15);
+            label19.TabIndex = 69;
+            label19.Text = "Teléfono";
+            label19.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberButton8
+            // txtTelefonoEmpleado
             // 
-            cyberButton8.Alpha = 20;
-            cyberButton8.BackColor = Color.Transparent;
-            cyberButton8.Background = true;
-            cyberButton8.Background_WidthPen = 4F;
-            cyberButton8.BackgroundPen = true;
-            cyberButton8.ColorBackground = Color.FromArgb(255, 128, 128);
-            cyberButton8.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton8.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton8.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton8.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton8.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton8.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton8.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton8.Effect_1 = true;
-            cyberButton8.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton8.Effect_1_Transparency = 25;
-            cyberButton8.Effect_2 = true;
-            cyberButton8.Effect_2_ColorBackground = Color.White;
-            cyberButton8.Effect_2_Transparency = 20;
-            cyberButton8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton8.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton8.Lighting = false;
-            cyberButton8.LinearGradient_Background = false;
-            cyberButton8.LinearGradientPen = false;
-            cyberButton8.Location = new Point(265, 195);
-            cyberButton8.Name = "cyberButton8";
-            cyberButton8.PenWidth = 15;
-            cyberButton8.Rounding = true;
-            cyberButton8.RoundingInt = 70;
-            cyberButton8.Size = new Size(96, 32);
-            cyberButton8.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton8.TabIndex = 64;
-            cyberButton8.Tag = "Cyber";
-            cyberButton8.TextButton = "CANCELAR";
-            cyberButton8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton8.Timer_Effect_1 = 5;
-            cyberButton8.Timer_RGB = 300;
-            cyberButton8.Click += cyberButton8_Click;
+            txtTelefonoEmpleado.Alpha = 20;
+            txtTelefonoEmpleado.BackColor = Color.Transparent;
+            txtTelefonoEmpleado.Background_WidthPen = 3F;
+            txtTelefonoEmpleado.BackgroundPen = true;
+            txtTelefonoEmpleado.ColorBackground = Color.White;
+            txtTelefonoEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtTelefonoEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtTelefonoEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtTelefonoEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtTelefonoEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtTelefonoEmpleado.Font = new Font("Arial", 8F);
+            txtTelefonoEmpleado.ForeColor = Color.Black;
+            txtTelefonoEmpleado.Lighting = false;
+            txtTelefonoEmpleado.LinearGradientPen = false;
+            txtTelefonoEmpleado.Location = new Point(220, 180);
+            txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
+            txtTelefonoEmpleado.PenWidth = 15;
+            txtTelefonoEmpleado.RGB = false;
+            txtTelefonoEmpleado.Rounding = true;
+            txtTelefonoEmpleado.RoundingInt = 60;
+            txtTelefonoEmpleado.Size = new Size(191, 32);
+            txtTelefonoEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtTelefonoEmpleado.TabIndex = 68;
+            txtTelefonoEmpleado.Tag = "Cyber";
+            txtTelefonoEmpleado.TextButton = "";
+            txtTelefonoEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtTelefonoEmpleado.Timer_RGB = 300;
             // 
-            // cyberButton7
+            // txtNombreEmpleado
             // 
-            cyberButton7.Alpha = 20;
-            cyberButton7.BackColor = Color.Transparent;
-            cyberButton7.Background = true;
-            cyberButton7.Background_WidthPen = 4F;
-            cyberButton7.BackgroundPen = true;
-            cyberButton7.ColorBackground = Color.FromArgb(0, 192, 0);
-            cyberButton7.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton7.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton7.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton7.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton7.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton7.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton7.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton7.Effect_1 = true;
-            cyberButton7.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton7.Effect_1_Transparency = 25;
-            cyberButton7.Effect_2 = true;
-            cyberButton7.Effect_2_ColorBackground = Color.White;
-            cyberButton7.Effect_2_Transparency = 20;
-            cyberButton7.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton7.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton7.Lighting = false;
-            cyberButton7.LinearGradient_Background = false;
-            cyberButton7.LinearGradientPen = false;
-            cyberButton7.Location = new Point(220, 165);
-            cyberButton7.Name = "cyberButton7";
-            cyberButton7.PenWidth = 15;
-            cyberButton7.Rounding = true;
-            cyberButton7.RoundingInt = 70;
-            cyberButton7.Size = new Size(97, 32);
-            cyberButton7.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton7.TabIndex = 63;
-            cyberButton7.Tag = "Cyber";
-            cyberButton7.TextButton = "NUEVO";
-            cyberButton7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton7.Timer_Effect_1 = 5;
-            cyberButton7.Timer_RGB = 300;
+            txtNombreEmpleado.Alpha = 20;
+            txtNombreEmpleado.BackColor = Color.Transparent;
+            txtNombreEmpleado.Background_WidthPen = 3F;
+            txtNombreEmpleado.BackgroundPen = true;
+            txtNombreEmpleado.ColorBackground = Color.White;
+            txtNombreEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtNombreEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtNombreEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtNombreEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtNombreEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtNombreEmpleado.Font = new Font("Arial", 8F);
+            txtNombreEmpleado.ForeColor = Color.Black;
+            txtNombreEmpleado.Lighting = false;
+            txtNombreEmpleado.LinearGradientPen = false;
+            txtNombreEmpleado.Location = new Point(14, 129);
+            txtNombreEmpleado.Name = "txtNombreEmpleado";
+            txtNombreEmpleado.PenWidth = 15;
+            txtNombreEmpleado.RGB = false;
+            txtNombreEmpleado.Rounding = true;
+            txtNombreEmpleado.RoundingInt = 60;
+            txtNombreEmpleado.Size = new Size(183, 32);
+            txtNombreEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtNombreEmpleado.TabIndex = 67;
+            txtNombreEmpleado.Tag = "Cyber";
+            txtNombreEmpleado.TextButton = "";
+            txtNombreEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtNombreEmpleado.Timer_RGB = 300;
+            // 
+            // txtDniEmpleado
+            // 
+            txtDniEmpleado.Alpha = 20;
+            txtDniEmpleado.BackColor = Color.Transparent;
+            txtDniEmpleado.Background_WidthPen = 3F;
+            txtDniEmpleado.BackgroundPen = true;
+            txtDniEmpleado.ColorBackground = Color.White;
+            txtDniEmpleado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtDniEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtDniEmpleado.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtDniEmpleado.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtDniEmpleado.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtDniEmpleado.Font = new Font("Arial", 8F);
+            txtDniEmpleado.ForeColor = Color.Black;
+            txtDniEmpleado.Lighting = false;
+            txtDniEmpleado.LinearGradientPen = false;
+            txtDniEmpleado.Location = new Point(15, 70);
+            txtDniEmpleado.Name = "txtDniEmpleado";
+            txtDniEmpleado.PenWidth = 15;
+            txtDniEmpleado.RGB = false;
+            txtDniEmpleado.Rounding = true;
+            txtDniEmpleado.RoundingInt = 60;
+            txtDniEmpleado.Size = new Size(182, 32);
+            txtDniEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtDniEmpleado.TabIndex = 66;
+            txtDniEmpleado.Tag = "Cyber";
+            txtDniEmpleado.TextButton = "";
+            txtDniEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtDniEmpleado.Timer_RGB = 300;
+            txtDniEmpleado.Load += txtDniEmpleado_Load;
+            txtDniEmpleado.KeyPress += txtDniEmpleado_KeyPress;
+            // 
+            // btnGuardarEmpleado
+            // 
+            btnGuardarEmpleado.Alpha = 20;
+            btnGuardarEmpleado.BackColor = Color.Transparent;
+            btnGuardarEmpleado.Background = true;
+            btnGuardarEmpleado.Background_WidthPen = 4F;
+            btnGuardarEmpleado.BackgroundPen = true;
+            btnGuardarEmpleado.ColorBackground = Color.FromArgb(128, 128, 255);
+            btnGuardarEmpleado.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnGuardarEmpleado.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnGuardarEmpleado.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnGuardarEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnGuardarEmpleado.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnGuardarEmpleado.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnGuardarEmpleado.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnGuardarEmpleado.Effect_1 = true;
+            btnGuardarEmpleado.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnGuardarEmpleado.Effect_1_Transparency = 25;
+            btnGuardarEmpleado.Effect_2 = true;
+            btnGuardarEmpleado.Effect_2_ColorBackground = Color.White;
+            btnGuardarEmpleado.Effect_2_Transparency = 20;
+            btnGuardarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardarEmpleado.ForeColor = Color.FromArgb(245, 245, 245);
+            btnGuardarEmpleado.Lighting = false;
+            btnGuardarEmpleado.LinearGradient_Background = false;
+            btnGuardarEmpleado.LinearGradientPen = false;
+            btnGuardarEmpleado.Location = new Point(314, 216);
+            btnGuardarEmpleado.Name = "btnGuardarEmpleado";
+            btnGuardarEmpleado.PenWidth = 15;
+            btnGuardarEmpleado.Rounding = true;
+            btnGuardarEmpleado.RoundingInt = 70;
+            btnGuardarEmpleado.Size = new Size(97, 32);
+            btnGuardarEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnGuardarEmpleado.TabIndex = 65;
+            btnGuardarEmpleado.Tag = "Cyber";
+            btnGuardarEmpleado.TextButton = "GUARDAR";
+            btnGuardarEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnGuardarEmpleado.Timer_Effect_1 = 5;
+            btnGuardarEmpleado.Timer_RGB = 300;
+            btnGuardarEmpleado.Click += btnGuardarEmpleado_Click;
+            // 
+            // btnCancelarEmpleado
+            // 
+            btnCancelarEmpleado.Alpha = 20;
+            btnCancelarEmpleado.BackColor = Color.Transparent;
+            btnCancelarEmpleado.Background = true;
+            btnCancelarEmpleado.Background_WidthPen = 4F;
+            btnCancelarEmpleado.BackgroundPen = true;
+            btnCancelarEmpleado.ColorBackground = Color.FromArgb(255, 128, 128);
+            btnCancelarEmpleado.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnCancelarEmpleado.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnCancelarEmpleado.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnCancelarEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnCancelarEmpleado.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnCancelarEmpleado.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnCancelarEmpleado.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnCancelarEmpleado.Effect_1 = true;
+            btnCancelarEmpleado.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnCancelarEmpleado.Effect_1_Transparency = 25;
+            btnCancelarEmpleado.Effect_2 = true;
+            btnCancelarEmpleado.Effect_2_ColorBackground = Color.White;
+            btnCancelarEmpleado.Effect_2_Transparency = 20;
+            btnCancelarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelarEmpleado.ForeColor = Color.FromArgb(245, 245, 245);
+            btnCancelarEmpleado.Lighting = false;
+            btnCancelarEmpleado.LinearGradient_Background = false;
+            btnCancelarEmpleado.LinearGradientPen = false;
+            btnCancelarEmpleado.Location = new Point(220, 216);
+            btnCancelarEmpleado.Name = "btnCancelarEmpleado";
+            btnCancelarEmpleado.PenWidth = 15;
+            btnCancelarEmpleado.Rounding = true;
+            btnCancelarEmpleado.RoundingInt = 70;
+            btnCancelarEmpleado.Size = new Size(96, 32);
+            btnCancelarEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnCancelarEmpleado.TabIndex = 64;
+            btnCancelarEmpleado.Tag = "Cyber";
+            btnCancelarEmpleado.TextButton = "LIMPIAR";
+            btnCancelarEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnCancelarEmpleado.Timer_Effect_1 = 5;
+            btnCancelarEmpleado.Timer_RGB = 300;
+            btnCancelarEmpleado.Click += btnLimpiarEmpleado_Click;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(255, 227, 227);
-            panel1.Controls.Add(cyberComboBox1);
-            panel1.Controls.Add(cyberButton9);
-            panel1.Controls.Add(cyberButton10);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(cyberTextBox13);
+            panel1.Controls.Add(cmbRol);
+            panel1.Controls.Add(btnCancelarUsuario);
+            panel1.Controls.Add(btnAgregarUsuario);
+            panel1.Controls.Add(btnLupaDniEmpleado);
+            panel1.Controls.Add(txtDniEmpleadoBuscar);
             panel1.Controls.Add(label17);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(cyberTextBox8);
+            panel1.Controls.Add(txtConfirmarContraseña);
             panel1.Controls.Add(label6);
-            panel1.Controls.Add(cyberTextBox11);
+            panel1.Controls.Add(txtContraseña);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(label15);
-            panel1.Controls.Add(cyberTextBox12);
+            panel1.Controls.Add(txtUsuario);
             panel1.Controls.Add(cyberButton4);
             panel1.Controls.Add(cyberButton5);
             panel1.Controls.Add(cyberButton6);
@@ -897,134 +893,137 @@
             panel1.Location = new Point(465, 12);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
-            panel1.Size = new Size(440, 238);
+            panel1.Size = new Size(440, 258);
             panel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel1.TabIndex = 63;
             panel1.Text = "panel1";
             panel1.Click += panel1_Click;
             // 
-            // cyberButton9
+            // btnCancelarUsuario
             // 
-            cyberButton9.Alpha = 20;
-            cyberButton9.BackColor = Color.Transparent;
-            cyberButton9.Background = true;
-            cyberButton9.Background_WidthPen = 4F;
-            cyberButton9.BackgroundPen = true;
-            cyberButton9.ColorBackground = Color.FromArgb(255, 128, 128);
-            cyberButton9.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton9.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton9.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton9.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton9.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton9.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton9.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton9.Effect_1 = true;
-            cyberButton9.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton9.Effect_1_Transparency = 25;
-            cyberButton9.Effect_2 = true;
-            cyberButton9.Effect_2_ColorBackground = Color.White;
-            cyberButton9.Effect_2_Transparency = 20;
-            cyberButton9.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton9.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton9.Lighting = false;
-            cyberButton9.LinearGradient_Background = false;
-            cyberButton9.LinearGradientPen = false;
-            cyberButton9.Location = new Point(211, 195);
-            cyberButton9.Name = "cyberButton9";
-            cyberButton9.PenWidth = 15;
-            cyberButton9.Rounding = true;
-            cyberButton9.RoundingInt = 70;
-            cyberButton9.Size = new Size(96, 32);
-            cyberButton9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton9.TabIndex = 66;
-            cyberButton9.Tag = "Cyber";
-            cyberButton9.TextButton = "CANCELAR";
-            cyberButton9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton9.Timer_Effect_1 = 5;
-            cyberButton9.Timer_RGB = 300;
+            btnCancelarUsuario.Alpha = 20;
+            btnCancelarUsuario.BackColor = Color.Transparent;
+            btnCancelarUsuario.Background = true;
+            btnCancelarUsuario.Background_WidthPen = 4F;
+            btnCancelarUsuario.BackgroundPen = true;
+            btnCancelarUsuario.ColorBackground = Color.FromArgb(255, 128, 128);
+            btnCancelarUsuario.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnCancelarUsuario.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnCancelarUsuario.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnCancelarUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnCancelarUsuario.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnCancelarUsuario.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnCancelarUsuario.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnCancelarUsuario.Effect_1 = true;
+            btnCancelarUsuario.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnCancelarUsuario.Effect_1_Transparency = 25;
+            btnCancelarUsuario.Effect_2 = true;
+            btnCancelarUsuario.Effect_2_ColorBackground = Color.White;
+            btnCancelarUsuario.Effect_2_Transparency = 20;
+            btnCancelarUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelarUsuario.ForeColor = Color.FromArgb(245, 245, 245);
+            btnCancelarUsuario.Lighting = false;
+            btnCancelarUsuario.LinearGradient_Background = false;
+            btnCancelarUsuario.LinearGradientPen = false;
+            btnCancelarUsuario.Location = new Point(213, 205);
+            btnCancelarUsuario.Name = "btnCancelarUsuario";
+            btnCancelarUsuario.PenWidth = 15;
+            btnCancelarUsuario.Rounding = true;
+            btnCancelarUsuario.RoundingInt = 70;
+            btnCancelarUsuario.Size = new Size(96, 32);
+            btnCancelarUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnCancelarUsuario.TabIndex = 66;
+            btnCancelarUsuario.Tag = "Cyber";
+            btnCancelarUsuario.TextButton = "CANCELAR";
+            btnCancelarUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnCancelarUsuario.Timer_Effect_1 = 5;
+            btnCancelarUsuario.Timer_RGB = 300;
+            btnCancelarUsuario.Click += btnCancelarUsuario_Click;
             // 
-            // cyberButton10
+            // btnAgregarUsuario
             // 
-            cyberButton10.Alpha = 20;
-            cyberButton10.BackColor = Color.Transparent;
-            cyberButton10.Background = true;
-            cyberButton10.Background_WidthPen = 4F;
-            cyberButton10.BackgroundPen = true;
-            cyberButton10.ColorBackground = Color.FromArgb(0, 192, 0);
-            cyberButton10.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton10.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton10.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton10.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton10.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton10.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton10.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton10.Effect_1 = true;
-            cyberButton10.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton10.Effect_1_Transparency = 25;
-            cyberButton10.Effect_2 = true;
-            cyberButton10.Effect_2_ColorBackground = Color.White;
-            cyberButton10.Effect_2_Transparency = 20;
-            cyberButton10.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton10.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton10.Lighting = false;
-            cyberButton10.LinearGradient_Background = false;
-            cyberButton10.LinearGradientPen = false;
-            cyberButton10.Location = new Point(116, 195);
-            cyberButton10.Name = "cyberButton10";
-            cyberButton10.PenWidth = 15;
-            cyberButton10.Rounding = true;
-            cyberButton10.RoundingInt = 70;
-            cyberButton10.Size = new Size(97, 32);
-            cyberButton10.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton10.TabIndex = 65;
-            cyberButton10.Tag = "Cyber";
-            cyberButton10.TextButton = "AGREGAR";
-            cyberButton10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton10.Timer_Effect_1 = 5;
-            cyberButton10.Timer_RGB = 300;
+            btnAgregarUsuario.Alpha = 20;
+            btnAgregarUsuario.BackColor = Color.Transparent;
+            btnAgregarUsuario.Background = true;
+            btnAgregarUsuario.Background_WidthPen = 4F;
+            btnAgregarUsuario.BackgroundPen = true;
+            btnAgregarUsuario.ColorBackground = Color.FromArgb(0, 192, 0);
+            btnAgregarUsuario.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnAgregarUsuario.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnAgregarUsuario.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnAgregarUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnAgregarUsuario.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnAgregarUsuario.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnAgregarUsuario.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnAgregarUsuario.Effect_1 = true;
+            btnAgregarUsuario.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnAgregarUsuario.Effect_1_Transparency = 25;
+            btnAgregarUsuario.Effect_2 = true;
+            btnAgregarUsuario.Effect_2_ColorBackground = Color.White;
+            btnAgregarUsuario.Effect_2_Transparency = 20;
+            btnAgregarUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarUsuario.ForeColor = Color.FromArgb(245, 245, 245);
+            btnAgregarUsuario.Lighting = false;
+            btnAgregarUsuario.LinearGradient_Background = false;
+            btnAgregarUsuario.LinearGradientPen = false;
+            btnAgregarUsuario.Location = new Point(110, 205);
+            btnAgregarUsuario.Name = "btnAgregarUsuario";
+            btnAgregarUsuario.PenWidth = 15;
+            btnAgregarUsuario.Rounding = true;
+            btnAgregarUsuario.RoundingInt = 70;
+            btnAgregarUsuario.Size = new Size(97, 32);
+            btnAgregarUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnAgregarUsuario.TabIndex = 65;
+            btnAgregarUsuario.Tag = "Cyber";
+            btnAgregarUsuario.TextButton = "AGREGAR";
+            btnAgregarUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnAgregarUsuario.Timer_Effect_1 = 5;
+            btnAgregarUsuario.Timer_RGB = 300;
+            btnAgregarUsuario.Click += btnAgregarUsuario_Click;
             // 
-            // button6
+            // btnLupaDniEmpleado
             // 
-            button6.BackColor = Color.FromArgb(255, 227, 227);
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.boxicons__search_alt;
-            button6.Location = new Point(294, 38);
-            button6.Name = "button6";
-            button6.Size = new Size(34, 32);
-            button6.TabIndex = 68;
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            btnLupaDniEmpleado.BackColor = Color.FromArgb(255, 227, 227);
+            btnLupaDniEmpleado.FlatAppearance.BorderSize = 0;
+            btnLupaDniEmpleado.FlatStyle = FlatStyle.Flat;
+            btnLupaDniEmpleado.Image = Properties.Resources.boxicons__search_alt;
+            btnLupaDniEmpleado.Location = new Point(294, 38);
+            btnLupaDniEmpleado.Name = "btnLupaDniEmpleado";
+            btnLupaDniEmpleado.Size = new Size(34, 32);
+            btnLupaDniEmpleado.TabIndex = 68;
+            btnLupaDniEmpleado.UseVisualStyleBackColor = false;
+            btnLupaDniEmpleado.Click += btnLupaDniEmpleado_Click;
             // 
-            // cyberTextBox13
+            // txtDniEmpleadoBuscar
             // 
-            cyberTextBox13.Alpha = 20;
-            cyberTextBox13.BackColor = Color.Transparent;
-            cyberTextBox13.Background_WidthPen = 3F;
-            cyberTextBox13.BackgroundPen = true;
-            cyberTextBox13.ColorBackground = Color.White;
-            cyberTextBox13.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox13.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox13.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox13.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox13.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox13.Font = new Font("Arial", 8F);
-            cyberTextBox13.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox13.Lighting = false;
-            cyberTextBox13.LinearGradientPen = false;
-            cyberTextBox13.Location = new Point(110, 38);
-            cyberTextBox13.Name = "cyberTextBox13";
-            cyberTextBox13.PenWidth = 15;
-            cyberTextBox13.RGB = false;
-            cyberTextBox13.Rounding = true;
-            cyberTextBox13.RoundingInt = 60;
-            cyberTextBox13.Size = new Size(178, 32);
-            cyberTextBox13.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox13.TabIndex = 72;
-            cyberTextBox13.Tag = "Cyber";
-            cyberTextBox13.TextButton = "";
-            cyberTextBox13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox13.Timer_RGB = 300;
+            txtDniEmpleadoBuscar.Alpha = 20;
+            txtDniEmpleadoBuscar.BackColor = Color.Transparent;
+            txtDniEmpleadoBuscar.Background_WidthPen = 3F;
+            txtDniEmpleadoBuscar.BackgroundPen = true;
+            txtDniEmpleadoBuscar.ColorBackground = Color.White;
+            txtDniEmpleadoBuscar.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtDniEmpleadoBuscar.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtDniEmpleadoBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtDniEmpleadoBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtDniEmpleadoBuscar.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtDniEmpleadoBuscar.Font = new Font("Arial", 8F);
+            txtDniEmpleadoBuscar.ForeColor = Color.Black;
+            txtDniEmpleadoBuscar.Lighting = false;
+            txtDniEmpleadoBuscar.LinearGradientPen = false;
+            txtDniEmpleadoBuscar.Location = new Point(110, 38);
+            txtDniEmpleadoBuscar.Name = "txtDniEmpleadoBuscar";
+            txtDniEmpleadoBuscar.PenWidth = 15;
+            txtDniEmpleadoBuscar.RGB = false;
+            txtDniEmpleadoBuscar.Rounding = true;
+            txtDniEmpleadoBuscar.RoundingInt = 60;
+            txtDniEmpleadoBuscar.Size = new Size(178, 32);
+            txtDniEmpleadoBuscar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtDniEmpleadoBuscar.TabIndex = 72;
+            txtDniEmpleadoBuscar.Tag = "Cyber";
+            txtDniEmpleadoBuscar.TextButton = "";
+            txtDniEmpleadoBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtDniEmpleadoBuscar.Timer_RGB = 300;
+            txtDniEmpleadoBuscar.Load += txtDniEmpleadoBuscar_Load;
             // 
             // label17
             // 
@@ -1037,36 +1036,6 @@
             label17.Text = "DNI Empleado";
             label17.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox5
-            // 
-            cyberTextBox5.Alpha = 20;
-            cyberTextBox5.BackColor = Color.Transparent;
-            cyberTextBox5.Background_WidthPen = 3F;
-            cyberTextBox5.BackgroundPen = true;
-            cyberTextBox5.ColorBackground = Color.White;
-            cyberTextBox5.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox5.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox5.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox5.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox5.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox5.Font = new Font("Arial", 8F);
-            cyberTextBox5.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox5.Lighting = false;
-            cyberTextBox5.LinearGradientPen = false;
-            cyberTextBox5.Location = new Point(664, 4);
-            cyberTextBox5.Name = "cyberTextBox5";
-            cyberTextBox5.PenWidth = 15;
-            cyberTextBox5.RGB = false;
-            cyberTextBox5.Rounding = true;
-            cyberTextBox5.RoundingInt = 60;
-            cyberTextBox5.Size = new Size(191, 32);
-            cyberTextBox5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox5.TabIndex = 70;
-            cyberTextBox5.Tag = "Cyber";
-            cyberTextBox5.TextButton = "";
-            cyberTextBox5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox5.Timer_RGB = 300;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -1078,35 +1047,36 @@
             label4.Text = "Rol";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox8
+            // txtConfirmarContraseña
             // 
-            cyberTextBox8.Alpha = 20;
-            cyberTextBox8.BackColor = Color.Transparent;
-            cyberTextBox8.Background_WidthPen = 3F;
-            cyberTextBox8.BackgroundPen = true;
-            cyberTextBox8.ColorBackground = Color.White;
-            cyberTextBox8.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox8.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox8.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox8.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox8.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox8.Font = new Font("Arial", 8F);
-            cyberTextBox8.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox8.Lighting = false;
-            cyberTextBox8.LinearGradientPen = false;
-            cyberTextBox8.Location = new Point(220, 148);
-            cyberTextBox8.Name = "cyberTextBox8";
-            cyberTextBox8.PenWidth = 15;
-            cyberTextBox8.RGB = false;
-            cyberTextBox8.Rounding = true;
-            cyberTextBox8.RoundingInt = 60;
-            cyberTextBox8.Size = new Size(191, 32);
-            cyberTextBox8.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox8.TabIndex = 68;
-            cyberTextBox8.Tag = "Cyber";
-            cyberTextBox8.TextButton = "";
-            cyberTextBox8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox8.Timer_RGB = 300;
+            txtConfirmarContraseña.Alpha = 20;
+            txtConfirmarContraseña.BackColor = Color.Transparent;
+            txtConfirmarContraseña.Background_WidthPen = 3F;
+            txtConfirmarContraseña.BackgroundPen = true;
+            txtConfirmarContraseña.ColorBackground = Color.White;
+            txtConfirmarContraseña.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtConfirmarContraseña.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtConfirmarContraseña.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtConfirmarContraseña.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtConfirmarContraseña.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtConfirmarContraseña.Font = new Font("Arial", 8F);
+            txtConfirmarContraseña.ForeColor = Color.Black;
+            txtConfirmarContraseña.Lighting = false;
+            txtConfirmarContraseña.LinearGradientPen = false;
+            txtConfirmarContraseña.Location = new Point(220, 148);
+            txtConfirmarContraseña.Name = "txtConfirmarContraseña";
+            txtConfirmarContraseña.Password = true;
+            txtConfirmarContraseña.PenWidth = 15;
+            txtConfirmarContraseña.RGB = false;
+            txtConfirmarContraseña.Rounding = true;
+            txtConfirmarContraseña.RoundingInt = 60;
+            txtConfirmarContraseña.Size = new Size(191, 32);
+            txtConfirmarContraseña.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtConfirmarContraseña.TabIndex = 68;
+            txtConfirmarContraseña.Tag = "Cyber";
+            txtConfirmarContraseña.TextButton = "";
+            txtConfirmarContraseña.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtConfirmarContraseña.Timer_RGB = 300;
             // 
             // label6
             // 
@@ -1119,35 +1089,36 @@
             label6.Text = "Confirmar Contraseña";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox11
+            // txtContraseña
             // 
-            cyberTextBox11.Alpha = 20;
-            cyberTextBox11.BackColor = Color.Transparent;
-            cyberTextBox11.Background_WidthPen = 3F;
-            cyberTextBox11.BackgroundPen = true;
-            cyberTextBox11.ColorBackground = Color.White;
-            cyberTextBox11.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox11.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox11.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox11.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox11.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox11.Font = new Font("Arial", 8F);
-            cyberTextBox11.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox11.Lighting = false;
-            cyberTextBox11.LinearGradientPen = false;
-            cyberTextBox11.Location = new Point(15, 150);
-            cyberTextBox11.Name = "cyberTextBox11";
-            cyberTextBox11.PenWidth = 15;
-            cyberTextBox11.RGB = false;
-            cyberTextBox11.Rounding = true;
-            cyberTextBox11.RoundingInt = 60;
-            cyberTextBox11.Size = new Size(183, 32);
-            cyberTextBox11.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox11.TabIndex = 66;
-            cyberTextBox11.Tag = "Cyber";
-            cyberTextBox11.TextButton = "";
-            cyberTextBox11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox11.Timer_RGB = 300;
+            txtContraseña.Alpha = 20;
+            txtContraseña.BackColor = Color.Transparent;
+            txtContraseña.Background_WidthPen = 3F;
+            txtContraseña.BackgroundPen = true;
+            txtContraseña.ColorBackground = Color.White;
+            txtContraseña.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtContraseña.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtContraseña.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtContraseña.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtContraseña.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtContraseña.Font = new Font("Arial", 8F);
+            txtContraseña.ForeColor = Color.Black;
+            txtContraseña.Lighting = false;
+            txtContraseña.LinearGradientPen = false;
+            txtContraseña.Location = new Point(15, 150);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Password = true;
+            txtContraseña.PenWidth = 15;
+            txtContraseña.RGB = false;
+            txtContraseña.Rounding = true;
+            txtContraseña.RoundingInt = 60;
+            txtContraseña.Size = new Size(183, 32);
+            txtContraseña.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtContraseña.TabIndex = 66;
+            txtContraseña.Tag = "Cyber";
+            txtContraseña.TextButton = "";
+            txtContraseña.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtContraseña.Timer_RGB = 300;
             // 
             // label11
             // 
@@ -1171,35 +1142,35 @@
             label15.Text = "Usuario";
             label15.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox12
+            // txtUsuario
             // 
-            cyberTextBox12.Alpha = 20;
-            cyberTextBox12.BackColor = Color.Transparent;
-            cyberTextBox12.Background_WidthPen = 3F;
-            cyberTextBox12.BackgroundPen = true;
-            cyberTextBox12.ColorBackground = Color.White;
-            cyberTextBox12.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox12.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox12.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox12.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox12.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox12.Font = new Font("Arial", 8F);
-            cyberTextBox12.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberTextBox12.Lighting = false;
-            cyberTextBox12.LinearGradientPen = false;
-            cyberTextBox12.Location = new Point(15, 94);
-            cyberTextBox12.Name = "cyberTextBox12";
-            cyberTextBox12.PenWidth = 15;
-            cyberTextBox12.RGB = false;
-            cyberTextBox12.Rounding = true;
-            cyberTextBox12.RoundingInt = 60;
-            cyberTextBox12.Size = new Size(182, 32);
-            cyberTextBox12.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox12.TabIndex = 63;
-            cyberTextBox12.Tag = "Cyber";
-            cyberTextBox12.TextButton = "";
-            cyberTextBox12.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox12.Timer_RGB = 300;
+            txtUsuario.Alpha = 20;
+            txtUsuario.BackColor = Color.Transparent;
+            txtUsuario.Background_WidthPen = 3F;
+            txtUsuario.BackgroundPen = true;
+            txtUsuario.ColorBackground = Color.White;
+            txtUsuario.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtUsuario.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtUsuario.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtUsuario.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtUsuario.Font = new Font("Arial", 8F);
+            txtUsuario.ForeColor = Color.Black;
+            txtUsuario.Lighting = false;
+            txtUsuario.LinearGradientPen = false;
+            txtUsuario.Location = new Point(15, 94);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.PenWidth = 15;
+            txtUsuario.RGB = false;
+            txtUsuario.Rounding = true;
+            txtUsuario.RoundingInt = 60;
+            txtUsuario.Size = new Size(182, 32);
+            txtUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtUsuario.TabIndex = 63;
+            txtUsuario.Tag = "Cyber";
+            txtUsuario.TextButton = "";
+            txtUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtUsuario.Timer_RGB = 300;
             // 
             // cyberButton4
             // 
@@ -1228,7 +1199,7 @@
             cyberButton4.Lighting = false;
             cyberButton4.LinearGradient_Background = false;
             cyberButton4.LinearGradientPen = false;
-            cyberButton4.Location = new Point(1197, 359);
+            cyberButton4.Location = new Point(1197, 379);
             cyberButton4.Name = "cyberButton4";
             cyberButton4.PenWidth = 15;
             cyberButton4.Rounding = true;
@@ -1269,7 +1240,7 @@
             cyberButton5.Lighting = false;
             cyberButton5.LinearGradient_Background = false;
             cyberButton5.LinearGradientPen = false;
-            cyberButton5.Location = new Point(1197, 315);
+            cyberButton5.Location = new Point(1197, 335);
             cyberButton5.Name = "cyberButton5";
             cyberButton5.PenWidth = 15;
             cyberButton5.Rounding = true;
@@ -1310,7 +1281,7 @@
             cyberButton6.Lighting = false;
             cyberButton6.LinearGradient_Background = false;
             cyberButton6.LinearGradientPen = false;
-            cyberButton6.Location = new Point(1197, 267);
+            cyberButton6.Location = new Point(1197, 287);
             cyberButton6.Name = "cyberButton6";
             cyberButton6.PenWidth = 15;
             cyberButton6.Rounding = true;
@@ -1346,20 +1317,73 @@
             label16.Text = "DATOS DE USUARIO";
             label16.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // Rol
+            // 
+            Rol.HeaderText = "Rol";
+            Rol.Name = "Rol";
+            Rol.ReadOnly = true;
+            // 
+            // dniColum
+            // 
+            dniColum.HeaderText = "DNI";
+            dniColum.Name = "dniColum";
+            dniColum.ReadOnly = true;
+            // 
+            // nombreColum
+            // 
+            nombreColum.HeaderText = "Nom y Ape";
+            nombreColum.Name = "nombreColum";
+            nombreColum.ReadOnly = true;
+            // 
+            // DirecColum
+            // 
+            DirecColum.HeaderText = "Dirección";
+            DirecColum.Name = "DirecColum";
+            DirecColum.ReadOnly = true;
+            // 
+            // emailColum
+            // 
+            emailColum.HeaderText = "Email";
+            emailColum.Name = "emailColum";
+            emailColum.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            Telefono.HeaderText = "Teléfono";
+            Telefono.Name = "Telefono";
+            Telefono.ReadOnly = true;
+            // 
+            // Modificar
+            // 
+            Modificar.HeaderText = "";
+            Modificar.Name = "Modificar";
+            Modificar.ReadOnly = true;
+            Modificar.Resizable = DataGridViewTriState.True;
+            Modificar.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "";
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Resizable = DataGridViewTriState.True;
+            Eliminar.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // FormEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(252, 173, 159);
-            ClientSize = new Size(913, 602);
+            ClientSize = new Size(913, 606);
             Controls.Add(panel1);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Name = "FormEmpleados";
             Text = "FormEmpleados";
+            Load += FormEmpleados_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
@@ -1370,31 +1394,28 @@
         #endregion
         private ReaLTaiizor.Controls.Panel panel3;
         private Label label10;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox7;
+        private ReaLTaiizor.Controls.CyberTextBox txtNombreBuscar;
         private Button button5;
         private Label label9;
         private Button button4;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox6;
+        private ReaLTaiizor.Controls.CyberTextBox txtDniBuscar;
         private Label label8;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox9;
+        private ReaLTaiizor.Controls.CyberTextBox txtCantidadEmpleados;
         private Label label5;
         private Button button3;
         private Label label7;
-        private DataGridView dataGridView1;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox10;
+        private DataGridView dgvEmpleados;
         private Label label14;
         private Label label12;
         private Label label13;
         private Button button1;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox1;
         private Label label1;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox2;
+        private ReaLTaiizor.Controls.CyberTextBox txtApellidoEmpleado;
         private Label label2;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox3;
+        private ReaLTaiizor.Controls.CyberTextBox txtEmailEmpleado;
         private Label label3;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox4;
+        private ReaLTaiizor.Controls.CyberTextBox txtDireccionEmpleado;
         private ReaLTaiizor.Controls.CyberButton cyberButton2;
-        private ReaLTaiizor.Controls.CyberButton cyberButton1;
         private ReaLTaiizor.Controls.CyberButton cyberButton3;
         private ReaLTaiizor.Controls.Panel panel2;
         private ReaLTaiizor.Controls.Panel panel1;
@@ -1403,28 +1424,34 @@
         private ReaLTaiizor.Controls.CyberButton cyberButton6;
         private Button button2;
         private Label label16;
-        private Button button6;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox13;
+        private Button btnLupaDniEmpleado;
+        private ReaLTaiizor.Controls.CyberTextBox txtDniEmpleadoBuscar;
         private Label label17;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox5;
         private Label label4;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox8;
+        private ReaLTaiizor.Controls.CyberTextBox txtConfirmarContraseña;
         private Label label6;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox11;
+        private ReaLTaiizor.Controls.CyberTextBox txtContraseña;
         private Label label11;
         private Label label15;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox12;
-        private ReaLTaiizor.Controls.CyberButton cyberButton8;
-        private ReaLTaiizor.Controls.CyberButton cyberButton7;
-        private ReaLTaiizor.Controls.CyberButton cyberButton9;
-        private ReaLTaiizor.Controls.CyberButton cyberButton10;
-        private ReaLTaiizor.Controls.CyberButton cyberButton11;
+        private ReaLTaiizor.Controls.CyberTextBox txtUsuario;
+        private ReaLTaiizor.Controls.CyberButton btnCancelarEmpleado;
+        private ReaLTaiizor.Controls.CyberButton btnCancelarUsuario;
+        private ReaLTaiizor.Controls.CyberButton btnAgregarUsuario;
+        private ReaLTaiizor.Controls.CyberButton btnGuardarEmpleado;
+        private ReaLTaiizor.Controls.CyberComboBox cmbRol;
+        private ReaLTaiizor.Controls.CyberTextBox txtDniEmpleado;
+        private ReaLTaiizor.Controls.CyberTextBox txtNombreEmpleado;
+        private Label label18;
+        private ReaLTaiizor.Controls.CyberSwitch chkEstado;
+        private Label label19;
+        private ReaLTaiizor.Controls.CyberTextBox txtTelefonoEmpleado;
+        private DataGridViewTextBoxColumn Rol;
         private DataGridViewTextBoxColumn dniColum;
         private DataGridViewTextBoxColumn nombreColum;
         private DataGridViewTextBoxColumn DirecColum;
         private DataGridViewTextBoxColumn emailColum;
-        private DataGridViewTextBoxColumn modifColum;
-        private DataGridViewTextBoxColumn eliminarColum;
-        private ReaLTaiizor.Controls.CyberComboBox cyberComboBox1;
+        private DataGridViewTextBoxColumn Telefono;
+        private DataGridViewButtonColumn Modificar;
+        private DataGridViewButtonColumn Eliminar;
     }
 }

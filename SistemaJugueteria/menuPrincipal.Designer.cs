@@ -310,6 +310,7 @@
             Name = "menuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menú Principal";
+            FormClosed += menuPrincipal_FormClosed;
             Load += menuPrincipal_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
