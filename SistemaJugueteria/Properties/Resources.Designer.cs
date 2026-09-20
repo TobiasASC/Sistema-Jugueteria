@@ -173,6 +173,16 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap f7__doc_chart {
+            get {
+                object obj = ResourceManager.GetObject("f7--doc-chart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_park_solid__bill {
             get {
                 object obj = ResourceManager.GetObject("icon-park-solid--bill", resourceCulture);

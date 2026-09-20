@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             panel3 = new ReaLTaiizor.Controls.Panel();
+            dataGridView1 = new DataGridView();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            precioColum = new DataGridViewTextBoxColumn();
+            StockColum = new DataGridViewTextBoxColumn();
+            ColumStockM = new DataGridViewTextBoxColumn();
+            columModificar = new DataGridViewTextBoxColumn();
+            eliminarColum = new DataGridViewTextBoxColumn();
+            button1 = new Button();
             label10 = new Label();
             cyberTextBox7 = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
@@ -40,6 +50,13 @@
             button3 = new Button();
             label7 = new Label();
             panel2 = new ReaLTaiizor.Controls.Panel();
+            button6 = new Button();
+            cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
+            dungeonNumeric2 = new ReaLTaiizor.Controls.DungeonNumeric();
+            cyberButton5 = new ReaLTaiizor.Controls.CyberButton();
+            dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
+            cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
+            cyberComboBox1 = new ReaLTaiizor.Controls.CyberComboBox();
             cyberButton3 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
@@ -53,26 +70,9 @@
             label12 = new Label();
             label14 = new Label();
             cyberTextBox10 = new ReaLTaiizor.Controls.CyberTextBox();
-            cyberComboBox1 = new ReaLTaiizor.Controls.CyberComboBox();
-            dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
-            dungeonNumeric2 = new ReaLTaiizor.Controls.DungeonNumeric();
-            cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton5 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
-            button6 = new Button();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            precioColum = new DataGridViewTextBoxColumn();
-            StockColum = new DataGridViewTextBoxColumn();
-            ColumStockM = new DataGridViewTextBoxColumn();
-            columModificar = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
             panel3.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel3
@@ -100,6 +100,74 @@
             panel3.TabIndex = 58;
             panel3.Text = "panel3";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, precioColum, StockColum, ColumStockM, columModificar, eliminarColum });
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = SystemColors.ScrollBar;
+            dataGridView1.Location = new Point(17, 160);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(868, 122);
+            dataGridView1.TabIndex = 74;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            // 
+            // precioColum
+            // 
+            precioColum.HeaderText = "Precio";
+            precioColum.Name = "precioColum";
+            // 
+            // StockColum
+            // 
+            StockColum.HeaderText = "Stock Actual";
+            StockColum.Name = "StockColum";
+            // 
+            // ColumStockM
+            // 
+            ColumStockM.HeaderText = "Stock Minimo";
+            ColumStockM.Name = "ColumStockM";
+            // 
+            // columModificar
+            // 
+            columModificar.HeaderText = "Modificar";
+            columModificar.Name = "columModificar";
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
+            // 
+            // button1
+            // 
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.akar_icons__shipping_box_01;
+            button1.Location = new Point(20, 22);
+            button1.Name = "button1";
+            button1.Size = new Size(34, 26);
+            button1.TabIndex = 73;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -124,7 +192,7 @@
             cyberTextBox7.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox7.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox7.Font = new Font("Arial", 8F);
-            cyberTextBox7.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox7.ForeColor = Color.Black;
             cyberTextBox7.Lighting = false;
             cyberTextBox7.LinearGradientPen = false;
             cyberTextBox7.Location = new Point(242, 79);
@@ -177,7 +245,7 @@
             cyberTextBox6.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox6.Font = new Font("Arial", 8F);
-            cyberTextBox6.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox6.ForeColor = Color.Black;
             cyberTextBox6.Lighting = false;
             cyberTextBox6.LinearGradientPen = false;
             cyberTextBox6.Location = new Point(20, 79);
@@ -300,6 +368,206 @@
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 57;
             panel2.Text = "panel2";
+            // 
+            // button6
+            // 
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Image = Properties.Resources.akar_icons__shipping_box_01;
+            button6.Location = new Point(17, 15);
+            button6.Name = "button6";
+            button6.Size = new Size(34, 26);
+            button6.TabIndex = 72;
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // cyberButton4
+            // 
+            cyberButton4.Alpha = 20;
+            cyberButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton4.BackColor = Color.Transparent;
+            cyberButton4.Background = true;
+            cyberButton4.Background_WidthPen = 4F;
+            cyberButton4.BackgroundPen = true;
+            cyberButton4.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton4.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton4.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton4.Effect_1 = true;
+            cyberButton4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton4.Effect_1_Transparency = 25;
+            cyberButton4.Effect_2 = true;
+            cyberButton4.Effect_2_ColorBackground = Color.White;
+            cyberButton4.Effect_2_Transparency = 20;
+            cyberButton4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton4.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton4.Lighting = false;
+            cyberButton4.LinearGradient_Background = false;
+            cyberButton4.LinearGradientPen = false;
+            cyberButton4.Location = new Point(702, 123);
+            cyberButton4.Name = "cyberButton4";
+            cyberButton4.PenWidth = 15;
+            cyberButton4.Rounding = true;
+            cyberButton4.RoundingInt = 70;
+            cyberButton4.Size = new Size(141, 38);
+            cyberButton4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton4.TabIndex = 65;
+            cyberButton4.Tag = "Cyber";
+            cyberButton4.TextButton = "ELIMINAR";
+            cyberButton4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton4.Timer_Effect_1 = 5;
+            cyberButton4.Timer_RGB = 300;
+            // 
+            // dungeonNumeric2
+            // 
+            dungeonNumeric2.BackColor = Color.Transparent;
+            dungeonNumeric2.BackColorA = Color.FromArgb(246, 246, 246);
+            dungeonNumeric2.BackColorB = Color.FromArgb(254, 254, 254);
+            dungeonNumeric2.BorderColor = Color.FromArgb(180, 180, 180);
+            dungeonNumeric2.ButtonForeColorA = Color.FromArgb(75, 75, 75);
+            dungeonNumeric2.ButtonForeColorB = Color.FromArgb(75, 75, 75);
+            dungeonNumeric2.Font = new Font("Tahoma", 11F);
+            dungeonNumeric2.ForeColor = Color.FromArgb(76, 76, 76);
+            dungeonNumeric2.Location = new Point(473, 72);
+            dungeonNumeric2.Maximum = 100L;
+            dungeonNumeric2.Minimum = 0L;
+            dungeonNumeric2.MinimumSize = new Size(93, 28);
+            dungeonNumeric2.Name = "dungeonNumeric2";
+            dungeonNumeric2.Size = new Size(188, 28);
+            dungeonNumeric2.TabIndex = 71;
+            dungeonNumeric2.Text = "dungeonNumeric2";
+            dungeonNumeric2.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
+            dungeonNumeric2.Value = 0L;
+            // 
+            // cyberButton5
+            // 
+            cyberButton5.Alpha = 20;
+            cyberButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton5.BackColor = Color.Transparent;
+            cyberButton5.Background = true;
+            cyberButton5.Background_WidthPen = 4F;
+            cyberButton5.BackgroundPen = true;
+            cyberButton5.ColorBackground = Color.FromArgb(128, 128, 255);
+            cyberButton5.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton5.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton5.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton5.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton5.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton5.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton5.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton5.Effect_1 = true;
+            cyberButton5.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton5.Effect_1_Transparency = 25;
+            cyberButton5.Effect_2 = true;
+            cyberButton5.Effect_2_ColorBackground = Color.White;
+            cyberButton5.Effect_2_Transparency = 20;
+            cyberButton5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton5.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton5.Lighting = false;
+            cyberButton5.LinearGradient_Background = false;
+            cyberButton5.LinearGradientPen = false;
+            cyberButton5.Location = new Point(702, 79);
+            cyberButton5.Name = "cyberButton5";
+            cyberButton5.PenWidth = 15;
+            cyberButton5.Rounding = true;
+            cyberButton5.RoundingInt = 70;
+            cyberButton5.Size = new Size(141, 38);
+            cyberButton5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton5.TabIndex = 64;
+            cyberButton5.Tag = "Cyber";
+            cyberButton5.TextButton = "GUARDAR";
+            cyberButton5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton5.Timer_Effect_1 = 5;
+            cyberButton5.Timer_RGB = 300;
+            // 
+            // dungeonNumeric1
+            // 
+            dungeonNumeric1.BackColor = Color.Transparent;
+            dungeonNumeric1.BackColorA = Color.FromArgb(246, 246, 246);
+            dungeonNumeric1.BackColorB = Color.FromArgb(254, 254, 254);
+            dungeonNumeric1.BorderColor = Color.FromArgb(180, 180, 180);
+            dungeonNumeric1.ButtonForeColorA = Color.FromArgb(75, 75, 75);
+            dungeonNumeric1.ButtonForeColorB = Color.FromArgb(75, 75, 75);
+            dungeonNumeric1.Font = new Font("Tahoma", 11F);
+            dungeonNumeric1.ForeColor = Color.FromArgb(76, 76, 76);
+            dungeonNumeric1.Location = new Point(473, 130);
+            dungeonNumeric1.Maximum = 100L;
+            dungeonNumeric1.Minimum = 0L;
+            dungeonNumeric1.MinimumSize = new Size(93, 28);
+            dungeonNumeric1.Name = "dungeonNumeric1";
+            dungeonNumeric1.Size = new Size(188, 28);
+            dungeonNumeric1.TabIndex = 70;
+            dungeonNumeric1.Text = "dungeonNumeric1";
+            dungeonNumeric1.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
+            dungeonNumeric1.Value = 0L;
+            // 
+            // cyberButton6
+            // 
+            cyberButton6.Alpha = 20;
+            cyberButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton6.BackColor = Color.Transparent;
+            cyberButton6.Background = true;
+            cyberButton6.Background_WidthPen = 4F;
+            cyberButton6.BackgroundPen = true;
+            cyberButton6.ColorBackground = Color.FromArgb(0, 192, 0);
+            cyberButton6.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton6.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton6.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton6.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton6.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton6.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton6.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton6.Effect_1 = true;
+            cyberButton6.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton6.Effect_1_Transparency = 25;
+            cyberButton6.Effect_2 = true;
+            cyberButton6.Effect_2_ColorBackground = Color.White;
+            cyberButton6.Effect_2_Transparency = 20;
+            cyberButton6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton6.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton6.Lighting = false;
+            cyberButton6.LinearGradient_Background = false;
+            cyberButton6.LinearGradientPen = false;
+            cyberButton6.Location = new Point(702, 31);
+            cyberButton6.Name = "cyberButton6";
+            cyberButton6.PenWidth = 15;
+            cyberButton6.Rounding = true;
+            cyberButton6.RoundingInt = 70;
+            cyberButton6.Size = new Size(141, 38);
+            cyberButton6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton6.TabIndex = 63;
+            cyberButton6.Tag = "Cyber";
+            cyberButton6.TextButton = "NUEVO";
+            cyberButton6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton6.Timer_Effect_1 = 5;
+            cyberButton6.Timer_RGB = 300;
+            // 
+            // cyberComboBox1
+            // 
+            cyberComboBox1.BackColor = Color.White;
+            cyberComboBox1.ColorArrow = Color.FromArgb(252, 173, 159);
+            cyberComboBox1.ColorBackground = Color.White;
+            cyberComboBox1.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            cyberComboBox1.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cyberComboBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cyberComboBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cyberComboBox1.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            cyberComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            cyberComboBox1.FlatStyle = FlatStyle.Flat;
+            cyberComboBox1.Font = new Font("Arial", 11F);
+            cyberComboBox1.ForeColor = Color.Black;
+            cyberComboBox1.FormattingEnabled = true;
+            cyberComboBox1.ItemHeight = 28;
+            cyberComboBox1.Location = new Point(245, 126);
+            cyberComboBox1.Name = "cyberComboBox1";
+            cyberComboBox1.RGB = false;
+            cyberComboBox1.Size = new Size(188, 34);
+            cyberComboBox1.TabIndex = 69;
+            cyberComboBox1.Timer_RGB = 300;
             // 
             // cyberButton3
             // 
@@ -459,7 +727,7 @@
             cyberTextBox3.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox3.Font = new Font("Arial", 8F);
-            cyberTextBox3.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox3.ForeColor = Color.Black;
             cyberTextBox3.Lighting = false;
             cyberTextBox3.LinearGradientPen = false;
             cyberTextBox3.Location = new Point(17, 126);
@@ -511,7 +779,7 @@
             cyberTextBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox1.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox1.Font = new Font("Arial", 8F);
-            cyberTextBox1.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox1.ForeColor = Color.Black;
             cyberTextBox1.Lighting = false;
             cyberTextBox1.LinearGradientPen = false;
             cyberTextBox1.Location = new Point(242, 72);
@@ -574,7 +842,7 @@
             cyberTextBox10.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox10.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox10.Font = new Font("Arial", 8F);
-            cyberTextBox10.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox10.ForeColor = Color.Black;
             cyberTextBox10.Lighting = false;
             cyberTextBox10.LinearGradientPen = false;
             cyberTextBox10.Location = new Point(17, 72);
@@ -591,274 +859,6 @@
             cyberTextBox10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberTextBox10.Timer_RGB = 300;
             // 
-            // cyberComboBox1
-            // 
-            cyberComboBox1.BackColor = Color.White;
-            cyberComboBox1.ColorArrow = Color.FromArgb(252, 173, 159);
-            cyberComboBox1.ColorBackground = Color.White;
-            cyberComboBox1.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cyberComboBox1.ColorItemHover = Color.FromArgb(50, 70, 90);
-            cyberComboBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberComboBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberComboBox1.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            cyberComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            cyberComboBox1.FlatStyle = FlatStyle.Flat;
-            cyberComboBox1.Font = new Font("Arial", 11F);
-            cyberComboBox1.ForeColor = Color.FromArgb(255, 227, 227);
-            cyberComboBox1.FormattingEnabled = true;
-            cyberComboBox1.ItemHeight = 28;
-            cyberComboBox1.Location = new Point(245, 126);
-            cyberComboBox1.Name = "cyberComboBox1";
-            cyberComboBox1.RGB = false;
-            cyberComboBox1.Size = new Size(188, 34);
-            cyberComboBox1.TabIndex = 69;
-            cyberComboBox1.Timer_RGB = 300;
-            // 
-            // dungeonNumeric1
-            // 
-            dungeonNumeric1.BackColor = Color.Transparent;
-            dungeonNumeric1.BackColorA = Color.FromArgb(246, 246, 246);
-            dungeonNumeric1.BackColorB = Color.FromArgb(254, 254, 254);
-            dungeonNumeric1.BorderColor = Color.FromArgb(180, 180, 180);
-            dungeonNumeric1.ButtonForeColorA = Color.FromArgb(75, 75, 75);
-            dungeonNumeric1.ButtonForeColorB = Color.FromArgb(75, 75, 75);
-            dungeonNumeric1.Font = new Font("Tahoma", 11F);
-            dungeonNumeric1.ForeColor = Color.FromArgb(76, 76, 76);
-            dungeonNumeric1.Location = new Point(473, 130);
-            dungeonNumeric1.Maximum = 100L;
-            dungeonNumeric1.Minimum = 0L;
-            dungeonNumeric1.MinimumSize = new Size(93, 28);
-            dungeonNumeric1.Name = "dungeonNumeric1";
-            dungeonNumeric1.Size = new Size(188, 28);
-            dungeonNumeric1.TabIndex = 70;
-            dungeonNumeric1.Text = "dungeonNumeric1";
-            dungeonNumeric1.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
-            dungeonNumeric1.Value = 0L;
-            // 
-            // dungeonNumeric2
-            // 
-            dungeonNumeric2.BackColor = Color.Transparent;
-            dungeonNumeric2.BackColorA = Color.FromArgb(246, 246, 246);
-            dungeonNumeric2.BackColorB = Color.FromArgb(254, 254, 254);
-            dungeonNumeric2.BorderColor = Color.FromArgb(180, 180, 180);
-            dungeonNumeric2.ButtonForeColorA = Color.FromArgb(75, 75, 75);
-            dungeonNumeric2.ButtonForeColorB = Color.FromArgb(75, 75, 75);
-            dungeonNumeric2.Font = new Font("Tahoma", 11F);
-            dungeonNumeric2.ForeColor = Color.FromArgb(76, 76, 76);
-            dungeonNumeric2.Location = new Point(473, 72);
-            dungeonNumeric2.Maximum = 100L;
-            dungeonNumeric2.Minimum = 0L;
-            dungeonNumeric2.MinimumSize = new Size(93, 28);
-            dungeonNumeric2.Name = "dungeonNumeric2";
-            dungeonNumeric2.Size = new Size(188, 28);
-            dungeonNumeric2.TabIndex = 71;
-            dungeonNumeric2.Text = "dungeonNumeric2";
-            dungeonNumeric2.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
-            dungeonNumeric2.Value = 0L;
-            // 
-            // cyberButton4
-            // 
-            cyberButton4.Alpha = 20;
-            cyberButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton4.BackColor = Color.Transparent;
-            cyberButton4.Background = true;
-            cyberButton4.Background_WidthPen = 4F;
-            cyberButton4.BackgroundPen = true;
-            cyberButton4.ColorBackground = Color.FromArgb(255, 128, 128);
-            cyberButton4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton4.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton4.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton4.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton4.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton4.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton4.Effect_1 = true;
-            cyberButton4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton4.Effect_1_Transparency = 25;
-            cyberButton4.Effect_2 = true;
-            cyberButton4.Effect_2_ColorBackground = Color.White;
-            cyberButton4.Effect_2_Transparency = 20;
-            cyberButton4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton4.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton4.Lighting = false;
-            cyberButton4.LinearGradient_Background = false;
-            cyberButton4.LinearGradientPen = false;
-            cyberButton4.Location = new Point(702, 123);
-            cyberButton4.Name = "cyberButton4";
-            cyberButton4.PenWidth = 15;
-            cyberButton4.Rounding = true;
-            cyberButton4.RoundingInt = 70;
-            cyberButton4.Size = new Size(141, 38);
-            cyberButton4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton4.TabIndex = 65;
-            cyberButton4.Tag = "Cyber";
-            cyberButton4.TextButton = "ELIMINAR";
-            cyberButton4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton4.Timer_Effect_1 = 5;
-            cyberButton4.Timer_RGB = 300;
-            // 
-            // cyberButton5
-            // 
-            cyberButton5.Alpha = 20;
-            cyberButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton5.BackColor = Color.Transparent;
-            cyberButton5.Background = true;
-            cyberButton5.Background_WidthPen = 4F;
-            cyberButton5.BackgroundPen = true;
-            cyberButton5.ColorBackground = Color.FromArgb(128, 128, 255);
-            cyberButton5.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton5.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton5.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton5.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton5.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton5.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton5.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton5.Effect_1 = true;
-            cyberButton5.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton5.Effect_1_Transparency = 25;
-            cyberButton5.Effect_2 = true;
-            cyberButton5.Effect_2_ColorBackground = Color.White;
-            cyberButton5.Effect_2_Transparency = 20;
-            cyberButton5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton5.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton5.Lighting = false;
-            cyberButton5.LinearGradient_Background = false;
-            cyberButton5.LinearGradientPen = false;
-            cyberButton5.Location = new Point(702, 79);
-            cyberButton5.Name = "cyberButton5";
-            cyberButton5.PenWidth = 15;
-            cyberButton5.Rounding = true;
-            cyberButton5.RoundingInt = 70;
-            cyberButton5.Size = new Size(141, 38);
-            cyberButton5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton5.TabIndex = 64;
-            cyberButton5.Tag = "Cyber";
-            cyberButton5.TextButton = "GUARDAR";
-            cyberButton5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton5.Timer_Effect_1 = 5;
-            cyberButton5.Timer_RGB = 300;
-            // 
-            // cyberButton6
-            // 
-            cyberButton6.Alpha = 20;
-            cyberButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton6.BackColor = Color.Transparent;
-            cyberButton6.Background = true;
-            cyberButton6.Background_WidthPen = 4F;
-            cyberButton6.BackgroundPen = true;
-            cyberButton6.ColorBackground = Color.FromArgb(0, 192, 0);
-            cyberButton6.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton6.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton6.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton6.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton6.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton6.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton6.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton6.Effect_1 = true;
-            cyberButton6.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton6.Effect_1_Transparency = 25;
-            cyberButton6.Effect_2 = true;
-            cyberButton6.Effect_2_ColorBackground = Color.White;
-            cyberButton6.Effect_2_Transparency = 20;
-            cyberButton6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton6.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton6.Lighting = false;
-            cyberButton6.LinearGradient_Background = false;
-            cyberButton6.LinearGradientPen = false;
-            cyberButton6.Location = new Point(702, 31);
-            cyberButton6.Name = "cyberButton6";
-            cyberButton6.PenWidth = 15;
-            cyberButton6.Rounding = true;
-            cyberButton6.RoundingInt = 70;
-            cyberButton6.Size = new Size(141, 38);
-            cyberButton6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton6.TabIndex = 63;
-            cyberButton6.Tag = "Cyber";
-            cyberButton6.TextButton = "NUEVO";
-            cyberButton6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton6.Timer_Effect_1 = 5;
-            cyberButton6.Timer_RGB = 300;
-            // 
-            // button6
-            // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.akar_icons__shipping_box_01;
-            button6.Location = new Point(17, 15);
-            button6.Name = "button6";
-            button6.Size = new Size(34, 26);
-            button6.TabIndex = 72;
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.akar_icons__shipping_box_01;
-            button1.Location = new Point(20, 22);
-            button1.Name = "button1";
-            button1.Size = new Size(34, 26);
-            button1.TabIndex = 73;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, precioColum, StockColum, ColumStockM, columModificar, eliminarColum });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = SystemColors.ScrollBar;
-            dataGridView1.Location = new Point(17, 160);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(868, 122);
-            dataGridView1.TabIndex = 74;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            // 
-            // precioColum
-            // 
-            precioColum.HeaderText = "Precio";
-            precioColum.Name = "precioColum";
-            // 
-            // StockColum
-            // 
-            StockColum.HeaderText = "Stock Actual";
-            StockColum.Name = "StockColum";
-            // 
-            // ColumStockM
-            // 
-            ColumStockM.HeaderText = "Stock Minimo";
-            ColumStockM.Name = "ColumStockM";
-            // 
-            // columModificar
-            // 
-            columModificar.HeaderText = "Modificar";
-            columModificar.Name = "columModificar";
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
-            // 
             // FormProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -872,9 +872,9 @@
             Load += FormProductos_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 

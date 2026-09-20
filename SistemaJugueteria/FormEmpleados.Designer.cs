@@ -32,6 +32,14 @@
             label18 = new Label();
             chkEstado = new ReaLTaiizor.Controls.CyberSwitch();
             dgvEmpleados = new DataGridView();
+            Rol = new DataGridViewTextBoxColumn();
+            dniColum = new DataGridViewTextBoxColumn();
+            nombreColum = new DataGridViewTextBoxColumn();
+            DirecColum = new DataGridViewTextBoxColumn();
+            emailColum = new DataGridViewTextBoxColumn();
+            Telefono = new DataGridViewTextBoxColumn();
+            Modificar = new DataGridViewButtonColumn();
+            Eliminar = new DataGridViewButtonColumn();
             label10 = new Label();
             txtNombreBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
@@ -81,14 +89,6 @@
             cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
             button2 = new Button();
             label16 = new Label();
-            Rol = new DataGridViewTextBoxColumn();
-            dniColum = new DataGridViewTextBoxColumn();
-            nombreColum = new DataGridViewTextBoxColumn();
-            DirecColum = new DataGridViewTextBoxColumn();
-            emailColum = new DataGridViewTextBoxColumn();
-            Telefono = new DataGridViewTextBoxColumn();
-            Modificar = new DataGridViewButtonColumn();
-            Eliminar = new DataGridViewButtonColumn();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             panel2.SuspendLayout();
@@ -196,6 +196,58 @@
             dgvEmpleados.Size = new Size(868, 121);
             dgvEmpleados.TabIndex = 67;
             dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
+            // 
+            // Rol
+            // 
+            Rol.HeaderText = "Rol";
+            Rol.Name = "Rol";
+            Rol.ReadOnly = true;
+            // 
+            // dniColum
+            // 
+            dniColum.HeaderText = "DNI";
+            dniColum.Name = "dniColum";
+            dniColum.ReadOnly = true;
+            // 
+            // nombreColum
+            // 
+            nombreColum.HeaderText = "Nom y Ape";
+            nombreColum.Name = "nombreColum";
+            nombreColum.ReadOnly = true;
+            // 
+            // DirecColum
+            // 
+            DirecColum.HeaderText = "Dirección";
+            DirecColum.Name = "DirecColum";
+            DirecColum.ReadOnly = true;
+            // 
+            // emailColum
+            // 
+            emailColum.HeaderText = "Email";
+            emailColum.Name = "emailColum";
+            emailColum.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            Telefono.HeaderText = "Teléfono";
+            Telefono.Name = "Telefono";
+            Telefono.ReadOnly = true;
+            // 
+            // Modificar
+            // 
+            Modificar.HeaderText = "";
+            Modificar.Name = "Modificar";
+            Modificar.ReadOnly = true;
+            Modificar.Resizable = DataGridViewTriState.True;
+            Modificar.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "";
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Resizable = DataGridViewTriState.True;
+            Eliminar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // label10
             // 
@@ -327,7 +379,7 @@
             txtCantidadEmpleados.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             txtCantidadEmpleados.Enabled = false;
             txtCantidadEmpleados.Font = new Font("Arial", 8F);
-            txtCantidadEmpleados.ForeColor = Color.FromArgb(245, 245, 245);
+            txtCantidadEmpleados.ForeColor = Color.Black;
             txtCantidadEmpleados.Lighting = false;
             txtCantidadEmpleados.LinearGradientPen = false;
             txtCantidadEmpleados.Location = new Point(156, 288);
@@ -391,7 +443,7 @@
             cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRol.FlatStyle = FlatStyle.Flat;
             cmbRol.Font = new Font("Arial", 11F);
-            cmbRol.ForeColor = Color.FromArgb(255, 227, 227);
+            cmbRol.ForeColor = Color.Black;
             cmbRol.FormattingEnabled = true;
             cmbRol.ItemHeight = 28;
             cmbRol.Location = new Point(223, 94);
@@ -1316,58 +1368,6 @@
             label16.TabIndex = 19;
             label16.Text = "DATOS DE USUARIO";
             label16.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // Rol
-            // 
-            Rol.HeaderText = "Rol";
-            Rol.Name = "Rol";
-            Rol.ReadOnly = true;
-            // 
-            // dniColum
-            // 
-            dniColum.HeaderText = "DNI";
-            dniColum.Name = "dniColum";
-            dniColum.ReadOnly = true;
-            // 
-            // nombreColum
-            // 
-            nombreColum.HeaderText = "Nom y Ape";
-            nombreColum.Name = "nombreColum";
-            nombreColum.ReadOnly = true;
-            // 
-            // DirecColum
-            // 
-            DirecColum.HeaderText = "Dirección";
-            DirecColum.Name = "DirecColum";
-            DirecColum.ReadOnly = true;
-            // 
-            // emailColum
-            // 
-            emailColum.HeaderText = "Email";
-            emailColum.Name = "emailColum";
-            emailColum.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            Telefono.HeaderText = "Teléfono";
-            Telefono.Name = "Telefono";
-            Telefono.ReadOnly = true;
-            // 
-            // Modificar
-            // 
-            Modificar.HeaderText = "";
-            Modificar.Name = "Modificar";
-            Modificar.ReadOnly = true;
-            Modificar.Resizable = DataGridViewTriState.True;
-            Modificar.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "";
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Resizable = DataGridViewTriState.True;
-            Eliminar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // FormEmpleados
             // 

@@ -136,6 +136,9 @@
   <data name="icono-pedidos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-pedidos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lets-icons--arhive-load-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lets-icons--arhive-load-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono-reportes-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-reportes-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,17 +163,14 @@
   <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono-usuario-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-usuario-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="akar-icons--shipping-box-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\akar-icons--shipping-box-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="check1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bi--cash-coin (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bi--cash-coin (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo-tntoys" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo-tntoys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ant-design--bars-outlined" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ant-design--bars-outlined.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,19 +181,22 @@
   <data name="icono-salir-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-salir-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="akar-icons--shipping-box-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\akar-icons--shipping-box-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono-productos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-productos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo-tntoys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo-tntoys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boxicons--user-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boxicons--user-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono-usuario-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-usuario-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono-productos-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-productos-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bi--cash-coin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bi--cash-coin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lets-icons--arhive-load-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lets-icons--arhive-load-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="f7--doc-chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f7--doc-chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

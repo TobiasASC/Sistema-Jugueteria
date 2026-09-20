@@ -133,7 +133,7 @@
             cyberTextBox5.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox5.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox5.Font = new Font("Arial", 8F);
-            cyberTextBox5.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox5.ForeColor = Color.Black;
             cyberTextBox5.Lighting = false;
             cyberTextBox5.LinearGradientPen = false;
             cyberTextBox5.Location = new Point(754, 67);
@@ -163,7 +163,7 @@
             cyberTextBox4.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox4.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox4.Font = new Font("Arial", 8F);
-            cyberTextBox4.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox4.ForeColor = Color.Black;
             cyberTextBox4.Lighting = false;
             cyberTextBox4.LinearGradientPen = false;
             cyberTextBox4.Location = new Point(627, 67);
@@ -239,7 +239,7 @@
             cyberTextBox3.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox3.Font = new Font("Arial", 8F);
-            cyberTextBox3.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox3.ForeColor = Color.Black;
             cyberTextBox3.Lighting = false;
             cyberTextBox3.LinearGradientPen = false;
             cyberTextBox3.Location = new Point(423, 52);
@@ -255,6 +255,7 @@
             cyberTextBox3.TextButton = "";
             cyberTextBox3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberTextBox3.Timer_RGB = 300;
+            cyberTextBox3.Load += cyberTextBox3_Load;
             // 
             // label4
             // 
@@ -303,7 +304,7 @@
             cyberTextBox2.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox2.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox2.Font = new Font("Arial", 8F);
-            cyberTextBox2.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox2.ForeColor = Color.Black;
             cyberTextBox2.Lighting = false;
             cyberTextBox2.LinearGradientPen = false;
             cyberTextBox2.Location = new Point(141, 67);
@@ -345,7 +346,7 @@
             cyberTextBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox1.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox1.Font = new Font("Arial", 8F);
-            cyberTextBox1.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox1.ForeColor = Color.Black;
             cyberTextBox1.Lighting = false;
             cyberTextBox1.LinearGradientPen = false;
             cyberTextBox1.Location = new Point(14, 67);
@@ -442,7 +443,7 @@
             cyberTextBox8.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox8.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox8.Font = new Font("Arial", 8F);
-            cyberTextBox8.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox8.ForeColor = Color.Black;
             cyberTextBox8.Lighting = false;
             cyberTextBox8.LinearGradientPen = false;
             cyberTextBox8.Location = new Point(709, 65);
@@ -458,6 +459,7 @@
             cyberTextBox8.TextButton = "";
             cyberTextBox8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberTextBox8.Timer_RGB = 300;
+            cyberTextBox8.Load += cyberTextBox8_Load;
             // 
             // cyberTextBox7
             // 
@@ -472,7 +474,7 @@
             cyberTextBox7.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox7.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox7.Font = new Font("Arial", 8F);
-            cyberTextBox7.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox7.ForeColor = Color.Black;
             cyberTextBox7.Lighting = false;
             cyberTextBox7.LinearGradientPen = false;
             cyberTextBox7.Location = new Point(308, 65);
@@ -537,7 +539,7 @@
             cyberTextBox6.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox6.Font = new Font("Arial", 8F);
-            cyberTextBox6.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox6.ForeColor = Color.Black;
             cyberTextBox6.Lighting = false;
             cyberTextBox6.LinearGradientPen = false;
             cyberTextBox6.Location = new Point(14, 65);
@@ -745,7 +747,7 @@
             cyberTextBox12.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox12.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox12.Font = new Font("Arial", 8F);
-            cyberTextBox12.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox12.ForeColor = Color.Black;
             cyberTextBox12.Lighting = false;
             cyberTextBox12.LinearGradientPen = false;
             cyberTextBox12.Location = new Point(14, 21);
@@ -798,7 +800,7 @@
             cyberTextBox11.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox11.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox11.Font = new Font("Arial", 8F);
-            cyberTextBox11.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox11.ForeColor = Color.Black;
             cyberTextBox11.Lighting = false;
             cyberTextBox11.LinearGradientPen = false;
             cyberTextBox11.Location = new Point(362, 21);
@@ -862,7 +864,7 @@
             cyberTextBox9.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox9.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox9.Font = new Font("Arial", 8F);
-            cyberTextBox9.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox9.ForeColor = Color.Black;
             cyberTextBox9.Lighting = false;
             cyberTextBox9.LinearGradientPen = false;
             cyberTextBox9.Location = new Point(317, 41);
@@ -916,7 +918,7 @@
             cyberTextBox10.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox10.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox10.Font = new Font("Arial", 8F);
-            cyberTextBox10.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox10.ForeColor = Color.Black;
             cyberTextBox10.Lighting = false;
             cyberTextBox10.LinearGradientPen = false;
             cyberTextBox10.Location = new Point(65, 41);
@@ -1046,7 +1048,7 @@
             cyberTextBox13.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cyberTextBox13.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox13.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox13.Font = new Font("Arial", 9F);
+            cyberTextBox13.Font = new Font("Bernard MT Condensed", 9F, FontStyle.Bold);
             cyberTextBox13.ForeColor = Color.FromArgb(245, 245, 245);
             cyberTextBox13.Lighting = false;
             cyberTextBox13.LinearGradientPen = false;

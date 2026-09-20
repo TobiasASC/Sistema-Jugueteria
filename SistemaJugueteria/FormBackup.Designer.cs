@@ -64,6 +64,8 @@
             label12 = new Label();
             label14 = new Label();
             cyberTextBox10 = new ReaLTaiizor.Controls.CyberTextBox();
+            cyberButton7 = new ReaLTaiizor.Controls.CyberButton();
+            cyberButton8 = new ReaLTaiizor.Controls.CyberButton();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -95,7 +97,7 @@
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
             panel3.EdgeColor = Color.FromArgb(32, 41, 50);
-            panel3.Location = new Point(10, 152);
+            panel3.Location = new Point(10, 189);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);
             panel3.Size = new Size(893, 334);
@@ -333,6 +335,8 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(cyberButton8);
+            panel2.Controls.Add(cyberButton7);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(numeroBackup);
             panel2.Controls.Add(button6);
@@ -353,7 +357,7 @@
             panel2.Location = new Point(10, 19);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
-            panel2.Size = new Size(893, 127);
+            panel2.Size = new Size(893, 155);
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 59;
             panel2.Text = "panel2";
@@ -438,7 +442,7 @@
             cyberButton4.Lighting = false;
             cyberButton4.LinearGradient_Background = false;
             cyberButton4.LinearGradientPen = false;
-            cyberButton4.Location = new Point(1405, 130);
+            cyberButton4.Location = new Point(1405, 158);
             cyberButton4.Name = "cyberButton4";
             cyberButton4.PenWidth = 15;
             cyberButton4.Rounding = true;
@@ -479,7 +483,7 @@
             cyberButton5.Lighting = false;
             cyberButton5.LinearGradient_Background = false;
             cyberButton5.LinearGradientPen = false;
-            cyberButton5.Location = new Point(1405, 86);
+            cyberButton5.Location = new Point(1405, 114);
             cyberButton5.Name = "cyberButton5";
             cyberButton5.PenWidth = 15;
             cyberButton5.Rounding = true;
@@ -520,7 +524,7 @@
             cyberButton6.Lighting = false;
             cyberButton6.LinearGradient_Background = false;
             cyberButton6.LinearGradientPen = false;
-            cyberButton6.Location = new Point(1405, 38);
+            cyberButton6.Location = new Point(1405, 66);
             cyberButton6.Name = "cyberButton6";
             cyberButton6.PenWidth = 15;
             cyberButton6.Rounding = true;
@@ -561,7 +565,7 @@
             cyberButton3.Lighting = false;
             cyberButton3.LinearGradient_Background = false;
             cyberButton3.LinearGradientPen = false;
-            cyberButton3.Location = new Point(2111, 198);
+            cyberButton3.Location = new Point(2111, 226);
             cyberButton3.Name = "cyberButton3";
             cyberButton3.PenWidth = 15;
             cyberButton3.Rounding = true;
@@ -602,7 +606,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(2111, 154);
+            cyberButton1.Location = new Point(2111, 182);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -643,7 +647,7 @@
             cyberButton2.Lighting = false;
             cyberButton2.LinearGradient_Background = false;
             cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(2111, 106);
+            cyberButton2.Location = new Point(2111, 134);
             cyberButton2.Name = "cyberButton2";
             cyberButton2.PenWidth = 15;
             cyberButton2.Rounding = true;
@@ -791,6 +795,86 @@
             cyberTextBox10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberTextBox10.Timer_RGB = 300;
             // 
+            // cyberButton7
+            // 
+            cyberButton7.Alpha = 20;
+            cyberButton7.BackColor = Color.Transparent;
+            cyberButton7.Background = true;
+            cyberButton7.Background_WidthPen = 4F;
+            cyberButton7.BackgroundPen = true;
+            cyberButton7.ColorBackground = Color.FromArgb(0, 192, 0);
+            cyberButton7.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton7.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton7.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton7.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton7.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton7.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton7.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton7.Effect_1 = true;
+            cyberButton7.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton7.Effect_1_Transparency = 25;
+            cyberButton7.Effect_2 = true;
+            cyberButton7.Effect_2_ColorBackground = Color.White;
+            cyberButton7.Effect_2_Transparency = 20;
+            cyberButton7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton7.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton7.Lighting = false;
+            cyberButton7.LinearGradient_Background = false;
+            cyberButton7.LinearGradientPen = false;
+            cyberButton7.Location = new Point(17, 112);
+            cyberButton7.Name = "cyberButton7";
+            cyberButton7.PenWidth = 15;
+            cyberButton7.Rounding = true;
+            cyberButton7.RoundingInt = 70;
+            cyberButton7.Size = new Size(112, 32);
+            cyberButton7.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton7.TabIndex = 75;
+            cyberButton7.Tag = "Cyber";
+            cyberButton7.TextButton = "CONFIRMAR";
+            cyberButton7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton7.Timer_Effect_1 = 5;
+            cyberButton7.Timer_RGB = 300;
+            // 
+            // cyberButton8
+            // 
+            cyberButton8.Alpha = 20;
+            cyberButton8.BackColor = Color.Transparent;
+            cyberButton8.Background = true;
+            cyberButton8.Background_WidthPen = 4F;
+            cyberButton8.BackgroundPen = true;
+            cyberButton8.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton8.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton8.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton8.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton8.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton8.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton8.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton8.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton8.Effect_1 = true;
+            cyberButton8.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton8.Effect_1_Transparency = 25;
+            cyberButton8.Effect_2 = true;
+            cyberButton8.Effect_2_ColorBackground = Color.White;
+            cyberButton8.Effect_2_Transparency = 20;
+            cyberButton8.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton8.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton8.Lighting = false;
+            cyberButton8.LinearGradient_Background = false;
+            cyberButton8.LinearGradientPen = false;
+            cyberButton8.Location = new Point(135, 112);
+            cyberButton8.Name = "cyberButton8";
+            cyberButton8.PenWidth = 15;
+            cyberButton8.Rounding = true;
+            cyberButton8.RoundingInt = 70;
+            cyberButton8.Size = new Size(112, 32);
+            cyberButton8.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton8.TabIndex = 76;
+            cyberButton8.Tag = "Cyber";
+            cyberButton8.TextButton = "CANCELAR";
+            cyberButton8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton8.Timer_Effect_1 = 5;
+            cyberButton8.Timer_RGB = 300;
+            // 
             // FormBackup
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -848,5 +932,7 @@
         private DataGridViewTextBoxColumn CategoriaColum;
         private DataGridViewTextBoxColumn CantidadColum;
         private DataGridViewTextBoxColumn eliminarColum;
+        private ReaLTaiizor.Controls.CyberButton cyberButton7;
+        private ReaLTaiizor.Controls.CyberButton cyberButton8;
     }
 }

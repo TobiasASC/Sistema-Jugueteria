@@ -325,7 +325,7 @@
             cyberTextBox5.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox5.Enabled = false;
             cyberTextBox5.Font = new Font("Arial", 8F);
-            cyberTextBox5.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox5.ForeColor = Color.Black;
             cyberTextBox5.Lighting = false;
             cyberTextBox5.LinearGradientPen = false;
             cyberTextBox5.Location = new Point(470, 141);
@@ -709,7 +709,7 @@
             cyberTextBox9.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox9.Enabled = false;
             cyberTextBox9.Font = new Font("Arial", 8F);
-            cyberTextBox9.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox9.ForeColor = Color.Black;
             cyberTextBox9.Lighting = false;
             cyberTextBox9.LinearGradientPen = false;
             cyberTextBox9.Location = new Point(143, 288);
@@ -769,6 +769,7 @@
             Controls.Add(panel2);
             Name = "FormClientes";
             Text = "FormClientes";
+            Load += FormClientes_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
