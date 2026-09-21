@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Linq;
+using SistemaJugueteria.Presentacion.Utilidades;
 
 namespace SistemaJugueteria
 {
@@ -28,6 +29,8 @@ namespace SistemaJugueteria
 
             // Configurar el ComboBox de Roles al abrir la pantalla
             CargarRolesEnComboBox();
+
+
         }
 
         private void CargarRolesEnComboBox()
@@ -386,7 +389,7 @@ namespace SistemaJugueteria
             TextBox txtTelefonoReal = txtTelefonoEmpleado.Controls.OfType<TextBox>().FirstOrDefault();
             if (txtTelefonoReal != null)
             {
-                txtTelefonoReal.MaxLength = 20;
+                txtTelefonoReal.MaxLength = 10;
                 txtTelefonoReal.KeyPress += SoloNumeros_KeyPress;
             }
 
@@ -461,13 +464,22 @@ namespace SistemaJugueteria
             }
         }
 
-        // Bloqueador de letras y simbolos (Usado en campo telefono)
+
+        // Bloqueador de letras y símbolos con límite de 10 caracteres (Usado en campo teléfono)
         private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitimos números y teclas de control (como borrar), bloqueamos todo lo demás
+            // 1. Permitimos números y teclas de control (como borrar), bloqueamos todo lo demás
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+                return; // Detenemos la ejecución aquí
+            }
+
+            // 2. Forzamos el límite de 10 números en vivo leyendo la caja real
+            TextBox cajaReal = sender as TextBox;
+            if (cajaReal != null && cajaReal.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea la tecla si ya llegó a 10 caracteres
             }
         }
 

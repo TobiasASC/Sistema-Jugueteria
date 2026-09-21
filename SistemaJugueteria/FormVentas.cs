@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SistemaJugueteria.Presentacion.Utilidades;
 
 namespace SistemaJugueteria
 {
@@ -69,7 +70,7 @@ namespace SistemaJugueteria
         // --- CONFIGURACIÓN DE VALIDACIONES DE TECLADO ---
         private void ConfigurarRestriccionesTeclado()
         {
-            AsignarEventoKeyPress("cyberTextBox6", SoloNumeros_KeyPress);   // DNI Cliente
+            Validaciones.ConfigurarNumerosLongitud(cyberTextBox6, 8); // DNI Cliente (Usa la clase Validaciones que esta en la carpeta utilidades)
             AsignarEventoKeyPress("cyberTextBox8", SoloNumeros_KeyPress);   // Puntos Acumulados
             AsignarEventoKeyPress("cyberTextBox10", SoloNumeros_KeyPress);  // Código Producto
             AsignarEventoKeyPress("cyberTextBox11", SoloDecimales_KeyPress); // Precio
@@ -246,6 +247,19 @@ namespace SistemaJugueteria
 
             string strPrecio = ObtenerTextoControl("cyberTextBox11");
 
+            // =========================================================
+            // NUEVA VALIDACIÓN: Obliga a tener Producto y Precio
+            // =========================================================
+            if (string.IsNullOrWhiteSpace(descripcion) || string.IsNullOrWhiteSpace(strPrecio))
+            {
+                MessageBox.Show("El Producto y el Precio Unitario son obligatorios para agregarlo a la lista.",
+                                "Datos incompletos",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return; // Detiene la ejecución, no agrega la fila
+            }
+            // =========================================================
+
             string precioLimpio = strPrecio.Replace("$", "").Trim();
             if (precioLimpio.Contains(",") && !precioLimpio.Contains("."))
             {
@@ -257,14 +271,22 @@ namespace SistemaJugueteria
                 decimal.TryParse(precioLimpio, NumberStyles.Any, new CultureInfo("es-AR"), out precioUnitario);
             }
 
+            // Opcional: También puedes validar que el precio no sea cero
+            if (precioUnitario <= 0)
+            {
+                MessageBox.Show("El Precio Unitario debe ser mayor a cero.", "Precio inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int cantidad = ObtenerCantidadSeleccionada();
             if (cantidad <= 0) cantidad = 1;
 
             decimal subtotal = precioUnitario * cantidad;
 
+            // Como ahora validamos arriba, "descripcion" nunca estará vacía al llegar aquí
             dgv.Rows.Add(
                 string.IsNullOrWhiteSpace(codigo) ? "-" : codigo,
-                string.IsNullOrWhiteSpace(descripcion) ? "Producto sin nombre" : descripcion,
+                descripcion,
                 "-",
                 cantidad,
                 "$ " + precioUnitario.ToString("N2"),

@@ -45,14 +45,14 @@
             btnNuevo = new ReaLTaiizor.Controls.CyberButton();
             btnGuardar = new ReaLTaiizor.Controls.CyberButton();
             btnEliminar = new ReaLTaiizor.Controls.CyberButton();
-            dataGridView1 = new DataGridView();
+            dgvClientes = new DataGridView();
             dniColum = new DataGridViewTextBoxColumn();
             nombreColum = new DataGridViewTextBoxColumn();
             DirecColum = new DataGridViewTextBoxColumn();
             emailColum = new DataGridViewTextBoxColumn();
             PuntosColum = new DataGridViewTextBoxColumn();
-            modifColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
+            modifColum = new DataGridViewButtonColumn();
+            eliminarColum = new DataGridViewButtonColumn();
             panel2 = new ReaLTaiizor.Controls.Panel();
             panel3 = new ReaLTaiizor.Controls.Panel();
             label10 = new Label();
@@ -62,11 +62,11 @@
             button4 = new Button();
             txtDniClienteBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             label8 = new Label();
-            cyberTextBox9 = new ReaLTaiizor.Controls.CyberTextBox();
+            contadorClientes = new ReaLTaiizor.Controls.CyberTextBox();
             label5 = new Label();
             button3 = new Button();
             label7 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -468,26 +468,27 @@
             btnEliminar.Timer_RGB = 300;
             btnEliminar.Click += btnEliminar_Click;
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dniColum, nombreColum, DirecColum, emailColum, PuntosColum, modifColum, eliminarColum });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = SystemColors.ScrollBar;
-            dataGridView1.Location = new Point(14, 156);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(868, 126);
-            dataGridView1.TabIndex = 56;
+            dgvClientes.AllowUserToAddRows = false;
+            dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AllowUserToResizeColumns = false;
+            dgvClientes.AllowUserToResizeRows = false;
+            dgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.BackgroundColor = Color.White;
+            dgvClientes.BorderStyle = BorderStyle.None;
+            dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { dniColum, nombreColum, DirecColum, emailColum, PuntosColum, modifColum, eliminarColum });
+            dgvClientes.EnableHeadersVisualStyles = false;
+            dgvClientes.GridColor = SystemColors.ScrollBar;
+            dgvClientes.Location = new Point(14, 156);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.RowHeadersVisible = false;
+            dgvClientes.Size = new Size(868, 126);
+            dgvClientes.TabIndex = 56;
+            dgvClientes.CellClick += dgvClientes_CellClick;
             // 
             // dniColum
             // 
@@ -518,11 +519,15 @@
             // 
             modifColum.HeaderText = "Modificar";
             modifColum.Name = "modifColum";
+            modifColum.Resizable = DataGridViewTriState.True;
+            modifColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // eliminarColum
             // 
             eliminarColum.HeaderText = "Eliminar";
             eliminarColum.Name = "eliminarColum";
+            eliminarColum.Resizable = DataGridViewTriState.True;
+            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // panel2
             // 
@@ -565,9 +570,9 @@
             panel3.Controls.Add(button4);
             panel3.Controls.Add(txtDniClienteBuscar);
             panel3.Controls.Add(label8);
-            panel3.Controls.Add(cyberTextBox9);
+            panel3.Controls.Add(contadorClientes);
             panel3.Controls.Add(label5);
-            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(dgvClientes);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
             panel3.EdgeColor = Color.FromArgb(32, 41, 50);
@@ -695,36 +700,36 @@
             label8.Text = "BUSCAR CLIENTE";
             label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox9
+            // contadorClientes
             // 
-            cyberTextBox9.Alpha = 20;
-            cyberTextBox9.BackColor = Color.Transparent;
-            cyberTextBox9.Background_WidthPen = 3F;
-            cyberTextBox9.BackgroundPen = true;
-            cyberTextBox9.ColorBackground = Color.White;
-            cyberTextBox9.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox9.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox9.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox9.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox9.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox9.Enabled = false;
-            cyberTextBox9.Font = new Font("Arial", 8F);
-            cyberTextBox9.ForeColor = Color.Black;
-            cyberTextBox9.Lighting = false;
-            cyberTextBox9.LinearGradientPen = false;
-            cyberTextBox9.Location = new Point(143, 288);
-            cyberTextBox9.Name = "cyberTextBox9";
-            cyberTextBox9.PenWidth = 15;
-            cyberTextBox9.RGB = false;
-            cyberTextBox9.Rounding = true;
-            cyberTextBox9.RoundingInt = 60;
-            cyberTextBox9.Size = new Size(59, 32);
-            cyberTextBox9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox9.TabIndex = 59;
-            cyberTextBox9.Tag = "Cyber";
-            cyberTextBox9.TextButton = "";
-            cyberTextBox9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox9.Timer_RGB = 300;
+            contadorClientes.Alpha = 20;
+            contadorClientes.BackColor = Color.Transparent;
+            contadorClientes.Background_WidthPen = 3F;
+            contadorClientes.BackgroundPen = true;
+            contadorClientes.ColorBackground = Color.White;
+            contadorClientes.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            contadorClientes.ColorLighting = Color.FromArgb(29, 200, 238);
+            contadorClientes.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            contadorClientes.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            contadorClientes.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            contadorClientes.Enabled = false;
+            contadorClientes.Font = new Font("Arial", 8F);
+            contadorClientes.ForeColor = Color.Black;
+            contadorClientes.Lighting = false;
+            contadorClientes.LinearGradientPen = false;
+            contadorClientes.Location = new Point(143, 288);
+            contadorClientes.Name = "contadorClientes";
+            contadorClientes.PenWidth = 15;
+            contadorClientes.RGB = false;
+            contadorClientes.Rounding = true;
+            contadorClientes.RoundingInt = 60;
+            contadorClientes.Size = new Size(59, 32);
+            contadorClientes.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            contadorClientes.TabIndex = 59;
+            contadorClientes.Tag = "Cyber";
+            contadorClientes.TextButton = "";
+            contadorClientes.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            contadorClientes.Timer_RGB = 300;
             // 
             // label5
             // 
@@ -770,7 +775,7 @@
             Name = "FormClientes";
             Text = "FormClientes";
             Load += FormClientes_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
@@ -796,13 +801,13 @@
         private ReaLTaiizor.Controls.CyberButton btnNuevo;
         private ReaLTaiizor.Controls.CyberButton btnGuardar;
         private ReaLTaiizor.Controls.CyberButton btnEliminar;
-        private DataGridView dataGridView1;
+        private DataGridView dgvClientes;
         private ReaLTaiizor.Controls.Panel panel2;
         private ReaLTaiizor.Controls.Panel panel3;
         private Button button3;
         private Label label7;
         private Label label5;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox9;
+        private ReaLTaiizor.Controls.CyberTextBox contadorClientes;
         private Label label10;
         private ReaLTaiizor.Controls.CyberTextBox txtNombreClienteBuscar;
         private Button button5;
@@ -815,7 +820,7 @@
         private DataGridViewTextBoxColumn DirecColum;
         private DataGridViewTextBoxColumn emailColum;
         private DataGridViewTextBoxColumn PuntosColum;
-        private DataGridViewTextBoxColumn modifColum;
-        private DataGridViewTextBoxColumn eliminarColum;
+        private DataGridViewButtonColumn modifColum;
+        private DataGridViewButtonColumn eliminarColum;
     }
 }

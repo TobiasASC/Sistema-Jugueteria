@@ -378,7 +378,7 @@
             txtCantidadEmpleados.ColorPen_2 = Color.FromArgb(37, 52, 68);
             txtCantidadEmpleados.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             txtCantidadEmpleados.Enabled = false;
-            txtCantidadEmpleados.Font = new Font("Arial", 8F);
+            txtCantidadEmpleados.Font = new Font("Arial", 8F, FontStyle.Bold);
             txtCantidadEmpleados.ForeColor = Color.Black;
             txtCantidadEmpleados.Lighting = false;
             txtCantidadEmpleados.LinearGradientPen = false;

@@ -56,13 +56,6 @@
             label8 = new Label();
             panel2 = new ReaLTaiizor.Controls.Panel();
             dataGridView1 = new DataGridView();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            CantidadColum = new DataGridViewTextBoxColumn();
-            PrecioColum = new DataGridViewTextBoxColumn();
-            SubtotalColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
             panel4 = new ReaLTaiizor.Controls.Panel();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
@@ -84,6 +77,13 @@
             cyberTextBox13 = new ReaLTaiizor.Controls.CyberTextBox();
             label18 = new Label();
             button8 = new Button();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            CantidadColum = new DataGridViewTextBoxColumn();
+            PrecioColum = new DataGridViewTextBoxColumn();
+            SubtotalColum = new DataGridViewTextBoxColumn();
+            eliminarColum = new DataGridViewButtonColumn();
             pnlInfoFactura.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -242,7 +242,7 @@
             cyberTextBox3.ForeColor = Color.Black;
             cyberTextBox3.Lighting = false;
             cyberTextBox3.LinearGradientPen = false;
-            cyberTextBox3.Location = new Point(423, 52);
+            cyberTextBox3.Location = new Point(423, 67);
             cyberTextBox3.Name = "cyberTextBox3";
             cyberTextBox3.PenWidth = 15;
             cyberTextBox3.RGB = false;
@@ -261,7 +261,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(445, 26);
+            label4.Location = new Point(445, 44);
             label4.Name = "label4";
             label4.Size = new Size(99, 20);
             label4.TabIndex = 6;
@@ -274,7 +274,7 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Image = Properties.Resources.icon_park_solid__bill;
-            button2.Location = new Point(415, 20);
+            button2.Location = new Point(405, 38);
             button2.Name = "button2";
             button2.Size = new Size(34, 26);
             button2.TabIndex = 5;
@@ -442,6 +442,7 @@
             cyberTextBox8.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cyberTextBox8.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox8.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberTextBox8.Enabled = false;
             cyberTextBox8.Font = new Font("Arial", 8F);
             cyberTextBox8.ForeColor = Color.Black;
             cyberTextBox8.Lighting = false;
@@ -591,6 +592,10 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.White;
@@ -605,41 +610,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(868, 122);
             dataGridView1.TabIndex = 55;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            // 
-            // CantidadColum
-            // 
-            CantidadColum.HeaderText = "Cantidad";
-            CantidadColum.Name = "CantidadColum";
-            // 
-            // PrecioColum
-            // 
-            PrecioColum.HeaderText = "Precio Unitario";
-            PrecioColum.Name = "PrecioColum";
-            // 
-            // SubtotalColum
-            // 
-            SubtotalColum.HeaderText = "Subtotal";
-            SubtotalColum.Name = "SubtotalColum";
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
             // 
             // panel4
             // 
@@ -1089,6 +1059,43 @@
             button8.TabIndex = 56;
             button8.UseVisualStyleBackColor = true;
             // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            // 
+            // CantidadColum
+            // 
+            CantidadColum.HeaderText = "Cantidad";
+            CantidadColum.Name = "CantidadColum";
+            // 
+            // PrecioColum
+            // 
+            PrecioColum.HeaderText = "Precio Unitario";
+            PrecioColum.Name = "PrecioColum";
+            // 
+            // SubtotalColum
+            // 
+            SubtotalColum.HeaderText = "Subtotal";
+            SubtotalColum.Name = "SubtotalColum";
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
+            eliminarColum.Resizable = DataGridViewTriState.True;
+            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // FormVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1164,17 +1171,17 @@
         private ReaLTaiizor.Controls.DungeonNumeric dungeonNumeric1;
         private ReaLTaiizor.Controls.CyberButton cyberButton1;
         private DataGridView dataGridView1;
+        private Button button8;
+        private Label label18;
+        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox13;
+        private ReaLTaiizor.Controls.CyberButton cyberButton3;
+        private ReaLTaiizor.Controls.CyberButton cyberButton2;
         private DataGridViewTextBoxColumn ColumCodigo;
         private DataGridViewTextBoxColumn DescripColum;
         private DataGridViewTextBoxColumn CategoriaColum;
         private DataGridViewTextBoxColumn CantidadColum;
         private DataGridViewTextBoxColumn PrecioColum;
         private DataGridViewTextBoxColumn SubtotalColum;
-        private DataGridViewTextBoxColumn eliminarColum;
-        private Button button8;
-        private Label label18;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox13;
-        private ReaLTaiizor.Controls.CyberButton cyberButton3;
-        private ReaLTaiizor.Controls.CyberButton cyberButton2;
+        private DataGridViewButtonColumn eliminarColum;
     }
 }
