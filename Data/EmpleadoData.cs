@@ -126,5 +126,31 @@ namespace SistemaJugueteria.Data
                 }
             }
         }
+
+        public DataTable ObtenerEmpleadosTabla()
+        {
+            DataTable dt = new DataTable();
+            using (var conexion = Conexion.ObtenerConexion())
+            {
+                string query = @"SELECT 
+                            e.id_empleado AS [ID],
+                            e.dni_empleado AS [DNI],
+                            e.nombre_empleado + ' ' + e.apellido_empleado AS [Nombre Completo],
+                            e.correo_empleado AS [Correo],
+                            e.telefono_empleado AS [Teléfono],
+                            e.direccion_empleado AS [Dirección],
+                            CASE WHEN e.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS [Estado]
+                         FROM Empleado e";
+
+                using (var comando = new SqlCommand(query, conexion))
+                {
+                    using (var da = new SqlDataAdapter(comando))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
     }
 }

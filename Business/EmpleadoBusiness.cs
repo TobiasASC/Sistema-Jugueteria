@@ -2,6 +2,7 @@
 using SistemaJugueteria.Data;
 using SistemaJugueteria.Entities;
 using System;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace SistemaJugueteria.Business
@@ -37,6 +38,12 @@ namespace SistemaJugueteria.Business
             // 4. Si todas las validaciones pasan, enviamos la orden a la capa de Datos
             EmpleadoData data = new EmpleadoData();
             data.ABMEmpleado(empleado, operacion);
+        }
+
+        public DataTable ObtenerEmpleadosTabla()
+        {
+            EmpleadoData objData = new EmpleadoData(); // O SistemaJugueteria.Data.EmpleadoData
+            return objData.ObtenerEmpleadosTabla();
         }
     }
 }

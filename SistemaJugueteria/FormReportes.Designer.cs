@@ -46,6 +46,7 @@
             label12 = new Label();
             label14 = new Label();
             panel3 = new ReaLTaiizor.Controls.Panel();
+            motivoReportesBuscar = new ReaLTaiizor.Controls.CyberComboBox();
             dtpFechaReporteBuscar = new DateTimePicker();
             label2 = new Label();
             dgvReportes = new DataGridView();
@@ -63,7 +64,6 @@
             label5 = new Label();
             button3 = new Button();
             label7 = new Label();
-            motivoReportesBuscar = new ReaLTaiizor.Controls.CyberComboBox();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReportes).BeginInit();
@@ -112,7 +112,7 @@
             cbMotivo.ColorArrow = Color.FromArgb(252, 173, 159);
             cbMotivo.ColorBackground = Color.White;
             cbMotivo.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cbMotivo.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cbMotivo.ColorItemHover = Color.FromArgb(255, 224, 192);
             cbMotivo.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cbMotivo.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cbMotivo.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
@@ -572,10 +572,35 @@
             panel3.Text = "panel3";
             panel3.Click += panel3_Click;
             // 
+            // motivoReportesBuscar
+            // 
+            motivoReportesBuscar.BackColor = Color.White;
+            motivoReportesBuscar.ColorArrow = Color.FromArgb(252, 173, 159);
+            motivoReportesBuscar.ColorBackground = Color.White;
+            motivoReportesBuscar.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            motivoReportesBuscar.ColorItemHover = Color.FromArgb(255, 224, 192);
+            motivoReportesBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            motivoReportesBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            motivoReportesBuscar.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            motivoReportesBuscar.DrawMode = DrawMode.OwnerDrawFixed;
+            motivoReportesBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
+            motivoReportesBuscar.FlatStyle = FlatStyle.Flat;
+            motivoReportesBuscar.Font = new Font("Arial", 11F);
+            motivoReportesBuscar.ForeColor = Color.Black;
+            motivoReportesBuscar.FormattingEnabled = true;
+            motivoReportesBuscar.ItemHeight = 28;
+            motivoReportesBuscar.Items.AddRange(new object[] { "Clientes", "Ventas", "Empleados", "Backups", "Pedidos" });
+            motivoReportesBuscar.Location = new Point(362, 80);
+            motivoReportesBuscar.Name = "motivoReportesBuscar";
+            motivoReportesBuscar.RGB = false;
+            motivoReportesBuscar.Size = new Size(269, 34);
+            motivoReportesBuscar.TabIndex = 82;
+            motivoReportesBuscar.Timer_RGB = 300;
+            // 
             // dtpFechaReporteBuscar
             // 
             dtpFechaReporteBuscar.Format = DateTimePickerFormat.Custom;
-            dtpFechaReporteBuscar.Location = new Point(230, 82);
+            dtpFechaReporteBuscar.Location = new Point(230, 85);
             dtpFechaReporteBuscar.Name = "dtpFechaReporteBuscar";
             dtpFechaReporteBuscar.Size = new Size(95, 23);
             dtpFechaReporteBuscar.TabIndex = 81;
@@ -788,31 +813,6 @@
             label7.TabIndex = 15;
             label7.Text = "LISTA DE REPORTES";
             label7.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // motivoReportesBuscar
-            // 
-            motivoReportesBuscar.BackColor = Color.White;
-            motivoReportesBuscar.ColorArrow = Color.FromArgb(252, 173, 159);
-            motivoReportesBuscar.ColorBackground = Color.White;
-            motivoReportesBuscar.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            motivoReportesBuscar.ColorItemHover = Color.FromArgb(50, 70, 90);
-            motivoReportesBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            motivoReportesBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            motivoReportesBuscar.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            motivoReportesBuscar.DrawMode = DrawMode.OwnerDrawFixed;
-            motivoReportesBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
-            motivoReportesBuscar.FlatStyle = FlatStyle.Flat;
-            motivoReportesBuscar.Font = new Font("Arial", 11F);
-            motivoReportesBuscar.ForeColor = Color.Black;
-            motivoReportesBuscar.FormattingEnabled = true;
-            motivoReportesBuscar.ItemHeight = 28;
-            motivoReportesBuscar.Items.AddRange(new object[] { "Clientes", "Ventas", "Empleados", "Backups", "Pedidos" });
-            motivoReportesBuscar.Location = new Point(362, 80);
-            motivoReportesBuscar.Name = "motivoReportesBuscar";
-            motivoReportesBuscar.RGB = false;
-            motivoReportesBuscar.Size = new Size(269, 34);
-            motivoReportesBuscar.TabIndex = 82;
-            motivoReportesBuscar.Timer_RGB = 300;
             // 
             // FormReportes
             // 

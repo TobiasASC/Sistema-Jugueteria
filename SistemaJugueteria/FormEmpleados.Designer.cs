@@ -435,7 +435,7 @@
             cmbRol.ColorArrow = Color.FromArgb(252, 173, 159);
             cmbRol.ColorBackground = Color.White;
             cmbRol.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cmbRol.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cmbRol.ColorItemHover = Color.FromArgb(255, 224, 192);
             cmbRol.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cmbRol.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cmbRol.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;

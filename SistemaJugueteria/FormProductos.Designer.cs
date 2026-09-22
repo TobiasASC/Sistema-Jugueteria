@@ -50,6 +50,7 @@
             button3 = new Button();
             label7 = new Label();
             panel2 = new ReaLTaiizor.Controls.Panel();
+            cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
             button6 = new Button();
             stockMinimo = new ReaLTaiizor.Controls.DungeonNumeric();
             btnGuardar = new ReaLTaiizor.Controls.CyberButton();
@@ -358,6 +359,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(cyberButton4);
             panel2.Controls.Add(button6);
             panel2.Controls.Add(stockMinimo);
             panel2.Controls.Add(btnGuardar);
@@ -385,6 +387,47 @@
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 57;
             panel2.Text = "panel2";
+            // 
+            // cyberButton4
+            // 
+            cyberButton4.Alpha = 20;
+            cyberButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cyberButton4.BackColor = Color.Transparent;
+            cyberButton4.Background = true;
+            cyberButton4.Background_WidthPen = 4F;
+            cyberButton4.BackgroundPen = true;
+            cyberButton4.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton4.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton4.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton4.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton4.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton4.Effect_1 = true;
+            cyberButton4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton4.Effect_1_Transparency = 25;
+            cyberButton4.Effect_2 = true;
+            cyberButton4.Effect_2_ColorBackground = Color.White;
+            cyberButton4.Effect_2_Transparency = 20;
+            cyberButton4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton4.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton4.Lighting = false;
+            cyberButton4.LinearGradient_Background = false;
+            cyberButton4.LinearGradientPen = false;
+            cyberButton4.Location = new Point(702, 132);
+            cyberButton4.Name = "cyberButton4";
+            cyberButton4.PenWidth = 15;
+            cyberButton4.Rounding = true;
+            cyberButton4.RoundingInt = 70;
+            cyberButton4.Size = new Size(141, 38);
+            cyberButton4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton4.TabIndex = 73;
+            cyberButton4.Tag = "Cyber";
+            cyberButton4.TextButton = "CANCELAR";
+            cyberButton4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton4.Timer_Effect_1 = 5;
+            cyberButton4.Timer_RGB = 300;
             // 
             // button6
             // 
@@ -445,7 +488,7 @@
             btnGuardar.Lighting = false;
             btnGuardar.LinearGradient_Background = false;
             btnGuardar.LinearGradientPen = false;
-            btnGuardar.Location = new Point(702, 120);
+            btnGuardar.Location = new Point(702, 88);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.PenWidth = 15;
             btnGuardar.Rounding = true;
@@ -508,7 +551,7 @@
             btnLimpiarProducto.Lighting = false;
             btnLimpiarProducto.LinearGradient_Background = false;
             btnLimpiarProducto.LinearGradientPen = false;
-            btnLimpiarProducto.Location = new Point(702, 66);
+            btnLimpiarProducto.Location = new Point(702, 44);
             btnLimpiarProducto.Name = "btnLimpiarProducto";
             btnLimpiarProducto.PenWidth = 15;
             btnLimpiarProducto.Rounding = true;
@@ -517,7 +560,7 @@
             btnLimpiarProducto.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnLimpiarProducto.TabIndex = 63;
             btnLimpiarProducto.Tag = "Cyber";
-            btnLimpiarProducto.TextButton = "LIMPIAR";
+            btnLimpiarProducto.TextButton = "NUEVO";
             btnLimpiarProducto.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnLimpiarProducto.Timer_Effect_1 = 5;
             btnLimpiarProducto.Timer_RGB = 300;
@@ -529,7 +572,7 @@
             categoriaProducto.ColorArrow = Color.FromArgb(252, 173, 159);
             categoriaProducto.ColorBackground = Color.White;
             categoriaProducto.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            categoriaProducto.ColorItemHover = Color.FromArgb(50, 70, 90);
+            categoriaProducto.ColorItemHover = Color.FromArgb(255, 224, 192);
             categoriaProducto.ColorPen_1 = Color.FromArgb(29, 200, 238);
             categoriaProducto.ColorPen_2 = Color.FromArgb(37, 52, 68);
             categoriaProducto.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
@@ -900,5 +943,6 @@
         private DataGridViewTextBoxColumn ColumStockM;
         private DataGridViewButtonColumn columModificar;
         private DataGridViewButtonColumn columEliminar;
+        private ReaLTaiizor.Controls.CyberButton cyberButton4;
     }
 }

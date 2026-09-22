@@ -11,9 +11,9 @@ namespace SistemaJugueteria
 {
     public partial class FormClientes : Form
     {
-
-        // Variable para rastrear si estamos creando (-1) o editando una fila existente
+        // Variable para guardar el índice de la fila que se está modificando (-1 = ninguna)
         private int indiceFilaEditada = -1;
+
         public FormClientes()
         {
             InitializeComponent();
@@ -27,50 +27,146 @@ namespace SistemaJugueteria
             Validaciones.ConfigurarSoloLetras(txtNombreClienteBuscar);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormClientes_Load(object sender, EventArgs e)
         {
-
+            ConfigurarDataGridView();
+            ActualizarContador();
         }
 
-        private void hopeTextBox1_Click(object sender, EventArgs e)
+        private void ConfigurarDataGridView()
         {
+            dgvClientes.Columns.Clear();
+            dgvClientes.AutoGenerateColumns = false;
 
+            // Columnas de datos
+            dgvClientes.Columns.Add("colDni", "DNI");
+            dgvClientes.Columns.Add("colNomApe", "Nom y Ape");
+            dgvClientes.Columns.Add("colDireccion", "Dirección");
+            dgvClientes.Columns.Add("colEmail", "Email");
+            dgvClientes.Columns.Add("colPuntos", "Puntos");
+
+            // Botón Modificar dentro de la grilla
+            DataGridViewButtonColumn btnModificarCol = new DataGridViewButtonColumn();
+            btnModificarCol.Name = "colModificar";
+            btnModificarCol.HeaderText = "Modificar";
+            btnModificarCol.Text = "Modificar";
+            btnModificarCol.UseColumnTextForButtonValue = true;
+            dgvClientes.Columns.Add(btnModificarCol);
+
+            // Botón Eliminar dentro de la grilla
+            DataGridViewButtonColumn btnEliminarCol = new DataGridViewButtonColumn();
+            btnEliminarCol.Name = "colEliminar";
+            btnEliminarCol.HeaderText = "Eliminar";
+            btnEliminarCol.Text = "Eliminar";
+            btnEliminarCol.UseColumnTextForButtonValue = true;
+            dgvClientes.Columns.Add(btnEliminarCol);
+
+            dgvClientes.CellClick -= dgvClientes_CellClick;
+            dgvClientes.CellClick += dgvClientes_CellClick;
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cyberTextBox10_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        // --- BOTÓN NUEVO: Crea y agrega el cliente al DataGrid ---
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            // Cancelar cualquier edición en curso
-            indiceFilaEditada = -1;
+            if (ValidarCamposVacios()) return;
 
-            // Limpiamos los controles
+            string dni = txtDniCliente.TextButton;
+            string nombreCompleto = $"{txtNombreCliente.TextButton.Trim()} {txtApellidoCliente.TextButton.Trim()}";
+            string direccion = txtDireccionCliente.TextButton;
+            string email = txtEmailCliente.TextButton;
+            string puntos = "0";
+
+            // Se agrega una nueva fila directamente
+            int nuevaFilaIndice = dgvClientes.Rows.Add(dni, nombreCompleto, direccion, email, puntos);
+
+            // Guardamos el nombre y apellido por separado en el Tag
+            dgvClientes.Rows[nuevaFilaIndice].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
+
+            MessageBox.Show("¡Cliente agregado con éxito!", "Nuevo Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ActualizarContador();
+            LimpiarCampos();
+        }
+
+        // --- BOTÓN GUARDAR / MODIFICAR: Actualiza la fila en edición ---
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (indiceFilaEditada < 0)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente en la tabla usando el botón 'Modificar' antes de guardar cambios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ValidarCamposVacios()) return;
+
+            // Actualizamos la fila seleccionada
+            dgvClientes.Rows[indiceFilaEditada].Cells[0].Value = txtDniCliente.TextButton;
+            dgvClientes.Rows[indiceFilaEditada].Cells[1].Value = $"{txtNombreCliente.TextButton.Trim()} {txtApellidoCliente.TextButton.Trim()}";
+            dgvClientes.Rows[indiceFilaEditada].Cells[2].Value = txtDireccionCliente.TextButton;
+            dgvClientes.Rows[indiceFilaEditada].Cells[3].Value = txtEmailCliente.TextButton;
+
+            dgvClientes.Rows[indiceFilaEditada].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
+
+            MessageBox.Show("Cliente modificado correctamente.", "Guardar Cambios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            LimpiarCampos();
+        }
+
+        // --- BOTÓN ELIMINAR / CANCELAR: Limpia el formulario y resetea la edición ---
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+        // --- INTERACCIÓN CON LA GRILLA ---
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvClientes.NewRowIndex) return;
+
+            DataGridViewRow fila = dgvClientes.Rows[e.RowIndex];
+
+            // Clic en 'Modificar' de la grilla -> Carga datos arriba para editar
+            if (e.ColumnIndex == 5)
+            {
+                txtDniCliente.TextButton = fila.Cells[0].Value?.ToString();
+
+                if (fila.Tag is string[] nombres)
+                {
+                    txtNombreCliente.TextButton = nombres[0];
+                    txtApellidoCliente.TextButton = nombres[1];
+                }
+
+                txtDireccionCliente.TextButton = fila.Cells[2].Value?.ToString();
+                txtEmailCliente.TextButton = fila.Cells[3].Value?.ToString();
+
+                indiceFilaEditada = e.RowIndex;
+            }
+            // Clic en 'Eliminar' de la grilla -> Elimina directamente esa fila
+            else if (e.ColumnIndex == 6)
+            {
+                DialogResult respuesta = MessageBox.Show("¿Desea borrar este cliente de la lista?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    dgvClientes.Rows.RemoveAt(e.RowIndex);
+                    ActualizarContador();
+                    LimpiarCampos();
+                }
+            }
+        }
+
+        private void LimpiarCampos()
+        {
+            indiceFilaEditada = -1;
             txtDniCliente.TextButton = "";
             txtNombreCliente.TextButton = "";
             txtApellidoCliente.TextButton = "";
             txtEmailCliente.TextButton = "";
             txtDireccionCliente.TextButton = "";
-
-            // Si tienes el campo de puntos (Puntos Acumulados), límpialo aquí también
-            // txtPuntosCliente.TextButton = "";
-
             txtDniCliente.Focus();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private bool ValidarCamposVacios()
         {
             if (string.IsNullOrWhiteSpace(txtDniCliente.TextButton) ||
                 string.IsNullOrWhiteSpace(txtNombreCliente.TextButton) ||
@@ -78,156 +174,23 @@ namespace SistemaJugueteria
                 string.IsNullOrWhiteSpace(txtEmailCliente.TextButton) ||
                 string.IsNullOrWhiteSpace(txtDireccionCliente.TextButton))
             {
-                MessageBox.Show("Todos los campos son obligatorios. Por favor, complete la información faltante.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Por favor, complete todos los campos requeridos.", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
             }
-
-            // Capturar valores y unir el nombre completo
-            string dni = txtDniCliente.TextButton;
-            string nombreCompleto = $"{txtNombreCliente.TextButton.Trim()} {txtApellidoCliente.TextButton.Trim()}";
-            string direccion = txtDireccionCliente.TextButton;
-            string email = txtEmailCliente.TextButton;
-
-            // Si tu control de Puntos es un DungeonNumeric, usa .Value.ToString(). Si es CyberTextBox, usa .TextButton
-            string puntos = "0"; // Reemplaza esto por tu control real, ej: txtPuntosCliente.TextButton;
-
-            if (indiceFilaEditada >= 0)
-            {
-                // MODIFICAR FILA EXISTENTE
-                dgvClientes.Rows[indiceFilaEditada].Cells[0].Value = dni;
-                dgvClientes.Rows[indiceFilaEditada].Cells[1].Value = nombreCompleto;
-                dgvClientes.Rows[indiceFilaEditada].Cells[2].Value = direccion;
-                dgvClientes.Rows[indiceFilaEditada].Cells[3].Value = email;
-                dgvClientes.Rows[indiceFilaEditada].Cells[4].Value = puntos;
-
-                // Actualizamos el bolsillo secreto con los datos separados
-                dgvClientes.Rows[indiceFilaEditada].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
-
-                MessageBox.Show("Cliente modificado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                // AGREGAR FILA NUEVA y obtener en qué índice quedó guardada
-                int nuevaFilaIndice = dgvClientes.Rows.Add(dni, nombreCompleto, direccion, email, puntos, "Editar", "X");
-
-                // Guardamos los datos separados en el bolsillo secreto de esta nueva fila
-                dgvClientes.Rows[nuevaFilaIndice].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
-
-                MessageBox.Show("¡Cliente agregado con éxito!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            ActualizarContador();
-            btnNuevo_Click(sender, e);
+            return false;
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            string dniAEliminar = txtDniCliente.TextButton.Trim();
-
-            // 1. Validar que haya un DNI escrito
-            if (string.IsNullOrWhiteSpace(dniAEliminar))
-            {
-                MessageBox.Show("Por favor, seleccione un cliente de la lista o ingrese un DNI para eliminar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 2. Preguntar al usuario para confirmar
-            DialogResult respuesta = MessageBox.Show($"¿Está seguro que desea eliminar al cliente con DNI {dniAEliminar}?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (respuesta == DialogResult.Yes)
-            {
-                bool clienteEncontrado = false;
-
-                // 3. Recorrer la grilla buscando la fila que tenga ese DNI (Columna 0)
-                foreach (DataGridViewRow fila in dgvClientes.Rows)
-                {
-                    // Ignoramos la última fila en blanco (si existe)
-                    if (fila.IsNewRow) continue;
-
-                    if (fila.Cells[0].Value?.ToString() == dniAEliminar)
-                    {
-                        // Encontramos al cliente, lo eliminamos de la grilla
-                        dgvClientes.Rows.Remove(fila);
-                        clienteEncontrado = true;
-                        break; // Detenemos la búsqueda
-                    }
-                }
-
-                // 4. Mostrar el resultado y sincronizar la interfaz
-                if (clienteEncontrado)
-                {
-                    MessageBox.Show("Cliente eliminado de la lista correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    ActualizarContador(); // Actualiza el número de abajo
-                    btnNuevo_Click(sender, e); // Limpia los campos de texto y resetea la variable de edición
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró ningún cliente con ese DNI en la lista.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void FormClientes_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void ActualizarContador()
         {
-            // Resta 1 si la grilla muestra la fila en blanco al final
             int cantidad = dgvClientes.AllowUserToAddRows ? dgvClientes.Rows.Count - 1 : dgvClientes.Rows.Count;
-            contadorClientes.TextButton = cantidad.ToString();
+            contadorClientes.TextButton = cantidad < 0 ? "0" : cantidad.ToString();
         }
 
-        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.RowIndex == dgvClientes.NewRowIndex) return;
-
-            DataGridViewRow fila = dgvClientes.Rows[e.RowIndex];
-
-            // --- MODIFICAR (Suponiendo que "Modificar" es la columna 5) ---
-            if (e.ColumnIndex == 5)
-            {
-                txtDniCliente.TextButton = fila.Cells[0].Value?.ToString();
-
-                // Recuperamos los nombres originales exactos desde el bolsillo secreto (Tag)
-                if (fila.Tag is string[] nombresOriginales)
-                {
-                    txtNombreCliente.TextButton = nombresOriginales[0];
-                    txtApellidoCliente.TextButton = nombresOriginales[1];
-                }
-                else
-                {
-                    // Código de rescate por si la fila no tenía Tag (ej. datos cargados antes de este cambio)
-                    string nombreCompleto = fila.Cells[1].Value?.ToString() ?? "";
-                    string[] partes = nombreCompleto.Split(new[] { ' ' }, 2);
-                    txtNombreCliente.TextButton = partes.Length > 0 ? partes[0] : "";
-                    txtApellidoCliente.TextButton = partes.Length > 1 ? partes[1] : "";
-                }
-
-                txtDireccionCliente.TextButton = fila.Cells[2].Value?.ToString();
-                txtEmailCliente.TextButton = fila.Cells[3].Value?.ToString();
-
-                // txtPuntosCliente.TextButton = fila.Cells[4].Value?.ToString();
-
-                indiceFilaEditada = e.RowIndex;
-            }
-            // --- ELIMINAR (Suponiendo que "Eliminar" es la columna 6) ---
-            else if (e.ColumnIndex == 6)
-            {
-                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea eliminar este cliente?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    dgvClientes.Rows.RemoveAt(e.RowIndex);
-                    ActualizarContador();
-
-                    // Forzamos la limpieza de campos para no dejar datos "fantasma" listos para editar
-                    btnNuevo_Click(null, null);
-                }
-            }
-        }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void hopeTextBox1_Click(object sender, EventArgs e) { }
+        private void button5_Click(object sender, EventArgs e) { }
+        private void label12_Click(object sender, EventArgs e) { }
+        private void cyberTextBox10_Load(object sender, EventArgs e) { }
+        private void txtApellidoCliente_Load(object sender, EventArgs e) { }
     }
 }

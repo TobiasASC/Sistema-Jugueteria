@@ -73,6 +73,7 @@
             button6 = new Button();
             label13 = new Label();
             panel4 = new ReaLTaiizor.Controls.Panel();
+            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             btnAgregarProducto = new ReaLTaiizor.Controls.CyberButton();
             numCantidad = new ReaLTaiizor.Controls.DungeonNumeric();
             label17 = new Label();
@@ -131,7 +132,7 @@
             // dtpFechaEstimadaPedido
             // 
             dtpFechaEstimadaPedido.Format = DateTimePickerFormat.Custom;
-            dtpFechaEstimadaPedido.Location = new Point(535, 62);
+            dtpFechaEstimadaPedido.Location = new Point(535, 56);
             dtpFechaEstimadaPedido.Name = "dtpFechaEstimadaPedido";
             dtpFechaEstimadaPedido.Size = new Size(95, 23);
             dtpFechaEstimadaPedido.TabIndex = 80;
@@ -139,7 +140,7 @@
             // dtpFechaRealizacion
             // 
             dtpFechaRealizacion.Format = DateTimePickerFormat.Custom;
-            dtpFechaRealizacion.Location = new Point(352, 62);
+            dtpFechaRealizacion.Location = new Point(359, 56);
             dtpFechaRealizacion.Name = "dtpFechaRealizacion";
             dtpFechaRealizacion.Size = new Size(95, 23);
             dtpFechaRealizacion.TabIndex = 79;
@@ -148,7 +149,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(352, 35);
+            label3.Location = new Point(359, 38);
             label3.Name = "label3";
             label3.Size = new Size(121, 15);
             label3.TabIndex = 75;
@@ -159,7 +160,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(535, 35);
+            label1.Location = new Point(535, 38);
             label1.Name = "label1";
             label1.Size = new Size(154, 15);
             label1.TabIndex = 73;
@@ -306,7 +307,7 @@
             cbProveedor.ColorArrow = Color.FromArgb(252, 173, 159);
             cbProveedor.ColorBackground = Color.White;
             cbProveedor.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cbProveedor.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cbProveedor.ColorItemHover = Color.FromArgb(255, 224, 192);
             cbProveedor.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cbProveedor.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cbProveedor.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
@@ -324,6 +325,7 @@
             cbProveedor.Size = new Size(149, 34);
             cbProveedor.TabIndex = 69;
             cbProveedor.Timer_RGB = 300;
+            cbProveedor.SelectedIndexChanged += cbProveedor_SelectedIndexChanged;
             // 
             // cyberButton3
             // 
@@ -923,6 +925,7 @@
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = Color.FromArgb(255, 200, 200);
+            panel4.Controls.Add(cyberButton1);
             panel4.Controls.Add(btnAgregarProducto);
             panel4.Controls.Add(numCantidad);
             panel4.Controls.Add(label17);
@@ -936,6 +939,47 @@
             panel4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel4.TabIndex = 63;
             panel4.Text = "panel4";
+            // 
+            // cyberButton1
+            // 
+            cyberButton1.Alpha = 20;
+            cyberButton1.BackColor = Color.Transparent;
+            cyberButton1.Background = true;
+            cyberButton1.Background_WidthPen = 4F;
+            cyberButton1.BackgroundPen = true;
+            cyberButton1.ColorBackground = Color.FromArgb(255, 128, 128);
+            cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            cyberButton1.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
+            cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cyberButton1.Effect_1 = true;
+            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            cyberButton1.Effect_1_Transparency = 25;
+            cyberButton1.Effect_2 = true;
+            cyberButton1.Effect_2_ColorBackground = Color.White;
+            cyberButton1.Effect_2_Transparency = 20;
+            cyberButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberButton1.Lighting = false;
+            cyberButton1.LinearGradient_Background = false;
+            cyberButton1.LinearGradientPen = false;
+            cyberButton1.Location = new Point(589, 21);
+            cyberButton1.Name = "cyberButton1";
+            cyberButton1.PenWidth = 15;
+            cyberButton1.Rounding = true;
+            cyberButton1.RoundingInt = 70;
+            cyberButton1.Size = new Size(112, 32);
+            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            cyberButton1.TabIndex = 66;
+            cyberButton1.Tag = "Cyber";
+            cyberButton1.TextButton = "CANCELAR";
+            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            cyberButton1.Timer_Effect_1 = 5;
+            cyberButton1.Timer_RGB = 300;
+            cyberButton1.Click += cyberButton1_Click;
             // 
             // btnAgregarProducto
             // 
@@ -1303,5 +1347,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewButtonColumn dataGridViewTextBoxColumn5;
+        private ReaLTaiizor.Controls.CyberButton cyberButton1;
     }
 }

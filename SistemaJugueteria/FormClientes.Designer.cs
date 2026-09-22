@@ -217,6 +217,7 @@
             txtApellidoCliente.TextButton = "";
             txtApellidoCliente.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             txtApellidoCliente.Timer_RGB = 300;
+            txtApellidoCliente.Load += txtApellidoCliente_Load;
             // 
             // label2
             // 
@@ -462,7 +463,7 @@
             btnEliminar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnEliminar.TabIndex = 62;
             btnEliminar.Tag = "Cyber";
-            btnEliminar.TextButton = "ELIMINAR";
+            btnEliminar.TextButton = "CANCELAR";
             btnEliminar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnEliminar.Timer_Effect_1 = 5;
             btnEliminar.Timer_RGB = 300;
