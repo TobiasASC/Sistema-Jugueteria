@@ -116,6 +116,7 @@
             dgvProductos.GridColor = SystemColors.ScrollBar;
             dgvProductos.Location = new Point(17, 160);
             dgvProductos.Name = "dgvProductos";
+            dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersVisible = false;
             dgvProductos.Size = new Size(868, 122);
             dgvProductos.TabIndex = 74;
@@ -125,36 +126,43 @@
             // 
             ColumCodigo.HeaderText = "Codigo";
             ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
             // 
             // DescripColum
             // 
             DescripColum.HeaderText = "Descripción";
             DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
             // 
             // CategoriaColum
             // 
             CategoriaColum.HeaderText = "Categoria";
             CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
             // 
             // precioColum
             // 
             precioColum.HeaderText = "Precio";
             precioColum.Name = "precioColum";
+            precioColum.ReadOnly = true;
             // 
             // StockColum
             // 
             StockColum.HeaderText = "Stock Actual";
             StockColum.Name = "StockColum";
+            StockColum.ReadOnly = true;
             // 
             // ColumStockM
             // 
             ColumStockM.HeaderText = "Stock Minimo";
             ColumStockM.Name = "ColumStockM";
+            ColumStockM.ReadOnly = true;
             // 
             // columModificar
             // 
             columModificar.HeaderText = "Modificar";
             columModificar.Name = "columModificar";
+            columModificar.ReadOnly = true;
             columModificar.Resizable = DataGridViewTriState.True;
             columModificar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
@@ -162,6 +170,7 @@
             // 
             columEliminar.HeaderText = "Eliminar";
             columEliminar.Name = "columEliminar";
+            columEliminar.ReadOnly = true;
             columEliminar.Resizable = DataGridViewTriState.True;
             columEliminar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 

@@ -56,6 +56,13 @@
             label8 = new Label();
             panel2 = new ReaLTaiizor.Controls.Panel();
             dataGridView1 = new DataGridView();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            CantidadColum = new DataGridViewTextBoxColumn();
+            PrecioColum = new DataGridViewTextBoxColumn();
+            SubtotalColum = new DataGridViewTextBoxColumn();
+            eliminarColum = new DataGridViewButtonColumn();
             panel4 = new ReaLTaiizor.Controls.Panel();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
@@ -77,13 +84,6 @@
             cyberTextBox13 = new ReaLTaiizor.Controls.CyberTextBox();
             label18 = new Label();
             button8 = new Button();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            CantidadColum = new DataGridViewTextBoxColumn();
-            PrecioColum = new DataGridViewTextBoxColumn();
-            SubtotalColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewButtonColumn();
             pnlInfoFactura.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -607,9 +607,54 @@
             dataGridView1.GridColor = SystemColors.ScrollBar;
             dataGridView1.Location = new Point(14, 147);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(868, 122);
             dataGridView1.TabIndex = 55;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
+            // 
+            // CantidadColum
+            // 
+            CantidadColum.HeaderText = "Cantidad";
+            CantidadColum.Name = "CantidadColum";
+            CantidadColum.ReadOnly = true;
+            // 
+            // PrecioColum
+            // 
+            PrecioColum.HeaderText = "Precio Unitario";
+            PrecioColum.Name = "PrecioColum";
+            PrecioColum.ReadOnly = true;
+            // 
+            // SubtotalColum
+            // 
+            SubtotalColum.HeaderText = "Subtotal";
+            SubtotalColum.Name = "SubtotalColum";
+            SubtotalColum.ReadOnly = true;
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
+            eliminarColum.Resizable = DataGridViewTriState.True;
+            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // panel4
             // 
@@ -1058,43 +1103,6 @@
             button8.Size = new Size(48, 60);
             button8.TabIndex = 56;
             button8.UseVisualStyleBackColor = true;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            // 
-            // CantidadColum
-            // 
-            CantidadColum.HeaderText = "Cantidad";
-            CantidadColum.Name = "CantidadColum";
-            // 
-            // PrecioColum
-            // 
-            PrecioColum.HeaderText = "Precio Unitario";
-            PrecioColum.Name = "PrecioColum";
-            // 
-            // SubtotalColum
-            // 
-            SubtotalColum.HeaderText = "Subtotal";
-            SubtotalColum.Name = "SubtotalColum";
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
-            eliminarColum.Resizable = DataGridViewTriState.True;
-            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // FormVentas
             // 

@@ -28,32 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new ReaLTaiizor.Controls.Panel();
-            cyberButton9 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton8 = new ReaLTaiizor.Controls.CyberButton();
-            dgvProductos = new DataGridView();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            CantidadColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
-            panel4 = new ReaLTaiizor.Controls.Panel();
-            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
-            dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
-            label17 = new Label();
-            nombreProducto = new ReaLTaiizor.Controls.CyberTextBox();
-            label16 = new Label();
-            button7 = new Button();
-            label13 = new Label();
-            button6 = new Button();
-            txtDescripcionPedido = new ReaLTaiizor.Controls.CyberTextBox();
-            label12 = new Label();
-            label14 = new Label();
-            txtCodigoPedido = new ReaLTaiizor.Controls.CyberTextBox();
             panel1 = new ReaLTaiizor.Controls.Panel();
-            txtFechaPedido = new ReaLTaiizor.Controls.CyberTextBox();
+            dtpFechaEstimadaPedido = new DateTimePicker();
+            dtpFechaRealizacion = new DateTimePicker();
             label3 = new Label();
-            txtFechaEstimada = new ReaLTaiizor.Controls.CyberTextBox();
             label1 = new Label();
             button1 = new Button();
             cyberButton4 = new ReaLTaiizor.Controls.CyberButton();
@@ -64,19 +42,22 @@
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton7 = new ReaLTaiizor.Controls.CyberButton();
             label4 = new Label();
+            txtUsuario = new ReaLTaiizor.Controls.CyberTextBox();
+            label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             txtNumeroPedido = new ReaLTaiizor.Controls.CyberTextBox();
             panel3 = new ReaLTaiizor.Controls.Panel();
-            dgvPedidos = new DataGridView();
+            cbProveedorBuscar = new ReaLTaiizor.Controls.CyberComboBox();
+            dgvListaPedidos = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            usuarioColum = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewButtonColumn();
             button2 = new Button();
             label10 = new Label();
-            txtProveedorBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
             label9 = new Label();
             txtNumeroPedidoBuscar = new ReaLTaiizor.Controls.CyberTextBox();
@@ -85,420 +66,43 @@
             label2 = new Label();
             button3 = new Button();
             label11 = new Label();
-            label5 = new Label();
-            txtUsuario = new ReaLTaiizor.Controls.CyberTextBox();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
-            panel4.SuspendLayout();
+            txtCodigoPedido = new ReaLTaiizor.Controls.CyberTextBox();
+            label14 = new Label();
+            label12 = new Label();
+            txtDescripcionPedido = new ReaLTaiizor.Controls.CyberTextBox();
+            button6 = new Button();
+            label13 = new Label();
+            panel4 = new ReaLTaiizor.Controls.Panel();
+            btnAgregarProducto = new ReaLTaiizor.Controls.CyberButton();
+            numCantidad = new ReaLTaiizor.Controls.DungeonNumeric();
+            label17 = new Label();
+            nombreProducto = new ReaLTaiizor.Controls.CyberTextBox();
+            label16 = new Label();
+            dgvDetallePedido = new DataGridView();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            nomProducto = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            CantidadColum = new DataGridViewTextBoxColumn();
+            eliminarColum = new DataGridViewButtonColumn();
+            btnConfirmar = new ReaLTaiizor.Controls.CyberButton();
+            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
+            panel2 = new ReaLTaiizor.Controls.Panel();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListaPedidos).BeginInit();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallePedido).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.FromArgb(255, 227, 227);
-            panel2.Controls.Add(cyberButton9);
-            panel2.Controls.Add(cyberButton8);
-            panel2.Controls.Add(dgvProductos);
-            panel2.Controls.Add(panel4);
-            panel2.Controls.Add(button7);
-            panel2.Controls.Add(label13);
-            panel2.Controls.Add(button6);
-            panel2.Controls.Add(txtDescripcionPedido);
-            panel2.Controls.Add(label12);
-            panel2.Controls.Add(label14);
-            panel2.Controls.Add(txtCodigoPedido);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
-            panel2.Location = new Point(12, 114);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(8);
-            panel2.Size = new Size(893, 273);
-            panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            panel2.TabIndex = 55;
-            panel2.Text = "panel2";
-            // 
-            // cyberButton9
-            // 
-            cyberButton9.Alpha = 20;
-            cyberButton9.BackColor = Color.Transparent;
-            cyberButton9.Background = true;
-            cyberButton9.Background_WidthPen = 4F;
-            cyberButton9.BackgroundPen = true;
-            cyberButton9.ColorBackground = Color.FromArgb(255, 128, 128);
-            cyberButton9.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton9.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton9.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton9.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton9.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton9.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton9.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton9.Effect_1 = true;
-            cyberButton9.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton9.Effect_1_Transparency = 25;
-            cyberButton9.Effect_2 = true;
-            cyberButton9.Effect_2_ColorBackground = Color.White;
-            cyberButton9.Effect_2_Transparency = 20;
-            cyberButton9.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton9.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton9.Lighting = false;
-            cyberButton9.LinearGradient_Background = false;
-            cyberButton9.LinearGradientPen = false;
-            cyberButton9.Location = new Point(129, 235);
-            cyberButton9.Name = "cyberButton9";
-            cyberButton9.PenWidth = 15;
-            cyberButton9.Rounding = true;
-            cyberButton9.RoundingInt = 70;
-            cyberButton9.Size = new Size(112, 32);
-            cyberButton9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton9.TabIndex = 65;
-            cyberButton9.Tag = "Cyber";
-            cyberButton9.TextButton = "CANCELAR";
-            cyberButton9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton9.Timer_Effect_1 = 5;
-            cyberButton9.Timer_RGB = 300;
-            // 
-            // cyberButton8
-            // 
-            cyberButton8.Alpha = 20;
-            cyberButton8.BackColor = Color.Transparent;
-            cyberButton8.Background = true;
-            cyberButton8.Background_WidthPen = 4F;
-            cyberButton8.BackgroundPen = true;
-            cyberButton8.ColorBackground = Color.FromArgb(0, 192, 0);
-            cyberButton8.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton8.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton8.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton8.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton8.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton8.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton8.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton8.Effect_1 = true;
-            cyberButton8.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton8.Effect_1_Transparency = 25;
-            cyberButton8.Effect_2 = true;
-            cyberButton8.Effect_2_ColorBackground = Color.White;
-            cyberButton8.Effect_2_Transparency = 20;
-            cyberButton8.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton8.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton8.Lighting = false;
-            cyberButton8.LinearGradient_Background = false;
-            cyberButton8.LinearGradientPen = false;
-            cyberButton8.Location = new Point(11, 235);
-            cyberButton8.Name = "cyberButton8";
-            cyberButton8.PenWidth = 15;
-            cyberButton8.Rounding = true;
-            cyberButton8.RoundingInt = 70;
-            cyberButton8.Size = new Size(112, 32);
-            cyberButton8.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton8.TabIndex = 60;
-            cyberButton8.Tag = "Cyber";
-            cyberButton8.TextButton = "CONFIRMAR";
-            cyberButton8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton8.Timer_Effect_1 = 5;
-            cyberButton8.Timer_RGB = 300;
-            // 
-            // dgvProductos
-            // 
-            dgvProductos.AllowUserToAddRows = false;
-            dgvProductos.AllowUserToDeleteRows = false;
-            dgvProductos.AllowUserToResizeColumns = false;
-            dgvProductos.AllowUserToResizeRows = false;
-            dgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProductos.BackgroundColor = Color.White;
-            dgvProductos.BorderStyle = BorderStyle.None;
-            dgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, CantidadColum, eliminarColum });
-            dgvProductos.EnableHeadersVisualStyles = false;
-            dgvProductos.GridColor = SystemColors.ScrollBar;
-            dgvProductos.Location = new Point(14, 141);
-            dgvProductos.Name = "dgvProductos";
-            dgvProductos.RowHeadersVisible = false;
-            dgvProductos.Size = new Size(868, 83);
-            dgvProductos.TabIndex = 64;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            // 
-            // CantidadColum
-            // 
-            CantidadColum.HeaderText = "Cantidad";
-            CantidadColum.Name = "CantidadColum";
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
-            // 
-            // panel4
-            // 
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.FromArgb(255, 200, 200);
-            panel4.Controls.Add(cyberButton1);
-            panel4.Controls.Add(dungeonNumeric1);
-            panel4.Controls.Add(label17);
-            panel4.Controls.Add(nombreProducto);
-            panel4.Controls.Add(label16);
-            panel4.EdgeColor = Color.FromArgb(32, 41, 50);
-            panel4.Location = new Point(14, 73);
-            panel4.Name = "panel4";
-            panel4.Padding = new Padding(8);
-            panel4.Size = new Size(868, 62);
-            panel4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            panel4.TabIndex = 63;
-            panel4.Text = "panel4";
-            // 
-            // cyberButton1
-            // 
-            cyberButton1.Alpha = 20;
-            cyberButton1.BackColor = Color.Transparent;
-            cyberButton1.Background = true;
-            cyberButton1.Background_WidthPen = 4F;
-            cyberButton1.BackgroundPen = true;
-            cyberButton1.ColorBackground = Color.FromArgb(0, 192, 0);
-            cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
-            cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton1.Effect_1 = true;
-            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton1.Effect_1_Transparency = 25;
-            cyberButton1.Effect_2 = true;
-            cyberButton1.Effect_2_ColorBackground = Color.White;
-            cyberButton1.Effect_2_Transparency = 20;
-            cyberButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton1.Lighting = false;
-            cyberButton1.LinearGradient_Background = false;
-            cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(471, 21);
-            cyberButton1.Name = "cyberButton1";
-            cyberButton1.PenWidth = 15;
-            cyberButton1.Rounding = true;
-            cyberButton1.RoundingInt = 70;
-            cyberButton1.Size = new Size(112, 32);
-            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton1.TabIndex = 55;
-            cyberButton1.Tag = "Cyber";
-            cyberButton1.TextButton = "AGREGAR";
-            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton1.Timer_Effect_1 = 5;
-            cyberButton1.Timer_RGB = 300;
-            // 
-            // dungeonNumeric1
-            // 
-            dungeonNumeric1.BackColor = Color.Transparent;
-            dungeonNumeric1.BackColorA = Color.FromArgb(246, 246, 246);
-            dungeonNumeric1.BackColorB = Color.FromArgb(254, 254, 254);
-            dungeonNumeric1.BorderColor = Color.FromArgb(180, 180, 180);
-            dungeonNumeric1.ButtonForeColorA = Color.FromArgb(75, 75, 75);
-            dungeonNumeric1.ButtonForeColorB = Color.FromArgb(75, 75, 75);
-            dungeonNumeric1.Font = new Font("Tahoma", 11F);
-            dungeonNumeric1.ForeColor = Color.FromArgb(76, 76, 76);
-            dungeonNumeric1.Location = new Point(345, 23);
-            dungeonNumeric1.Maximum = 100L;
-            dungeonNumeric1.Minimum = 0L;
-            dungeonNumeric1.MinimumSize = new Size(93, 28);
-            dungeonNumeric1.Name = "dungeonNumeric1";
-            dungeonNumeric1.Size = new Size(108, 28);
-            dungeonNumeric1.TabIndex = 55;
-            dungeonNumeric1.Text = "dungeonNumeric1";
-            dungeonNumeric1.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
-            dungeonNumeric1.Value = 0L;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(345, 8);
-            label17.Name = "label17";
-            label17.Size = new Size(55, 15);
-            label17.TabIndex = 59;
-            label17.Text = "Cantidad";
-            label17.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // nombreProducto
-            // 
-            nombreProducto.Alpha = 20;
-            nombreProducto.BackColor = Color.Transparent;
-            nombreProducto.Background_WidthPen = 3F;
-            nombreProducto.BackgroundPen = true;
-            nombreProducto.ColorBackground = Color.White;
-            nombreProducto.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            nombreProducto.ColorLighting = Color.FromArgb(29, 200, 238);
-            nombreProducto.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            nombreProducto.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            nombreProducto.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            nombreProducto.Font = new Font("Arial", 8F);
-            nombreProducto.ForeColor = Color.Black;
-            nombreProducto.Lighting = false;
-            nombreProducto.LinearGradientPen = false;
-            nombreProducto.Location = new Point(11, 21);
-            nombreProducto.Name = "nombreProducto";
-            nombreProducto.PenWidth = 15;
-            nombreProducto.RGB = false;
-            nombreProducto.Rounding = true;
-            nombreProducto.RoundingInt = 60;
-            nombreProducto.Size = new Size(310, 32);
-            nombreProducto.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            nombreProducto.TabIndex = 55;
-            nombreProducto.Tag = "Cyber";
-            nombreProducto.TextButton = "";
-            nombreProducto.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            nombreProducto.Timer_RGB = 300;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(14, 8);
-            label16.Name = "label16";
-            label16.Size = new Size(58, 15);
-            label16.TabIndex = 56;
-            label16.Text = "Producto";
-            label16.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.FromArgb(255, 227, 227);
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Image = Properties.Resources.boxicons__search_alt;
-            button7.Location = new Point(673, 35);
-            button7.Name = "button7";
-            button7.Size = new Size(34, 32);
-            button7.TabIndex = 60;
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(240, 45);
-            label13.Name = "label13";
-            label13.Size = new Size(72, 15);
-            label13.TabIndex = 59;
-            label13.Text = "Descripción";
-            label13.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // button6
-            // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.akar_icons__shipping_box_01;
-            button6.Location = new Point(8, 6);
-            button6.Name = "button6";
-            button6.Size = new Size(34, 26);
-            button6.TabIndex = 61;
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // txtDescripcionPedido
-            // 
-            txtDescripcionPedido.Alpha = 20;
-            txtDescripcionPedido.BackColor = Color.Transparent;
-            txtDescripcionPedido.Background_WidthPen = 3F;
-            txtDescripcionPedido.BackgroundPen = true;
-            txtDescripcionPedido.ColorBackground = Color.White;
-            txtDescripcionPedido.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtDescripcionPedido.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtDescripcionPedido.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtDescripcionPedido.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtDescripcionPedido.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtDescripcionPedido.Font = new Font("Arial", 8F);
-            txtDescripcionPedido.ForeColor = Color.Black;
-            txtDescripcionPedido.Lighting = false;
-            txtDescripcionPedido.LinearGradientPen = false;
-            txtDescripcionPedido.Location = new Point(318, 35);
-            txtDescripcionPedido.Name = "txtDescripcionPedido";
-            txtDescripcionPedido.PenWidth = 15;
-            txtDescripcionPedido.RGB = false;
-            txtDescripcionPedido.Rounding = true;
-            txtDescripcionPedido.RoundingInt = 60;
-            txtDescripcionPedido.Size = new Size(349, 32);
-            txtDescripcionPedido.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtDescripcionPedido.TabIndex = 58;
-            txtDescripcionPedido.Tag = "Cyber";
-            txtDescripcionPedido.TextButton = "";
-            txtDescripcionPedido.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtDescripcionPedido.Timer_RGB = 300;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(48, 12);
-            label12.Name = "label12";
-            label12.Size = new Size(120, 20);
-            label12.TabIndex = 62;
-            label12.Text = "NUEVO PEDIDO";
-            label12.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(15, 45);
-            label14.Name = "label14";
-            label14.Size = new Size(45, 15);
-            label14.TabIndex = 57;
-            label14.Text = "Codigo";
-            label14.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtCodigoPedido
-            // 
-            txtCodigoPedido.Alpha = 20;
-            txtCodigoPedido.BackColor = Color.Transparent;
-            txtCodigoPedido.Background_WidthPen = 3F;
-            txtCodigoPedido.BackgroundPen = true;
-            txtCodigoPedido.ColorBackground = Color.White;
-            txtCodigoPedido.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtCodigoPedido.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtCodigoPedido.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtCodigoPedido.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtCodigoPedido.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtCodigoPedido.Font = new Font("Arial", 8F);
-            txtCodigoPedido.ForeColor = Color.Black;
-            txtCodigoPedido.Lighting = false;
-            txtCodigoPedido.LinearGradientPen = false;
-            txtCodigoPedido.Location = new Point(66, 35);
-            txtCodigoPedido.Name = "txtCodigoPedido";
-            txtCodigoPedido.PenWidth = 15;
-            txtCodigoPedido.RGB = false;
-            txtCodigoPedido.Rounding = true;
-            txtCodigoPedido.RoundingInt = 60;
-            txtCodigoPedido.Size = new Size(143, 32);
-            txtCodigoPedido.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtCodigoPedido.TabIndex = 56;
-            txtCodigoPedido.Tag = "Cyber";
-            txtCodigoPedido.TextButton = "";
-            txtCodigoPedido.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtCodigoPedido.Timer_RGB = 300;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(255, 227, 227);
-            panel1.Controls.Add(txtFechaPedido);
+            panel1.Controls.Add(dtpFechaEstimadaPedido);
+            panel1.Controls.Add(dtpFechaRealizacion);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(txtFechaEstimada);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(cyberButton4);
@@ -524,35 +128,21 @@
             panel1.Text = "panel1";
             panel1.Click += panel1_Click;
             // 
-            // txtFechaPedido
+            // dtpFechaEstimadaPedido
             // 
-            txtFechaPedido.Alpha = 20;
-            txtFechaPedido.BackColor = Color.Transparent;
-            txtFechaPedido.Background_WidthPen = 3F;
-            txtFechaPedido.BackgroundPen = true;
-            txtFechaPedido.ColorBackground = Color.White;
-            txtFechaPedido.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtFechaPedido.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtFechaPedido.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtFechaPedido.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtFechaPedido.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtFechaPedido.Font = new Font("Arial", 8F);
-            txtFechaPedido.ForeColor = Color.Black;
-            txtFechaPedido.Lighting = false;
-            txtFechaPedido.LinearGradientPen = false;
-            txtFechaPedido.Location = new Point(349, 53);
-            txtFechaPedido.Name = "txtFechaPedido";
-            txtFechaPedido.PenWidth = 15;
-            txtFechaPedido.RGB = false;
-            txtFechaPedido.Rounding = true;
-            txtFechaPedido.RoundingInt = 60;
-            txtFechaPedido.Size = new Size(164, 32);
-            txtFechaPedido.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtFechaPedido.TabIndex = 76;
-            txtFechaPedido.Tag = "Cyber";
-            txtFechaPedido.TextButton = "";
-            txtFechaPedido.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtFechaPedido.Timer_RGB = 300;
+            dtpFechaEstimadaPedido.Format = DateTimePickerFormat.Custom;
+            dtpFechaEstimadaPedido.Location = new Point(535, 62);
+            dtpFechaEstimadaPedido.Name = "dtpFechaEstimadaPedido";
+            dtpFechaEstimadaPedido.Size = new Size(95, 23);
+            dtpFechaEstimadaPedido.TabIndex = 80;
+            // 
+            // dtpFechaRealizacion
+            // 
+            dtpFechaRealizacion.Format = DateTimePickerFormat.Custom;
+            dtpFechaRealizacion.Location = new Point(352, 62);
+            dtpFechaRealizacion.Name = "dtpFechaRealizacion";
+            dtpFechaRealizacion.Size = new Size(95, 23);
+            dtpFechaRealizacion.TabIndex = 79;
             // 
             // label3
             // 
@@ -560,40 +150,10 @@
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(352, 35);
             label3.Name = "label3";
-            label3.Size = new Size(97, 15);
+            label3.Size = new Size(121, 15);
             label3.TabIndex = 75;
-            label3.Text = "Fecha de Pedido";
+            label3.Text = "Fecha de Realización";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtFechaEstimada
-            // 
-            txtFechaEstimada.Alpha = 20;
-            txtFechaEstimada.BackColor = Color.Transparent;
-            txtFechaEstimada.Background_WidthPen = 3F;
-            txtFechaEstimada.BackgroundPen = true;
-            txtFechaEstimada.ColorBackground = Color.White;
-            txtFechaEstimada.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtFechaEstimada.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtFechaEstimada.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtFechaEstimada.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtFechaEstimada.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtFechaEstimada.Font = new Font("Arial", 8F);
-            txtFechaEstimada.ForeColor = Color.Black;
-            txtFechaEstimada.Lighting = false;
-            txtFechaEstimada.LinearGradientPen = false;
-            txtFechaEstimada.Location = new Point(532, 53);
-            txtFechaEstimada.Name = "txtFechaEstimada";
-            txtFechaEstimada.PenWidth = 15;
-            txtFechaEstimada.RGB = false;
-            txtFechaEstimada.Rounding = true;
-            txtFechaEstimada.RoundingInt = 60;
-            txtFechaEstimada.Size = new Size(183, 32);
-            txtFechaEstimada.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtFechaEstimada.TabIndex = 74;
-            txtFechaEstimada.Tag = "Cyber";
-            txtFechaEstimada.TextButton = "";
-            txtFechaEstimada.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtFechaEstimada.Timer_RGB = 300;
             // 
             // label1
             // 
@@ -742,7 +302,7 @@
             // 
             // cbProveedor
             // 
-            cbProveedor.BackColor = SystemColors.Window;
+            cbProveedor.BackColor = Color.White;
             cbProveedor.ColorArrow = Color.FromArgb(252, 173, 159);
             cbProveedor.ColorBackground = Color.White;
             cbProveedor.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
@@ -899,6 +459,47 @@
             label4.Text = "Proveedor";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // txtUsuario
+            // 
+            txtUsuario.Alpha = 20;
+            txtUsuario.BackColor = Color.Transparent;
+            txtUsuario.Background_WidthPen = 3F;
+            txtUsuario.BackgroundPen = true;
+            txtUsuario.ColorBackground = Color.White;
+            txtUsuario.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtUsuario.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtUsuario.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtUsuario.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtUsuario.Font = new Font("Arial", 8F);
+            txtUsuario.ForeColor = Color.Black;
+            txtUsuario.Lighting = false;
+            txtUsuario.LinearGradientPen = false;
+            txtUsuario.Location = new Point(175, 53);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.PenWidth = 15;
+            txtUsuario.RGB = false;
+            txtUsuario.Rounding = true;
+            txtUsuario.RoundingInt = 60;
+            txtUsuario.Size = new Size(160, 32);
+            txtUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtUsuario.TabIndex = 20;
+            txtUsuario.Tag = "Cyber";
+            txtUsuario.TextButton = "";
+            txtUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtUsuario.Timer_RGB = 300;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(179, 38);
+            label5.Name = "label5";
+            label5.Size = new Size(49, 15);
+            label5.TabIndex = 17;
+            label5.Text = "Usuario";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -955,10 +556,10 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(255, 227, 227);
-            panel3.Controls.Add(dgvPedidos);
+            panel3.Controls.Add(cbProveedorBuscar);
+            panel3.Controls.Add(dgvListaPedidos);
             panel3.Controls.Add(button2);
             panel3.Controls.Add(label10);
-            panel3.Controls.Add(txtProveedorBuscar);
             panel3.Controls.Add(button5);
             panel3.Controls.Add(label9);
             panel3.Controls.Add(txtNumeroPedidoBuscar);
@@ -977,51 +578,91 @@
             panel3.Text = "panel3";
             panel3.Click += panel3_Click;
             // 
-            // dgvPedidos
+            // cbProveedorBuscar
             // 
-            dgvPedidos.AllowUserToAddRows = false;
-            dgvPedidos.AllowUserToDeleteRows = false;
-            dgvPedidos.AllowUserToResizeColumns = false;
-            dgvPedidos.AllowUserToResizeRows = false;
-            dgvPedidos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPedidos.BackgroundColor = Color.White;
-            dgvPedidos.BorderStyle = BorderStyle.None;
-            dgvPedidos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dgvPedidos.EnableHeadersVisualStyles = false;
-            dgvPedidos.GridColor = SystemColors.ScrollBar;
-            dgvPedidos.Location = new Point(14, 92);
-            dgvPedidos.Name = "dgvPedidos";
-            dgvPedidos.RowHeadersVisible = false;
-            dgvPedidos.Size = new Size(868, 83);
-            dgvPedidos.TabIndex = 66;
+            cbProveedorBuscar.BackColor = Color.White;
+            cbProveedorBuscar.ColorArrow = Color.FromArgb(252, 173, 159);
+            cbProveedorBuscar.ColorBackground = Color.White;
+            cbProveedorBuscar.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            cbProveedorBuscar.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cbProveedorBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            cbProveedorBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            cbProveedorBuscar.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            cbProveedorBuscar.DrawMode = DrawMode.OwnerDrawFixed;
+            cbProveedorBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbProveedorBuscar.FlatStyle = FlatStyle.Flat;
+            cbProveedorBuscar.Font = new Font("Arial", 11F);
+            cbProveedorBuscar.ForeColor = Color.Black;
+            cbProveedorBuscar.FormattingEnabled = true;
+            cbProveedorBuscar.ItemHeight = 28;
+            cbProveedorBuscar.Items.AddRange(new object[] { "ToysNet", "Vulcanita", "TecniToys", "Fun express" });
+            cbProveedorBuscar.Location = new Point(379, 31);
+            cbProveedorBuscar.Name = "cbProveedorBuscar";
+            cbProveedorBuscar.RGB = false;
+            cbProveedorBuscar.Size = new Size(149, 34);
+            cbProveedorBuscar.TabIndex = 74;
+            cbProveedorBuscar.Timer_RGB = 300;
+            // 
+            // dgvListaPedidos
+            // 
+            dgvListaPedidos.AllowUserToAddRows = false;
+            dgvListaPedidos.AllowUserToDeleteRows = false;
+            dgvListaPedidos.AllowUserToResizeColumns = false;
+            dgvListaPedidos.AllowUserToResizeRows = false;
+            dgvListaPedidos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvListaPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListaPedidos.BackgroundColor = Color.White;
+            dgvListaPedidos.BorderStyle = BorderStyle.None;
+            dgvListaPedidos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvListaPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListaPedidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, usuarioColum, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
+            dgvListaPedidos.EnableHeadersVisualStyles = false;
+            dgvListaPedidos.GridColor = SystemColors.ScrollBar;
+            dgvListaPedidos.Location = new Point(14, 92);
+            dgvListaPedidos.Name = "dgvListaPedidos";
+            dgvListaPedidos.ReadOnly = true;
+            dgvListaPedidos.RowHeadersVisible = false;
+            dgvListaPedidos.Size = new Size(868, 83);
+            dgvListaPedidos.TabIndex = 66;
+            dgvListaPedidos.CellClick += dgvListaPedidos_CellClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.HeaderText = "Numero";
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // usuarioColum
+            // 
+            usuarioColum.HeaderText = "Usuario";
+            usuarioColum.Name = "usuarioColum";
+            usuarioColum.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             dataGridViewTextBoxColumn2.HeaderText = "Fecha Realización";
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             dataGridViewTextBoxColumn3.HeaderText = "Fecha Estimada Entrega";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn4.HeaderText = "Detalles";
+            dataGridViewTextBoxColumn4.HeaderText = "Proveedor";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             dataGridViewTextBoxColumn5.HeaderText = "Eliminar";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.Resizable = DataGridViewTriState.True;
+            dataGridViewTextBoxColumn5.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // button2
             // 
@@ -1044,36 +685,6 @@
             label10.TabIndex = 60;
             label10.Text = "Proveedor";
             label10.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtProveedorBuscar
-            // 
-            txtProveedorBuscar.Alpha = 20;
-            txtProveedorBuscar.BackColor = Color.Transparent;
-            txtProveedorBuscar.Background_WidthPen = 3F;
-            txtProveedorBuscar.BackgroundPen = true;
-            txtProveedorBuscar.ColorBackground = Color.White;
-            txtProveedorBuscar.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtProveedorBuscar.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtProveedorBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtProveedorBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtProveedorBuscar.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtProveedorBuscar.Font = new Font("Arial", 8F);
-            txtProveedorBuscar.ForeColor = Color.Black;
-            txtProveedorBuscar.Lighting = false;
-            txtProveedorBuscar.LinearGradientPen = false;
-            txtProveedorBuscar.Location = new Point(379, 31);
-            txtProveedorBuscar.Name = "txtProveedorBuscar";
-            txtProveedorBuscar.PenWidth = 15;
-            txtProveedorBuscar.RGB = false;
-            txtProveedorBuscar.Rounding = true;
-            txtProveedorBuscar.RoundingInt = 60;
-            txtProveedorBuscar.Size = new Size(200, 32);
-            txtProveedorBuscar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtProveedorBuscar.TabIndex = 66;
-            txtProveedorBuscar.Tag = "Cyber";
-            txtProveedorBuscar.TextButton = "";
-            txtProveedorBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtProveedorBuscar.Timer_RGB = 300;
             // 
             // button5
             // 
@@ -1204,46 +815,407 @@
             label11.Text = "LISTA DE PEDIDOS";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // txtCodigoPedido
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(179, 38);
-            label5.Name = "label5";
-            label5.Size = new Size(49, 15);
-            label5.TabIndex = 17;
-            label5.Text = "Usuario";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            txtCodigoPedido.Alpha = 20;
+            txtCodigoPedido.BackColor = Color.Transparent;
+            txtCodigoPedido.Background_WidthPen = 3F;
+            txtCodigoPedido.BackgroundPen = true;
+            txtCodigoPedido.ColorBackground = Color.White;
+            txtCodigoPedido.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtCodigoPedido.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtCodigoPedido.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtCodigoPedido.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtCodigoPedido.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtCodigoPedido.Font = new Font("Arial", 8F);
+            txtCodigoPedido.ForeColor = Color.Black;
+            txtCodigoPedido.Lighting = false;
+            txtCodigoPedido.LinearGradientPen = false;
+            txtCodigoPedido.Location = new Point(66, 35);
+            txtCodigoPedido.Name = "txtCodigoPedido";
+            txtCodigoPedido.PenWidth = 15;
+            txtCodigoPedido.RGB = false;
+            txtCodigoPedido.Rounding = true;
+            txtCodigoPedido.RoundingInt = 60;
+            txtCodigoPedido.Size = new Size(143, 32);
+            txtCodigoPedido.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtCodigoPedido.TabIndex = 56;
+            txtCodigoPedido.Tag = "Cyber";
+            txtCodigoPedido.TextButton = "";
+            txtCodigoPedido.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtCodigoPedido.Timer_RGB = 300;
             // 
-            // txtUsuario
+            // label14
             // 
-            txtUsuario.Alpha = 20;
-            txtUsuario.BackColor = Color.Transparent;
-            txtUsuario.Background_WidthPen = 3F;
-            txtUsuario.BackgroundPen = true;
-            txtUsuario.ColorBackground = Color.White;
-            txtUsuario.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtUsuario.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtUsuario.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtUsuario.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtUsuario.Font = new Font("Arial", 8F);
-            txtUsuario.ForeColor = Color.Black;
-            txtUsuario.Lighting = false;
-            txtUsuario.LinearGradientPen = false;
-            txtUsuario.Location = new Point(175, 53);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.PenWidth = 15;
-            txtUsuario.RGB = false;
-            txtUsuario.Rounding = true;
-            txtUsuario.RoundingInt = 60;
-            txtUsuario.Size = new Size(160, 32);
-            txtUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtUsuario.TabIndex = 20;
-            txtUsuario.Tag = "Cyber";
-            txtUsuario.TextButton = "";
-            txtUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtUsuario.Timer_RGB = 300;
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(15, 45);
+            label14.Name = "label14";
+            label14.Size = new Size(45, 15);
+            label14.TabIndex = 57;
+            label14.Text = "Codigo";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(48, 12);
+            label12.Name = "label12";
+            label12.Size = new Size(172, 20);
+            label12.TabIndex = 62;
+            label12.Text = "DATOS DEL PRODUCTO";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtDescripcionPedido
+            // 
+            txtDescripcionPedido.Alpha = 20;
+            txtDescripcionPedido.BackColor = Color.Transparent;
+            txtDescripcionPedido.Background_WidthPen = 3F;
+            txtDescripcionPedido.BackgroundPen = true;
+            txtDescripcionPedido.ColorBackground = Color.White;
+            txtDescripcionPedido.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtDescripcionPedido.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtDescripcionPedido.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtDescripcionPedido.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtDescripcionPedido.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtDescripcionPedido.Font = new Font("Arial", 8F);
+            txtDescripcionPedido.ForeColor = Color.Black;
+            txtDescripcionPedido.Lighting = false;
+            txtDescripcionPedido.LinearGradientPen = false;
+            txtDescripcionPedido.Location = new Point(318, 35);
+            txtDescripcionPedido.Name = "txtDescripcionPedido";
+            txtDescripcionPedido.PenWidth = 15;
+            txtDescripcionPedido.RGB = false;
+            txtDescripcionPedido.Rounding = true;
+            txtDescripcionPedido.RoundingInt = 60;
+            txtDescripcionPedido.Size = new Size(349, 32);
+            txtDescripcionPedido.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtDescripcionPedido.TabIndex = 58;
+            txtDescripcionPedido.Tag = "Cyber";
+            txtDescripcionPedido.TextButton = "";
+            txtDescripcionPedido.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtDescripcionPedido.Timer_RGB = 300;
+            // 
+            // button6
+            // 
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Image = Properties.Resources.akar_icons__shipping_box_01;
+            button6.Location = new Point(8, 6);
+            button6.Name = "button6";
+            button6.Size = new Size(34, 26);
+            button6.TabIndex = 61;
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(240, 45);
+            label13.Name = "label13";
+            label13.Size = new Size(72, 15);
+            label13.TabIndex = 59;
+            label13.Text = "Descripción";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel4.BackColor = Color.FromArgb(255, 200, 200);
+            panel4.Controls.Add(btnAgregarProducto);
+            panel4.Controls.Add(numCantidad);
+            panel4.Controls.Add(label17);
+            panel4.Controls.Add(nombreProducto);
+            panel4.Controls.Add(label16);
+            panel4.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel4.Location = new Point(14, 73);
+            panel4.Name = "panel4";
+            panel4.Padding = new Padding(8);
+            panel4.Size = new Size(868, 62);
+            panel4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel4.TabIndex = 63;
+            panel4.Text = "panel4";
+            // 
+            // btnAgregarProducto
+            // 
+            btnAgregarProducto.Alpha = 20;
+            btnAgregarProducto.BackColor = Color.Transparent;
+            btnAgregarProducto.Background = true;
+            btnAgregarProducto.Background_WidthPen = 4F;
+            btnAgregarProducto.BackgroundPen = true;
+            btnAgregarProducto.ColorBackground = Color.FromArgb(0, 192, 0);
+            btnAgregarProducto.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnAgregarProducto.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnAgregarProducto.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnAgregarProducto.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnAgregarProducto.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnAgregarProducto.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnAgregarProducto.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnAgregarProducto.Effect_1 = true;
+            btnAgregarProducto.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnAgregarProducto.Effect_1_Transparency = 25;
+            btnAgregarProducto.Effect_2 = true;
+            btnAgregarProducto.Effect_2_ColorBackground = Color.White;
+            btnAgregarProducto.Effect_2_Transparency = 20;
+            btnAgregarProducto.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarProducto.ForeColor = Color.FromArgb(245, 245, 245);
+            btnAgregarProducto.Lighting = false;
+            btnAgregarProducto.LinearGradient_Background = false;
+            btnAgregarProducto.LinearGradientPen = false;
+            btnAgregarProducto.Location = new Point(471, 21);
+            btnAgregarProducto.Name = "btnAgregarProducto";
+            btnAgregarProducto.PenWidth = 15;
+            btnAgregarProducto.Rounding = true;
+            btnAgregarProducto.RoundingInt = 70;
+            btnAgregarProducto.Size = new Size(112, 32);
+            btnAgregarProducto.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnAgregarProducto.TabIndex = 55;
+            btnAgregarProducto.Tag = "Cyber";
+            btnAgregarProducto.TextButton = "AGREGAR";
+            btnAgregarProducto.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnAgregarProducto.Timer_Effect_1 = 5;
+            btnAgregarProducto.Timer_RGB = 300;
+            btnAgregarProducto.Click += btnAgregarProducto_Click;
+            // 
+            // numCantidad
+            // 
+            numCantidad.BackColor = Color.Transparent;
+            numCantidad.BackColorA = Color.FromArgb(246, 246, 246);
+            numCantidad.BackColorB = Color.FromArgb(254, 254, 254);
+            numCantidad.BorderColor = Color.FromArgb(180, 180, 180);
+            numCantidad.ButtonForeColorA = Color.FromArgb(75, 75, 75);
+            numCantidad.ButtonForeColorB = Color.FromArgb(75, 75, 75);
+            numCantidad.Font = new Font("Tahoma", 11F);
+            numCantidad.ForeColor = Color.FromArgb(76, 76, 76);
+            numCantidad.Location = new Point(345, 23);
+            numCantidad.Maximum = 100L;
+            numCantidad.Minimum = 0L;
+            numCantidad.MinimumSize = new Size(93, 28);
+            numCantidad.Name = "numCantidad";
+            numCantidad.Size = new Size(108, 28);
+            numCantidad.TabIndex = 55;
+            numCantidad.Text = "dungeonNumeric1";
+            numCantidad.TextAlignment = ReaLTaiizor.Controls.DungeonNumeric._TextAlignment.Near;
+            numCantidad.Value = 0L;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Location = new Point(345, 8);
+            label17.Name = "label17";
+            label17.Size = new Size(55, 15);
+            label17.TabIndex = 59;
+            label17.Text = "Cantidad";
+            label17.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // nombreProducto
+            // 
+            nombreProducto.Alpha = 20;
+            nombreProducto.BackColor = Color.Transparent;
+            nombreProducto.Background_WidthPen = 3F;
+            nombreProducto.BackgroundPen = true;
+            nombreProducto.ColorBackground = Color.White;
+            nombreProducto.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            nombreProducto.ColorLighting = Color.FromArgb(29, 200, 238);
+            nombreProducto.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            nombreProducto.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            nombreProducto.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            nombreProducto.Font = new Font("Arial", 8F);
+            nombreProducto.ForeColor = Color.Black;
+            nombreProducto.Lighting = false;
+            nombreProducto.LinearGradientPen = false;
+            nombreProducto.Location = new Point(11, 21);
+            nombreProducto.Name = "nombreProducto";
+            nombreProducto.PenWidth = 15;
+            nombreProducto.RGB = false;
+            nombreProducto.Rounding = true;
+            nombreProducto.RoundingInt = 60;
+            nombreProducto.Size = new Size(310, 32);
+            nombreProducto.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            nombreProducto.TabIndex = 55;
+            nombreProducto.Tag = "Cyber";
+            nombreProducto.TextButton = "";
+            nombreProducto.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            nombreProducto.Timer_RGB = 300;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Location = new Point(14, 8);
+            label16.Name = "label16";
+            label16.Size = new Size(127, 15);
+            label16.TabIndex = 56;
+            label16.Text = "Nombre del producto";
+            label16.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // dgvDetallePedido
+            // 
+            dgvDetallePedido.AllowUserToAddRows = false;
+            dgvDetallePedido.AllowUserToDeleteRows = false;
+            dgvDetallePedido.AllowUserToResizeColumns = false;
+            dgvDetallePedido.AllowUserToResizeRows = false;
+            dgvDetallePedido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDetallePedido.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetallePedido.BackgroundColor = Color.White;
+            dgvDetallePedido.BorderStyle = BorderStyle.None;
+            dgvDetallePedido.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvDetallePedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetallePedido.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, nomProducto, DescripColum, CategoriaColum, CantidadColum, eliminarColum });
+            dgvDetallePedido.EnableHeadersVisualStyles = false;
+            dgvDetallePedido.GridColor = SystemColors.ScrollBar;
+            dgvDetallePedido.Location = new Point(14, 141);
+            dgvDetallePedido.Name = "dgvDetallePedido";
+            dgvDetallePedido.ReadOnly = true;
+            dgvDetallePedido.RowHeadersVisible = false;
+            dgvDetallePedido.Size = new Size(868, 83);
+            dgvDetallePedido.TabIndex = 64;
+            dgvDetallePedido.CellClick += dgvDetallePedido_CellClick;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
+            // 
+            // nomProducto
+            // 
+            nomProducto.HeaderText = "Nombre";
+            nomProducto.Name = "nomProducto";
+            nomProducto.ReadOnly = true;
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
+            // 
+            // CantidadColum
+            // 
+            CantidadColum.HeaderText = "Cantidad";
+            CantidadColum.Name = "CantidadColum";
+            CantidadColum.ReadOnly = true;
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
+            eliminarColum.Resizable = DataGridViewTriState.True;
+            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.Alpha = 20;
+            btnConfirmar.BackColor = Color.Transparent;
+            btnConfirmar.Background = true;
+            btnConfirmar.Background_WidthPen = 4F;
+            btnConfirmar.BackgroundPen = true;
+            btnConfirmar.ColorBackground = Color.FromArgb(0, 192, 0);
+            btnConfirmar.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnConfirmar.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnConfirmar.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnConfirmar.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnConfirmar.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnConfirmar.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnConfirmar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnConfirmar.Effect_1 = true;
+            btnConfirmar.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnConfirmar.Effect_1_Transparency = 25;
+            btnConfirmar.Effect_2 = true;
+            btnConfirmar.Effect_2_ColorBackground = Color.White;
+            btnConfirmar.Effect_2_Transparency = 20;
+            btnConfirmar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnConfirmar.Lighting = false;
+            btnConfirmar.LinearGradient_Background = false;
+            btnConfirmar.LinearGradientPen = false;
+            btnConfirmar.Location = new Point(11, 235);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.PenWidth = 15;
+            btnConfirmar.Rounding = true;
+            btnConfirmar.RoundingInt = 70;
+            btnConfirmar.Size = new Size(112, 32);
+            btnConfirmar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnConfirmar.TabIndex = 60;
+            btnConfirmar.Tag = "Cyber";
+            btnConfirmar.TextButton = "CONFIRMAR";
+            btnConfirmar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnConfirmar.Timer_Effect_1 = 5;
+            btnConfirmar.Timer_RGB = 300;
+            btnConfirmar.Click += btnConfirmar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Alpha = 20;
+            btnCancelar.BackColor = Color.Transparent;
+            btnCancelar.Background = true;
+            btnCancelar.Background_WidthPen = 4F;
+            btnCancelar.BackgroundPen = true;
+            btnCancelar.ColorBackground = Color.FromArgb(255, 128, 128);
+            btnCancelar.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnCancelar.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnCancelar.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnCancelar.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnCancelar.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnCancelar.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnCancelar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnCancelar.Effect_1 = true;
+            btnCancelar.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnCancelar.Effect_1_Transparency = 25;
+            btnCancelar.Effect_2 = true;
+            btnCancelar.Effect_2_ColorBackground = Color.White;
+            btnCancelar.Effect_2_Transparency = 20;
+            btnCancelar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnCancelar.Lighting = false;
+            btnCancelar.LinearGradient_Background = false;
+            btnCancelar.LinearGradientPen = false;
+            btnCancelar.Location = new Point(129, 235);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.PenWidth = 15;
+            btnCancelar.Rounding = true;
+            btnCancelar.RoundingInt = 70;
+            btnCancelar.Size = new Size(112, 32);
+            btnCancelar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnCancelar.TabIndex = 65;
+            btnCancelar.Tag = "Cyber";
+            btnCancelar.TextButton = "CANCELAR";
+            btnCancelar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnCancelar.Timer_Effect_1 = 5;
+            btnCancelar.Timer_RGB = 300;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(btnCancelar);
+            panel2.Controls.Add(btnConfirmar);
+            panel2.Controls.Add(dgvDetallePedido);
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(label13);
+            panel2.Controls.Add(button6);
+            panel2.Controls.Add(txtDescripcionPedido);
+            panel2.Controls.Add(label12);
+            panel2.Controls.Add(label14);
+            panel2.Controls.Add(txtCodigoPedido);
+            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.Location = new Point(12, 114);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(8);
+            panel2.Size = new Size(893, 273);
+            panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel2.TabIndex = 55;
+            panel2.Text = "panel2";
             // 
             // FormPedidos
             // 
@@ -1257,36 +1229,20 @@
             Name = "FormPedidos";
             Text = "FormPedidos";
             Load += FormPedidos_Load;
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvPedidos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListaPedidos).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallePedido).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private ReaLTaiizor.Controls.Panel panel2;
-        private DataGridView dgvProductos;
-        private ReaLTaiizor.Controls.Panel panel4;
-        private ReaLTaiizor.Controls.CyberButton cyberButton1;
-        private ReaLTaiizor.Controls.DungeonNumeric dungeonNumeric1;
-        private Label label17;
-        private ReaLTaiizor.Controls.CyberTextBox nombreProducto;
-        private Label label16;
-        private Button button7;
-        private Label label13;
-        private Button button6;
-        private ReaLTaiizor.Controls.CyberTextBox txtDescripcionPedido;
-        private Label label12;
-        private Label label14;
-        private ReaLTaiizor.Controls.CyberTextBox txtCodigoPedido;
         private ReaLTaiizor.Controls.Panel panel1;
         private Button button1;
         private ReaLTaiizor.Controls.CyberButton cyberButton4;
@@ -1300,21 +1256,11 @@
         private Label label6;
         private Label label7;
         private ReaLTaiizor.Controls.CyberTextBox txtNumeroPedido;
-        private DataGridViewTextBoxColumn ColumCodigo;
-        private DataGridViewTextBoxColumn DescripColum;
-        private DataGridViewTextBoxColumn CategoriaColum;
-        private DataGridViewTextBoxColumn CantidadColum;
-        private DataGridViewTextBoxColumn eliminarColum;
-        private ReaLTaiizor.Controls.CyberTextBox txtFechaEstimada;
         private Label label1;
-        private ReaLTaiizor.Controls.CyberTextBox txtFechaPedido;
         private Label label3;
-        private ReaLTaiizor.Controls.CyberButton cyberButton9;
-        private ReaLTaiizor.Controls.CyberButton cyberButton8;
         private ReaLTaiizor.Controls.Panel panel3;
         private Button button2;
         private Label label10;
-        private ReaLTaiizor.Controls.CyberTextBox txtProveedorBuscar;
         private Button button5;
         private Label label9;
         private ReaLTaiizor.Controls.CyberTextBox txtNumeroPedidoBuscar;
@@ -1323,13 +1269,39 @@
         private Label label2;
         private Button button3;
         private Label label11;
-        private DataGridView dgvPedidos;
+        private DataGridView dgvListaPedidos;
+        private ReaLTaiizor.Controls.CyberTextBox txtUsuario;
+        private Label label5;
+        private ReaLTaiizor.Controls.CyberComboBox cbProveedorBuscar;
+        private DateTimePicker dtpFechaEstimadaPedido;
+        private DateTimePicker dtpFechaRealizacion;
+        private ReaLTaiizor.Controls.CyberTextBox txtCodigoPedido;
+        private Label label14;
+        private Label label12;
+        private ReaLTaiizor.Controls.CyberTextBox txtDescripcionPedido;
+        private Button button6;
+        private Label label13;
+        private ReaLTaiizor.Controls.Panel panel4;
+        private ReaLTaiizor.Controls.CyberButton btnAgregarProducto;
+        private ReaLTaiizor.Controls.DungeonNumeric numCantidad;
+        private Label label17;
+        private ReaLTaiizor.Controls.CyberTextBox nombreProducto;
+        private Label label16;
+        private DataGridView dgvDetallePedido;
+        private ReaLTaiizor.Controls.CyberButton btnConfirmar;
+        private ReaLTaiizor.Controls.CyberButton btnCancelar;
+        private ReaLTaiizor.Controls.Panel panel2;
+        private DataGridViewTextBoxColumn ColumCodigo;
+        private DataGridViewTextBoxColumn nomProducto;
+        private DataGridViewTextBoxColumn DescripColum;
+        private DataGridViewTextBoxColumn CategoriaColum;
+        private DataGridViewTextBoxColumn CantidadColum;
+        private DataGridViewButtonColumn eliminarColum;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn usuarioColum;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private ReaLTaiizor.Controls.CyberTextBox txtUsuario;
-        private Label label5;
+        private DataGridViewButtonColumn dataGridViewTextBoxColumn5;
     }
 }

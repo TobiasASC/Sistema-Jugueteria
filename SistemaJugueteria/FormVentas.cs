@@ -597,7 +597,7 @@ namespace SistemaJugueteria
     public static class SesionProvisoria
     {
         public static string Dni { get; set; } = "11222333";
-        public static string NombreCompleto { get; set; } = "Admin Prueba";
+        public static string NombreCompleto { get; set; } = "Usuario Prueba";
     }
 
     public static class ContadorFacturaProvisorio

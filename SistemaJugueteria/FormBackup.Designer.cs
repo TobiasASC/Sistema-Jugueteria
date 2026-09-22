@@ -128,6 +128,7 @@
             dgvBackups.GridColor = SystemColors.ScrollBar;
             dgvBackups.Location = new Point(11, 163);
             dgvBackups.Name = "dgvBackups";
+            dgvBackups.ReadOnly = true;
             dgvBackups.RowHeadersVisible = false;
             dgvBackups.Size = new Size(868, 122);
             dgvBackups.TabIndex = 76;
@@ -136,26 +137,31 @@
             // 
             ColumCodigo.HeaderText = "N° Backup";
             ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
             // 
             // DescripColum
             // 
             DescripColum.HeaderText = "Base de Datos";
             DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
             // 
             // CategoriaColum
             // 
             CategoriaColum.HeaderText = "Ruta";
             CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
             // 
             // CantidadColum
             // 
             CantidadColum.HeaderText = "Fecha";
             CantidadColum.Name = "CantidadColum";
+            CantidadColum.ReadOnly = true;
             // 
             // eliminarColum
             // 
             eliminarColum.HeaderText = "Detalles";
             eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
             // 
             // label4
             // 

@@ -88,7 +88,7 @@ namespace SistemaJugueteria
             {
                 // AGREGAR fila nueva (código anterior)
                 dgvProductos.Rows.Add(codigo, descripcion, categoria, precio, strStockActual, strStockMinimo, "Editar", "X");
-                MessageBox.Show("Producto guardado temporalmente en la lista.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Producto guardado en la lista.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             // 4. Limpiar los controles

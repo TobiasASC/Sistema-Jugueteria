@@ -15,6 +15,7 @@ namespace SistemaJugueteria
         {
             InitializeComponent();
             Validaciones.ConfigurarSoloNumeros(txtNumeroReporteBuscar);
+            Validaciones.ConfigurarSoloNumeros(txtNumeroReporte);
         }
 
         private void hopeTextBox1_Click(object sender, EventArgs e)

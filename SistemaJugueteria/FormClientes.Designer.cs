@@ -485,6 +485,7 @@
             dgvClientes.GridColor = SystemColors.ScrollBar;
             dgvClientes.Location = new Point(14, 156);
             dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(868, 126);
             dgvClientes.TabIndex = 56;
@@ -494,31 +495,37 @@
             // 
             dniColum.HeaderText = "DNI";
             dniColum.Name = "dniColum";
+            dniColum.ReadOnly = true;
             // 
             // nombreColum
             // 
             nombreColum.HeaderText = "Nom y Ape";
             nombreColum.Name = "nombreColum";
+            nombreColum.ReadOnly = true;
             // 
             // DirecColum
             // 
             DirecColum.HeaderText = "Dirección";
             DirecColum.Name = "DirecColum";
+            DirecColum.ReadOnly = true;
             // 
             // emailColum
             // 
             emailColum.HeaderText = "Email";
             emailColum.Name = "emailColum";
+            emailColum.ReadOnly = true;
             // 
             // PuntosColum
             // 
             PuntosColum.HeaderText = "Puntos";
             PuntosColum.Name = "PuntosColum";
+            PuntosColum.ReadOnly = true;
             // 
             // modifColum
             // 
             modifColum.HeaderText = "Modificar";
             modifColum.Name = "modifColum";
+            modifColum.ReadOnly = true;
             modifColum.Resizable = DataGridViewTriState.True;
             modifColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
@@ -526,6 +533,7 @@
             // 
             eliminarColum.HeaderText = "Eliminar";
             eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
             eliminarColum.Resizable = DataGridViewTriState.True;
             eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 

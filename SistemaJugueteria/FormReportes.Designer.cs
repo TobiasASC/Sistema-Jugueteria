@@ -48,7 +48,6 @@
             panel3 = new ReaLTaiizor.Controls.Panel();
             dtpFechaReporteBuscar = new DateTimePicker();
             label2 = new Label();
-            cyberTextBox1 = new ReaLTaiizor.Controls.CyberTextBox();
             dgvReportes = new DataGridView();
             ColumCodigo = new DataGridViewTextBoxColumn();
             DescripColum = new DataGridViewTextBoxColumn();
@@ -64,6 +63,7 @@
             label5 = new Label();
             button3 = new Button();
             label7 = new Label();
+            motivoReportesBuscar = new ReaLTaiizor.Controls.CyberComboBox();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReportes).BeginInit();
@@ -548,9 +548,9 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(255, 227, 227);
+            panel3.Controls.Add(motivoReportesBuscar);
             panel3.Controls.Add(dtpFechaReporteBuscar);
             panel3.Controls.Add(label2);
-            panel3.Controls.Add(cyberTextBox1);
             panel3.Controls.Add(dgvReportes);
             panel3.Controls.Add(button1);
             panel3.Controls.Add(label1);
@@ -591,36 +591,6 @@
             label2.Text = "Motivo";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox1
-            // 
-            cyberTextBox1.Alpha = 20;
-            cyberTextBox1.BackColor = Color.Transparent;
-            cyberTextBox1.Background_WidthPen = 3F;
-            cyberTextBox1.BackgroundPen = true;
-            cyberTextBox1.ColorBackground = Color.White;
-            cyberTextBox1.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox1.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox1.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox1.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox1.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox1.Font = new Font("Arial", 8F);
-            cyberTextBox1.ForeColor = Color.Black;
-            cyberTextBox1.Lighting = false;
-            cyberTextBox1.LinearGradientPen = false;
-            cyberTextBox1.Location = new Point(362, 79);
-            cyberTextBox1.Name = "cyberTextBox1";
-            cyberTextBox1.PenWidth = 15;
-            cyberTextBox1.RGB = false;
-            cyberTextBox1.Rounding = true;
-            cyberTextBox1.RoundingInt = 60;
-            cyberTextBox1.Size = new Size(191, 32);
-            cyberTextBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox1.TabIndex = 80;
-            cyberTextBox1.Tag = "Cyber";
-            cyberTextBox1.TextButton = "";
-            cyberTextBox1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox1.Timer_RGB = 300;
-            // 
             // dgvReportes
             // 
             dgvReportes.AllowUserToAddRows = false;
@@ -638,6 +608,7 @@
             dgvReportes.GridColor = SystemColors.ScrollBar;
             dgvReportes.Location = new Point(17, 163);
             dgvReportes.Name = "dgvReportes";
+            dgvReportes.ReadOnly = true;
             dgvReportes.RowHeadersVisible = false;
             dgvReportes.Size = new Size(868, 122);
             dgvReportes.TabIndex = 79;
@@ -646,21 +617,25 @@
             // 
             ColumCodigo.HeaderText = "N° Reporte";
             ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
             // 
             // DescripColum
             // 
             DescripColum.HeaderText = "Fecha";
             DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
             // 
             // CategoriaColum
             // 
             CategoriaColum.HeaderText = "Motivo";
             CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
             // 
             // eliminarColum
             // 
             eliminarColum.HeaderText = "Detalles";
             eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
             eliminarColum.Resizable = DataGridViewTriState.True;
             eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
@@ -714,7 +689,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Image = Properties.Resources.boxicons__search_alt;
-            button5.Location = new Point(559, 79);
+            button5.Location = new Point(646, 82);
             button5.Name = "button5";
             button5.Size = new Size(34, 32);
             button5.TabIndex = 61;
@@ -814,6 +789,31 @@
             label7.Text = "LISTA DE REPORTES";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // motivoReportesBuscar
+            // 
+            motivoReportesBuscar.BackColor = Color.White;
+            motivoReportesBuscar.ColorArrow = Color.FromArgb(252, 173, 159);
+            motivoReportesBuscar.ColorBackground = Color.White;
+            motivoReportesBuscar.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
+            motivoReportesBuscar.ColorItemHover = Color.FromArgb(50, 70, 90);
+            motivoReportesBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            motivoReportesBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            motivoReportesBuscar.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            motivoReportesBuscar.DrawMode = DrawMode.OwnerDrawFixed;
+            motivoReportesBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
+            motivoReportesBuscar.FlatStyle = FlatStyle.Flat;
+            motivoReportesBuscar.Font = new Font("Arial", 11F);
+            motivoReportesBuscar.ForeColor = Color.Black;
+            motivoReportesBuscar.FormattingEnabled = true;
+            motivoReportesBuscar.ItemHeight = 28;
+            motivoReportesBuscar.Items.AddRange(new object[] { "Clientes", "Ventas", "Empleados", "Backups", "Pedidos" });
+            motivoReportesBuscar.Location = new Point(362, 80);
+            motivoReportesBuscar.Name = "motivoReportesBuscar";
+            motivoReportesBuscar.RGB = false;
+            motivoReportesBuscar.Size = new Size(269, 34);
+            motivoReportesBuscar.TabIndex = 82;
+            motivoReportesBuscar.Timer_RGB = 300;
+            // 
             // FormReportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -862,7 +862,6 @@
         private Button button1;
         private Label label1;
         private Label label2;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox1;
         private DataGridView dgvReportes;
         private DateTimePicker dtpFechaReporte;
         private DateTimePicker dtpFechaReporteBuscar;
@@ -870,5 +869,6 @@
         private DataGridViewTextBoxColumn DescripColum;
         private DataGridViewTextBoxColumn CategoriaColum;
         private DataGridViewButtonColumn eliminarColum;
+        private ReaLTaiizor.Controls.CyberComboBox motivoReportesBuscar;
     }
 }

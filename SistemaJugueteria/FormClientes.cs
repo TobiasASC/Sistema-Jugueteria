@@ -100,12 +100,19 @@ namespace SistemaJugueteria
                 dgvClientes.Rows[indiceFilaEditada].Cells[3].Value = email;
                 dgvClientes.Rows[indiceFilaEditada].Cells[4].Value = puntos;
 
+                // Actualizamos el bolsillo secreto con los datos separados
+                dgvClientes.Rows[indiceFilaEditada].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
+
                 MessageBox.Show("Cliente modificado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                // AGREGAR FILA NUEVA respetando el orden de tus columnas (DNI, Nom y Ape, Dirección, Email, Puntos, Modificar, Eliminar)
-                dgvClientes.Rows.Add(dni, nombreCompleto, direccion, email, puntos, "Editar", "X");
+                // AGREGAR FILA NUEVA y obtener en qué índice quedó guardada
+                int nuevaFilaIndice = dgvClientes.Rows.Add(dni, nombreCompleto, direccion, email, puntos, "Editar", "X");
+
+                // Guardamos los datos separados en el bolsillo secreto de esta nueva fila
+                dgvClientes.Rows[nuevaFilaIndice].Tag = new string[] { txtNombreCliente.TextButton.Trim(), txtApellidoCliente.TextButton.Trim() };
+
                 MessageBox.Show("¡Cliente agregado con éxito!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -185,11 +192,20 @@ namespace SistemaJugueteria
             {
                 txtDniCliente.TextButton = fila.Cells[0].Value?.ToString();
 
-                // Separamos "Nom y Ape" en dos campos. Divide por el primer espacio.
-                string nombreCompleto = fila.Cells[1].Value?.ToString() ?? "";
-                string[] partes = nombreCompleto.Split(new[] { ' ' }, 2);
-                txtNombreCliente.TextButton = partes.Length > 0 ? partes[0] : "";
-                txtApellidoCliente.TextButton = partes.Length > 1 ? partes[1] : "";
+                // Recuperamos los nombres originales exactos desde el bolsillo secreto (Tag)
+                if (fila.Tag is string[] nombresOriginales)
+                {
+                    txtNombreCliente.TextButton = nombresOriginales[0];
+                    txtApellidoCliente.TextButton = nombresOriginales[1];
+                }
+                else
+                {
+                    // Código de rescate por si la fila no tenía Tag (ej. datos cargados antes de este cambio)
+                    string nombreCompleto = fila.Cells[1].Value?.ToString() ?? "";
+                    string[] partes = nombreCompleto.Split(new[] { ' ' }, 2);
+                    txtNombreCliente.TextButton = partes.Length > 0 ? partes[0] : "";
+                    txtApellidoCliente.TextButton = partes.Length > 1 ? partes[1] : "";
+                }
 
                 txtDireccionCliente.TextButton = fila.Cells[2].Value?.ToString();
                 txtEmailCliente.TextButton = fila.Cells[3].Value?.ToString();

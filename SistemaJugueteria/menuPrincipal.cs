@@ -38,6 +38,7 @@ namespace SistemaJugueteria
                 DeshabilitarBoton(btnEmpleados);
                 DeshabilitarBoton(btnProductos);
                 DeshabilitarBoton(btnPedidos);
+                DeshabilitarBoton(btnReportes);
 
                 AbrirFormularioHijo(new FormVentas());
             }

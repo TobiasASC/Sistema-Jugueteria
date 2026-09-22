@@ -255,9 +255,9 @@
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.Location = new Point(246, 61);
             label10.Name = "label10";
-            label10.Size = new Size(53, 15);
+            label10.Size = new Size(110, 15);
             label10.TabIndex = 60;
-            label10.Text = "Nombre";
+            label10.Text = "Nombre y Apellido";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtNombreBuscar
