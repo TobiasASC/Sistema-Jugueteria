@@ -111,7 +111,7 @@
             pnlInfoFactura.Controls.Add(cyberTextBox1);
             pnlInfoFactura.Controls.Add(button1);
             pnlInfoFactura.Controls.Add(label1);
-            pnlInfoFactura.EdgeColor = Color.FromArgb(32, 41, 50);
+            pnlInfoFactura.EdgeColor = Color.Transparent;
             pnlInfoFactura.Location = new Point(10, 10);
             pnlInfoFactura.Name = "pnlInfoFactura";
             pnlInfoFactura.Padding = new Padding(8);
@@ -398,7 +398,7 @@
             panel1.Controls.Add(button4);
             panel1.Controls.Add(cyberTextBox6);
             panel1.Controls.Add(label8);
-            panel1.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel1.EdgeColor = Color.Transparent;
             panel1.Location = new Point(10, 126);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
@@ -581,7 +581,7 @@
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(cyberTextBox10);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.EdgeColor = Color.Transparent;
             panel2.Location = new Point(10, 243);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
@@ -667,7 +667,7 @@
             panel4.Controls.Add(label15);
             panel4.Controls.Add(label16);
             panel4.Controls.Add(cyberTextBox11);
-            panel4.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel4.EdgeColor = Color.Transparent;
             panel4.Location = new Point(14, 79);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(8);
@@ -959,7 +959,7 @@
             panel3.Controls.Add(cyberTextBox13);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(button8);
-            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.EdgeColor = Color.Transparent;
             panel3.Location = new Point(10, 529);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);

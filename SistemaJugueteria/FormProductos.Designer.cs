@@ -43,7 +43,7 @@
             cyberTextBox7 = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
             label9 = new Label();
-            cyberTextBox6 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtCodigoProductoBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             label8 = new Label();
             txtCantidadProductos = new ReaLTaiizor.Controls.CyberTextBox();
             label5 = new Label();
@@ -85,13 +85,13 @@
             panel3.Controls.Add(cyberTextBox7);
             panel3.Controls.Add(button5);
             panel3.Controls.Add(label9);
-            panel3.Controls.Add(cyberTextBox6);
+            panel3.Controls.Add(txtCodigoProductoBuscar);
             panel3.Controls.Add(label8);
             panel3.Controls.Add(txtCantidadProductos);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
-            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.EdgeColor = Color.Transparent;
             panel3.Location = new Point(8, 206);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);
@@ -250,35 +250,35 @@
             label9.Text = "Codigo";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox6
+            // txtCodigoProductoBuscar
             // 
-            cyberTextBox6.Alpha = 20;
-            cyberTextBox6.BackColor = Color.Transparent;
-            cyberTextBox6.Background_WidthPen = 3F;
-            cyberTextBox6.BackgroundPen = true;
-            cyberTextBox6.ColorBackground = Color.White;
-            cyberTextBox6.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox6.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox6.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox6.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox6.Font = new Font("Arial", 8F);
-            cyberTextBox6.ForeColor = Color.Black;
-            cyberTextBox6.Lighting = false;
-            cyberTextBox6.LinearGradientPen = false;
-            cyberTextBox6.Location = new Point(20, 79);
-            cyberTextBox6.Name = "cyberTextBox6";
-            cyberTextBox6.PenWidth = 15;
-            cyberTextBox6.RGB = false;
-            cyberTextBox6.Rounding = true;
-            cyberTextBox6.RoundingInt = 60;
-            cyberTextBox6.Size = new Size(194, 32);
-            cyberTextBox6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox6.TabIndex = 63;
-            cyberTextBox6.Tag = "Cyber";
-            cyberTextBox6.TextButton = "";
-            cyberTextBox6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox6.Timer_RGB = 300;
+            txtCodigoProductoBuscar.Alpha = 20;
+            txtCodigoProductoBuscar.BackColor = Color.Transparent;
+            txtCodigoProductoBuscar.Background_WidthPen = 3F;
+            txtCodigoProductoBuscar.BackgroundPen = true;
+            txtCodigoProductoBuscar.ColorBackground = Color.White;
+            txtCodigoProductoBuscar.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtCodigoProductoBuscar.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtCodigoProductoBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtCodigoProductoBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtCodigoProductoBuscar.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtCodigoProductoBuscar.Font = new Font("Arial", 8F);
+            txtCodigoProductoBuscar.ForeColor = Color.Black;
+            txtCodigoProductoBuscar.Lighting = false;
+            txtCodigoProductoBuscar.LinearGradientPen = false;
+            txtCodigoProductoBuscar.Location = new Point(20, 79);
+            txtCodigoProductoBuscar.Name = "txtCodigoProductoBuscar";
+            txtCodigoProductoBuscar.PenWidth = 15;
+            txtCodigoProductoBuscar.RGB = false;
+            txtCodigoProductoBuscar.Rounding = true;
+            txtCodigoProductoBuscar.RoundingInt = 60;
+            txtCodigoProductoBuscar.Size = new Size(194, 32);
+            txtCodigoProductoBuscar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtCodigoProductoBuscar.TabIndex = 63;
+            txtCodigoProductoBuscar.Tag = "Cyber";
+            txtCodigoProductoBuscar.TextButton = "";
+            txtCodigoProductoBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtCodigoProductoBuscar.Timer_RGB = 300;
             // 
             // label8
             // 
@@ -379,7 +379,7 @@
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(txtCodigoProducto);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.EdgeColor = Color.Transparent;
             panel2.Location = new Point(8, 12);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
@@ -428,6 +428,7 @@
             cyberButton4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberButton4.Timer_Effect_1 = 5;
             cyberButton4.Timer_RGB = 300;
+            cyberButton4.Click += btnCancelar_Click;
             // 
             // button6
             // 
@@ -564,7 +565,7 @@
             btnLimpiarProducto.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnLimpiarProducto.Timer_Effect_1 = 5;
             btnLimpiarProducto.Timer_RGB = 300;
-            btnLimpiarProducto.Click += btnLimpiarProducto_Click;
+            btnLimpiarProducto.Click += btnNuevo_Click;
             // 
             // categoriaProducto
             // 
@@ -907,7 +908,7 @@
         private ReaLTaiizor.Controls.CyberTextBox cyberTextBox7;
         private Button button5;
         private Label label9;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox6;
+        private ReaLTaiizor.Controls.CyberTextBox txtCodigoProductoBuscar;
         private Label label8;
         private ReaLTaiizor.Controls.CyberTextBox txtCantidadProductos;
         private Label label5;

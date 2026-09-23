@@ -119,7 +119,7 @@
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(txtNumeroPedido);
-            panel1.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel1.EdgeColor = Color.Transparent;
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
@@ -570,7 +570,7 @@
             panel3.Controls.Add(label2);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label11);
-            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.EdgeColor = Color.Transparent;
             panel3.Location = new Point(12, 393);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);
@@ -931,7 +931,7 @@
             panel4.Controls.Add(label17);
             panel4.Controls.Add(nombreProducto);
             panel4.Controls.Add(label16);
-            panel4.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel4.EdgeColor = Color.Transparent;
             panel4.Location = new Point(14, 73);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(8);
@@ -1252,7 +1252,7 @@
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(txtCodigoPedido);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.EdgeColor = Color.Transparent;
             panel2.Location = new Point(12, 114);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);

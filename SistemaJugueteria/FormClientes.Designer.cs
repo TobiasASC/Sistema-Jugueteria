@@ -559,7 +559,7 @@
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(txtDniCliente);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.EdgeColor = Color.Transparent;
             panel2.Location = new Point(12, 12);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
@@ -584,7 +584,7 @@
             panel3.Controls.Add(dgvClientes);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
-            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.EdgeColor = Color.Transparent;
             panel3.Location = new Point(12, 211);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);

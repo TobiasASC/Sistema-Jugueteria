@@ -113,7 +113,7 @@
             panel3.Controls.Add(label5);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label7);
-            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.EdgeColor = Color.Transparent;
             panel3.Location = new Point(12, 276);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(8);
@@ -725,7 +725,7 @@
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label14);
-            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.EdgeColor = Color.Transparent;
             panel2.Location = new Point(12, 12);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(8);
@@ -941,7 +941,7 @@
             panel1.Controls.Add(cyberButton6);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(label16);
-            panel1.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel1.EdgeColor = Color.Transparent;
             panel1.Location = new Point(465, 12);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
