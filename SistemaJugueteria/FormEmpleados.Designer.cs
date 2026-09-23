@@ -65,6 +65,7 @@
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton3 = new ReaLTaiizor.Controls.CyberButton();
             panel2 = new ReaLTaiizor.Controls.Panel();
+            btnNuevoEmpleado = new ReaLTaiizor.Controls.CyberButton();
             label19 = new Label();
             txtTelefonoEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
             txtNombreEmpleado = new ReaLTaiizor.Controls.CyberTextBox();
@@ -707,6 +708,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(btnNuevoEmpleado);
             panel2.Controls.Add(label19);
             panel2.Controls.Add(txtTelefonoEmpleado);
             panel2.Controls.Add(txtNombreEmpleado);
@@ -733,6 +735,47 @@
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 56;
             panel2.Text = "panel2";
+            // 
+            // btnNuevoEmpleado
+            // 
+            btnNuevoEmpleado.Alpha = 20;
+            btnNuevoEmpleado.BackColor = Color.Transparent;
+            btnNuevoEmpleado.Background = true;
+            btnNuevoEmpleado.Background_WidthPen = 4F;
+            btnNuevoEmpleado.BackgroundPen = true;
+            btnNuevoEmpleado.ColorBackground = Color.FromArgb(0, 192, 0);
+            btnNuevoEmpleado.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnNuevoEmpleado.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnNuevoEmpleado.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnNuevoEmpleado.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnNuevoEmpleado.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnNuevoEmpleado.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnNuevoEmpleado.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnNuevoEmpleado.Effect_1 = true;
+            btnNuevoEmpleado.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnNuevoEmpleado.Effect_1_Transparency = 25;
+            btnNuevoEmpleado.Effect_2 = true;
+            btnNuevoEmpleado.Effect_2_ColorBackground = Color.White;
+            btnNuevoEmpleado.Effect_2_Transparency = 20;
+            btnNuevoEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNuevoEmpleado.ForeColor = Color.FromArgb(245, 245, 245);
+            btnNuevoEmpleado.Lighting = false;
+            btnNuevoEmpleado.LinearGradient_Background = false;
+            btnNuevoEmpleado.LinearGradientPen = false;
+            btnNuevoEmpleado.Location = new Point(59, 218);
+            btnNuevoEmpleado.Name = "btnNuevoEmpleado";
+            btnNuevoEmpleado.PenWidth = 15;
+            btnNuevoEmpleado.Rounding = true;
+            btnNuevoEmpleado.RoundingInt = 70;
+            btnNuevoEmpleado.Size = new Size(97, 32);
+            btnNuevoEmpleado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnNuevoEmpleado.TabIndex = 73;
+            btnNuevoEmpleado.Tag = "Cyber";
+            btnNuevoEmpleado.TextButton = "NUEVO";
+            btnNuevoEmpleado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnNuevoEmpleado.Timer_Effect_1 = 5;
+            btnNuevoEmpleado.Timer_RGB = 300;
+            btnNuevoEmpleado.Click += btnNuevoEmpleado_Click;
             // 
             // label19
             // 
@@ -863,7 +906,7 @@
             btnGuardarEmpleado.Lighting = false;
             btnGuardarEmpleado.LinearGradient_Background = false;
             btnGuardarEmpleado.LinearGradientPen = false;
-            btnGuardarEmpleado.Location = new Point(314, 216);
+            btnGuardarEmpleado.Location = new Point(162, 218);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             btnGuardarEmpleado.PenWidth = 15;
             btnGuardarEmpleado.Rounding = true;
@@ -904,7 +947,7 @@
             btnCancelarEmpleado.Lighting = false;
             btnCancelarEmpleado.LinearGradient_Background = false;
             btnCancelarEmpleado.LinearGradientPen = false;
-            btnCancelarEmpleado.Location = new Point(220, 216);
+            btnCancelarEmpleado.Location = new Point(265, 218);
             btnCancelarEmpleado.Name = "btnCancelarEmpleado";
             btnCancelarEmpleado.PenWidth = 15;
             btnCancelarEmpleado.Rounding = true;
@@ -1453,5 +1496,6 @@
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewButtonColumn Modificar;
         private DataGridViewButtonColumn Eliminar;
+        private ReaLTaiizor.Controls.CyberButton btnNuevoEmpleado;
     }
 }

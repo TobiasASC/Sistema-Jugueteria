@@ -184,7 +184,7 @@ namespace SistemaJugueteria
             html.AppendLine("</div>");
             html.AppendLine("<div style='text-align: right;'>");
             html.AppendLine($"<p><strong>Tipo/Motivo:</strong> {motivo}</p>");
-            html.AppendLine($"<p><strong>Generado por:</strong> {SesionProvisoria.NombreCompleto}</p>");
+            html.AppendLine($"<p><strong>Generado por:</strong> {Sesion.NombreCompleto}</p>");
             html.AppendLine("</div>");
             html.AppendLine("</div>");
 

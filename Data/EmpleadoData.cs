@@ -75,13 +75,14 @@ namespace SistemaJugueteria.Data
             List<Empleado> lista = new List<Empleado>();
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
+                // Agregamos filtro: u.id_rol <> 1 (o r.nombre_rol <> 'Administrador')
                 string query = @"
-                    SELECT e.id_empleado, e.dni_empleado, e.nombre_empleado, e.apellido_empleado, 
-                    e.correo_empleado, e.telefono_empleado, e.direccion_empleado, r.nombre_rol 
-                    FROM Empleado e
-                    INNER JOIN Usuario u ON e.id_empleado = u.id_empleado
-                    INNER JOIN Rol r ON u.id_rol = r.id_rol
-                    WHERE e.estado = @estadoBuscado";
+            SELECT e.id_empleado, e.dni_empleado, e.nombre_empleado, e.apellido_empleado, 
+            e.correo_empleado, e.telefono_empleado, e.direccion_empleado, r.nombre_rol 
+            FROM Empleado e
+            INNER JOIN Usuario u ON e.id_empleado = u.id_empleado
+            INNER JOIN Rol r ON u.id_rol = r.id_rol
+            WHERE e.estado = @estadoBuscado AND u.id_rol <> 1";
 
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.Parameters.AddWithValue("@estadoBuscado", estadoBuscado);
@@ -132,15 +133,18 @@ namespace SistemaJugueteria.Data
             DataTable dt = new DataTable();
             using (var conexion = Conexion.ObtenerConexion())
             {
+                // Unimos con Usuario para excluir a los administradores (id_rol <> 1)
                 string query = @"SELECT 
-                            e.id_empleado AS [ID],
-                            e.dni_empleado AS [DNI],
-                            e.nombre_empleado + ' ' + e.apellido_empleado AS [Nombre Completo],
-                            e.correo_empleado AS [Correo],
-                            e.telefono_empleado AS [Teléfono],
-                            e.direccion_empleado AS [Dirección],
-                            CASE WHEN e.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS [Estado]
-                         FROM Empleado e";
+                    e.id_empleado AS [ID],
+                    e.dni_empleado AS [DNI],
+                    e.nombre_empleado + ' ' + e.apellido_empleado AS [Nombre Completo],
+                    e.correo_empleado AS [Correo],
+                    e.telefono_empleado AS [Teléfono],
+                    e.direccion_empleado AS [Dirección],
+                    CASE WHEN e.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS [Estado]
+                 FROM Empleado e
+                 LEFT JOIN Usuario u ON e.id_empleado = u.id_empleado
+                 WHERE u.id_rol IS NULL OR u.id_rol <> 1";
 
                 using (var comando = new SqlCommand(query, conexion))
                 {

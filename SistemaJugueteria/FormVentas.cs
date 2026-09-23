@@ -24,8 +24,8 @@ namespace SistemaJugueteria
         private void FormVentas_Load(object sender, EventArgs e)
         {
             // 1. Cargar datos de sesión
-            AsignarTextoControl("cyberTextBox1", SesionProvisoria.Dni);            // Vendedor DNI
-            AsignarTextoControl("cyberTextBox2", SesionProvisoria.NombreCompleto); // Vendedor Nombre
+            AsignarTextoControl("cyberTextBox1", Sesion.Dni);            // Vendedor DNI
+            AsignarTextoControl("cyberTextBox2", Sesion.NombreCompleto); // Vendedor Nombre
             AsignarTextoControl("cyberTextBox3", ContadorFacturaProvisorio.ObtenerNumeroSiguiente()); // N° Factura
 
             // 2. Timer Fecha y Hora

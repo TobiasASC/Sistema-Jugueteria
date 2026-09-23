@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -21,7 +22,8 @@ namespace SistemaJugueteria
             Validaciones.ConfigurarSoloNumeros(txtNumeroPedidoBuscar);
             Validaciones.ConfigurarSoloNumeros(txtCodigoPedido);
 
-            txtUsuario.TextButton = SesionProvisoria.NombreCompleto;
+            // Nombre de usuario desde Sesión
+            txtUsuario.TextButton = Sesion.NombreCompleto;
 
             TextBox txtUsuarioReal = txtUsuario.Controls.OfType<TextBox>().FirstOrDefault();
             if (txtUsuarioReal != null)
@@ -46,6 +48,9 @@ namespace SistemaJugueteria
             }
 
             GenerarSiguienteNumeroPedido();
+
+            // Suscribir el evento para el color del estado
+            dgvListaPedidos.CellFormatting += dgvListaPedidos_CellFormatting;
         }
 
         private void GenerarSiguienteNumeroPedido()
@@ -70,8 +75,7 @@ namespace SistemaJugueteria
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             string codigo = txtCodigoPedido.TextButton;
-            string descripcion = txtDescripcionPedido.TextButton;
-            string nombre = nombreProducto.TextButton;
+            string descripcion = txtDescripcionPedido.TextButton; // Se usa solo la descripción
 
             if (string.IsNullOrWhiteSpace(descripcion))
             {
@@ -87,7 +91,9 @@ namespace SistemaJugueteria
 
             string categoria = "-";
 
-            dgvDetallePedido.Rows.Add(codigo, nombre, descripcion, categoria, cantidad, "X");
+            // Se agregan las columnas eliminando 'nombre': 
+            // 0: Codigo, 1: Descripcion, 2: Categoria, 3: Cantidad, 4: Eliminar ("X")
+            dgvDetallePedido.Rows.Add(codigo, descripcion, categoria, cantidad, "X");
 
             LimpiarCamposProducto();
         }
@@ -115,7 +121,9 @@ namespace SistemaJugueteria
             string fechaRealizacion = dtpFechaRealizacion.Value.ToString("dd/MM/yyyy");
             string fechaEstimada = dtpFechaEstimadaPedido.Checked ? dtpFechaEstimadaPedido.Value.ToString("dd/MM/yyyy") : "A confirmar";
 
-            dgvListaPedidos.Rows.Add(numero, usuario, fechaRealizacion, fechaEstimada, proveedor, "X");
+            // Asumiendo las columnas en dgvListaPedidos:
+            // 0: Numero | 1: Usuario | 2: FechaRealizacion | 3: FechaEstimada | 4: Proveedor | 5: Estado | 6: Eliminar | 7: Detalle
+            dgvListaPedidos.Rows.Add(numero, usuario, fechaRealizacion, fechaEstimada, proveedor, "Pendiente", "X", "📄 Detalle");
 
             MessageBox.Show("Pedido registrado y confirmado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -144,7 +152,6 @@ namespace SistemaJugueteria
         {
             txtCodigoPedido.TextButton = "";
             txtDescripcionPedido.TextButton = "";
-            nombreProducto.TextButton = "";
             numCantidad.Value = 0;
         }
 
@@ -162,7 +169,8 @@ namespace SistemaJugueteria
         {
             if (e.RowIndex < 0 || e.RowIndex == dgvDetallePedido.NewRowIndex) return;
 
-            if (e.ColumnIndex == 5)
+            // Al eliminar 'nombre', la columna 'Eliminar' (X) pasa a ser la número 4
+            if (e.ColumnIndex == 4)
             {
                 DialogResult respuesta = MessageBox.Show("¿Desea quitar este producto del pedido actual?", "Quitar producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -177,7 +185,24 @@ namespace SistemaJugueteria
         {
             if (e.RowIndex < 0 || e.RowIndex == dgvListaPedidos.NewRowIndex) return;
 
+            // COLUMNA 5: ESTADO (Cambio de estado: Pendiente <-> Recibido)
             if (e.ColumnIndex == 5)
+            {
+                string estadoActual = dgvListaPedidos.Rows[e.RowIndex].Cells[5].Value?.ToString();
+
+                if (estadoActual == "Pendiente")
+                {
+                    dgvListaPedidos.Rows[e.RowIndex].Cells[5].Value = "Recibido";
+                }
+                else
+                {
+                    dgvListaPedidos.Rows[e.RowIndex].Cells[5].Value = "Pendiente";
+                }
+
+                dgvListaPedidos.InvalidateRow(e.RowIndex);
+            }
+            // COLUMNA 6: ELIMINAR
+            else if (e.ColumnIndex == 6)
             {
                 string numPedido = dgvListaPedidos.Rows[e.RowIndex].Cells[0].Value?.ToString();
 
@@ -187,6 +212,65 @@ namespace SistemaJugueteria
                 {
                     dgvListaPedidos.Rows.RemoveAt(e.RowIndex);
                     ActualizarContadorPedidos();
+                }
+            }
+            // COLUMNA 7: DETALLE (Simulación de descarga de PDF)
+            else if (e.ColumnIndex == 7)
+            {
+                string numPedido = dgvListaPedidos.Rows[e.RowIndex].Cells[0].Value?.ToString();
+                string proveedor = dgvListaPedidos.Rows[e.RowIndex].Cells[4].Value?.ToString();
+
+                SimularDescargaPDF(numPedido, proveedor);
+            }
+        }
+
+        // Método auxiliar para simular la descarga/apertura del PDF de detalle del pedido
+        private void SimularDescargaPDF(string numeroPedido, string proveedor)
+        {
+            string rutaTemporal = Path.Combine(Path.GetTempPath(), $"Pedido_{numeroPedido}_Detalle.txt");
+
+            string contenidoPDF = $@"==========================================" + "\n" +
+                                   $"    COMPROBANTE DE DETALLE DE PEDIDO     " + "\n" +
+                                   $"==========================================" + "\n" +
+                                   $"Número de Pedido: {numeroPedido}\n" +
+                                   $"Proveedor: {proveedor}\n" +
+                                   $"Fecha de Descarga: {DateTime.Now:dd/MM/yyyy HH:mm}\n" +
+                                   $"------------------------------------------\n" +
+                                   $"[DETALLES DEL PEDIDO SOLICITADO]\n" +
+                                   $"- Producto Ejemplo A x 5 unidades\n" +
+                                   $"- Producto Ejemplo B x 2 unidades\n" +
+                                   $"==========================================";
+
+            File.WriteAllText(rutaTemporal, contenidoPDF);
+
+            MessageBox.Show($"Descargando detalle en PDF para el pedido N° {numeroPedido}...", "Descarga de Archivo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Simula abrir el PDF utilizando el visor del sistema (abre el bloc de notas)
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(rutaTemporal) { UseShellExecute = true });
+        }
+
+        // EVENTO PARA EL COLOR DEL ESTADO (Gris = Pendiente, Verde = Recibido)
+        private void dgvListaPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaPedidos.NewRowIndex) return;
+
+            if (e.ColumnIndex == 5)
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Recibido")
+                {
+                    e.CellStyle.BackColor = Color.MediumSeaGreen;
+                    e.CellStyle.ForeColor = Color.White;
+                    e.CellStyle.SelectionBackColor = Color.SeaGreen;
+                    e.CellStyle.SelectionForeColor = Color.White;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Color.LightGray;
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.SelectionBackColor = Color.Gray;
+                    e.CellStyle.SelectionForeColor = Color.White;
                 }
             }
         }

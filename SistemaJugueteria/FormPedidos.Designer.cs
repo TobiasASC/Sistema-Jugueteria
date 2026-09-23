@@ -50,12 +50,6 @@
             panel3 = new ReaLTaiizor.Controls.Panel();
             cbProveedorBuscar = new ReaLTaiizor.Controls.CyberComboBox();
             dgvListaPedidos = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            usuarioColum = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewButtonColumn();
             button2 = new Button();
             label10 = new Label();
             button5 = new Button();
@@ -80,15 +74,23 @@
             nombreProducto = new ReaLTaiizor.Controls.CyberTextBox();
             label16 = new Label();
             dgvDetallePedido = new DataGridView();
+            btnConfirmar = new ReaLTaiizor.Controls.CyberButton();
+            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
+            panel2 = new ReaLTaiizor.Controls.Panel();
+            button4 = new Button();
             ColumCodigo = new DataGridViewTextBoxColumn();
-            nomProducto = new DataGridViewTextBoxColumn();
             DescripColum = new DataGridViewTextBoxColumn();
             CategoriaColum = new DataGridViewTextBoxColumn();
             CantidadColum = new DataGridViewTextBoxColumn();
             eliminarColum = new DataGridViewButtonColumn();
-            btnConfirmar = new ReaLTaiizor.Controls.CyberButton();
-            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
-            panel2 = new ReaLTaiizor.Controls.Panel();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            usuarioColum = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            estadoColum = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewButtonColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaPedidos).BeginInit();
@@ -132,7 +134,7 @@
             // dtpFechaEstimadaPedido
             // 
             dtpFechaEstimadaPedido.Format = DateTimePickerFormat.Custom;
-            dtpFechaEstimadaPedido.Location = new Point(535, 56);
+            dtpFechaEstimadaPedido.Location = new Point(524, 56);
             dtpFechaEstimadaPedido.Name = "dtpFechaEstimadaPedido";
             dtpFechaEstimadaPedido.Size = new Size(95, 23);
             dtpFechaEstimadaPedido.TabIndex = 80;
@@ -140,7 +142,7 @@
             // dtpFechaRealizacion
             // 
             dtpFechaRealizacion.Format = DateTimePickerFormat.Custom;
-            dtpFechaRealizacion.Location = new Point(359, 56);
+            dtpFechaRealizacion.Location = new Point(372, 56);
             dtpFechaRealizacion.Name = "dtpFechaRealizacion";
             dtpFechaRealizacion.Size = new Size(95, 23);
             dtpFechaRealizacion.TabIndex = 79;
@@ -149,7 +151,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(359, 38);
+            label3.Location = new Point(372, 38);
             label3.Name = "label3";
             label3.Size = new Size(121, 15);
             label3.TabIndex = 75;
@@ -160,7 +162,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(535, 38);
+            label1.Location = new Point(524, 38);
             label1.Name = "label1";
             label1.Size = new Size(154, 15);
             label1.TabIndex = 73;
@@ -319,7 +321,7 @@
             cbProveedor.FormattingEnabled = true;
             cbProveedor.ItemHeight = 28;
             cbProveedor.Items.AddRange(new object[] { "ToysNet", "Vulcanita", "TecniToys", "Fun express" });
-            cbProveedor.Location = new Point(733, 53);
+            cbProveedor.Location = new Point(715, 53);
             cbProveedor.Name = "cbProveedor";
             cbProveedor.RGB = false;
             cbProveedor.Size = new Size(149, 34);
@@ -454,7 +456,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(734, 35);
+            label4.Location = new Point(716, 35);
             label4.Name = "label4";
             label4.Size = new Size(66, 15);
             label4.TabIndex = 27;
@@ -586,7 +588,7 @@
             cbProveedorBuscar.ColorArrow = Color.FromArgb(252, 173, 159);
             cbProveedorBuscar.ColorBackground = Color.White;
             cbProveedorBuscar.ColorBackground_Pen = Color.FromArgb(252, 173, 159);
-            cbProveedorBuscar.ColorItemHover = Color.FromArgb(50, 70, 90);
+            cbProveedorBuscar.ColorItemHover = Color.FromArgb(255, 224, 192);
             cbProveedorBuscar.ColorPen_1 = Color.FromArgb(29, 200, 238);
             cbProveedorBuscar.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cbProveedorBuscar.CyberComboBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
@@ -617,7 +619,7 @@
             dgvListaPedidos.BorderStyle = BorderStyle.None;
             dgvListaPedidos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvListaPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListaPedidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, usuarioColum, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
+            dgvListaPedidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, usuarioColum, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, estadoColum, dataGridViewTextBoxColumn5, Column1 });
             dgvListaPedidos.EnableHeadersVisualStyles = false;
             dgvListaPedidos.GridColor = SystemColors.ScrollBar;
             dgvListaPedidos.Location = new Point(14, 92);
@@ -627,44 +629,6 @@
             dgvListaPedidos.Size = new Size(868, 83);
             dgvListaPedidos.TabIndex = 66;
             dgvListaPedidos.CellClick += dgvListaPedidos_CellClick;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Numero";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // usuarioColum
-            // 
-            usuarioColum.HeaderText = "Usuario";
-            usuarioColum.Name = "usuarioColum";
-            usuarioColum.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Fecha Realización";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Fecha Estimada Entrega";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Proveedor";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Eliminar";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Resizable = DataGridViewTriState.True;
-            dataGridViewTextBoxColumn5.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // button2
             // 
@@ -694,7 +658,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Image = Properties.Resources.boxicons__search_alt;
-            button5.Location = new Point(591, 31);
+            button5.Location = new Point(535, 31);
             button5.Name = "button5";
             button5.Size = new Size(34, 32);
             button5.TabIndex = 61;
@@ -790,9 +754,9 @@
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(16, 193);
             label2.Name = "label2";
-            label2.Size = new Size(134, 15);
+            label2.Size = new Size(121, 15);
             label2.TabIndex = 58;
-            label2.Text = "Cantidad de Productos:";
+            label2.Text = "Cantidad de Pedidos:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button3
@@ -1090,9 +1054,9 @@
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.Location = new Point(14, 8);
             label16.Name = "label16";
-            label16.Size = new Size(127, 15);
+            label16.Size = new Size(58, 15);
             label16.TabIndex = 56;
-            label16.Text = "Nombre del producto";
+            label16.Text = "Producto";
             label16.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dgvDetallePedido
@@ -1107,7 +1071,7 @@
             dgvDetallePedido.BorderStyle = BorderStyle.None;
             dgvDetallePedido.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvDetallePedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetallePedido.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, nomProducto, DescripColum, CategoriaColum, CantidadColum, eliminarColum });
+            dgvDetallePedido.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, CantidadColum, eliminarColum });
             dgvDetallePedido.EnableHeadersVisualStyles = false;
             dgvDetallePedido.GridColor = SystemColors.ScrollBar;
             dgvDetallePedido.Location = new Point(14, 141);
@@ -1117,44 +1081,6 @@
             dgvDetallePedido.Size = new Size(868, 83);
             dgvDetallePedido.TabIndex = 64;
             dgvDetallePedido.CellClick += dgvDetallePedido_CellClick;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            ColumCodigo.ReadOnly = true;
-            // 
-            // nomProducto
-            // 
-            nomProducto.HeaderText = "Nombre";
-            nomProducto.Name = "nomProducto";
-            nomProducto.ReadOnly = true;
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            DescripColum.ReadOnly = true;
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            CategoriaColum.ReadOnly = true;
-            // 
-            // CantidadColum
-            // 
-            CantidadColum.HeaderText = "Cantidad";
-            CantidadColum.Name = "CantidadColum";
-            CantidadColum.ReadOnly = true;
-            // 
-            // eliminarColum
-            // 
-            eliminarColum.HeaderText = "Eliminar";
-            eliminarColum.Name = "eliminarColum";
-            eliminarColum.ReadOnly = true;
-            eliminarColum.Resizable = DataGridViewTriState.True;
-            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // btnConfirmar
             // 
@@ -1242,6 +1168,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(button4);
             panel2.Controls.Add(btnCancelar);
             panel2.Controls.Add(btnConfirmar);
             panel2.Controls.Add(dgvDetallePedido);
@@ -1260,6 +1187,100 @@
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 55;
             panel2.Text = "panel2";
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(255, 227, 227);
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Image = Properties.Resources.boxicons__search_alt;
+            button4.Location = new Point(673, 35);
+            button4.Name = "button4";
+            button4.Size = new Size(34, 32);
+            button4.TabIndex = 66;
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
+            // 
+            // CantidadColum
+            // 
+            CantidadColum.HeaderText = "Cantidad";
+            CantidadColum.Name = "CantidadColum";
+            CantidadColum.ReadOnly = true;
+            // 
+            // eliminarColum
+            // 
+            eliminarColum.HeaderText = "Eliminar";
+            eliminarColum.Name = "eliminarColum";
+            eliminarColum.ReadOnly = true;
+            eliminarColum.Resizable = DataGridViewTriState.True;
+            eliminarColum.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Numero";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // usuarioColum
+            // 
+            usuarioColum.HeaderText = "Usuario";
+            usuarioColum.Name = "usuarioColum";
+            usuarioColum.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Fecha Realización";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Fecha Estimada Entrega";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Proveedor";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // estadoColum
+            // 
+            estadoColum.HeaderText = "Estado";
+            estadoColum.Name = "estadoColum";
+            estadoColum.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.HeaderText = "Eliminar";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.Resizable = DataGridViewTriState.True;
+            dataGridViewTextBoxColumn5.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Detalles";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             // 
             // FormPedidos
             // 
@@ -1335,18 +1356,20 @@
         private ReaLTaiizor.Controls.CyberButton btnConfirmar;
         private ReaLTaiizor.Controls.CyberButton btnCancelar;
         private ReaLTaiizor.Controls.Panel panel2;
-        private DataGridViewTextBoxColumn ColumCodigo;
-        private DataGridViewTextBoxColumn nomProducto;
-        private DataGridViewTextBoxColumn DescripColum;
-        private DataGridViewTextBoxColumn CategoriaColum;
-        private DataGridViewTextBoxColumn CantidadColum;
-        private DataGridViewButtonColumn eliminarColum;
+        private ReaLTaiizor.Controls.CyberButton cyberButton1;
+        private Button button4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn usuarioColum;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn estadoColum;
         private DataGridViewButtonColumn dataGridViewTextBoxColumn5;
-        private ReaLTaiizor.Controls.CyberButton cyberButton1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn ColumCodigo;
+        private DataGridViewTextBoxColumn DescripColum;
+        private DataGridViewTextBoxColumn CategoriaColum;
+        private DataGridViewTextBoxColumn CantidadColum;
+        private DataGridViewButtonColumn eliminarColum;
     }
 }
