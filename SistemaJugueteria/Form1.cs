@@ -20,14 +20,44 @@ namespace SistemaJugueteria
         private void pictureBox2_Click(object sender, EventArgs e) { }
         private void hopeTextBox2_Click(object sender, EventArgs e) { }
         private void bigLabel2_Click(object sender, EventArgs e) { }
-        private void Form1_Load(object sender, EventArgs e) { }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Inicia la contraseña oculta por defecto al cargar la pantalla
+            AlternarVisibilidadContraseña(false);
+        }
+
+        private void AlternarVisibilidadContraseña(bool mostrar)
+        {
+            // Busca la caja de texto real si el control es personalizado (ej. HopeTextBox / CyberTextBox)
+            TextBox txtPassReal = txtContraseña.Controls.OfType<TextBox>().FirstOrDefault();
+
+            if (txtPassReal != null)
+            {
+                txtPassReal.UseSystemPasswordChar = !mostrar;
+                txtPassReal.PasswordChar = mostrar ? '\0' : '*';
+            }
+            else
+            {
+                // Por si se utiliza un TextBox nativo de Windows Forms
+                txtContraseña.UseSystemPasswordChar = !mostrar;
+                txtContraseña.PasswordChar = mostrar ? '\0' : '*';
+            }
+        }
+
+        private void chkMostrarPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            bool mostrar = chk != null && chk.Checked;
+            AlternarVisibilidadContraseña(mostrar);
+        }
 
         private void hopeButton1_Click_1(object sender, EventArgs e)
         {
             try
             {
-                string usuarioInput = txtUsuario.Text;
-                string contraseñaInput = txtContraseña.Text;
+                string usuarioInput = txtUsuario.Text.Trim();
+                string contraseñaInput = txtContraseña.Text.Trim();
 
                 UsuarioBusiness negocioUsuario = new UsuarioBusiness();
 

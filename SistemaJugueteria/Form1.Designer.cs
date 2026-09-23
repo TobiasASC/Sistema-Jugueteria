@@ -37,6 +37,7 @@
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox1 = new PictureBox();
             hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
+            checkBox1 = new CheckBox();
             menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -47,6 +48,7 @@
             // 
             menuPrincipal.Anchor = AnchorStyles.None;
             menuPrincipal.BackColor = Color.FromArgb(255, 255, 255);
+            menuPrincipal.Controls.Add(checkBox1);
             menuPrincipal.Controls.Add(pictureBox3);
             menuPrincipal.Controls.Add(pictureBox2);
             menuPrincipal.Controls.Add(txtContraseña);
@@ -186,6 +188,16 @@
             hopeButton1.WarningColor = Color.FromArgb(230, 162, 60);
             hopeButton1.Click += hopeButton1_Click_1;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(298, 287);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 76;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.Click += chkMostrarPassword_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -217,5 +229,6 @@
         private ReaLTaiizor.Controls.HopeTextBox txtUsuario;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
+        private CheckBox checkBox1;
     }
 }

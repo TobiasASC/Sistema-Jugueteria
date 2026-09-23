@@ -25,8 +25,6 @@ namespace SistemaJugueteria
         public FormEmpleados()
         {
             InitializeComponent();
-
-            // Configurar el ComboBox de Roles al abrir la pantalla
             CargarRolesEnComboBox();
         }
 
@@ -46,6 +44,9 @@ namespace SistemaJugueteria
 
         private void label12_Click(object sender, EventArgs e) { }
 
+        // =========================================================================
+        // BÚSQUEDA POR LUPA (MODIFICADO: Sin autocompletar contraseña hasheada)
+        // =========================================================================
         private void btnLupaDniEmpleado_Click(object sender, EventArgs e)
         {
             try
@@ -80,8 +81,11 @@ namespace SistemaJugueteria
                         idUsuarioAEditar = usuarioExistente.IdUsuario;
 
                         EscribirCyberTextBox(txtUsuario, usuarioExistente.NombreUsuario);
-                        EscribirCyberTextBox(txtContraseña, usuarioExistente.Contraseña);
-                        EscribirCyberTextBox(txtConfirmarContraseña, usuarioExistente.Contraseña);
+
+                        // DEJAR CONTRASEÑAS VACÍAS POR SEGURIDAD (Evita mostrar el Hash)
+                        EscribirCyberTextBox(txtContraseña, "");
+                        EscribirCyberTextBox(txtConfirmarContraseña, "");
+
                         cmbRol.SelectedValue = usuarioExistente.IdRol;
                     }
                     else
@@ -129,6 +133,12 @@ namespace SistemaJugueteria
         {
             try
             {
+                if (idUsuarioAEditar != 0)
+                {
+                    MessageBox.Show("Está en modo modificación. Para guardar cambios use 'Guardar', o 'Cancelar' para limpiar e ingresar un nuevo usuario.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string nombreUsu = LeerCyberTextBox(txtUsuario);
                 string pass = LeerCyberTextBox(txtContraseña);
                 string confirmacion = LeerCyberTextBox(txtConfirmarContraseña);
@@ -147,29 +157,25 @@ namespace SistemaJugueteria
 
                 if (idEmpleadoSeleccionado == 0)
                 {
-                    MessageBox.Show("Primero debe buscar y seleccionar un empleado con la lupa.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Primero debe seleccionar un empleado (de la lista o con la lupa).", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 Usuario nuevoUsuario = new Usuario
                 {
-                    IdUsuario = idUsuarioAEditar,
+                    IdUsuario = 0,
                     NombreUsuario = nombreUsu,
                     Contraseña = pass,
                     IdRol = Convert.ToInt32(cmbRol.SelectedValue),
                     IdEmpleado = idEmpleadoSeleccionado
                 };
 
-                char operacion = (idUsuarioAEditar == 0) ? 'A' : 'M';
-
                 UsuarioBusiness negocio = new UsuarioBusiness();
-                negocio.RegistrarUsuario(nuevoUsuario, confirmacion, operacion);
+                negocio.RegistrarUsuario(nuevoUsuario, confirmacion, 'A');
 
-                string mensajeExito = (operacion == 'A') ? "Usuario creado exitosamente." : "Usuario actualizado correctamente.";
-                MessageBox.Show(mensajeExito, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimpiarCamposUsuario();
-
                 int estadoActual = chkEstado.Checked ? 0 : 1;
                 CargarGrillaEmpleados(estadoActual);
             }
@@ -190,9 +196,67 @@ namespace SistemaJugueteria
             }
         }
 
-        // =========================================================================
-        // 1. BOTÓN NUEVO: REGISTRA UN EMPLEADO NUEVO (ALTA - 'A')
-        // =========================================================================
+        private void btnGuardarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (idUsuarioAEditar == 0)
+                {
+                    MessageBox.Show("Para modificar un usuario, primero debe seleccionarlo de la lista haciendo clic en 'Modificar' o buscarlo con la lupa. Si desea crear uno nuevo, use 'Agregar'.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string nombreUsu = LeerCyberTextBox(txtUsuario);
+                string pass = LeerCyberTextBox(txtContraseña);
+                string confirmacion = LeerCyberTextBox(txtConfirmarContraseña);
+
+                if (string.IsNullOrWhiteSpace(nombreUsu) || string.IsNullOrWhiteSpace(pass) || string.IsNullOrWhiteSpace(confirmacion))
+                {
+                    MessageBox.Show("Todos los campos de usuario son obligatorios.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (pass != confirmacion)
+                {
+                    MessageBox.Show("Las contraseñas no coinciden.", "Error de seguridad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                Usuario usuarioModificado = new Usuario
+                {
+                    IdUsuario = idUsuarioAEditar,
+                    NombreUsuario = nombreUsu,
+                    Contraseña = pass,
+                    IdRol = Convert.ToInt32(cmbRol.SelectedValue),
+                    IdEmpleado = idEmpleadoSeleccionado
+                };
+
+                UsuarioBusiness negocio = new UsuarioBusiness();
+                negocio.RegistrarUsuario(usuarioModificado, confirmacion, 'M');
+
+                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarCamposUsuario();
+                int estadoActual = chkEstado.Checked ? 0 : 1;
+                CargarGrillaEmpleados(estadoActual);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    MessageBox.Show("Ese nombre de usuario ya está en uso. Por favor, elija uno diferente.", "Usuario duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Error de base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             try
@@ -206,7 +270,7 @@ namespace SistemaJugueteria
 
                 Empleado nuevoEmpleado = new Empleado
                 {
-                    IdEmpleado = 0, // Siempre 0 para indicar que es un registro nuevo
+                    IdEmpleado = 0,
                     DniEmpleado = dni,
                     NombreEmpleado = nombre,
                     ApellidoEmpleado = apellido,
@@ -220,7 +284,6 @@ namespace SistemaJugueteria
 
                 MessageBox.Show("Empleado registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Autocompletar datos de usuario para agilizar el proceso
                 EscribirCyberTextBox(txtDniEmpleadoBuscar, dni);
                 Clipboard.SetText(dni);
 
@@ -248,14 +311,10 @@ namespace SistemaJugueteria
             }
         }
 
-        // =========================================================================
-        // 2. BOTÓN GUARDAR: ACTUALIZA LOS DATOS DE UN EMPLEADO (MODIFICACIÓN - 'M')
-        // =========================================================================
         private void btnGuardarEmpleado_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verificar que se haya seleccionado un empleado de la grilla
                 if (idEmpleadoAEditar == 0)
                 {
                     MessageBox.Show("Para modificar, primero debe seleccionar un empleado de la lista presionando 'Modificar'. Si desea agregar uno nuevo, use el botón 'NUEVO'.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -321,7 +380,7 @@ namespace SistemaJugueteria
             TextBox cajaReal = txtDniEmpleado.Controls.OfType<TextBox>().FirstOrDefault();
             if (cajaReal != null) cajaReal.Focus();
 
-            idEmpleadoAEditar = 0; // Se resetea el ID en edición
+            idEmpleadoAEditar = 0;
         }
 
         private void LimpiarCamposUsuario()
@@ -335,6 +394,7 @@ namespace SistemaJugueteria
                 cmbRol.SelectedIndex = 0;
 
             idEmpleadoSeleccionado = 0;
+            idUsuarioAEditar = 0;
         }
 
         private string LeerCyberTextBox(ReaLTaiizor.Controls.CyberTextBox cyberCaja)
@@ -414,7 +474,33 @@ namespace SistemaJugueteria
                 cajaNombreBuscar.TextChanged += FiltroEnTiempoReal_TextChanged;
             }
 
+            AlternarVisibilidadContraseñas(false);
             CargarGrillaEmpleados();
+        }
+
+        private void AlternarVisibilidadContraseñas(bool mostrar)
+        {
+            TextBox txtPass = txtContraseña.Controls.OfType<TextBox>().FirstOrDefault();
+            TextBox txtPassConfirm = txtConfirmarContraseña.Controls.OfType<TextBox>().FirstOrDefault();
+
+            if (txtPass != null)
+            {
+                txtPass.UseSystemPasswordChar = !mostrar;
+                txtPass.PasswordChar = mostrar ? '\0' : '*';
+            }
+
+            if (txtPassConfirm != null)
+            {
+                txtPassConfirm.UseSystemPasswordChar = !mostrar;
+                txtPassConfirm.PasswordChar = mostrar ? '\0' : '*';
+            }
+        }
+
+        private void chkMostrarPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            bool mostrar = chk != null && chk.Checked;
+            AlternarVisibilidadContraseñas(mostrar);
         }
 
         private void FiltroEnTiempoReal_TextChanged(object sender, EventArgs e)
@@ -466,6 +552,9 @@ namespace SistemaJugueteria
             LimpiarCamposUsuario();
         }
 
+        // =========================================================================
+        // BOTÓN MODIFICAR / ELIMINAR DE LA GRILLA (MODIFICADO: Sin autocompletar contraseña hasheada)
+        // =========================================================================
         private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -480,8 +569,8 @@ namespace SistemaJugueteria
             {
                 try
                 {
+                    // 1. Cargar datos del Empleado
                     idEmpleadoAEditar = Convert.ToInt32(dgvEmpleados.Rows[e.RowIndex].Tag);
-
                     string dniClickeado = dgvEmpleados.Rows[e.RowIndex].Cells["dniColum"].Value.ToString();
 
                     EmpleadoData data = new EmpleadoData();
@@ -495,6 +584,33 @@ namespace SistemaJugueteria
                         EscribirCyberTextBox(txtDireccionEmpleado, emp.DireccionEmpleado);
                         EscribirCyberTextBox(txtEmailEmpleado, emp.CorreoEmpleado);
                         EscribirCyberTextBox(txtTelefonoEmpleado, emp.TelefonoEmpleado);
+
+                        // 2. Cargar datos del Usuario asociado
+                        idEmpleadoSeleccionado = emp.IdEmpleado;
+                        EscribirCyberTextBox(txtDniEmpleadoBuscar, emp.DniEmpleado);
+
+                        UsuarioData usuData = new UsuarioData();
+                        Usuario usuarioExistente = usuData.BuscarUsuarioPorIdEmpleado(emp.IdEmpleado);
+
+                        if (usuarioExistente != null)
+                        {
+                            idUsuarioAEditar = usuarioExistente.IdUsuario;
+                            EscribirCyberTextBox(txtUsuario, usuarioExistente.NombreUsuario);
+
+                            // DEJAR CONTRASEÑAS VACÍAS POR SEGURIDAD (Evita mostrar el Hash)
+                            EscribirCyberTextBox(txtContraseña, "");
+                            EscribirCyberTextBox(txtConfirmarContraseña, "");
+
+                            cmbRol.SelectedValue = usuarioExistente.IdRol;
+                        }
+                        else
+                        {
+                            idUsuarioAEditar = 0;
+                            EscribirCyberTextBox(txtUsuario, "");
+                            EscribirCyberTextBox(txtContraseña, "");
+                            EscribirCyberTextBox(txtConfirmarContraseña, "");
+                            if (cmbRol.Items.Count > 0) cmbRol.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
@@ -586,5 +702,7 @@ namespace SistemaJugueteria
             int estado = chkEstado.Checked ? 1 : 0;
             CargarGrillaEmpleados(estado);
         }
+
+        private void checkBox1_TextChanged(object sender, EventArgs e) { }
     }
 }

@@ -73,6 +73,8 @@
             btnGuardarEmpleado = new ReaLTaiizor.Controls.CyberButton();
             btnCancelarEmpleado = new ReaLTaiizor.Controls.CyberButton();
             panel1 = new ReaLTaiizor.Controls.Panel();
+            checkBox1 = new CheckBox();
+            btnGuardarUsuario = new ReaLTaiizor.Controls.CyberButton();
             btnCancelarUsuario = new ReaLTaiizor.Controls.CyberButton();
             btnAgregarUsuario = new ReaLTaiizor.Controls.CyberButton();
             btnLupaDniEmpleado = new Button();
@@ -90,6 +92,7 @@
             cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
             button2 = new Button();
             label16 = new Label();
+            chkMostrarPassword = new CheckBox();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             panel2.SuspendLayout();
@@ -966,6 +969,9 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(255, 227, 227);
+            panel1.Controls.Add(chkMostrarPassword);
+            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(btnGuardarUsuario);
             panel1.Controls.Add(cmbRol);
             panel1.Controls.Add(btnCancelarUsuario);
             panel1.Controls.Add(btnAgregarUsuario);
@@ -994,6 +1000,57 @@
             panel1.Text = "panel1";
             panel1.Click += panel1_Click;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(170, 160);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 75;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.Click += chkMostrarPassword_CheckedChanged;
+            // 
+            // btnGuardarUsuario
+            // 
+            btnGuardarUsuario.Alpha = 20;
+            btnGuardarUsuario.BackColor = Color.Transparent;
+            btnGuardarUsuario.Background = true;
+            btnGuardarUsuario.Background_WidthPen = 4F;
+            btnGuardarUsuario.BackgroundPen = true;
+            btnGuardarUsuario.ColorBackground = Color.FromArgb(128, 128, 255);
+            btnGuardarUsuario.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnGuardarUsuario.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnGuardarUsuario.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnGuardarUsuario.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnGuardarUsuario.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnGuardarUsuario.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnGuardarUsuario.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnGuardarUsuario.Effect_1 = true;
+            btnGuardarUsuario.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnGuardarUsuario.Effect_1_Transparency = 25;
+            btnGuardarUsuario.Effect_2 = true;
+            btnGuardarUsuario.Effect_2_ColorBackground = Color.White;
+            btnGuardarUsuario.Effect_2_Transparency = 20;
+            btnGuardarUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardarUsuario.ForeColor = Color.FromArgb(245, 245, 245);
+            btnGuardarUsuario.Lighting = false;
+            btnGuardarUsuario.LinearGradient_Background = false;
+            btnGuardarUsuario.LinearGradientPen = false;
+            btnGuardarUsuario.Location = new Point(160, 205);
+            btnGuardarUsuario.Name = "btnGuardarUsuario";
+            btnGuardarUsuario.PenWidth = 15;
+            btnGuardarUsuario.Rounding = true;
+            btnGuardarUsuario.RoundingInt = 70;
+            btnGuardarUsuario.Size = new Size(97, 32);
+            btnGuardarUsuario.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnGuardarUsuario.TabIndex = 74;
+            btnGuardarUsuario.Tag = "Cyber";
+            btnGuardarUsuario.TextButton = "GUARDAR";
+            btnGuardarUsuario.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnGuardarUsuario.Timer_Effect_1 = 5;
+            btnGuardarUsuario.Timer_RGB = 300;
+            btnGuardarUsuario.Click += btnGuardarUsuario_Click;
+            // 
             // btnCancelarUsuario
             // 
             btnCancelarUsuario.Alpha = 20;
@@ -1020,7 +1077,7 @@
             btnCancelarUsuario.Lighting = false;
             btnCancelarUsuario.LinearGradient_Background = false;
             btnCancelarUsuario.LinearGradientPen = false;
-            btnCancelarUsuario.Location = new Point(213, 205);
+            btnCancelarUsuario.Location = new Point(263, 205);
             btnCancelarUsuario.Name = "btnCancelarUsuario";
             btnCancelarUsuario.PenWidth = 15;
             btnCancelarUsuario.Rounding = true;
@@ -1061,7 +1118,7 @@
             btnAgregarUsuario.Lighting = false;
             btnAgregarUsuario.LinearGradient_Background = false;
             btnAgregarUsuario.LinearGradientPen = false;
-            btnAgregarUsuario.Location = new Point(110, 205);
+            btnAgregarUsuario.Location = new Point(57, 205);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.PenWidth = 15;
             btnAgregarUsuario.Rounding = true;
@@ -1412,6 +1469,16 @@
             label16.Text = "DATOS DE USUARIO";
             label16.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // chkMostrarPassword
+            // 
+            chkMostrarPassword.AutoSize = true;
+            chkMostrarPassword.Location = new Point(384, 160);
+            chkMostrarPassword.Name = "chkMostrarPassword";
+            chkMostrarPassword.Size = new Size(15, 14);
+            chkMostrarPassword.TabIndex = 76;
+            chkMostrarPassword.UseVisualStyleBackColor = true;
+            chkMostrarPassword.Click += chkMostrarPassword_CheckedChanged;
+            // 
             // FormEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1497,5 +1564,8 @@
         private DataGridViewButtonColumn Modificar;
         private DataGridViewButtonColumn Eliminar;
         private ReaLTaiizor.Controls.CyberButton btnNuevoEmpleado;
+        private ReaLTaiizor.Controls.CyberButton btnGuardarUsuario;
+        private CheckBox checkBox1;
+        private CheckBox chkMostrarPassword;
     }
 }
