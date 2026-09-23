@@ -153,6 +153,7 @@ namespace SistemaJugueteria
             txtCodigoPedido.TextButton = "";
             txtDescripcionPedido.TextButton = "";
             numCantidad.Value = 0;
+            nombreProducto.TextButton = "";
         }
 
         private void btnCancelarProducto_Click(object sender, EventArgs e)

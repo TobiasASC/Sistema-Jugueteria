@@ -28,6 +28,7 @@ namespace SistemaJugueteria
             CargarRolesEnComboBox();
         }
 
+        // Asignación de roles al ComboBox 
         private void CargarRolesEnComboBox()
         {
             var roles = new System.Collections.Generic.List<KeyValuePair<int, string>>()
@@ -112,6 +113,7 @@ namespace SistemaJugueteria
             }
         }
 
+        // Limpiar todos los campos del formulario de empleado 
         private void btnLimpiarEmpleado_Click(object sender, EventArgs e)
         {
             LimpiarCamposEmpleado();
@@ -256,7 +258,9 @@ namespace SistemaJugueteria
                 MessageBox.Show(ex.Message, "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
+        
+        //1
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             try
@@ -547,6 +551,7 @@ namespace SistemaJugueteria
             }
         }
 
+        // Limpiar campos de usuario al presionar el botón "Cancelar"
         private void btnCancelarUsuario_Click(object sender, EventArgs e)
         {
             LimpiarCamposUsuario();

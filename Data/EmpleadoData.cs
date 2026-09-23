@@ -1,4 +1,4 @@
-﻿using Entities; // O SistemaJugueteria.Entities dependiendo de tu estructura
+﻿using Entities; 
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Data;
 
 namespace SistemaJugueteria.Data
 {
-    // Eliminamos la herencia de ConexionBase
+    
     public class EmpleadoData
     {
         public int ABMEmpleado(Empleado empleado, char operacion)

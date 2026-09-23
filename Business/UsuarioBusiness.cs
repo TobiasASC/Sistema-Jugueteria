@@ -22,14 +22,14 @@ namespace SistemaJugueteria.Business
 
             if (usuarioBD != null)
             {
-                // --- NUEVA REGLA DE NEGOCIO ---
+                
                 if (usuarioBD.Estado == 0)
                 {
-                    // Frenamos en seco y lanzamos tu mensaje personalizado
+                    
                     throw new ArgumentException("Error al ingresar: Usuario dado de baja.");
                 }
 
-                // Si está activo (1), verificamos la clave
+                
                 bool claveCorrecta = BCrypt.Net.BCrypt.Verify(contraseñaInput, usuarioBD.Contraseña);
 
                 if (claveCorrecta)
