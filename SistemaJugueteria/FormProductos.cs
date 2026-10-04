@@ -1,51 +1,46 @@
-﻿using SistemaJugueteria.Presentacion.Utilidades;
+﻿using SistemaJugueteria.Business;
+using SistemaJugueteria.Entities;
+using SistemaJugueteria.Presentacion.Utilidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SistemaJugueteria
 {
     public partial class FormProductos : Form
     {
-        private int indiceFilaEditada = -1;
+        // Variables de negocio para manejar operaciones relacionadas con productos  
+        private ProductoBusiness _productoBusiness = new ProductoBusiness();
+        private CategoriaBusiness _categoriaBusiness = new CategoriaBusiness();
+        // Variable para determinar si estamos en modo de modificación o no
+        private bool esModificacion = false;
 
         public FormProductos()
         {
             InitializeComponent();
 
-            // Configuración de validaciones
             Validaciones.ConfigurarSoloNumeros(txtCodigoProducto);
             Validaciones.ConfigurarSoloDecimales(txtPrecioProducto);
             Validaciones.ConfigurarSoloNumeros(txtCodigoProductoBuscar);
+
+            dgvProductos.AutoGenerateColumns = false;
         }
 
-        // Método auxiliar seguro para obtener texto de controles personalizados
         private string ObtenerTexto(Control control)
         {
             if (control == null) return "";
-
-            // Intenta leer la propiedad TextButton si existe
             var propiedadTextButton = control.GetType().GetProperty("TextButton");
             if (propiedadTextButton != null)
             {
                 string valor = propiedadTextButton.GetValue(control, null)?.ToString();
                 if (!string.IsNullOrWhiteSpace(valor)) return valor.Trim();
             }
-
-            // Si no, lee la propiedad Text nativa
             return control.Text.Trim();
         }
 
-        // Método auxiliar seguro para asignar texto a controles personalizados
         private void AsignarTexto(Control control, string valor)
         {
             if (control == null) return;
-
             var propiedadTextButton = control.GetType().GetProperty("TextButton");
             if (propiedadTextButton != null)
             {
@@ -56,179 +51,275 @@ namespace SistemaJugueteria
 
         private void FormProductos_Load(object sender, EventArgs e)
         {
-            ActualizarContador();
+            CargarCategorias();
+            CargarGrilla();
+
+            // Vincular eventos KeyUp a los controles internos de los CyberTextBox para filtrar la grilla   
+            VincularEventoInterno(txtCodigoProductoBuscar);
+            VincularEventoInterno(txtDescripcionBuscar);
         }
 
-        // 1. BOTÓN NUEVO: Agrega un producto a la DataGridView
+        // Método para vincular el evento KeyUp a los controles internos de los CyberTextBox
+        private void VincularEventoInterno(ReaLTaiizor.Controls.CyberTextBox cyberCaja)
+        {
+            if (cyberCaja == null) return;
 
+            foreach (Control controlInterno in cyberCaja.Controls)
+            {
+                if (controlInterno is TextBox cajaReal)
+                {
+                    cajaReal.KeyUp += new KeyEventHandler(CajasDeBusqueda_KeyUp);
+                    break;
+                }
+            }
+        }
+
+        // Evento que se dispara cuando se presiona una tecla en las cajas de búsqueda
+        private void CajasDeBusqueda_KeyUp(object sender, KeyEventArgs e)
+        {
+            FiltrarGrilla();
+        }
+
+        // Método para cargar los productos en el DataGridView
+        private void CargarGrilla()
+        {
+            bool verInactivos = chkEstado.Checked;
+            dgvProductos.DataSource = _productoBusiness.ListarProductos(verInactivos);
+            ActualizarContador();
+
+            if (dgvProductos.Columns.Count > 6 && dgvProductos.Columns[6] is DataGridViewButtonColumn columModificar)
+            {
+                columModificar.UseColumnTextForButtonValue = true;
+                columModificar.Text = "Modificar";
+            }
+
+            if (dgvProductos.Columns.Count > 7 && dgvProductos.Columns[7] is DataGridViewButtonColumn columEliminar)
+            {
+                columEliminar.UseColumnTextForButtonValue = true;
+                columEliminar.Text = verInactivos ? "Reactivar" : "Eliminar";
+            }
+        }
+
+        // Evento que se dispara al hacer clic en el botón "Nuevo"
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposVacios()) return;
-
-            string codigo = ObtenerTexto(txtCodigoProducto);
-            string descripcion = ObtenerTexto(txtDescripcionProducto);
-            string precioPuro = ObtenerTexto(txtPrecioProducto);
-            string categoria = string.IsNullOrWhiteSpace(categoriaProducto.Text) ? "-" : categoriaProducto.Text;
-            string strStockActual = stockActual.Value.ToString();
-            string strStockMinimo = stockMinimo.Value.ToString();
-
-            string precioFinal = string.IsNullOrWhiteSpace(precioPuro) ? "$ 0" : "$ " + precioPuro;
-
-            // Agregar nueva fila a la grilla y capturar en qué índice quedó
-            int nuevaFilaIndice = dgvProductos.Rows.Add(codigo, descripcion, categoria, precioFinal, strStockActual, strStockMinimo, "Editar", "X");
-
-            // Guardamos los datos originales (sin símbolos) en el Tag
-            dgvProductos.Rows[nuevaFilaIndice].Tag = new string[] { codigo, descripcion, categoria, precioPuro, strStockActual, strStockMinimo };
-
-            MessageBox.Show("Producto registrado correctamente.", "Nuevo Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            LimpiarFormulario();
-            ActualizarContador();
-        }
-        // 2. BOTÓN GUARDAR: Modifica la fila seleccionada
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (indiceFilaEditada < 0)
+            // Bloquea la creación si el usuario está modificando un producto
+            if (esModificacion)
             {
-                MessageBox.Show("Seleccione un producto de la lista (opción 'Editar') para poder guardar los cambios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Actualmente está modificando un producto. Presione 'Guardar' para aplicar los cambios, o 'Cancelar' para limpiar el formulario y registrar uno nuevo.", "Modo Edición", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (ValidarCamposVacios()) return;
 
-            string codigo = ObtenerTexto(txtCodigoProducto);
-            string descripcion = ObtenerTexto(txtDescripcionProducto);
-            string precioPuro = ObtenerTexto(txtPrecioProducto);
-            string categoria = string.IsNullOrWhiteSpace(categoriaProducto.Text) ? "-" : categoriaProducto.Text;
-            string strStockActual = stockActual.Value.ToString();
-            string strStockMinimo = stockMinimo.Value.ToString();
+            Producto nuevoProducto = new Producto()
+            {
+                IdProducto = ObtenerTexto(txtCodigoProducto),
+                Descripcion = ObtenerTexto(txtDescripcionProducto),
+                PrecioVenta = Convert.ToDecimal(ObtenerTexto(txtPrecioProducto)),
+                StockActual = (int)stockActual.Value,
+                StockMinimo = (int)stockMinimo.Value,
+                IdCategoria = Convert.ToInt32(cbCategoriaProducto.SelectedValue)
+            };
 
-            string precioFinal = string.IsNullOrWhiteSpace(precioPuro) ? "$ 0" : "$ " + precioPuro;
+            string mensaje = _productoBusiness.RegistrarProducto(nuevoProducto);
+            MessageBox.Show(mensaje, "Nuevo Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Actualizar celdas visuales de la fila en edición
-            dgvProductos.Rows[indiceFilaEditada].Cells[0].Value = codigo;
-            dgvProductos.Rows[indiceFilaEditada].Cells[1].Value = descripcion;
-            dgvProductos.Rows[indiceFilaEditada].Cells[2].Value = categoria;
-            dgvProductos.Rows[indiceFilaEditada].Cells[3].Value = precioFinal;
-            dgvProductos.Rows[indiceFilaEditada].Cells[4].Value = strStockActual;
-            dgvProductos.Rows[indiceFilaEditada].Cells[5].Value = strStockMinimo;
-
-            // Actualizar también el Tag
-            dgvProductos.Rows[indiceFilaEditada].Tag = new string[] { codigo, descripcion, categoria, precioPuro, strStockActual, strStockMinimo };
-
-            MessageBox.Show("Producto modificado correctamente.", "Cambios Guardados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            LimpiarFormulario();
+            if (mensaje.Contains("correctamente"))
+            {
+                LimpiarFormulario();
+                CargarGrilla();
+            }
         }
 
-        // 3. BOTÓN CANCELAR: Limpia las cajas de texto y resetea la edición
+        // Evento que se dispara al hacer clic en el botón "Guardar"
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (!esModificacion)
+            {
+                MessageBox.Show("Seleccione un producto de la lista (opción 'Modificar') para poder guardar los cambios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (ValidarCamposVacios()) return;
+
+            Producto productoModificado = new Producto()
+            {
+                IdProducto = ObtenerTexto(txtCodigoProducto),
+                Descripcion = ObtenerTexto(txtDescripcionProducto),
+                PrecioVenta = Convert.ToDecimal(ObtenerTexto(txtPrecioProducto)),
+                StockActual = (int)stockActual.Value,
+                StockMinimo = (int)stockMinimo.Value,
+                IdCategoria = Convert.ToInt32(cbCategoriaProducto.SelectedValue)
+            };
+
+            string mensaje = _productoBusiness.ModificarProducto(productoModificado);
+            MessageBox.Show(mensaje, "Cambios Guardados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (mensaje.Contains("correctamente"))
+            {
+                LimpiarFormulario();
+                CargarGrilla();
+            }
+        }
+
+        // Evento que se dispara al hacer clic en el botón "Cancelar"
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
         }
 
-        private void btnLimpiarProducto_Click(object sender, EventArgs e)
-        {
-            LimpiarFormulario();
-        }
 
+
+        // Método para limpiar el formulario y resetear los campos
         private void LimpiarFormulario()
         {
-            indiceFilaEditada = -1;
+            esModificacion = false;
 
             AsignarTexto(txtCodigoProducto, "");
             AsignarTexto(txtDescripcionProducto, "");
             AsignarTexto(txtPrecioProducto, "");
-            categoriaProducto.SelectedIndex = -1;
+            cbCategoriaProducto.SelectedIndex = -1;
             stockActual.Value = 0;
             stockMinimo.Value = 0;
+
+            if (txtCodigoProducto != null) txtCodigoProducto.Enabled = true;
         }
 
+        // Método para actualizar el contador de productos en la interfaz
         private void ActualizarContador()
         {
-            int cantidad = dgvProductos.AllowUserToAddRows ? dgvProductos.Rows.Count - 1 : dgvProductos.Rows.Count;
-            AsignarTexto(txtCantidadProductos, cantidad < 0 ? "0" : cantidad.ToString());
+            if (dgvProductos.DataSource is DataTable dt)
+            {
+                // Cuenta las filas de la vista filtrada
+                AsignarTexto(txtCantidadProductos, dt.DefaultView.Count.ToString());
+            }
+            else
+            {
+                AsignarTexto(txtCantidadProductos, dgvProductos.Rows.Count.ToString());
+            }
         }
 
-        // ACCIONES EN LA GRILLA (EDITAR Y ELIMINAR)
+        // Evento que se dispara al hacer clic en una celda del DataGridView
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.RowIndex == dgvProductos.NewRowIndex) return;
+            if (e.RowIndex < 0) return;
 
             DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
 
-            // Columna 6: EDITAR
             if (e.ColumnIndex == 6)
             {
-                // Leemos directamente desde nuestro bolsillo secreto (Tag) si existe
-                if (fila.Tag is string[] datosPuros)
-                {
-                    AsignarTexto(txtCodigoProducto, datosPuros[0]);
-                    AsignarTexto(txtDescripcionProducto, datosPuros[1]);
-                    categoriaProducto.Text = datosPuros[2];
-                    AsignarTexto(txtPrecioProducto, datosPuros[3]);
+                AsignarTexto(txtCodigoProducto, fila.Cells["Codigo"].Value.ToString());
+                AsignarTexto(txtDescripcionProducto, fila.Cells["Descripcion"].Value.ToString());
+                AsignarTexto(txtPrecioProducto, fila.Cells["Precio"].Value.ToString());
+                cbCategoriaProducto.Text = fila.Cells["Categoria"].Value.ToString();
 
-                    if (int.TryParse(datosPuros[4], out int sActual)) stockActual.Value = sActual;
-                    if (int.TryParse(datosPuros[5], out int sMinimo)) stockMinimo.Value = sMinimo;
+                stockActual.Value = Convert.ToInt32(fila.Cells["Stock_Actual"].Value);
+                stockMinimo.Value = Convert.ToInt32(fila.Cells["Stock_Minimo"].Value);
+
+                if (txtCodigoProducto != null) txtCodigoProducto.Enabled = false;
+
+                esModificacion = true;
+            }
+            else if (e.ColumnIndex == 7)
+            {
+                string idProducto = fila.Cells["Codigo"].Value.ToString();
+
+                if (!chkEstado.Checked)
+                {
+                    DialogResult respuesta = MessageBox.Show("¿Está seguro que desea dar de baja este producto?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        string mensaje = _productoBusiness.EliminarProducto(idProducto);
+                        MessageBox.Show(mensaje, "Producto Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarGrilla();
+                        LimpiarFormulario();
+                    }
                 }
                 else
                 {
-                    // Código de rescate por si la fila se creó antes de implementar el Tag
-                    AsignarTexto(txtCodigoProducto, fila.Cells[0].Value?.ToString() ?? "");
-                    AsignarTexto(txtDescripcionProducto, fila.Cells[1].Value?.ToString() ?? "");
-                    categoriaProducto.Text = fila.Cells[2].Value?.ToString() ?? "";
+                    DialogResult respuesta = MessageBox.Show("¿Desea volver a activar este producto?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    string precioPuro = fila.Cells[3].Value?.ToString().Replace("$", "").Trim() ?? "";
-                    AsignarTexto(txtPrecioProducto, precioPuro);
-
-                    if (int.TryParse(fila.Cells[4].Value?.ToString(), out int sActual)) stockActual.Value = sActual;
-                    if (int.TryParse(fila.Cells[5].Value?.ToString(), out int sMinimo)) stockMinimo.Value = sMinimo;
-                }
-
-                indiceFilaEditada = e.RowIndex;
-            }
-            // Columna 7: ELIMINAR
-            else if (e.ColumnIndex == 7)
-            {
-                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea eliminar este producto?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    dgvProductos.Rows.RemoveAt(e.RowIndex);
-                    ActualizarContador();
-                    LimpiarFormulario();
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        string mensaje = _productoBusiness.ReactivarProducto(idProducto);
+                        MessageBox.Show(mensaje, "Producto Reactivado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarGrilla();
+                        LimpiarFormulario();
+                    }
                 }
             }
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvProductos_CellClick(sender, e);
         }
 
-        // Handlers vacíos requeridos por el diseñador
         private void aloneTextBox1_TextChanged(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void crownTextBox1_TextChanged(object sender, EventArgs e) { }
         private void hopeTextBox9_Click(object sender, EventArgs e) { }
 
-
+        // Método para validar que los campos obligatorios no estén vacíos
         private bool ValidarCamposVacios()
         {
-            // Evaluamos solo los campos realmente obligatorios
             bool faltaCodigo = string.IsNullOrWhiteSpace(ObtenerTexto(txtCodigoProducto));
             bool faltaDescripcion = string.IsNullOrWhiteSpace(ObtenerTexto(txtDescripcionProducto));
             bool faltaPrecio = string.IsNullOrWhiteSpace(ObtenerTexto(txtPrecioProducto));
 
-            // Si alguno está vacío, mostramos la alerta
             if (faltaCodigo || faltaDescripcion || faltaPrecio)
             {
-                MessageBox.Show("Por favor, complete todos los campos para guardar el producto.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return true;
             }
 
             return false;
+        }
+
+        // Método para cargar las categorías activas en el ComboBox
+        private void CargarCategorias()
+        {
+            cbCategoriaProducto.DataSource = _categoriaBusiness.ListarCategoriasActivas();
+            cbCategoriaProducto.DisplayMember = "NombreCategoria";
+            cbCategoriaProducto.ValueMember = "IdCategoria";
+            cbCategoriaProducto.SelectedIndex = -1;
+        }
+
+
+        // Método para filtrar la grilla de productos según los criterios de búsqueda
+        private void FiltrarGrilla()
+        {
+            if (dgvProductos.DataSource is DataTable dt)
+            {
+
+                string codigoBuscado = ObtenerTexto(txtCodigoProductoBuscar);
+                string descripcionBuscada = ObtenerTexto(txtDescripcionBuscar);
+
+                System.Collections.Generic.List<string> filtros = new System.Collections.Generic.List<string>();
+
+                if (!string.IsNullOrWhiteSpace(codigoBuscado))
+                {
+                    filtros.Add($"Codigo LIKE '%{codigoBuscado}%'");
+                }
+
+                if (!string.IsNullOrWhiteSpace(descripcionBuscada))
+                {
+                    filtros.Add($"Descripcion LIKE '%{descripcionBuscada}%'");
+                }
+
+                string filtroFinal = string.Join(" AND ", filtros);
+                dt.DefaultView.RowFilter = filtroFinal;
+
+                ActualizarContador();
+            }
+        }
+
+        // Evento que se dispara al cambiar el estado del interruptor para ver productos activos/inactivos
+        private void chkEstado_CheckedChanged()
+        {
+            CargarGrilla();
         }
     }
 }

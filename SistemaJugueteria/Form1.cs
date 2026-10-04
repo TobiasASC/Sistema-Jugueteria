@@ -118,5 +118,10 @@ namespace SistemaJugueteria
                 MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void menuPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

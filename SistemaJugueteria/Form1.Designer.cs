@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             menuPrincipal = new ReaLTaiizor.Controls.MaterialCard();
+            checkBox1 = new CheckBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             txtContraseña = new ReaLTaiizor.Controls.HopeTextBox();
@@ -37,7 +38,6 @@
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox1 = new PictureBox();
             hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
-            checkBox1 = new CheckBox();
             menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -66,6 +66,17 @@
             menuPrincipal.Padding = new Padding(14);
             menuPrincipal.Size = new Size(385, 420);
             menuPrincipal.TabIndex = 0;
+            menuPrincipal.Paint += menuPrincipal_Paint;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(298, 287);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 76;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.Click += chkMostrarPassword_CheckedChanged;
             // 
             // pictureBox3
             // 
@@ -187,16 +198,6 @@
             hopeButton1.TextColor = Color.White;
             hopeButton1.WarningColor = Color.FromArgb(230, 162, 60);
             hopeButton1.Click += hopeButton1_Click_1;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(298, 287);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(15, 14);
-            checkBox1.TabIndex = 76;
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.Click += chkMostrarPassword_CheckedChanged;
             // 
             // Form1
             // 
