@@ -2,6 +2,9 @@
   <Folder Name="/ScriptsBD/">
     <File Path="ScriptsBD/01_CreacionTablas_Login.sql" />
     <File Path="ScriptsBD/TablasProducto-Categoria.sql" />
+    <File Path="TablaSocio.sql" />
+    <File Path="TablasPedido-Proveedor-Detalle_pedido.sql" />
+    <File Path="TablasVenta-Detalle_venta-Metodo_.sql" />
   </Folder>
   <Project Path="Business/Business.csproj" Id="25c4c31b-49bc-4405-93f2-d82e737200b1" />
   <Project Path="Data/Data.csproj" Id="9dc063dc-5615-4fae-b6c8-d1f59aa9dad8" />
