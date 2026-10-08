@@ -116,5 +116,84 @@ namespace SistemaJugueteria.Data
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        // Método para obtener un producto activo por su id_producto
+        public Producto ObtenerProductoActivo(string idProducto)
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Producto WHERE id_producto = @id AND activo = 1";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", idProducto);
+                conexion.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new Producto()
+                        {
+                            IdProducto = reader["id_producto"].ToString(),
+                            Descripcion = reader["descripcion_producto"].ToString(),
+                            PrecioVenta = Convert.ToDecimal(reader["precio_venta"]),
+                            StockActual = Convert.ToInt32(reader["stock_actual"]),
+                            IdCategoria = Convert.ToInt32(reader["id_categoria"])
+                        };
+                    }
+                }
+                return null;
+            }
+        }
+
+        // Método optimizado para el autocompletado de la interfaz
+        public List<Producto> ListarProductosParaSugerencias()
+        {
+            List<Producto> lista = new List<Producto>();
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT id_producto, descripcion_producto FROM Producto WHERE activo = 1";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                conexion.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Producto()
+                        {
+                            IdProducto = reader["id_producto"].ToString(),
+                            Descripcion = reader["descripcion_producto"].ToString()
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
+
+        public Producto ObtenerProductoActivoPorDescripcion(string descripcion)
+        {
+            using (Microsoft.Data.SqlClient.SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Producto WHERE descripcion_producto = @desc AND activo = 1";
+                Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@desc", descripcion);
+                conexion.Open();
+
+                using (Microsoft.Data.SqlClient.SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new Producto()
+                        {
+                            IdProducto = reader["id_producto"].ToString(),
+                            Descripcion = reader["descripcion_producto"].ToString(),
+                            PrecioVenta = Convert.ToDecimal(reader["precio_venta"]),
+                            StockActual = Convert.ToInt32(reader["stock_actual"]),
+                            IdCategoria = Convert.ToInt32(reader["id_categoria"])
+                        };
+                    }
+                }
+                return null;
+            }
+        }
+
     }
 }
