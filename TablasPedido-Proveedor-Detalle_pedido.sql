@@ -23,7 +23,7 @@ CREATE TABLE Pedido (
 
 CREATE TABLE Detalle_pedido (
 	id_pedido INT NOT NULL,
-	id_producto INT NOT NULL,
+	id_producto VARCHAR(50) NOT NULL,
 	cantidad INT NOT NULL,
 	precio_unitario DECIMAL(10,2) NOT NULL,
 	subtotal DECIMAL(10,2) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE Detalle_pedido (
 );
 
 INSERT INTO Proveedor (nombre_proveedor) VALUES
-(ToysNet),
-(Vulcanita),
-(TecniToys),
-(Fun express);
+('ToysNet'),
+('Vulcanita'),
+('TecniToys'),
+('Fun express');

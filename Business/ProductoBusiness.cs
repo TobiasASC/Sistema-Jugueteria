@@ -48,10 +48,10 @@ namespace SistemaJugueteria.Business
         // Método para eliminar un producto (baja lógica)
         public string EliminarProducto(string idProducto)
         {
-            if (string.IsNullOrWhiteSpace(idProducto)) return "Debe seleccionar un producto para eliminar.";
+            if (string.IsNullOrWhiteSpace(idProducto)) return "Debe seleccionar un producto para dar de baja.";
 
             bool respuesta = _productoData.Eliminar(idProducto);
-            return respuesta ? "Producto eliminado (baja lógica) exitosamente." : "Error al eliminar el producto.";
+            return respuesta ? "Producto dado de baja exitosamente." : "Error al dar de baja el producto.";
         }
 
         // Método para validar los datos del producto antes de realizar operaciones en la base de datos
@@ -75,5 +75,24 @@ namespace SistemaJugueteria.Business
             return respuesta ? "Producto reactivado exitosamente." : "Error al reactivar el producto.";
         }
 
+        // Método para obtener un producto activo por su ID
+        public Producto ObtenerProductoActivo(string idProducto)
+        {
+            if (string.IsNullOrWhiteSpace(idProducto)) return null;
+            return _productoData.ObtenerProductoActivo(idProducto);
+        }
+
+        // Método para listar productos activos para sugerencias en la busqueda de productos 
+        public List<Producto> ListarProductosParaSugerencias()
+        {
+            return _productoData.ListarProductosParaSugerencias();
+        }
+
+        // Método para obtener un producto activo por su descripción
+        public Producto ObtenerProductoActivoPorDescripcion(string descripcion)
+        {
+            if (string.IsNullOrWhiteSpace(descripcion)) return null;
+            return _productoData.ObtenerProductoActivoPorDescripcion(descripcion);
+        }
     }
 }
