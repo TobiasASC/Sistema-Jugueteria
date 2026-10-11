@@ -6,6 +6,7 @@ CREATE TABLE Socio (
 	correo_socio VARCHAR(50) NOT NULL,
 	direccion_socio VARCHAR(50) NOT NULL,
 	puntos_acumulados INT NOT NULL DEFAULT 0,
+	estado BIT NOT NULL DEFAULT 1,
 
 	CONSTRAINT PK_Socio PRIMARY KEY (id_socio),
 	CONSTRAINT UQ_Socio_Dni UNIQUE (dni_socio),

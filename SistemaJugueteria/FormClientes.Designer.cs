@@ -633,6 +633,7 @@
             txtNombreClienteBuscar.TextButton = "";
             txtNombreClienteBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             txtNombreClienteBuscar.Timer_RGB = 300;
+            txtNombreClienteBuscar.Load += txtNombreClienteBuscar_Load;
             // 
             // button5
             // 
@@ -697,6 +698,7 @@
             txtDniClienteBuscar.TextButton = "";
             txtDniClienteBuscar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             txtDniClienteBuscar.Timer_RGB = 300;
+            txtDniClienteBuscar.Load += txtDniClienteBuscar_Load;
             // 
             // label8
             // 
