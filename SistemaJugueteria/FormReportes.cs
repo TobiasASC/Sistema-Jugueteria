@@ -229,5 +229,10 @@ namespace SistemaJugueteria
         private void label3_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
         private void panel3_Click(object sender, EventArgs e) { }
+
+        private void FormReportes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

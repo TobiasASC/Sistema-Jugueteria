@@ -153,6 +153,26 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boxicons__user_filled__2_ {
+            get {
+                object obj = ResourceManager.GetObject("boxicons--user-filled (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bxs__box {
+            get {
+                object obj = ResourceManager.GetObject("bxs--box", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check {
             get {
                 object obj = ResourceManager.GetObject("check", resourceCulture);
@@ -183,9 +203,29 @@ namespace SistemaJugueteria.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fa_solid__money_bill {
+            get {
+                object obj = ResourceManager.GetObject("fa-solid--money-bill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_park_solid__bill {
             get {
                 object obj = ResourceManager.GetObject("icon-park-solid--bill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_park_solid__bill__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icon-park-solid--bill (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

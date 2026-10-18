@@ -824,6 +824,7 @@
             Controls.Add(panel2);
             Name = "FormReportes";
             Text = "FormReportes";
+            Load += FormReportes_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
