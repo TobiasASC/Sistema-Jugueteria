@@ -28,18 +28,27 @@ namespace SistemaJugueteria
             Validaciones.ConfigurarSoloLetras(txtNombreCliente);
             Validaciones.ConfigurarSoloLetras(txtApellidoCliente);
             Validaciones.ConfigurarEmail(txtEmailCliente);
+
+            dgvClientes.AutoGenerateColumns = false;
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
             ConfigurarDataGridView();
 
-            // Configuración de restricciones mediante el TextBox interno del CyberTextBox (igual que en Empleados)
+            // Configuración de restricciones mediante el TextBox interno del CyberTextBox
             TextBox txtDniReal = txtDniCliente.Controls.OfType<TextBox>().FirstOrDefault();
             if (txtDniReal != null)
             {
                 txtDniReal.MaxLength = 8;
                 txtDniReal.KeyPress += TxtDniReal_KeyPress;
+            }
+
+            // Configuración del campo de Puntos para que sea de solo lectura
+            TextBox txtPuntosReal = txtPuntosCliente.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtPuntosReal != null)
+            {
+                txtPuntosReal.ReadOnly = true;
             }
 
             // Configuración de buscadores en tiempo real
@@ -57,6 +66,15 @@ namespace SistemaJugueteria
                 cajaNombreBuscar.TextChanged += FiltroEnTiempoReal_TextChanged;
             }
 
+            // Vincular evento de cambio de estado para activos/inactivos (chkEstado)
+            if (chkEstado != null)
+            {
+                chkEstado.CheckedChanged += delegate {
+                    ConfigurarDataGridView();
+                    CargarGrillaClientes();
+                };
+            }
+
             CargarGrillaClientes();
         }
 
@@ -71,6 +89,7 @@ namespace SistemaJugueteria
             dgvClientes.Columns.Add("colEmail", "Email");
             dgvClientes.Columns.Add("colPuntos", "Puntos");
 
+            // Columna Modificar
             DataGridViewButtonColumn btnModificarCol = new DataGridViewButtonColumn();
             btnModificarCol.Name = "colModificar";
             btnModificarCol.HeaderText = "Modificar";
@@ -78,10 +97,12 @@ namespace SistemaJugueteria
             btnModificarCol.UseColumnTextForButtonValue = true;
             dgvClientes.Columns.Add(btnModificarCol);
 
+            // Columna Eliminar / Reactivar
+            bool verInactivos = chkEstado != null && chkEstado.Checked;
             DataGridViewButtonColumn btnEliminarCol = new DataGridViewButtonColumn();
             btnEliminarCol.Name = "colEliminar";
-            btnEliminarCol.HeaderText = "Eliminar";
-            btnEliminarCol.Text = "Eliminar";
+            btnEliminarCol.HeaderText = verInactivos ? "Reactivar" : "Eliminar";
+            btnEliminarCol.Text = verInactivos ? "Reactivar" : "Eliminar"; 
             btnEliminarCol.UseColumnTextForButtonValue = true;
             dgvClientes.Columns.Add(btnEliminarCol);
 
@@ -92,7 +113,8 @@ namespace SistemaJugueteria
         private void CargarGrillaClientes()
         {
             dgvClientes.Rows.Clear();
-            List<Socio> lista = negocioSocio.ListarSocios();
+            bool verInactivos = chkEstado != null && chkEstado.Checked;
+            List<Socio> lista = negocioSocio.ListarSocios(verInactivos);
 
             string filtroDni = LeerCyberTextBox(txtDniClienteBuscar).Trim();
             string filtroNombre = LeerCyberTextBox(txtNombreClienteBuscar).Trim().ToLower();
@@ -117,11 +139,31 @@ namespace SistemaJugueteria
                 dgvClientes.Rows[indiceFila].Tag = new object[] { socio.IdSocio, socio.NombreSocio, socio.ApellidoSocio };
             }
 
+            // Configurar botón Modificar (índice 5)
+            if (dgvClientes.Columns["colModificar"] is DataGridViewButtonColumn colModificar)
+            {
+                colModificar.UseColumnTextForButtonValue = true;
+                colModificar.Text = "Modificar";
+            }
+
+            // Configurar botón Eliminar / Reactivar (índice 6)
+            if (dgvClientes.Columns["colEliminar"] is DataGridViewButtonColumn colEliminar)
+            {
+                colEliminar.UseColumnTextForButtonValue = true;
+                colEliminar.Text = verInactivos ? "Reactivar" : "Eliminar";
+            }
+
             ActualizarContador(lista.Count);
         }
 
         private void FiltroEnTiempoReal_TextChanged(object sender, EventArgs e)
         {
+            CargarGrillaClientes();
+        }
+
+        private void ChkEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            ConfigurarDataGridView();
             CargarGrillaClientes();
         }
 
@@ -205,7 +247,7 @@ namespace SistemaJugueteria
 
             DataGridViewRow fila = dgvClientes.Rows[e.RowIndex];
 
-            // Columna Modificar
+            // Columna Modificar (Columna 5)
             if (e.ColumnIndex == 5)
             {
                 EscribirCyberTextBox(txtDniCliente, fila.Cells[0].Value?.ToString());
@@ -219,20 +261,43 @@ namespace SistemaJugueteria
 
                 EscribirCyberTextBox(txtDireccionCliente, fila.Cells[2].Value?.ToString());
                 EscribirCyberTextBox(txtEmailCliente, fila.Cells[3].Value?.ToString());
+
+                // Carga los puntos pero quedan bloqueados de edición
+                EscribirCyberTextBox(txtPuntosCliente, fila.Cells[4].Value?.ToString());
             }
-            // Columna Eliminar
+            // Columna Eliminar / Reactivar (Columna 6)
             else if (e.ColumnIndex == 6)
             {
-                DialogResult respuesta = MessageBox.Show("¿Desea borrar este cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                bool verInactivos = chkEstado != null && chkEstado.Checked;
 
-                if (respuesta == DialogResult.Yes)
+                if (!verInactivos)
                 {
-                    if (fila.Tag is object[] datos && datos.Length > 0)
+                    DialogResult respuesta = MessageBox.Show("¿Está seguro que desea dar de baja este cliente?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.Yes)
                     {
-                        int idSocio = Convert.ToInt32(datos[0]);
-                        negocioSocio.EliminarSocio(idSocio);
-                        CargarGrillaClientes();
-                        LimpiarCampos();
+                        if (fila.Tag is object[] datos && datos.Length > 0)
+                        {
+                            int idSocio = Convert.ToInt32(datos[0]);
+                            negocioSocio.EliminarSocio(idSocio);
+                            CargarGrillaClientes();
+                            LimpiarCampos();
+                        }
+                    }
+                }
+                else
+                {
+                    DialogResult respuesta = MessageBox.Show("¿Desea volver a activar este cliente?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        if (fila.Tag is object[] datos && datos.Length > 0)
+                        {
+                            int idSocio = Convert.ToInt32(datos[0]);
+                            negocioSocio.ReactivarSocio(idSocio); // Asegúrate de tener este método en tu SocioBusiness o ajústalo si se llama distinto
+                            CargarGrillaClientes();
+                            LimpiarCampos();
+                        }
                     }
                 }
             }
@@ -277,6 +342,7 @@ namespace SistemaJugueteria
             EscribirCyberTextBox(txtApellidoCliente, "");
             EscribirCyberTextBox(txtEmailCliente, "");
             EscribirCyberTextBox(txtDireccionCliente, "");
+            EscribirCyberTextBox(txtPuntosCliente, ""); // Limpia también los puntos
 
             TextBox cajaReal = txtDniCliente.Controls.OfType<TextBox>().FirstOrDefault();
             if (cajaReal != null) cajaReal.Focus();
@@ -310,5 +376,4 @@ namespace SistemaJugueteria
         private void txtNombreClienteBuscar_Load(object sender, EventArgs e) { }
         private void txtDniClienteBuscar_Load(object sender, EventArgs e) { }
     }
-   
 }

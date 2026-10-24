@@ -41,7 +41,7 @@
             label3 = new Label();
             txtDireccionCliente = new ReaLTaiizor.Controls.CyberTextBox();
             label4 = new Label();
-            cyberTextBox5 = new ReaLTaiizor.Controls.CyberTextBox();
+            txtPuntosCliente = new ReaLTaiizor.Controls.CyberTextBox();
             btnNuevo = new ReaLTaiizor.Controls.CyberButton();
             btnGuardar = new ReaLTaiizor.Controls.CyberButton();
             btnEliminar = new ReaLTaiizor.Controls.CyberButton();
@@ -55,6 +55,8 @@
             eliminarColum = new DataGridViewButtonColumn();
             panel2 = new ReaLTaiizor.Controls.Panel();
             panel3 = new ReaLTaiizor.Controls.Panel();
+            chkEstado = new ReaLTaiizor.Controls.CyberSwitch();
+            label18 = new Label();
             label10 = new Label();
             txtNombreClienteBuscar = new ReaLTaiizor.Controls.CyberTextBox();
             button5 = new Button();
@@ -66,6 +68,7 @@
             label5 = new Label();
             button3 = new Button();
             label7 = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -312,36 +315,36 @@
             label4.Text = "Puntos Acumulados";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // cyberTextBox5
+            // txtPuntosCliente
             // 
-            cyberTextBox5.Alpha = 20;
-            cyberTextBox5.BackColor = Color.Transparent;
-            cyberTextBox5.Background_WidthPen = 3F;
-            cyberTextBox5.BackgroundPen = true;
-            cyberTextBox5.ColorBackground = Color.White;
-            cyberTextBox5.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            cyberTextBox5.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberTextBox5.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            cyberTextBox5.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            cyberTextBox5.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberTextBox5.Enabled = false;
-            cyberTextBox5.Font = new Font("Arial", 8F);
-            cyberTextBox5.ForeColor = Color.Black;
-            cyberTextBox5.Lighting = false;
-            cyberTextBox5.LinearGradientPen = false;
-            cyberTextBox5.Location = new Point(470, 141);
-            cyberTextBox5.Name = "cyberTextBox5";
-            cyberTextBox5.PenWidth = 15;
-            cyberTextBox5.RGB = false;
-            cyberTextBox5.Rounding = true;
-            cyberTextBox5.RoundingInt = 60;
-            cyberTextBox5.Size = new Size(115, 32);
-            cyberTextBox5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberTextBox5.TabIndex = 28;
-            cyberTextBox5.Tag = "Cyber";
-            cyberTextBox5.TextButton = "";
-            cyberTextBox5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberTextBox5.Timer_RGB = 300;
+            txtPuntosCliente.Alpha = 20;
+            txtPuntosCliente.BackColor = Color.Transparent;
+            txtPuntosCliente.Background_WidthPen = 3F;
+            txtPuntosCliente.BackgroundPen = true;
+            txtPuntosCliente.ColorBackground = Color.White;
+            txtPuntosCliente.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtPuntosCliente.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtPuntosCliente.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtPuntosCliente.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtPuntosCliente.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtPuntosCliente.Enabled = false;
+            txtPuntosCliente.Font = new Font("Arial", 8F);
+            txtPuntosCliente.ForeColor = Color.Black;
+            txtPuntosCliente.Lighting = false;
+            txtPuntosCliente.LinearGradientPen = false;
+            txtPuntosCliente.Location = new Point(470, 141);
+            txtPuntosCliente.Name = "txtPuntosCliente";
+            txtPuntosCliente.PenWidth = 15;
+            txtPuntosCliente.RGB = false;
+            txtPuntosCliente.Rounding = true;
+            txtPuntosCliente.RoundingInt = 60;
+            txtPuntosCliente.Size = new Size(115, 32);
+            txtPuntosCliente.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtPuntosCliente.TabIndex = 28;
+            txtPuntosCliente.Tag = "Cyber";
+            txtPuntosCliente.TextButton = "";
+            txtPuntosCliente.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtPuntosCliente.Timer_RGB = 300;
             // 
             // btnNuevo
             // 
@@ -545,7 +548,7 @@
             panel2.Controls.Add(btnEliminar);
             panel2.Controls.Add(btnGuardar);
             panel2.Controls.Add(btnNuevo);
-            panel2.Controls.Add(cyberTextBox5);
+            panel2.Controls.Add(txtPuntosCliente);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(txtDireccionCliente);
             panel2.Controls.Add(label3);
@@ -572,6 +575,9 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(255, 227, 227);
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(chkEstado);
+            panel3.Controls.Add(label18);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(txtNombreClienteBuscar);
             panel3.Controls.Add(button5);
@@ -593,11 +599,61 @@
             panel3.TabIndex = 56;
             panel3.Text = "panel3";
             // 
+            // chkEstado
+            // 
+            chkEstado.Alpha = 50;
+            chkEstado.BackColor = Color.Transparent;
+            chkEstado.Background = true;
+            chkEstado.Background_WidthPen = 2F;
+            chkEstado.BackgroundPen = true;
+            chkEstado.Checked = false;
+            chkEstado.ColorBackground = Color.White;
+            chkEstado.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            chkEstado.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            chkEstado.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorBackground_Value_1 = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorBackground_Value_2 = Color.FromArgb(100, 208, 232);
+            chkEstado.ColorLighting = Color.FromArgb(255, 192, 192);
+            chkEstado.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            chkEstado.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            chkEstado.ColorValue = Color.FromArgb(255, 192, 192);
+            chkEstado.CyberSwitchStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            chkEstado.Font = new Font("Arial", 11F);
+            chkEstado.ForeColor = Color.FromArgb(245, 245, 245);
+            chkEstado.Lighting = false;
+            chkEstado.LinearGradient_Background = false;
+            chkEstado.LinearGradient_Value = false;
+            chkEstado.LinearGradientPen = false;
+            chkEstado.Location = new Point(333, 124);
+            chkEstado.Name = "chkEstado";
+            chkEstado.PenWidth = 10;
+            chkEstado.RGB = false;
+            chkEstado.Rounding = true;
+            chkEstado.RoundingInt = 90;
+            chkEstado.Size = new Size(53, 26);
+            chkEstado.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            chkEstado.TabIndex = 78;
+            chkEstado.Tag = "Cyber";
+            chkEstado.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            chkEstado.Timer_RGB = 300;
+            chkEstado.Click += ChkEstado_CheckedChanged;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(218, 134);
+            label18.Name = "label18";
+            label18.Size = new Size(109, 15);
+            label18.TabIndex = 77;
+            label18.Text = "Activos / Inactivos";
+            label18.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(243, 58);
+            label10.Location = new Point(306, 58);
             label10.Name = "label10";
             label10.Size = new Size(53, 15);
             label10.TabIndex = 60;
@@ -620,7 +676,7 @@
             txtNombreClienteBuscar.ForeColor = Color.Black;
             txtNombreClienteBuscar.Lighting = false;
             txtNombreClienteBuscar.LinearGradientPen = false;
-            txtNombreClienteBuscar.Location = new Point(240, 73);
+            txtNombreClienteBuscar.Location = new Point(303, 73);
             txtNombreClienteBuscar.Name = "txtNombreClienteBuscar";
             txtNombreClienteBuscar.PenWidth = 15;
             txtNombreClienteBuscar.RGB = false;
@@ -641,7 +697,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Image = Properties.Resources.boxicons__search_alt;
-            button5.Location = new Point(613, 73);
+            button5.Location = new Point(667, 73);
             button5.Name = "button5";
             button5.Size = new Size(34, 32);
             button5.TabIndex = 61;
@@ -768,12 +824,24 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(51, 130);
+            label7.Location = new Point(54, 130);
             label7.Name = "label7";
             label7.Size = new Size(143, 20);
             label7.TabIndex = 15;
             label7.Text = "LISTA DE CLIENTES";
             label7.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(255, 227, 227);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Image = Properties.Resources.boxicons__search_alt;
+            button2.Location = new Point(217, 73);
+            button2.Name = "button2";
+            button2.Size = new Size(34, 32);
+            button2.TabIndex = 79;
+            button2.UseVisualStyleBackColor = false;
             // 
             // FormClientes
             // 
@@ -808,7 +876,7 @@
         private Label label3;
         private ReaLTaiizor.Controls.CyberTextBox txtDireccionCliente;
         private Label label4;
-        private ReaLTaiizor.Controls.CyberTextBox cyberTextBox5;
+        private ReaLTaiizor.Controls.CyberTextBox txtPuntosCliente;
         private ReaLTaiizor.Controls.CyberButton btnNuevo;
         private ReaLTaiizor.Controls.CyberButton btnGuardar;
         private ReaLTaiizor.Controls.CyberButton btnEliminar;
@@ -833,5 +901,8 @@
         private DataGridViewTextBoxColumn PuntosColum;
         private DataGridViewButtonColumn modifColum;
         private DataGridViewButtonColumn eliminarColum;
+        private ReaLTaiizor.Controls.CyberSwitch chkEstado;
+        private Label label18;
+        private Button button2;
     }
 }

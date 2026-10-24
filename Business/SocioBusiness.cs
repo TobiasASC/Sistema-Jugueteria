@@ -8,9 +8,10 @@ namespace SistemaJugueteria.Business
     {
         private SocioData datosSocio = new SocioData();
 
-        public List<Socio> ListarSocios(string dni = "", string nombre = "")
+        // Se agrega el parámetro booleano para controlar si se traen activos o inactivos
+        public List<Socio> ListarSocios(bool verInactivos = false)
         {
-            return datosSocio.ObtenerSocios(dni, nombre);
+            return datosSocio.Listar(verInactivos);
         }
 
         public void GuardarSocio(Socio socio)
@@ -28,6 +29,14 @@ namespace SistemaJugueteria.Business
         public void EliminarSocio(int idSocio)
         {
             datosSocio.Eliminar(idSocio);
+        }
+
+        public string ReactivarSocio(int idSocio)
+        {
+            if (idSocio <= 0) return "Debe seleccionar un cliente para reactivar.";
+
+            bool respuesta = datosSocio.Reactivar(idSocio);
+            return respuesta ? "Cliente reactivado exitosamente." : "Error al reactivar el cliente.";
         }
     }
 }

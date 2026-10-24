@@ -68,6 +68,13 @@
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             button9 = new Button();
             dataGridView1 = new DataGridView();
+            ColumCodigo = new DataGridViewTextBoxColumn();
+            DescripColum = new DataGridViewTextBoxColumn();
+            CategoriaColum = new DataGridViewTextBoxColumn();
+            CantidadColum = new DataGridViewTextBoxColumn();
+            PrecioColum = new DataGridViewTextBoxColumn();
+            SubtotalColum = new DataGridViewTextBoxColumn();
+            colEliminar = new DataGridViewButtonColumn();
             panel4 = new ReaLTaiizor.Controls.Panel();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             dungeonNumeric1 = new ReaLTaiizor.Controls.DungeonNumeric();
@@ -90,13 +97,6 @@
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
             cyberTextBox13 = new ReaLTaiizor.Controls.CyberTextBox();
             label18 = new Label();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            CantidadColum = new DataGridViewTextBoxColumn();
-            PrecioColum = new DataGridViewTextBoxColumn();
-            SubtotalColum = new DataGridViewTextBoxColumn();
-            colEliminar = new DataGridViewButtonColumn();
             pnlInfoFactura.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -741,6 +741,51 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(868, 133);
             dataGridView1.TabIndex = 55;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
+            // ColumCodigo
+            // 
+            ColumCodigo.HeaderText = "Codigo";
+            ColumCodigo.Name = "ColumCodigo";
+            ColumCodigo.ReadOnly = true;
+            // 
+            // DescripColum
+            // 
+            DescripColum.HeaderText = "Descripción";
+            DescripColum.Name = "DescripColum";
+            DescripColum.ReadOnly = true;
+            // 
+            // CategoriaColum
+            // 
+            CategoriaColum.HeaderText = "Categoria";
+            CategoriaColum.Name = "CategoriaColum";
+            CategoriaColum.ReadOnly = true;
+            // 
+            // CantidadColum
+            // 
+            CantidadColum.HeaderText = "Cantidad";
+            CantidadColum.Name = "CantidadColum";
+            CantidadColum.ReadOnly = true;
+            // 
+            // PrecioColum
+            // 
+            PrecioColum.HeaderText = "Precio Unitario";
+            PrecioColum.Name = "PrecioColum";
+            PrecioColum.ReadOnly = true;
+            // 
+            // SubtotalColum
+            // 
+            SubtotalColum.HeaderText = "Subtotal";
+            SubtotalColum.Name = "SubtotalColum";
+            SubtotalColum.ReadOnly = true;
+            // 
+            // colEliminar
+            // 
+            colEliminar.HeaderText = "Eliminar";
+            colEliminar.Name = "colEliminar";
+            colEliminar.ReadOnly = true;
+            colEliminar.Resizable = DataGridViewTriState.True;
+            colEliminar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // panel4
             // 
@@ -772,7 +817,7 @@
             cyberButton1.ColorBackground = Color.FromArgb(0, 192, 0);
             cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
             cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton1.ColorBackground_Pen = Color.Transparent;
             cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
             cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
             cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
@@ -1062,10 +1107,10 @@
             cyberButton4.Background = true;
             cyberButton4.Background_WidthPen = 4F;
             cyberButton4.BackgroundPen = true;
-            cyberButton4.ColorBackground = Color.DimGray;
+            cyberButton4.ColorBackground = Color.Transparent;
             cyberButton4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
             cyberButton4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton4.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton4.ColorBackground_Pen = Color.Transparent;
             cyberButton4.ColorLighting = Color.FromArgb(29, 200, 238);
             cyberButton4.ColorPen_1 = Color.FromArgb(37, 52, 68);
             cyberButton4.ColorPen_2 = Color.FromArgb(41, 63, 86);
@@ -1118,7 +1163,7 @@
             cyberButton3.ColorBackground = Color.FromArgb(255, 128, 128);
             cyberButton3.ColorBackground_1 = Color.FromArgb(37, 52, 68);
             cyberButton3.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton3.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton3.ColorBackground_Pen = Color.Transparent;
             cyberButton3.ColorLighting = Color.FromArgb(29, 200, 238);
             cyberButton3.ColorPen_1 = Color.FromArgb(37, 52, 68);
             cyberButton3.ColorPen_2 = Color.FromArgb(41, 63, 86);
@@ -1159,7 +1204,7 @@
             cyberButton2.ColorBackground = Color.FromArgb(0, 192, 0);
             cyberButton2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
             cyberButton2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton2.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            cyberButton2.ColorBackground_Pen = Color.Transparent;
             cyberButton2.ColorLighting = Color.FromArgb(29, 200, 238);
             cyberButton2.ColorPen_1 = Color.FromArgb(37, 52, 68);
             cyberButton2.ColorPen_2 = Color.FromArgb(41, 63, 86);
@@ -1202,7 +1247,7 @@
             cyberTextBox13.ColorPen_2 = Color.FromArgb(37, 52, 68);
             cyberTextBox13.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             cyberTextBox13.Font = new Font("Arial Rounded MT Bold", 8F);
-            cyberTextBox13.ForeColor = Color.FromArgb(245, 245, 245);
+            cyberTextBox13.ForeColor = Color.Black;
             cyberTextBox13.Lighting = false;
             cyberTextBox13.LinearGradientPen = false;
             cyberTextBox13.Location = new Point(127, 5);
@@ -1230,50 +1275,6 @@
             label18.Text = "TOTAL:";
             label18.TextAlign = ContentAlignment.MiddleCenter;
             label18.Click += label18_Click;
-            // 
-            // ColumCodigo
-            // 
-            ColumCodigo.HeaderText = "Codigo";
-            ColumCodigo.Name = "ColumCodigo";
-            ColumCodigo.ReadOnly = true;
-            // 
-            // DescripColum
-            // 
-            DescripColum.HeaderText = "Descripción";
-            DescripColum.Name = "DescripColum";
-            DescripColum.ReadOnly = true;
-            // 
-            // CategoriaColum
-            // 
-            CategoriaColum.HeaderText = "Categoria";
-            CategoriaColum.Name = "CategoriaColum";
-            CategoriaColum.ReadOnly = true;
-            // 
-            // CantidadColum
-            // 
-            CantidadColum.HeaderText = "Cantidad";
-            CantidadColum.Name = "CantidadColum";
-            CantidadColum.ReadOnly = true;
-            // 
-            // PrecioColum
-            // 
-            PrecioColum.HeaderText = "Precio Unitario";
-            PrecioColum.Name = "PrecioColum";
-            PrecioColum.ReadOnly = true;
-            // 
-            // SubtotalColum
-            // 
-            SubtotalColum.HeaderText = "Subtotal";
-            SubtotalColum.Name = "SubtotalColum";
-            SubtotalColum.ReadOnly = true;
-            // 
-            // colEliminar
-            // 
-            colEliminar.HeaderText = "Eliminar";
-            colEliminar.Name = "colEliminar";
-            colEliminar.ReadOnly = true;
-            colEliminar.Resizable = DataGridViewTriState.True;
-            colEliminar.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // FormVentas
             // 

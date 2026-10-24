@@ -8,24 +8,23 @@ namespace SistemaJugueteria.Data
 {
     public class SocioData
     {
-        public List<Socio> ObtenerSocios(string filtroDni = "", string filtroNombre = "")
+        // Método actualizado para listar activos o inactivos según el switch
+        public List<Socio> Listar(bool verSoloInactivos)
         {
             List<Socio> lista = new List<Socio>();
 
-            // Usamos la conexión centralizada
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
-                string query = "SELECT id_socio, dni_socio, nombre_socio, apellido_socio, correo_socio, direccion_socio, puntos_acumulados FROM Socio WHERE activo = 1";
-
-                if (!string.IsNullOrWhiteSpace(filtroDni)) query += " AND dni_socio LIKE @dni";
-                if (!string.IsNullOrWhiteSpace(filtroNombre)) query += " AND (nombre_socio LIKE @nombre OR apellido_socio LIKE @nombre)";
-
-                query += " ORDER BY apellido_socio, nombre_socio";
+                string query = @"SELECT id_socio, dni_socio, nombre_socio, apellido_socio, 
+                                        correo_socio, direccion_socio, puntos_acumulados 
+                                 FROM Socio 
+                                 WHERE activo = @estadoActivo 
+                                 ORDER BY apellido_socio, nombre_socio";
 
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    if (!string.IsNullOrWhiteSpace(filtroDni)) comando.Parameters.AddWithValue("@dni", "%" + filtroDni.Trim() + "%");
-                    if (!string.IsNullOrWhiteSpace(filtroNombre)) comando.Parameters.AddWithValue("@nombre", "%" + filtroNombre.Trim() + "%");
+                    // Si verSoloInactivos es true busca inactivos (0), sino activos (1)
+                    comando.Parameters.AddWithValue("@estadoActivo", verSoloInactivos ? 0 : 1);
 
                     conexion.Open();
                     using (SqlDataReader lector = comando.ExecuteReader())
@@ -40,7 +39,7 @@ namespace SistemaJugueteria.Data
                                 ApellidoSocio = lector.GetString(3),
                                 CorreoSocio = lector.GetString(4),
                                 DireccionSocio = lector.GetString(5),
-                                PuntosAcumulados = lector.GetInt32(6)
+                                PuntosAcumulados = lector["puntos_acumulados"] != DBNull.Value ? lector.GetInt32(6) : 0
                             });
                         }
                     }
@@ -53,8 +52,8 @@ namespace SistemaJugueteria.Data
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
-                string query = "INSERT INTO Socio (dni_socio, nombre_socio, apellido_socio, correo_socio, direccion_socio, puntos_acumulados) " +
-                               "VALUES (@dni, @nombre, @apellido, @email, @direccion, 0)";
+                string query = @"INSERT INTO Socio (dni_socio, nombre_socio, apellido_socio, correo_socio, direccion_socio, puntos_acumulados, activo) 
+                                 VALUES (@dni, @nombre, @apellido, @email, @direccion, 0, 1)";
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.AddWithValue("@dni", socio.DniSocio);
@@ -62,6 +61,7 @@ namespace SistemaJugueteria.Data
                     comando.Parameters.AddWithValue("@apellido", socio.ApellidoSocio);
                     comando.Parameters.AddWithValue("@email", socio.CorreoSocio);
                     comando.Parameters.AddWithValue("@direccion", socio.DireccionSocio);
+
                     conexion.Open();
                     comando.ExecuteNonQuery();
                 }
@@ -72,8 +72,10 @@ namespace SistemaJugueteria.Data
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
-                string query = "UPDATE Socio SET dni_socio = @dni, nombre_socio = @nombre, apellido_socio = @apellido, " +
-                               "correo_socio = @email, direccion_socio = @direccion WHERE id_socio = @id";
+                string query = @"UPDATE Socio 
+                                 SET dni_socio = @dni, nombre_socio = @nombre, apellido_socio = @apellido, 
+                                     correo_socio = @email, direccion_socio = @direccion 
+                                 WHERE id_socio = @id";
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.AddWithValue("@dni", socio.DniSocio);
@@ -82,13 +84,15 @@ namespace SistemaJugueteria.Data
                     comando.Parameters.AddWithValue("@email", socio.CorreoSocio);
                     comando.Parameters.AddWithValue("@direccion", socio.DireccionSocio);
                     comando.Parameters.AddWithValue("@id", socio.IdSocio);
+
                     conexion.Open();
                     comando.ExecuteNonQuery();
                 }
             }
         }
 
-        public void Eliminar(int idSocio) // O renombrarlo a DarDeBajaLogica
+        // Baja lógica
+        public void Eliminar(int idSocio)
         {
             using (SqlConnection conexion = Conexion.ObtenerConexion())
             {
@@ -98,6 +102,21 @@ namespace SistemaJugueteria.Data
                     comando.Parameters.AddWithValue("@id", idSocio);
                     conexion.Open();
                     comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Reactivación lógica (Nuevo método necesario)
+        public bool Reactivar(int idSocio)
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "UPDATE Socio SET activo = 1 WHERE id_socio = @id";
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", idSocio);
+                    conexion.Open();
+                    return comando.ExecuteNonQuery() > 0;
                 }
             }
         }

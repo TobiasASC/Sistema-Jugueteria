@@ -1,50 +1,82 @@
-﻿using SistemaJugueteria.Data;
+﻿
+using System;
+using System.Linq;
+using SistemaJugueteria.Data;
 using SistemaJugueteria.Entities;
 
 namespace SistemaJugueteria.Business
 {
     public class VentaBusiness
     {
-        private VentaData ventaData = new VentaData();
+        private readonly VentaData ventaData = new VentaData();
 
-        public int RegistrarVenta(Venta venta, decimal porcentajePuntosGenerados = 0.01m, bool aplicarDescuentoPuntos = false)
+        public int RegistrarVenta(
+            Venta venta,
+            decimal porcentajePuntosGenerados = 0.01m,
+            bool aplicarDescuentoPuntos = false)
         {
             const int costoPuntosCanje = 1000;
-            int puntosNuevos = 0;
-            int puntosGastados = 0;
 
-            bool esConsumidorFinal = false;
+            if (venta == null)
+                throw new ArgumentNullException(nameof(venta));
 
-            // Verificamos si el ID del socio corresponde al DNI "00000000"
-            if (venta.IdSocio > 0)
+            if (venta.IdSocio <= 0)
+                throw new InvalidOperationException(
+                    "Debe seleccionar un socio para registrar la venta.");
+
+            if (venta.Detalles == null || venta.Detalles.Count == 0)
+                throw new InvalidOperationException(
+                    "La venta debe tener al menos un producto.");
+
+            if (porcentajePuntosGenerados < 0)
+                throw new ArgumentOutOfRangeException(
+                    nameof(porcentajePuntosGenerados));
+
+            // Identificar al socio.
+            SocioBusiness negocioSocio = new SocioBusiness();
+
+            var socio = negocioSocio.ListarSocios()
+                .FirstOrDefault(s => s.IdSocio == venta.IdSocio);
+
+            if (socio == null)
+                throw new InvalidOperationException(
+                    "No se encontró el socio seleccionado.");
+
+            bool esConsumidorFinal = socio.DniSocio == "00000000";
+
+            if (esConsumidorFinal && aplicarDescuentoPuntos)
             {
-                SocioBusiness negocioSocio = new SocioBusiness();
-                // Buscamos al socio en la lista para comprobar su DNI
-                var socio = negocioSocio.ListarSocios().FirstOrDefault(s => s.IdSocio == venta.IdSocio);
-                if (socio != null && socio.DniSocio == "00000000")
-                {
-                    esConsumidorFinal = true;
-                }
+                throw new InvalidOperationException(
+                    "Consumidor Final no puede canjear puntos.");
             }
 
-            // Si aplica descuento por puntos pero es consumidor final, lo ignoramos por seguridad
-            if (aplicarDescuentoPuntos && !esConsumidorFinal)
-            {
-                puntosGastados = costoPuntosCanje;
-                venta.TotalVenta = venta.TotalVenta * 0.90m; // 10% de descuento
-            }
+            int puntosGastados = aplicarDescuentoPuntos
+                ? costoPuntosCanje
+                : 0;
 
-            // REGLA: Si NO es consumidor final, calculamos y acumulamos puntos. Si es consumidor final, quedan en 0.
-            if (!esConsumidorFinal)
-            {
-                puntosNuevos = (int)(venta.TotalVenta * porcentajePuntosGenerados);
-            }
+            // El formulario debe enviar el total sin descuento.
+            decimal subtotal = venta.SubtotalVenta;
 
-            // Balance neto de puntos
-            venta.PuntosGenerados = puntosNuevos - puntosGastados;
+            if (subtotal <= 0)
+                throw new InvalidOperationException(
+                    "El subtotal de la venta debe ser mayor que cero.");
 
-            // Guardar en la base de datos a través de la capa de datos
-            return ventaData.RegistrarVenta(venta);
+            // Aplicar el descuento una sola vez.
+            venta.TotalVenta = aplicarDescuentoPuntos
+                ? Math.Round(subtotal * 0.90m, 2)
+                : subtotal;
+
+            // Consumidor Final no acumula puntos.
+            // El resto acumula el porcentaje del total efectivamente pagado.
+            int puntosNuevos = esConsumidorFinal
+                ? 0
+                : (int)(venta.TotalVenta * porcentajePuntosGenerados);
+
+            // Guardar únicamente los puntos NUEVOS en la venta.
+            // Los puntos gastados se envían por separado.
+            venta.PuntosGenerados = puntosNuevos;
+
+            return ventaData.RegistrarVenta(venta, puntosGastados);
         }
     }
 }
