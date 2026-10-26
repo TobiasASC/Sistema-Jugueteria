@@ -1,8 +1,9 @@
 ﻿
-using System;
-using System.Linq;
 using SistemaJugueteria.Data;
 using SistemaJugueteria.Entities;
+using System;
+using System.Data;
+using System.Linq;
 
 namespace SistemaJugueteria.Business
 {
@@ -77,6 +78,19 @@ namespace SistemaJugueteria.Business
             venta.PuntosGenerados = puntosNuevos;
 
             return ventaData.RegistrarVenta(venta, puntosGastados);
+        }
+
+        public DataTable ObtenerReporteVentas(
+        DateTime fechaDesde,
+        DateTime fechaHasta,
+        int? idEmpleado,
+        bool incluirDetalle)
+        {
+            return ventaData.ObtenerReporteVentas(
+                fechaDesde,
+                fechaHasta,
+                idEmpleado,
+                incluirDetalle);
         }
     }
 }

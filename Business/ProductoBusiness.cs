@@ -94,5 +94,12 @@ namespace SistemaJugueteria.Business
             if (string.IsNullOrWhiteSpace(descripcion)) return null;
             return _productoData.ObtenerProductoActivoPorDescripcion(descripcion);
         }
+
+
+        public DataTable ObtenerReporteProductos(bool verSoloInactivos, string criterioStock)
+        {
+            return _productoData.ObtenerReporteProductos(verSoloInactivos, criterioStock);
+        }
+
     }
 }

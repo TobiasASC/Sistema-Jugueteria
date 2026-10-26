@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using SistemaJugueteria.Data;
+﻿using SistemaJugueteria.Data;
 using SistemaJugueteria.Entities;
+using System.Collections.Generic;
+using System.Data;
 
 namespace SistemaJugueteria.Business
 {
@@ -38,5 +39,18 @@ namespace SistemaJugueteria.Business
             bool respuesta = datosSocio.Reactivar(idSocio);
             return respuesta ? "Cliente reactivado exitosamente." : "Error al reactivar el cliente.";
         }
+
+
+        public DataTable ObtenerReporteClientes(
+            bool incluirActivos,
+            bool incluirInactivos,
+            string criterioOrden)
+        {
+            return datosSocio.ObtenerReporteClientes(
+                incluirActivos,
+                incluirInactivos,
+                criterioOrden);
+        }
+
     }
 }

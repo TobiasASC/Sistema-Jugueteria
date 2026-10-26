@@ -2,6 +2,7 @@
 using System;
 using Microsoft.Data.SqlClient;
 using SistemaJugueteria.Entities;
+using System.Data;
 
 namespace SistemaJugueteria.Data
 {
@@ -190,5 +191,114 @@ namespace SistemaJugueteria.Data
 
             return idVentaGenerada;
         }
+
+
+
+
+        public DataTable ObtenerReporteVentas(
+            DateTime fechaDesde,
+            DateTime fechaHasta,
+            int? idEmpleado,
+            bool incluirDetalle)
+        {
+            if (fechaDesde.Date > fechaHasta.Date)
+            {
+                throw new ArgumentException(
+                    "La fecha desde no puede ser posterior a la fecha hasta.");
+            }
+
+            DataTable tabla = new DataTable();
+            string query;
+
+            if (incluirDetalle)
+            {
+                query = @"
+            SELECT
+                v.id_venta AS [N.º Venta],
+                v.fecha_venta AS [Fecha],
+                e.nombre_empleado + ' ' + e.apellido_empleado AS [Empleado],
+                s.dni_socio AS [DNI Socio],
+                p.id_producto AS [Código Producto],
+                p.descripcion_producto AS [Producto],
+                dv.cantidad AS [Cantidad],
+                dv.precio_unitario AS [Precio Unitario],
+                dv.subtotal AS [Subtotal Producto],
+                v.subtotal_venta AS [Subtotal Venta],
+                v.total_venta AS [Total Venta]
+            FROM Venta v
+            INNER JOIN Usuario u
+                ON u.id_usuario = v.id_usuario
+            INNER JOIN Empleado e
+                ON e.id_empleado = u.id_empleado
+            INNER JOIN Socio s
+                ON s.id_socio = v.id_socio
+            INNER JOIN Detalle_venta dv
+                ON dv.id_venta = v.id_venta
+            INNER JOIN Producto p
+                ON p.id_producto = dv.id_producto
+            WHERE v.fecha_venta >= @fechaDesde
+              AND v.fecha_venta < @fechaHasta
+              AND (
+                    @idEmpleado IS NULL
+                    OR e.id_empleado = @idEmpleado
+                  )
+            ORDER BY v.fecha_venta, v.id_venta;";
+            }
+            else
+            {
+                query = @"
+            SELECT
+                v.id_venta AS [N.º Venta],
+                v.fecha_venta AS [Fecha],
+                e.nombre_empleado + ' ' + e.apellido_empleado AS [Empleado],
+                s.dni_socio AS [DNI Socio],
+                v.subtotal_venta AS [Subtotal],
+                v.total_venta AS [Total],
+                v.puntos_generados AS [Puntos Generados]
+            FROM Venta v
+            INNER JOIN Usuario u
+                ON u.id_usuario = v.id_usuario
+            INNER JOIN Empleado e
+                ON e.id_empleado = u.id_empleado
+            INNER JOIN Socio s
+                ON s.id_socio = v.id_socio
+            WHERE v.fecha_venta >= @fechaDesde
+              AND v.fecha_venta < @fechaHasta
+              AND (
+                    @idEmpleado IS NULL
+                    OR e.id_empleado = @idEmpleado
+                  )
+            ORDER BY v.fecha_venta, v.id_venta;";
+            }
+
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            {
+                comando.Parameters.Add(
+                    "@fechaDesde", SqlDbType.DateTime).Value =
+                    fechaDesde.Date;
+
+                comando.Parameters.Add(
+                    "@fechaHasta", SqlDbType.DateTime).Value =
+                    fechaHasta.Date.AddDays(1);
+
+                comando.Parameters.Add(
+                    "@idEmpleado", SqlDbType.Int).Value =
+                    idEmpleado.HasValue
+                        ? (object)idEmpleado.Value
+                        : DBNull.Value;
+
+                using (SqlDataAdapter adaptador =
+                       new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+
+
+
     }
 }

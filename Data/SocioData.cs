@@ -120,5 +120,80 @@ namespace SistemaJugueteria.Data
                 }
             }
         }
+
+
+        public DataTable ObtenerReporteClientes(
+            bool incluirActivos,
+            bool incluirInactivos,
+            string criterioOrden)
+        {
+            DataTable tabla = new DataTable();
+
+            string ordenamiento;
+
+            switch (criterioOrden)
+            {
+                case "Mayores compradores":
+                    ordenamiento = "SUM(ISNULL(v.total_venta, 0)) DESC";
+                    break;
+
+                case "Más tiempo registrados":
+                    ordenamiento = "s.id_socio ASC";
+                    break;
+
+                case "Mayor cantidad de puntos":
+                    ordenamiento = "s.puntos_acumulados DESC";
+                    break;
+
+                default:
+                    ordenamiento = "s.id_socio ASC";
+                    break;
+            }
+
+            string query = $@"
+        SELECT
+            s.id_socio AS [ID],
+            s.dni_socio AS [DNI],
+            s.nombre_socio AS [Nombre],
+            s.apellido_socio AS [Apellido],
+            s.correo_socio AS [Correo],
+            CASE
+                WHEN s.activo = 1 THEN 'Activo'
+                ELSE 'Inactivo'
+            END AS [Estado],
+            ISNULL(s.puntos_acumulados, 0) AS [Puntos],
+            ISNULL(SUM(v.total_venta), 0) AS [Total comprado]
+        FROM Socio s
+        LEFT JOIN Venta v
+            ON s.id_socio = v.id_socio
+        WHERE
+            (@Activos = 1 AND s.activo = 1)
+            OR
+            (@Inactivos = 1 AND s.activo = 0)
+        GROUP BY
+            s.id_socio,
+            s.dni_socio,
+            s.nombre_socio,
+            s.apellido_socio,
+            s.correo_socio,
+            s.activo,
+            s.puntos_acumulados
+        ORDER BY {ordenamiento};";
+
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            {
+                comando.Parameters.AddWithValue("@Activos", incluirActivos ? 1 : 0);
+                comando.Parameters.AddWithValue("@Inactivos", incluirInactivos ? 1 : 0);
+
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+
     }
 }

@@ -45,5 +45,19 @@ namespace SistemaJugueteria.Business
             EmpleadoData objData = new EmpleadoData(); // O SistemaJugueteria.Data.EmpleadoData
             return objData.ObtenerEmpleadosTabla();
         }
+
+        public DataTable ObtenerReporteEmpleados(
+            bool incluirActivos,
+            bool incluirInactivos,
+            string rolBuscado)
+        {
+            EmpleadoData datos = new EmpleadoData();
+
+            return datos.ObtenerReporteEmpleados(
+                incluirActivos,
+                incluirInactivos,
+                rolBuscado);
+        }
+
     }
 }

@@ -221,5 +221,103 @@ namespace SistemaJugueteria.Data
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
+
+        public DataTable ObtenerReportePedidos(
+    DateTime desde,
+    DateTime hasta,
+    string estadoBuscado,
+    bool incluirDetalle)
+        {
+            DataTable dt = new DataTable();
+
+            string columnasGenerales = @"
+        p.id_pedido AS [Número de pedido],
+        e.nombre_empleado + ' ' + e.apellido_empleado AS [Usuario],
+        p.fecha_pedido AS [Fecha de realización],
+        p.fecha_entrega AS [Fecha estimada de entrega],
+        pr.nombre_proveedor AS [Proveedor],
+        p.total_pedido AS [Total],
+        p.estado_pedido AS [Estado]";
+
+            string query;
+
+            if (incluirDetalle)
+            {
+                query = $@"
+            SELECT
+                {columnasGenerales},
+                prod.descripcion_producto AS [Producto],
+                dp.cantidad AS [Cantidad],
+                dp.precio_unitario AS [Precio unitario],
+                dp.subtotal AS [Subtotal]
+            FROM Pedido p
+            INNER JOIN Proveedor pr
+                ON p.id_proveedor = pr.id_proveedor
+            INNER JOIN Usuario u
+                ON p.id_usuario = u.id_usuario
+            INNER JOIN Empleado e
+                ON u.id_empleado = e.id_empleado
+            INNER JOIN Detalle_pedido dp
+                ON p.id_pedido = dp.id_pedido
+            INNER JOIN Producto prod
+                ON dp.id_producto = prod.id_producto
+            WHERE
+                p.fecha_pedido >= @Desde
+                AND p.fecha_pedido < DATEADD(DAY, 1, @Hasta)
+                AND (
+                    @Estado = 'Todos'
+                    OR p.estado_pedido = @Estado
+                )
+            ORDER BY p.fecha_pedido DESC, p.id_pedido DESC;";
+            }
+            else
+            {
+                query = $@"
+            SELECT
+                {columnasGenerales}
+            FROM Pedido p
+            INNER JOIN Proveedor pr
+                ON p.id_proveedor = pr.id_proveedor
+            INNER JOIN Usuario u
+                ON p.id_usuario = u.id_usuario
+            INNER JOIN Empleado e
+                ON u.id_empleado = e.id_empleado
+            WHERE
+                p.fecha_pedido >= @Desde
+                AND p.fecha_pedido < DATEADD(DAY, 1, @Hasta)
+                AND (
+                    @Estado = 'Todos'
+                    OR p.estado_pedido = @Estado
+                )
+            ORDER BY p.fecha_pedido DESC, p.id_pedido DESC;";
+            }
+
+            string estadoSQL = "Todos";
+
+            if (estadoBuscado == "En espera")
+                estadoSQL = "EN ESPERA";
+            else if (estadoBuscado == "Recibidos")
+                estadoSQL = "RECIBIDO";
+
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            {
+                comando.Parameters.Add("@Desde", SqlDbType.DateTime).Value =
+                    desde.Date;
+
+                comando.Parameters.Add("@Hasta", SqlDbType.DateTime).Value =
+                    hasta.Date;
+
+                comando.Parameters.Add("@Estado", SqlDbType.VarChar, 50).Value =
+                    estadoSQL;
+
+                using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
     }
 }

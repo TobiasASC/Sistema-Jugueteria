@@ -156,5 +156,68 @@ namespace SistemaJugueteria.Data
             }
             return dt;
         }
+
+        public DataTable ObtenerReporteEmpleados(
+            bool incluirActivos,
+            bool incluirInactivos,
+            string rolBuscado)
+        {
+            DataTable dt = new DataTable();
+
+            string query = @"
+        SELECT
+            e.id_empleado AS [ID],
+            e.dni_empleado AS [DNI],
+            e.nombre_empleado AS [Nombre],
+            e.apellido_empleado AS [Apellido],
+            e.correo_empleado AS [Correo],
+            e.telefono_empleado AS [Teléfono],
+            e.direccion_empleado AS [Dirección],
+            CASE
+                WHEN e.estado = 1 THEN 'Activo'
+                ELSE 'Inactivo'
+            END AS [Estado],
+            ISNULL(r.nombre_rol, 'Sin usuario') AS [Rol]
+        FROM Empleado e
+        LEFT JOIN Usuario u
+            ON e.id_empleado = u.id_empleado
+        LEFT JOIN Rol r
+            ON u.id_rol = r.id_rol
+        WHERE
+            (u.id_rol IS NULL OR u.id_rol <> 1)
+            AND (
+                (@Activos = 1 AND e.estado = 1)
+                OR (@Inactivos = 1 AND e.estado = 0)
+            )
+            AND (
+                @Rol = 'Todos'
+                OR (@Rol = 'Gerente' AND r.nombre_rol = 'Gerente')
+                OR (@Rol = 'Vendedor' AND r.nombre_rol = 'Vendedor')
+            )
+        ORDER BY e.id_empleado ASC;";
+
+            using (var conexion = Conexion.ObtenerConexion())
+            using (var comando = new SqlCommand(query, conexion))
+            {
+                comando.Parameters.AddWithValue(
+                    "@Activos", incluirActivos ? 1 : 0);
+
+                comando.Parameters.AddWithValue(
+                    "@Inactivos", incluirInactivos ? 1 : 0);
+
+                comando.Parameters.AddWithValue(
+                    "@Rol", string.IsNullOrWhiteSpace(rolBuscado)
+                        ? "Todos"
+                        : rolBuscado);
+
+                using (var adaptador = new SqlDataAdapter(comando))
+                {
+                    adaptador.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
     }
 }

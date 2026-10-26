@@ -48,5 +48,18 @@ namespace SistemaJugueteria.Business
         {
             return _pedidoData.ObtenerProximoNumeroPedido();
         }
+
+        public DataTable ObtenerReportePedidos(
+        DateTime desde,
+        DateTime hasta,
+        string estadoBuscado,
+        bool incluirDetalle)
+        {
+            return _pedidoData.ObtenerReportePedidos(
+                desde,
+                hasta,
+                estadoBuscado,
+                incluirDetalle);
+        }
     }
 }
