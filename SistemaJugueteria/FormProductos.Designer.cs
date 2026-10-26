@@ -176,6 +176,7 @@
             dgvProductos.Size = new Size(868, 122);
             dgvProductos.TabIndex = 74;
             dgvProductos.CellClick += dgvProductos_CellClick;
+            dgvProductos.CellFormatting += dgvProductos_CellFormatting;
             // 
             // Codigo
             // 

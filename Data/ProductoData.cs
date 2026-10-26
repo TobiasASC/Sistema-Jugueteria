@@ -145,28 +145,7 @@ namespace SistemaJugueteria.Data
         }
 
         // Método optimizado para el autocompletado de la interfaz
-        public List<Producto> ListarProductosParaSugerencias()
-        {
-            List<Producto> lista = new List<Producto>();
-            using (SqlConnection conexion = Conexion.ObtenerConexion())
-            {
-                string query = "SELECT id_producto, descripcion_producto FROM Producto WHERE activo = 1";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                conexion.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        lista.Add(new Producto()
-                        {
-                            IdProducto = reader["id_producto"].ToString(),
-                            Descripcion = reader["descripcion_producto"].ToString()
-                        });
-                    }
-                }
-            }
-            return lista;
-        }
+
 
         public Producto ObtenerProductoActivoPorDescripcion(string descripcion)
         {

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using SistemaJugueteria.Business;
+using SistemaJugueteria.Entities;
+using SistemaJugueteria.Presentacion.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
-using SistemaJugueteria.Presentacion.Utilidades;
-using SistemaJugueteria.Business;
-using SistemaJugueteria.Entities;
 
 namespace SistemaJugueteria
 {
@@ -21,6 +22,7 @@ namespace SistemaJugueteria
         // Variable para llevar el total del pedido actual
         private decimal totalPedidoActual = 0;
         private int idPedidoEnEdicion = 0;
+        private string codigoProductoSeleccionado = "";
 
         public FormPedidos()
         {
@@ -37,6 +39,7 @@ namespace SistemaJugueteria
             BloquearCyberTextBox(txtProductoSeleccionado);
 
             dgvListaPedidos.AutoGenerateColumns = false;
+            dgvBuscarProducto.AutoGenerateColumns = false;
             dgvListaPedidos.CellFormatting += dgvListaPedidos_CellFormatting;
 
             // Conectar el evento TextChanged del CyberTextBox por código:
@@ -48,13 +51,29 @@ namespace SistemaJugueteria
 
             dgvDetallePedido.CellValueChanged += dgvDetallePedido_CellValueChanged;
 
+            TextBox txtBusquedaCodProd = txtCodigoProductoBuscar.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtBusquedaCodProd != null)
+            {
+                txtBusquedaCodProd.TextChanged += txtFiltroProducto_TextChanged;
+            }
+
+            TextBox txtBusquedaDescProd = txtDescripcionProductoBuscar.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtBusquedaDescProd != null)
+            {
+                txtBusquedaDescProd.TextChanged += txtFiltroProducto_TextChanged;
+            }
+
+        }
+
+        private void txtFiltroProducto_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarGrillaProductos();
         }
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
             CargarProveedores();
 
-            ConfigurarAutocompletado();
 
             // Deja el comboBox de búsqueda de estado con las opciones "Todos", "EN ESPERA", "RECIBIDO" y "CANCELADO"
             cbBuscarEstado.Items.Clear();
@@ -74,6 +93,7 @@ namespace SistemaJugueteria
 
             CargarGrillaPedidos();
             PrepararNuevoPedido();
+            FiltrarGrillaProductos();
         }
 
         // Método para bloquear un CyberTextBox y hacer que se vea deshabilitado para la escritura
@@ -132,16 +152,13 @@ namespace SistemaJugueteria
         // Evento del botón "Agregar Producto" para añadir un producto al pedido actual
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            string codigo = txtCodigoProducto.TextButton;
-            string productoIdentificado = txtProductoSeleccionado.TextButton;
-
-            if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(productoIdentificado))
+            if (string.IsNullOrWhiteSpace(codigoProductoSeleccionado))
             {
-                MessageBox.Show("Primero busque o seleccione un producto válido.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Primero busque y seleccione un producto de la lista superior.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Producto productoReal = _productoBusiness.ObtenerProductoActivo(codigo);
+            Producto productoReal = _productoBusiness.ObtenerProductoActivo(codigoProductoSeleccionado);
 
             if (productoReal != null)
             {
@@ -150,36 +167,28 @@ namespace SistemaJugueteria
 
                 bool existe = false;
 
-                // Recorremos la grilla para ver si el producto ya está cargado
                 foreach (DataGridViewRow fila in dgvDetallePedido.Rows)
                 {
                     if (fila.IsNewRow) continue;
 
                     if (fila.Cells[0].Value.ToString() == productoReal.IdProducto)
                     {
-                        // IMPORTANTE: REEMPLAZAMOS LA CANTIDAD EN LUGAR DE SUMARLA
+                        // Reemplazamos la cantidad si el producto ya está en el detalle
                         fila.Cells[3].Value = cantidadIngresada;
-
-                        // NOTA: Al modificar Cells[3].Value aquí, el evento "CellValueChanged" que programamos antes 
-                        // se disparará solo y actualizará el Subtotal de la fila y el Total General automáticamente.
-
                         existe = true;
-                        break; // Detenemos la búsqueda
+                        break;
                     }
                 }
 
-                // Si el producto no estaba en la grilla, lo agregamos como una fila nueva
                 if (!existe)
                 {
                     decimal precioUnitario = productoReal.PrecioVenta;
                     decimal subtotal = precioUnitario * cantidadIngresada;
                     dgvDetallePedido.Rows.Add(productoReal.IdProducto, productoReal.Descripcion, precioUnitario.ToString("C"), cantidadIngresada, subtotal.ToString("C"), "X");
 
-                    // Recalculamos el total porque agregamos una fila nueva
                     RecalcularTotalPedido();
                 }
 
-                // Limpiamos los campos para el próximo producto
                 LimpiarCamposProducto();
             }
         }
@@ -222,7 +231,8 @@ namespace SistemaJugueteria
                     IdProveedor = Convert.ToInt32(cbProveedor.SelectedValue),
                     IdUsuario = Sesion.IdUsuario,
                     TotalPedido = totalPedidoActual,
-                    FechaEntrega = dtpFechaEstimadaPedido.Checked ? (DateTime?)dtpFechaEstimadaPedido.Value : null,
+                    // Si no lo tocan, guarda la fecha y hora actual automáticamente
+                    FechaEntrega = dtpFechaEstimadaPedido.Checked ? (DateTime?)dtpFechaEstimadaPedido.Value : DateTime.Now,
                     Detalles = listaDetalles
                 };
                 mensaje = _pedidoBusiness.RegistrarPedido(nuevoPedido);
@@ -250,10 +260,15 @@ namespace SistemaJugueteria
         // Método para limpiar los campos relacionados con el producto en la sección de detalle del pedido
         private void LimpiarCamposProducto()
         {
-            txtCodigoProducto.TextButton = "";
-            txtDescripcionPedido.TextButton = "";
-            numCantidad.Value = 0;
+            txtCodigoProductoBuscar.TextButton = "";
+            txtDescripcionProductoBuscar.TextButton = "";
+
+            codigoProductoSeleccionado = "";
             txtProductoSeleccionado.TextButton = "";
+            numCantidad.Value = 0;
+
+            // Volver a cargar la grilla de búsqueda vacía o completa
+            FiltrarGrillaProductos();
         }
 
         // Evento del botón "Cancelar Producto" para limpiar los campos de producto
@@ -289,9 +304,10 @@ namespace SistemaJugueteria
                 int cantidadActual = Convert.ToInt32(fila.Cells[3].Value);
 
                 // Subimos los datos al panel de edición superior
-                txtCodigoProducto.TextButton = codigo;
+                txtCodigoProductoBuscar.TextButton = codigo;
                 txtProductoSeleccionado.TextButton = $"{codigo} - {descripcion}";
                 numCantidad.Value = cantidadActual;
+                codigoProductoSeleccionado = codigo;
 
                 // Ponemos el foco en el número para que el usuario edite rápidamente
                 numCantidad.Focus();
@@ -308,7 +324,7 @@ namespace SistemaJugueteria
             string estadoActual = fila.Cells["Estado"].Value.ToString();
             string nombreColumna = dgvListaPedidos.Columns[e.ColumnIndex].Name;
 
-            // 1. CAMBIO DIRECTO A RECIBIDO
+            // CAMBIO DIRECTO A RECIBIDO
             if (nombreColumna == "Estado")
             {
                 if (estadoActual == "RECIBIDO")
@@ -325,7 +341,7 @@ namespace SistemaJugueteria
                     CargarGrillaPedidos();
                 }
             }
-            // 2. MODO EDICIÓN (Botón Editar)
+            // MODO EDICIÓN (Botón Editar)
             else if (nombreColumna == "Editar")
             {
                 if (estadoActual == "RECIBIDO")
@@ -363,7 +379,7 @@ namespace SistemaJugueteria
                 RecalcularTotalPedido();
                 MessageBox.Show($"El pedido N° {idPedidoEnEdicion:D5} está listo para ser editado.\nModifique las cantidades directamente en la grilla superior o agregue nuevos productos.", "Modo Edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            // 3. DESCARGAR DETALLE
+            // DESCARGAR DETALLE
             else if (nombreColumna == "Detalles")
             {
                 string proveedor = fila.Cells["Proveedor"].Value.ToString();
@@ -371,46 +387,105 @@ namespace SistemaJugueteria
             }
         }
 
-        // Método para simular la descarga de un comprobante en formato PDF (en realidad es un archivo de texto) con los detalles del pedido
+        // Método para descargar PDF
         private void SimularDescargaPDF(int idPedido, string proveedor)
         {
             // Buscamos los detalles reales en la base de datos
             List<DetallePedido> detalles = _pedidoBusiness.ObtenerDetalles(idPedido);
 
-            // Construimos la lista de productos como texto
-            string listaProductosTexto = "";
+            // Cambiamos la extensión a .html
+            string rutaTemporal = Path.Combine(Path.GetTempPath(), $"Pedido_{idPedido}_Detalle.html");
+
+            StringBuilder html = new StringBuilder();
+
+            html.AppendLine("<!DOCTYPE html>");
+            html.AppendLine("<html><head><meta charset='utf-8'>");
+            html.AppendLine($"<title>Detalle de Pedido N° {idPedido:D5}</title>");
+
+            // Estilos CSS basados en tu diseño
+            html.AppendLine("<style>");
+            html.AppendLine("body{font-family:Segoe UI,Arial,sans-serif;margin:30px;color:#333;background:#fff;}");
+            html.AppendLine(".header{text-align:center;border-bottom:3px solid #ff7b7b;padding-bottom:15px;margin-bottom:20px;}");
+            html.AppendLine(".header h1{color:#d9534f;margin:0;font-size:26px;}");
+            html.AppendLine(".header h3{color:#555;margin:5px 0 0;font-weight:normal;}");
+            html.AppendLine(".info{display:flex;justify-content:space-between;background:#fff5f5;padding:12px 20px;margin-bottom:25px;border:1px solid #ffe0e0;}");
+            html.AppendLine("table{width:100%;border-collapse:collapse;margin-top:10px;}");
+            html.AppendLine("th,td{border:1px solid #e0e0e0;padding:10px;text-align:left;font-size:13px;}");
+            html.AppendLine("th{background:#ff9999;color:white;font-weight:bold;}");
+            html.AppendLine("tr:nth-child(even){background:#fcfcfc;}");
+            html.AppendLine(".footer{margin-top:40px;font-size:11px;text-align:center;color:#888;border-top:1px solid #eee;padding-top:15px;}");
+            html.AppendLine("</style></head><body>");
+
+            string usuarioHtml = System.Net.WebUtility.HtmlEncode(Sesion.NombreCompleto ?? Sesion.NombreUsuario ?? "");
+            string proveedorHtml = System.Net.WebUtility.HtmlEncode(proveedor);
+
+            // Cabecera
+            html.AppendLine("<div class='header'>");
+            html.AppendLine("<h1>SISTEMA JUGUETERÍA</h1>");
+            html.AppendLine($"<h3>Comprobante de Detalle de Pedido</h3>");
+            html.AppendLine("</div>");
+
+            // Panel de Información
+            html.AppendLine("<div class='info'>");
+            html.AppendLine("<div>");
+            html.AppendLine($"<p><strong>N.º de Pedido:</strong> {idPedido:D5}</p>");
+            html.AppendLine($"<p><strong>Fecha de Descarga:</strong> {DateTime.Now:dd/MM/yyyy HH:mm}</p>");
+            html.AppendLine("</div><div>");
+            html.AppendLine($"<p><strong>Proveedor:</strong> {proveedorHtml}</p>");
+            html.AppendLine($"<p><strong>Generado por:</strong> {usuarioHtml}</p>");
+            html.AppendLine("</div></div>");
+
+            // Tabla de Productos
             if (detalles.Count > 0)
             {
+                html.AppendLine("<table><thead><tr>");
+                html.AppendLine("<th>Código</th>");
+                html.AppendLine("<th>Producto</th>");
+                html.AppendLine("<th>Cantidad</th>");
+                html.AppendLine("<th>Precio Unitario</th>");
+                html.AppendLine("<th>Subtotal</th>");
+                html.AppendLine("</tr></thead><tbody>");
+
+                decimal totalGasto = 0;
+
                 foreach (var item in detalles)
                 {
-                    // Agregamos cada producto con su cantidad
-                    listaProductosTexto += $"- {item.DescripcionProducto} x {item.Cantidad} unidades\n";
+                    html.AppendLine("<tr>");
+                    html.AppendLine($"<td>{System.Net.WebUtility.HtmlEncode(item.IdProducto)}</td>");
+                    html.AppendLine($"<td>{System.Net.WebUtility.HtmlEncode(item.DescripcionProducto)}</td>");
+                    html.AppendLine($"<td>{item.Cantidad}</td>");
+                    html.AppendLine($"<td>{item.PrecioUnitario:C}</td>");
+                    html.AppendLine($"<td>{item.Subtotal:C}</td>");
+                    html.AppendLine("</tr>");
+
+                    totalGasto += item.Subtotal;
                 }
+
+                // Fila extra para mostrar el Total del Pedido
+                html.AppendLine("<tr>");
+                html.AppendLine("<td colspan='4' style='text-align:right;'><strong>TOTAL DEL PEDIDO:</strong></td>");
+                html.AppendLine($"<td><strong style='color:#d9534f;'>{totalGasto:C}</strong></td>");
+                html.AppendLine("</tr>");
+
+                html.AppendLine("</tbody></table>");
             }
             else
             {
-                listaProductosTexto = "- (No hay productos registrados en este pedido)\n";
+                html.AppendLine("<p style='text-align:center;padding:20px;color:#666;'>No hay productos registrados en este pedido.</p>");
             }
 
-            // 3. Armamos el comprobante con el formato exacto solicitado
-            string rutaTemporal = Path.Combine(Path.GetTempPath(), $"Pedido_{idPedido}_Detalle.txt");
-            string contenidoPDF = $@"==========================================" + "\n" +
-                                   $"    COMPROBANTE DE DETALLE DE PEDIDO     " + "\n" +
-                                   $"==========================================" + "\n" +
-                                   $"Número de Pedido: {idPedido:D5}\n" +
-                                   $"Proveedor: {proveedor}\n" +
-                                   $"Fecha de Descarga: {DateTime.Now:dd/MM/yyyy HH:mm}\n" +
-                                   $"------------------------------------------\n" +
-                                   $"[DETALLES DEL PEDIDO SOLICITADO]\n" +
-                                   listaProductosTexto +
-                                   $"==========================================";
+            // Pie de página
+            html.AppendLine("<div class='footer'>");
+            html.AppendLine("<p>Documento generado desde el Sistema de Gestión de Juguetería.</p>");
+            html.AppendLine("</div>");
+            html.AppendLine("</body></html>");
 
-            // Escribimos el archivo en los temporales de Windows
-            File.WriteAllText(rutaTemporal, contenidoPDF);
+            // Escribimos el archivo en los temporales de Windows con codificación UTF8
+            File.WriteAllText(rutaTemporal, html.ToString(), new UTF8Encoding(true));
 
             MessageBox.Show($"Descargando comprobante para el pedido N° {idPedido:D5}...", "Descarga completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Lo abrimos automáticamente con el bloc de notas
+            // Lo abrimos automáticamente con el navegador web predeterminado
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(rutaTemporal) { UseShellExecute = true });
         }
 
@@ -482,50 +557,6 @@ namespace SistemaJugueteria
             }
         }
 
-        // Evento del botón de búsqueda de producto (lupa) para obtener el producto activo desde la base de datos
-        private void btnBuscarProductoLupa_Click(object sender, EventArgs e)
-        {
-            string codigo = txtCodigoProducto.TextButton.Trim();
-            string descripcion = txtDescripcionPedido.TextButton.Trim();
-
-            // Validamos que al menos uno de los dos campos tenga datos
-            if (string.IsNullOrWhiteSpace(codigo) && string.IsNullOrWhiteSpace(descripcion))
-            {
-                MessageBox.Show("Por favor, ingrese un código o una descripción para buscar el producto.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            Producto productoReal = null;
-
-            // 1. Priorizamos la búsqueda por Código
-            if (!string.IsNullOrWhiteSpace(codigo))
-            {
-                productoReal = _productoBusiness.ObtenerProductoActivo(codigo);
-            }
-            // 2. Si no hay código, buscamos por la Descripción ingresada
-            else if (!string.IsNullOrWhiteSpace(descripcion))
-            {
-                productoReal = _productoBusiness.ObtenerProductoActivoPorDescripcion(descripcion);
-            }
-
-            if (productoReal == null)
-            {
-                MessageBox.Show("El producto no existe o se encuentra inactivo.", "Producto no disponible", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtProductoSeleccionado.TextButton = "";
-            }
-            else
-            {
-                // AUTOCOMPLETAMOS LA INTERFAZ: Llenamos el dato que el usuario NO escribió
-                txtCodigoProducto.TextButton = productoReal.IdProducto;
-                txtDescripcionPedido.TextButton = productoReal.Descripcion;
-
-                // Mostramos el formato final solicitado (CODIGO - DESCRIPCION)
-                txtProductoSeleccionado.TextButton = $"{productoReal.IdProducto} - {productoReal.Descripcion}";
-
-                // Movemos el cursor a la cantidad para agilizar la carga
-                numCantidad.Focus();
-            }
-        }
 
         // EVENTOS CONECTADOS AL FILTRADO DINÁMICO:
         private void txtNumeroPedidoBuscar_TextChanged(object sender, EventArgs e)
@@ -582,39 +613,7 @@ namespace SistemaJugueteria
             dgvListaPedidos.Cursor = Cursors.Default;
         }
 
-        private void ConfigurarAutocompletado()
-        {
-            List<Producto> productosActivos = _productoBusiness.ListarProductosParaSugerencias();
-
-            AutoCompleteStringCollection codigos = new AutoCompleteStringCollection();
-            AutoCompleteStringCollection descripciones = new AutoCompleteStringCollection();
-
-            foreach (Producto p in productosActivos)
-            {
-                codigos.Add(p.IdProducto);
-                descripciones.Add(p.Descripcion);
-            }
-
-            // Aplicamos autocompletado al Código
-            TextBox txtCod = txtCodigoProducto.Controls.OfType<TextBox>().FirstOrDefault();
-            if (txtCod != null)
-            {
-                txtCod.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtCod.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                txtCod.AutoCompleteCustomSource = codigos;
-            }
-
-            // Aplicamos autocompletado a la Descripción
-            TextBox txtDesc = txtDescripcionPedido.Controls.OfType<TextBox>().FirstOrDefault();
-            if (txtDesc != null)
-            {
-                txtDesc.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtDesc.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                txtDesc.AutoCompleteCustomSource = descripciones;
-            }
-        }
-
-        // 2. EVENTO QUE DETECTA CUANDO SE ESCRIBE UNA NUEVA CANTIDAD EN LA GRILLA
+        // EVENTO QUE DETECTA CUANDO SE ESCRIBE UNA NUEVA CANTIDAD EN LA GRILLA
         private void dgvDetallePedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -652,6 +651,66 @@ namespace SistemaJugueteria
             }
         }
 
+        private void FiltrarGrillaProductos()
+        {
+            string codigo = txtCodigoProductoBuscar.TextButton.Trim();
+            string descripcion = txtDescripcionProductoBuscar.TextButton.Trim();
 
+            DataTable dtProductos = _productoBusiness.ListarProductos(false); // Trae solo activos
+
+            if (dtProductos != null)
+            {
+                List<string> filtros = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(codigo))
+                {
+                    // Usamos el alias 'Codigo' definido en el SQL
+                    filtros.Add($"Codigo LIKE '%{codigo}%'");
+                }
+                if (!string.IsNullOrWhiteSpace(descripcion))
+                {
+                    // Usamos el alias 'Descripcion' definido en el SQL
+                    filtros.Add($"Descripcion LIKE '%{descripcion}%'");
+                }
+
+                string filtroFinal = string.Join(" AND ", filtros);
+                dtProductos.DefaultView.RowFilter = filtroFinal;
+
+                dgvBuscarProducto.DataSource = dtProductos;
+            }
+        }
+
+        private void dgvBuscarProducto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ignora los clics en los encabezados o en la fila en blanco de creación
+            if (e.RowIndex < 0 || e.RowIndex == dgvBuscarProducto.NewRowIndex) return;
+
+            string nombreColumna = dgvBuscarProducto.Columns[e.ColumnIndex].Name;
+
+            if (nombreColumna == "Seleccionar")
+            {
+                DataGridViewRow fila = dgvBuscarProducto.Rows[e.RowIndex];
+
+                DataRowView filaDatos = fila.DataBoundItem as DataRowView;
+
+                if (filaDatos != null)
+                {
+                    // Extraemos usando los Alias EXACTOS de la base de datos
+                    string codigo = filaDatos["Codigo"].ToString();
+                    string descripcion = filaDatos["Descripcion"].ToString();
+
+                    // Guardamos la selección
+                    codigoProductoSeleccionado = codigo;
+                    txtProductoSeleccionado.TextButton = $"{codigo} - {descripcion}";
+
+                    // Movemos el foco
+                    numCantidad.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron leer los datos del producto.", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

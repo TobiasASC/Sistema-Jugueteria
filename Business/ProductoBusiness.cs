@@ -82,11 +82,6 @@ namespace SistemaJugueteria.Business
             return _productoData.ObtenerProductoActivo(idProducto);
         }
 
-        // Método para listar productos activos para sugerencias en la busqueda de productos 
-        public List<Producto> ListarProductosParaSugerencias()
-        {
-            return _productoData.ListarProductosParaSugerencias();
-        }
 
         // Método para obtener un producto activo por su descripción
         public Producto ObtenerProductoActivoPorDescripcion(string descripcion)

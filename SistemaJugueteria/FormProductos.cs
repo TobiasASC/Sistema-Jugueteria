@@ -12,6 +12,7 @@ namespace SistemaJugueteria
         // Variables de negocio para manejar operaciones relacionadas con productos  
         private ProductoBusiness _productoBusiness = new ProductoBusiness();
         private CategoriaBusiness _categoriaBusiness = new CategoriaBusiness();
+
         // Variable para determinar si estamos en modo de modificación o no
         private bool esModificacion = false;
 
@@ -24,6 +25,7 @@ namespace SistemaJugueteria
             Validaciones.ConfigurarSoloNumeros(txtCodigoProductoBuscar);
 
             dgvProductos.AutoGenerateColumns = false;
+            dgvProductos.CellFormatting += dgvProductos_CellFormatting;
         }
 
         private string ObtenerTexto(Control control)
@@ -320,6 +322,38 @@ namespace SistemaJugueteria
         private void chkEstado_CheckedChanged()
         {
             CargarGrilla();
+        }
+
+        // Evento que se dispara al tener el stock menor o igual a el stock mínimo
+        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificamos que no sea la fila de encabezados ni una fila vacía
+            if (e.RowIndex >= 0 && dgvProductos.Rows.Count > 0)
+            {
+                DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
+
+                // Validamos que las celdas contengan datos para evitar errores
+                if (fila.Cells["Stock_Actual"].Value != null && fila.Cells["Stock_Minimo"].Value != null)
+                {
+                    // Convertir los valores a enteros para la comparación
+                    int stockActual = Convert.ToInt32(fila.Cells["Stock_Actual"].Value);
+                    int stockMinimo = Convert.ToInt32(fila.Cells["Stock_Minimo"].Value);
+
+                    // Lógica de colores según el stock
+                    if (stockActual <= stockMinimo)
+                    {
+                        // Stock Bajo: Fondo rojizo claro para alertar al usuario 
+                        fila.DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
+                        fila.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    }
+                    else
+                    {
+                        // Stock Normal: Fondo blanco por defecto
+                        fila.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                        fila.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    }
+                }
+            }
         }
     }
 }
