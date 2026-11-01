@@ -1,120 +1,247 @@
-﻿using System;
+﻿using SistemaJugueteria.Business;
+using SistemaJugueteria.Entities;
+using SistemaJugueteria.Presentacion.Utilidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using SistemaJugueteria.Presentacion.Utilidades;
 
 namespace SistemaJugueteria
 {
     public partial class FormBackup : Form
     {
+        private BackupBusiness _backupBusiness = new BackupBusiness();
+
         public FormBackup()
         {
             InitializeComponent();
 
             Validaciones.ConfigurarNumerosLongitud(txtNumeroBackup, 5);
             Validaciones.ConfigurarSoloNumeros(numeroBackupBuscar);
+
+            dgvBackups.AutoGenerateColumns = false;
+
+            // Bloquea los campos superiores informativos
+            BloquearCyberTextBox(txtNumeroBackup);
+            BloquearCyberTextBox(txtBD);
+            dtpFechaBackup.Enabled = false;
+
+            // CONECTA EVENTOS DE BÚSQUEDA DINÁMICA
+            VincularEventoInterno(numeroBackupBuscar);
+            dtpFechaBuscar.ValueChanged += ControlesBusqueda_Changed;
+
+            // CARGA LA INFORMACIÓN INICIAL
+            CargarGrillaBackups();
+            PrepararNuevoBackupVisual();
+
+            if (dgvBackups.Columns["Restaurar"] is DataGridViewButtonColumn colRestaurar)
+            {
+                colRestaurar.UseColumnTextForButtonValue = true;
+                colRestaurar.Text = "Restaurar";
+            }
+
+            // Valida si el usuario activo es Gerente para mostrar el botón de CONFIGURAR PIN ---
+            if (Sesion.IdRol == 3)
+            {
+                btnConfigurarPin.Visible = true;
+            }
+            else
+            {
+                btnConfigurarPin.Visible = false;
+            }
+        }
+
+        // Método para extraer el TextBox real del CyberTextBox
+        private void VincularEventoInterno(ReaLTaiizor.Controls.CyberTextBox cyberCaja)
+        {
+            if (cyberCaja == null) return;
+
+            foreach (Control controlInterno in cyberCaja.Controls)
+            {
+                if (controlInterno is TextBox cajaReal)
+                {
+                    cajaReal.KeyUp += new KeyEventHandler(ControlesBusqueda_KeyUp);
+                    break;
+                }
+            }
+        }
+
+        // Evento para el tipeo del número
+        private void ControlesBusqueda_KeyUp(object sender, KeyEventArgs e)
+        {
+            FiltrarGrilla();
+        }
+
+        // Evento para el cambio de la fecha o el CheckBox
+        private void ControlesBusqueda_Changed(object sender, EventArgs e)
+        {
+            FiltrarGrilla();
+        }
+
+        private void FormBackup_Load(object sender, EventArgs e)
+        {
+            // El Load queda vacío porque movimos la carga inicial al constructor
         }
 
 
+        // LÓGICA DE FILTRADO DINÁMICO
+        private void FiltrarGrilla()
+        {
+            if (dgvBackups.DataSource is DataTable dt)
+            {
+                string numeroBuscado = numeroBackupBuscar.TextButton.Trim();
+
+                // Se usa la propiedad Checked del propio DateTimePicker integrado
+                bool usarFiltroFecha = dtpFechaBuscar.Checked;
+                DateTime fechaBuscada = dtpFechaBuscar.Value.Date;
+
+                List<string> filtros = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(numeroBuscado))
+                {
+                    filtros.Add($"Numero LIKE '%{numeroBuscado}%'");
+                }
+
+                if (usarFiltroFecha)
+                {
+                    // Rango de 24 horas para cubrir todo el día seleccionado
+                    string fechaInicio = fechaBuscada.ToString("yyyy-MM-dd");
+                    string fechaFin = fechaBuscada.AddDays(1).ToString("yyyy-MM-dd");
+
+                    filtros.Add($"(Fecha >= '{fechaInicio}' AND Fecha < '{fechaFin}')");
+                }
+
+                string filtroFinal = string.Join(" AND ", filtros);
+                dt.DefaultView.RowFilter = filtroFinal;
+
+                ActualizarContador();
+            }
+        }
+
+        private void BloquearCyberTextBox(ReaLTaiizor.Controls.CyberTextBox control)
+        {
+            TextBox txtReal = control.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtReal != null)
+            {
+                txtReal.Enabled = false;
+                txtReal.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                control.Enabled = false;
+            }
+        }
+
+        private void PrepararNuevoBackupVisual()
+        {
+            DataTable dt = _backupBusiness.ObtenerHistorialBackups();
+            int proximoNumero = dt.Rows.Count + 1;
+
+            txtNumeroBackup.TextButton = proximoNumero.ToString("D5");
+            txtBD.TextButton = "SistemaJugueteriaDB";
+            dtpFechaBackup.Value = DateTime.Now;
+        }
+
+        private void CargarGrillaBackups()
+        {
+            DataTable dt = _backupBusiness.ObtenerHistorialBackups();
+            dgvBackups.DataSource = dt;
+
+            ActualizarContador();
+        }
+
         private void panel2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Limpiamos la sección superior
-            txtNumeroBackup.TextButton = "";
-            txtBD.TextButton = "";
-
-            // Reiniciamos el DateTimePicker a la fecha actual
-            dtpFechaBackup.Value = DateTime.Now;
+            PrepararNuevoBackupVisual();
         }
 
         private void ActualizarContador()
         {
-            // Actualiza el CyberTextBox inferior con la cantidad de filas
-            int cantidad = dgvBackups.AllowUserToAddRows ? dgvBackups.Rows.Count - 1 : dgvBackups.Rows.Count;
-            contadorBackups.TextButton = cantidad.ToString();
+            if (dgvBackups.DataSource is DataTable dt)
+            {
+                contadorBackups.TextButton = dt.DefaultView.Count.ToString();
+            }
+            else
+            {
+                int cantidad = dgvBackups.AllowUserToAddRows ? dgvBackups.Rows.Count - 1 : dgvBackups.Rows.Count;
+                contadorBackups.TextButton = cantidad.ToString();
+            }
+        }
+
+
+
+        private void dgvBackups_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvBackups.Columns[e.ColumnIndex].Name;
+
+            if (nombreColumna == "Restaurar")
+            {
+                string rutaArchivo = dgvBackups.Rows[e.RowIndex].Cells["Ruta"].Value.ToString();
+
+                DialogResult advertencia = MessageBox.Show(
+                    "¡PELIGRO CRÍTICO! Restaurar la base de datos sobrescribirá toda la información actual del sistema con los datos de este archivo.\n\n¿Desea proceder con la autorización de doble factor?",
+                    "Advertencia de Restauración", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (advertencia == DialogResult.Yes)
+                {
+                    using (FormAutorizacionRestore modal = new FormAutorizacionRestore())
+                    {
+                        if (modal.ShowDialog() == DialogResult.OK)
+                        {
+                            string resultadoRestauracion = _backupBusiness.RestaurarDesdeBackup(rutaArchivo);
+                            MessageBox.Show(resultadoRestauracion, "Restauración Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            if (resultadoRestauracion.Contains("exitosamente"))
+                            {
+                                Application.Restart();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Restauración cancelada por seguridad.", "Operación abortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            // 1. Validar que los campos clave no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNumeroBackup.TextButton) || string.IsNullOrWhiteSpace(txtBD.TextButton))
+            DialogResult confirmacion = MessageBox.Show(
+        "¿Desea generar una nueva copia de seguridad física de la base de datos?",
+        "Confirmar Backup", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
             {
-                MessageBox.Show("El N° de Backup y el nombre de la Base de Datos son obligatorios.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                // Llamamos directamente a la capa de negocio que ejecuta el BACKUP DATABASE de SQL Server
+                string mensaje = _backupBusiness.GenerarNuevoBackup();
+                MessageBox.Show(mensaje, "Resultado del Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // 2. Capturar datos
-            string numero = txtNumeroBackup.TextButton;
-            string baseDatos = txtBD.TextButton;
-            string fecha = dtpFechaBackup.Value.ToString("dd/MM/yyyy");
-
-            // 3. Generar archivo y obtener la ruta final
-            if (GenerarBackupFisico(numero, baseDatos, fecha, out string rutaFinal))
-            {
-                // 4. Agregar a la grilla respetando las columnas: N° Backup, Base de Datos, Ruta, Fecha, Detalles
-                dgvBackups.Rows.Add(numero, baseDatos, rutaFinal, fecha, "Copia Completa");
-
-                ActualizarContador();
-
-                // 5. Limpiar para el siguiente backup
-                btnCancelar_Click(sender, e);
+                // Refrescamos la grilla leyendo la carpeta física y reseteamos el formulario
+                CargarGrillaBackups();
+                PrepararNuevoBackupVisual();
             }
         }
 
-
-        private bool GenerarBackupFisico(string numBackup, string baseDatos, string fecha, out string rutaGuardada)
+        private void FormBackup_Load_1(object sender, EventArgs e)
         {
-            rutaGuardada = ""; // Inicializamos la variable obligatoriamente
 
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+        }
+
+        private void btnConfigurarPin_Click(object sender, EventArgs e)
+        {
+            using (FormConfigurarPin modalPin = new FormConfigurarPin())
             {
-                // Filtros específicos para bases de datos
-                saveFileDialog.Filter = "Archivo de Backup (*.bak)|*.bak|Script SQL (*.sql)|*.sql";
-                saveFileDialog.FileName = $"Backup_{baseDatos}_{fecha.Replace("/", "-")}.bak";
-                saveFileDialog.Title = "Guardar Copia de Seguridad";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        // Simulamos el contenido de un script de backup de SQL Server
-                        StringBuilder sb = new StringBuilder();
-                        sb.AppendLine("-- ==================================================");
-                        sb.AppendLine("-- SISTEMA JUGUETERÍA - COPIA DE SEGURIDAD");
-                        sb.AppendLine("-- ==================================================");
-                        sb.AppendLine($"-- N° Backup      : {numBackup}");
-                        sb.AppendLine($"-- Base de Datos  : {baseDatos}");
-                        sb.AppendLine($"-- Fecha de Copia : {fecha}");
-                        sb.AppendLine("-- ==================================================");
-                        sb.AppendLine();
-                        sb.AppendLine($"BACKUP DATABASE [{baseDatos}]");
-                        sb.AppendLine($"TO DISK = '{saveFileDialog.FileName}'");
-                        sb.AppendLine("WITH NOFORMAT, NOINIT, NAME = 'Copia completa estática', SKIP, NOREWIND, NOUNLOAD, STATS = 10;");
-
-                        File.WriteAllText(saveFileDialog.FileName, sb.ToString());
-
-                        rutaGuardada = saveFileDialog.FileName; // Capturamos la ruta final
-
-                        MessageBox.Show($"Copia de seguridad guardada correctamente en:\n{rutaGuardada}", "Backup Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al guardar el backup: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                }
-
-                return false; // El usuario canceló la ventana
+                modalPin.ShowDialog();
             }
         }
     }

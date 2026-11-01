@@ -33,7 +33,8 @@ CREATE TABLE Usuario (
     contraseña VARCHAR(255) NOT NULL,
     id_rol INT NOT NULL,
     id_empleado INT NOT NULL UNIQUE, 
-    estado INT DEFAULT 1, 
+    estado INT DEFAULT 1,
+    pin_seguridad VARCHAR(255) NULL
     CONSTRAINT fk_usuario_rol FOREIGN KEY (id_rol) REFERENCES Rol(id_rol),
     CONSTRAINT fk_usuario_empleado FOREIGN KEY (id_empleado) REFERENCES Empleado(id_empleado)
 );
@@ -73,7 +74,8 @@ BEGIN
         u.contraseña, 
         u.id_rol, 
         u.id_empleado,
-        u.estado -- COLUMNA NECESARIA PARA QUE C# LANCE EL AVISO DE BAJA    
+        u.estado,
+        pin_seguridad
     FROM Usuario u
     INNER JOIN Empleado e ON u.id_empleado = e.id_empleado -- Unimos con el empleado    
     WHERE u.nombre_usuario = @p_nombre_usuario; 

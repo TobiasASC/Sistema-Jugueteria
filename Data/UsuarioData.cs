@@ -12,7 +12,6 @@ namespace SistemaJugueteria.Data
         {
             Usuario usuarioEncontrado = null;
 
-            // Llamamos a la clase estática Conexion
             using (var conexion = Conexion.ObtenerConexion())
             {
                 using (var comando = new SqlCommand("sp_ValidarUsuario", conexion))
@@ -36,6 +35,12 @@ namespace SistemaJugueteria.Data
                                     IdEmpleado = Convert.ToInt32(reader["id_empleado"]),
                                     Estado = Convert.ToInt32(reader["estado"])
                                 };
+
+                                // VALIDACIÓN: Leer el PIN permitiendo nulos
+                                if (reader["pin_seguridad"] != DBNull.Value)
+                                {
+                                    usuarioEncontrado.Pin_Seguridad = reader["pin_seguridad"].ToString();
+                                }
                             }
                         }
                     }
@@ -103,6 +108,23 @@ namespace SistemaJugueteria.Data
                 }
             }
             return usuarioEncontrado;
+        }
+
+
+        public void ActualizarPinSeguridad(int idUsuario, string pinHash)
+        {
+
+            using (Microsoft.Data.SqlClient.SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = "UPDATE Usuario SET pin_seguridad = @pin WHERE id_usuario = @id";
+
+                Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@pin", pinHash);
+                cmd.Parameters.AddWithValue("@id", idUsuario);
+
+                conexion.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

@@ -69,6 +69,69 @@ namespace SistemaJugueteria.Business
             data.ABMUsuario(nuevoUsuario, operacion);
         }
 
+        
+        public Usuario ValidarPinAutorizacion(string usuarioInput, string pinInput)
+        {
+            if (string.IsNullOrEmpty(usuarioInput) || string.IsNullOrEmpty(pinInput))
+            {
+                throw new ArgumentException("El usuario y el PIN son obligatorios.");
+            }
+
+            UsuarioData data = new UsuarioData();
+            Usuario usuarioBD = data.ObtenerUsuario(usuarioInput);
+
+            if (usuarioBD != null)
+            {
+                if (usuarioBD.Estado == 0)
+                {
+                    throw new ArgumentException("Error de autorización: Usuario gerente dado de baja.");
+                }
+
+                // Si el usuario no tiene un PIN configurado todavía
+                if (string.IsNullOrEmpty(usuarioBD.Pin_Seguridad)) // Asegúrate de que la entidad Usuario tenga esta propiedad
+                {
+                    throw new ArgumentException("El usuario ingresado no tiene un PIN de seguridad configurado.");
+                }
+
+                // Verificamos el PIN ingresado contra el hash de la base de datos
+                bool pinCorrecto = BCrypt.Net.BCrypt.Verify(pinInput, usuarioBD.Pin_Seguridad);
+
+                if (pinCorrecto)
+                {
+                    return usuarioBD;
+                }
+            }
+
+            return null; // Usuario no existe o PIN incorrecto
+        }
+
+        
+        public string ConfigurarNuevoPin(int idUsuario, string nuevoPin, string confirmarPin)
+        {
+            if (string.IsNullOrWhiteSpace(nuevoPin) || string.IsNullOrWhiteSpace(confirmarPin))
+            {
+                throw new ArgumentException("Debe completar ambos campos.");
+            }
+
+            if (nuevoPin != confirmarPin)
+            {
+                throw new ArgumentException("Los PINs ingresados no coinciden. Verifíquelos.");
+            }
+
+            if (nuevoPin.Length < 4)
+            {
+                throw new ArgumentException("Por seguridad, el PIN debe tener al menos 4 dígitos.");
+            }
+
+            // Encriptamos el PIN exactamente igual que una contraseña
+            string pinHash = BCrypt.Net.BCrypt.HashPassword(nuevoPin);
+
+            // Llamamos a la capa de datos
+            _usuarioData.ActualizarPinSeguridad(idUsuario, pinHash);
+
+            return "Su PIN de seguridad ha sido configurado correctamente.";
+        }
+
     }
 }
 

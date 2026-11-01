@@ -16,6 +16,7 @@ namespace SistemaJugueteria.Entities
         
         public Rol RolAsignado { get; set; }
 
+        public string Pin_Seguridad { get; set; }
         public int Estado { get; set; } 
     }
 }
