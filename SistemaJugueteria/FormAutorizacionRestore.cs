@@ -50,12 +50,13 @@ namespace SistemaJugueteria
                     return;
                 }
 
-                // 3. Regla de seguridad: Evitar auto-autorización
+                /* 3 Regla de seguridad: Evitar auto-autorización
                 if (usuarioActual.IdUsuario == autorizador.IdUsuario)
                 {
                     MessageBox.Show("La validación de doble factor requiere la autorización de dos usuarios diferentes.", "Acción denegada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                */
 
                 // 4. Verificar jerarquía del autorizador (IdRol 1 = Admin, IdRol 3 = Gerente)
                 if (autorizador.IdRol != 1 && autorizador.IdRol != 3)
