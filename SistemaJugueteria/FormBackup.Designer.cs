@@ -30,13 +30,13 @@
         {
             label2 = new Label();
             panel3 = new ReaLTaiizor.Controls.Panel();
-            dateTimePicker1 = new DateTimePicker();
+            dtpFechaBuscar = new DateTimePicker();
             dgvBackups = new DataGridView();
-            ColumCodigo = new DataGridViewTextBoxColumn();
-            DescripColum = new DataGridViewTextBoxColumn();
-            CategoriaColum = new DataGridViewTextBoxColumn();
-            CantidadColum = new DataGridViewTextBoxColumn();
-            eliminarColum = new DataGridViewTextBoxColumn();
+            Numero = new DataGridViewTextBoxColumn();
+            Base_De_Datos = new DataGridViewTextBoxColumn();
+            Ruta = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            Restaurar = new DataGridViewButtonColumn();
             label4 = new Label();
             button1 = new Button();
             label10 = new Label();
@@ -48,6 +48,7 @@
             button3 = new Button();
             label7 = new Label();
             panel2 = new ReaLTaiizor.Controls.Panel();
+            btnConfigurarPin = new ReaLTaiizor.Controls.CyberButton();
             dtpFechaBackup = new DateTimePicker();
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnConfirmar = new ReaLTaiizor.Controls.CyberButton();
@@ -82,7 +83,7 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(255, 227, 227);
-            panel3.Controls.Add(dateTimePicker1);
+            panel3.Controls.Add(dtpFechaBuscar);
             panel3.Controls.Add(dgvBackups);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(button1);
@@ -103,13 +104,14 @@
             panel3.TabIndex = 60;
             panel3.Text = "panel3";
             // 
-            // dateTimePicker1
+            // dtpFechaBuscar
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(249, 88);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(95, 23);
-            dateTimePicker1.TabIndex = 79;
+            dtpFechaBuscar.Format = DateTimePickerFormat.Custom;
+            dtpFechaBuscar.Location = new Point(249, 82);
+            dtpFechaBuscar.Name = "dtpFechaBuscar";
+            dtpFechaBuscar.ShowCheckBox = true;
+            dtpFechaBuscar.Size = new Size(95, 23);
+            dtpFechaBuscar.TabIndex = 79;
             // 
             // dgvBackups
             // 
@@ -123,7 +125,7 @@
             dgvBackups.BorderStyle = BorderStyle.None;
             dgvBackups.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvBackups.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBackups.Columns.AddRange(new DataGridViewColumn[] { ColumCodigo, DescripColum, CategoriaColum, CantidadColum, eliminarColum });
+            dgvBackups.Columns.AddRange(new DataGridViewColumn[] { Numero, Base_De_Datos, Ruta, Fecha, Restaurar });
             dgvBackups.EnableHeadersVisualStyles = false;
             dgvBackups.GridColor = SystemColors.ScrollBar;
             dgvBackups.Location = new Point(11, 163);
@@ -132,36 +134,41 @@
             dgvBackups.RowHeadersVisible = false;
             dgvBackups.Size = new Size(868, 122);
             dgvBackups.TabIndex = 76;
+            dgvBackups.CellClick += dgvBackups_CellClick;
             // 
-            // ColumCodigo
+            // Numero
             // 
-            ColumCodigo.HeaderText = "N° Backup";
-            ColumCodigo.Name = "ColumCodigo";
-            ColumCodigo.ReadOnly = true;
+            Numero.DataPropertyName = "Numero";
+            Numero.HeaderText = "N° Backup";
+            Numero.Name = "Numero";
+            Numero.ReadOnly = true;
             // 
-            // DescripColum
+            // Base_De_Datos
             // 
-            DescripColum.HeaderText = "Base de Datos";
-            DescripColum.Name = "DescripColum";
-            DescripColum.ReadOnly = true;
+            Base_De_Datos.DataPropertyName = "Base_De_Datos";
+            Base_De_Datos.HeaderText = "Base de Datos";
+            Base_De_Datos.Name = "Base_De_Datos";
+            Base_De_Datos.ReadOnly = true;
             // 
-            // CategoriaColum
+            // Ruta
             // 
-            CategoriaColum.HeaderText = "Ruta";
-            CategoriaColum.Name = "CategoriaColum";
-            CategoriaColum.ReadOnly = true;
+            Ruta.DataPropertyName = "Ruta";
+            Ruta.HeaderText = "Ruta";
+            Ruta.Name = "Ruta";
+            Ruta.ReadOnly = true;
             // 
-            // CantidadColum
+            // Fecha
             // 
-            CantidadColum.HeaderText = "Fecha";
-            CantidadColum.Name = "CantidadColum";
-            CantidadColum.ReadOnly = true;
+            Fecha.DataPropertyName = "Fecha";
+            Fecha.HeaderText = "Fecha";
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
             // 
-            // eliminarColum
+            // Restaurar
             // 
-            eliminarColum.HeaderText = "Detalles";
-            eliminarColum.Name = "eliminarColum";
-            eliminarColum.ReadOnly = true;
+            Restaurar.HeaderText = "";
+            Restaurar.Name = "Restaurar";
+            Restaurar.ReadOnly = true;
             // 
             // label4
             // 
@@ -202,7 +209,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Image = Properties.Resources.boxicons__search_alt;
-            button5.Location = new Point(366, 79);
+            button5.Location = new Point(359, 79);
             button5.Name = "button5";
             button5.Size = new Size(34, 32);
             button5.TabIndex = 61;
@@ -317,6 +324,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(255, 227, 227);
+            panel2.Controls.Add(btnConfigurarPin);
             panel2.Controls.Add(dtpFechaBackup);
             panel2.Controls.Add(btnCancelar);
             panel2.Controls.Add(btnConfirmar);
@@ -342,6 +350,48 @@
             panel2.TabIndex = 59;
             panel2.Text = "panel2";
             panel2.Click += panel2_Click;
+            // 
+            // btnConfigurarPin
+            // 
+            btnConfigurarPin.Alpha = 20;
+            btnConfigurarPin.BackColor = Color.Transparent;
+            btnConfigurarPin.Background = true;
+            btnConfigurarPin.Background_WidthPen = 4F;
+            btnConfigurarPin.BackgroundPen = true;
+            btnConfigurarPin.ColorBackground = Color.Coral;
+            btnConfigurarPin.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            btnConfigurarPin.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            btnConfigurarPin.ColorBackground_Pen = Color.FromArgb(255, 200, 200);
+            btnConfigurarPin.ColorLighting = Color.FromArgb(29, 200, 238);
+            btnConfigurarPin.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            btnConfigurarPin.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btnConfigurarPin.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnConfigurarPin.Effect_1 = true;
+            btnConfigurarPin.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btnConfigurarPin.Effect_1_Transparency = 25;
+            btnConfigurarPin.Effect_2 = true;
+            btnConfigurarPin.Effect_2_ColorBackground = Color.White;
+            btnConfigurarPin.Effect_2_Transparency = 20;
+            btnConfigurarPin.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfigurarPin.ForeColor = Color.FromArgb(245, 245, 245);
+            btnConfigurarPin.Lighting = false;
+            btnConfigurarPin.LinearGradient_Background = false;
+            btnConfigurarPin.LinearGradientPen = false;
+            btnConfigurarPin.Location = new Point(253, 112);
+            btnConfigurarPin.Name = "btnConfigurarPin";
+            btnConfigurarPin.PenWidth = 15;
+            btnConfigurarPin.Rounding = true;
+            btnConfigurarPin.RoundingInt = 70;
+            btnConfigurarPin.Size = new Size(161, 32);
+            btnConfigurarPin.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnConfigurarPin.TabIndex = 80;
+            btnConfigurarPin.Tag = "Cyber";
+            btnConfigurarPin.TextButton = "CONFIGURAR PIN";
+            btnConfigurarPin.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnConfigurarPin.Timer_Effect_1 = 5;
+            btnConfigurarPin.Timer_RGB = 300;
+            btnConfigurarPin.Visible = false;
+            btnConfigurarPin.Click += btnConfigurarPin_Click;
             // 
             // dtpFechaBackup
             // 
@@ -805,6 +855,7 @@
             Controls.Add(label2);
             Name = "FormBackup";
             Text = "FormBackup";
+            Load += FormBackup_Load_1;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBackups).EndInit();
@@ -842,14 +893,15 @@
         private ReaLTaiizor.Controls.CyberTextBox txtNumeroBackup;
         private Label label4;
         private DataGridView dgvBackups;
-        private DataGridViewTextBoxColumn ColumCodigo;
-        private DataGridViewTextBoxColumn DescripColum;
-        private DataGridViewTextBoxColumn CategoriaColum;
-        private DataGridViewTextBoxColumn CantidadColum;
-        private DataGridViewTextBoxColumn eliminarColum;
         private ReaLTaiizor.Controls.CyberButton btnConfirmar;
         private ReaLTaiizor.Controls.CyberButton btnCancelar;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpFechaBuscar;
         private DateTimePicker dtpFechaBackup;
+        private DataGridViewTextBoxColumn Numero;
+        private DataGridViewTextBoxColumn Base_De_Datos;
+        private DataGridViewTextBoxColumn Ruta;
+        private DataGridViewTextBoxColumn Fecha;
+        private DataGridViewButtonColumn Restaurar;
+        private ReaLTaiizor.Controls.CyberButton btnConfigurarPin;
     }
 }

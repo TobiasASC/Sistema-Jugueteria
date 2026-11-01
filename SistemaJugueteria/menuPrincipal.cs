@@ -46,7 +46,6 @@ namespace SistemaJugueteria
             {
                 // El gerente ve reportes, ventas e inventario, pero no administra el sistema
                 btnEmpleados.Enabled = false;
-                btnBackup.Enabled = false;
                 btnVentas.Enabled = false;
 
                 AbrirFormularioHijo(new FormProductos());
