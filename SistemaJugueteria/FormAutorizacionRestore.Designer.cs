@@ -32,7 +32,7 @@
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnConfirmar = new ReaLTaiizor.Controls.CyberButton();
             label2 = new Label();
-            txtGerenteContraseña = new ReaLTaiizor.Controls.CyberTextBox();
+            txtGerentePin = new ReaLTaiizor.Controls.CyberTextBox();
             label1 = new Label();
             txtGerenteUsuario = new ReaLTaiizor.Controls.CyberTextBox();
             label7 = new Label();
@@ -51,7 +51,7 @@
             panel3.Controls.Add(btnCancelar);
             panel3.Controls.Add(btnConfirmar);
             panel3.Controls.Add(label2);
-            panel3.Controls.Add(txtGerenteContraseña);
+            panel3.Controls.Add(txtGerentePin);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(txtGerenteUsuario);
             panel3.Controls.Add(label7);
@@ -161,37 +161,37 @@
             label2.Text = "PIN de Autorización";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtGerenteContraseña
+            // txtGerentePin
             // 
-            txtGerenteContraseña.Alpha = 20;
-            txtGerenteContraseña.BackColor = Color.Transparent;
-            txtGerenteContraseña.Background_WidthPen = 3F;
-            txtGerenteContraseña.BackgroundPen = true;
-            txtGerenteContraseña.ColorBackground = Color.White;
-            txtGerenteContraseña.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
-            txtGerenteContraseña.ColorLighting = Color.FromArgb(29, 200, 238);
-            txtGerenteContraseña.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            txtGerenteContraseña.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            txtGerenteContraseña.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            txtGerenteContraseña.Font = new Font("Arial", 8F);
-            txtGerenteContraseña.ForeColor = Color.Black;
-            txtGerenteContraseña.Lighting = false;
-            txtGerenteContraseña.LinearGradientPen = false;
-            txtGerenteContraseña.Location = new Point(28, 211);
-            txtGerenteContraseña.Name = "txtGerenteContraseña";
-            txtGerenteContraseña.Password = true;
-            txtGerenteContraseña.PasswordChar = '*';
-            txtGerenteContraseña.PenWidth = 15;
-            txtGerenteContraseña.RGB = false;
-            txtGerenteContraseña.Rounding = true;
-            txtGerenteContraseña.RoundingInt = 60;
-            txtGerenteContraseña.Size = new Size(226, 34);
-            txtGerenteContraseña.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            txtGerenteContraseña.TabIndex = 71;
-            txtGerenteContraseña.Tag = "Cyber";
-            txtGerenteContraseña.TextButton = "";
-            txtGerenteContraseña.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            txtGerenteContraseña.Timer_RGB = 300;
+            txtGerentePin.Alpha = 20;
+            txtGerentePin.BackColor = Color.Transparent;
+            txtGerentePin.Background_WidthPen = 3F;
+            txtGerentePin.BackgroundPen = true;
+            txtGerentePin.ColorBackground = Color.White;
+            txtGerentePin.ColorBackground_Pen = Color.FromArgb(255, 192, 192);
+            txtGerentePin.ColorLighting = Color.FromArgb(29, 200, 238);
+            txtGerentePin.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            txtGerentePin.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            txtGerentePin.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            txtGerentePin.Font = new Font("Arial", 8F);
+            txtGerentePin.ForeColor = Color.Black;
+            txtGerentePin.Lighting = false;
+            txtGerentePin.LinearGradientPen = false;
+            txtGerentePin.Location = new Point(28, 211);
+            txtGerentePin.Name = "txtGerentePin";
+            txtGerentePin.Password = true;
+            txtGerentePin.PasswordChar = '*';
+            txtGerentePin.PenWidth = 15;
+            txtGerentePin.RGB = false;
+            txtGerentePin.Rounding = true;
+            txtGerentePin.RoundingInt = 60;
+            txtGerentePin.Size = new Size(226, 34);
+            txtGerentePin.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            txtGerentePin.TabIndex = 71;
+            txtGerentePin.Tag = "Cyber";
+            txtGerentePin.TextButton = "";
+            txtGerentePin.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            txtGerentePin.Timer_RGB = 300;
             // 
             // label1
             // 
@@ -276,7 +276,6 @@
             txtAdminContraseña.TextButton = "";
             txtAdminContraseña.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             txtAdminContraseña.Timer_RGB = 300;
-            txtAdminContraseña.Load += txtAdminContraseña_Load;
             // 
             // label12
             // 
@@ -437,7 +436,7 @@
         private Label label12;
         private ReaLTaiizor.Controls.CyberTextBox txtAdminContraseña;
         private Label label2;
-        private ReaLTaiizor.Controls.CyberTextBox txtGerenteContraseña;
+        private ReaLTaiizor.Controls.CyberTextBox txtGerentePin;
         private Label label1;
         private ReaLTaiizor.Controls.CyberTextBox txtGerenteUsuario;
         private Label label7;
