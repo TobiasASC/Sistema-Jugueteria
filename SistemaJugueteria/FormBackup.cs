@@ -207,7 +207,7 @@ namespace SistemaJugueteria
                         }
                         else
                         {
-                            MessageBox.Show("Restauración cancelada por seguridad.", "Operación abortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Restauración cancelada.", "Operación abortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -217,18 +217,31 @@ namespace SistemaJugueteria
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             DialogResult confirmacion = MessageBox.Show(
-        "¿Desea generar una nueva copia de seguridad física de la base de datos?",
-        "Confirmar Backup", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "¿Desea generar una nueva copia de seguridad física de la base de datos?",
+                    "Confirmar Backup", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
-                // Llamamos directamente a la capa de negocio que ejecuta el BACKUP DATABASE de SQL Server
-                string mensaje = _backupBusiness.GenerarNuevoBackup();
-                MessageBox.Show(mensaje, "Resultado del Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // 1. Instanciamos y abrimos el nuevo modal de seguridad
+                using (FormVerificarContraseñaBackup modal = new FormVerificarContraseñaBackup())
+                {
+                    // 2. Si el usuario ingresa su contraseña correctamente, procede el backup
+                    if (modal.ShowDialog() == DialogResult.OK)
+                    {
+                        // Llamamos directamente a la capa de negocio que ejecuta el BACKUP DATABASE de SQL Server
+                        string mensaje = _backupBusiness.GenerarNuevoBackup();
+                        MessageBox.Show(mensaje, "Resultado del Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Refrescamos la grilla leyendo la carpeta física y reseteamos el formulario
-                CargarGrillaBackups();
-                PrepararNuevoBackupVisual();
+                        // Refrescamos la grilla leyendo la carpeta física y reseteamos el formulario
+                        CargarGrillaBackups();
+                        PrepararNuevoBackupVisual();
+                    }
+                    else
+                    {
+                        // Si le dio a cancelar o cerró el modal
+                        MessageBox.Show("Generación de backup cancelada.", "Operación abortada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
 

@@ -175,8 +175,7 @@
             txtConfirmarPin.LinearGradientPen = false;
             txtConfirmarPin.Location = new Point(44, 152);
             txtConfirmarPin.Name = "txtConfirmarPin";
-            txtConfirmarPin.Password = true;
-            txtConfirmarPin.PasswordChar = '*';
+            txtConfirmarPin.PasswordChar = '\0';
             txtConfirmarPin.PenWidth = 15;
             txtConfirmarPin.RGB = false;
             txtConfirmarPin.Rounding = true;
