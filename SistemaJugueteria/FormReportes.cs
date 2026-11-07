@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SistemaJugueteria
 {
@@ -412,6 +413,435 @@ namespace SistemaJugueteria
         {
             FiltrarReportes();
         }
+
+
+        // =========================================================
+        // GENERACIÓN DE GRÁFICOS PARA LOS REPORTES
+        // =========================================================
+
+        private string CrearGraficoHtml(string motivo, DataTable dtDatos)
+        {
+            if (dtDatos == null || dtDatos.Rows.Count == 0)
+                return "";
+
+            List<string> etiquetas = new List<string>();
+            List<decimal> valores = new List<decimal>();
+
+            string titulo = "";
+            string nombreSerie = "";
+            string tipoGrafico = "bar";
+
+            switch (motivo.ToLowerInvariant())
+            {
+                // -------------------------------------------------
+                // VENTAS: TOTAL VENDIDO POR DÍA
+                // -------------------------------------------------
+                case "ventas":
+                    {
+                        titulo = "Ventas por día";
+                        nombreSerie = "Total vendido";
+
+                        DataColumn columnaFecha = ObtenerColumna(
+                            dtDatos, "Fecha");
+
+                        DataColumn columnaId = ObtenerColumna(
+                            dtDatos, "N.º Venta", "id_venta");
+
+                        DataColumn columnaTotal = ObtenerColumna(
+                            dtDatos, "Total Venta", "Total");
+
+                        if (columnaFecha == null || columnaTotal == null)
+                            return "";
+
+                        // Evita contar varias veces una venta cuando
+                        // el reporte incluye el detalle de productos.
+                        Dictionary<string, decimal> ventasUnicas =
+                            new Dictionary<string, decimal>();
+
+                        int indice = 0;
+
+                        foreach (DataRow fila in dtDatos.Rows)
+                        {
+                            if (fila[columnaFecha] == DBNull.Value)
+                                continue;
+
+                            DateTime fecha;
+
+                            if (!DateTime.TryParse(
+                                Convert.ToString(fila[columnaFecha]),
+                                out fecha))
+                                continue;
+
+                            string idVenta = columnaId != null
+                                ? Convert.ToString(fila[columnaId])
+                                : indice.ToString();
+
+                            string clave =
+                                fecha.Date.ToString("yyyyMMdd") + "_" + idVenta;
+
+                            if (!ventasUnicas.ContainsKey(clave))
+                            {
+                                decimal total = ObtenerDecimal(
+                                    fila[columnaTotal]);
+
+                                ventasUnicas.Add(clave, total);
+                            }
+
+                            indice++;
+                        }
+
+                        SortedDictionary<DateTime, decimal> ventasPorDia =
+                            new SortedDictionary<DateTime, decimal>();
+
+                        foreach (var venta in ventasUnicas)
+                        {
+                            DateTime fecha = DateTime.ParseExact(
+                                venta.Key.Substring(0, 8),
+                                "yyyyMMdd",
+                                CultureInfo.InvariantCulture);
+
+                            if (!ventasPorDia.ContainsKey(fecha))
+                                ventasPorDia[fecha] = 0;
+
+                            ventasPorDia[fecha] += venta.Value;
+                        }
+
+                        foreach (var venta in ventasPorDia)
+                        {
+                            etiquetas.Add(venta.Key.ToString("dd/MM/yyyy"));
+                            valores.Add(venta.Value);
+                        }
+
+                        break;
+                    }
+
+                // -------------------------------------------------
+                // CLIENTES: 10 MAYORES COMPRADORES
+                // -------------------------------------------------
+                case "clientes":
+                    {
+                        titulo = "Top 10 clientes por compras";
+                        nombreSerie = "Total comprado";
+
+                        DataColumn columnaTotal = ObtenerColumna(
+                            dtDatos, "Total comprado");
+
+                        DataColumn columnaNombre = ObtenerColumna(
+                            dtDatos, "Nombre");
+
+                        DataColumn columnaApellido = ObtenerColumna(
+                            dtDatos, "Apellido");
+
+                        if (columnaTotal == null || columnaNombre == null)
+                            return "";
+
+                        var clientes = dtDatos.Rows.Cast<DataRow>()
+                            .OrderByDescending(fila =>
+                                ObtenerDecimal(fila[columnaTotal]))
+                            .Take(10)
+                            .ToList();
+
+                        foreach (DataRow fila in clientes)
+                        {
+                            string nombre =
+                                Convert.ToString(fila[columnaNombre]);
+
+                            if (columnaApellido != null)
+                                nombre += " " +
+                                    Convert.ToString(fila[columnaApellido]);
+
+                            etiquetas.Add(nombre.Trim());
+
+                            valores.Add(
+                                ObtenerDecimal(fila[columnaTotal]));
+                        }
+
+                        break;
+                    }
+
+                // -------------------------------------------------
+                // EMPLEADOS: CANTIDAD POR ROL
+                // -------------------------------------------------
+                case "empleados":
+                    {
+                        titulo = "Empleados por rol";
+                        nombreSerie = "Cantidad de empleados";
+
+                        DataColumn columnaRol = ObtenerColumna(
+                            dtDatos, "Rol");
+
+                        if (columnaRol == null)
+                            return "";
+
+                        Dictionary<string, decimal> empleadosPorRol =
+                            new Dictionary<string, decimal>();
+
+                        foreach (DataRow fila in dtDatos.Rows)
+                        {
+                            string rol = Convert.ToString(
+                                fila[columnaRol]);
+
+                            if (string.IsNullOrWhiteSpace(rol))
+                                rol = "Sin usuario";
+
+                            if (!empleadosPorRol.ContainsKey(rol))
+                                empleadosPorRol[rol] = 0;
+
+                            empleadosPorRol[rol]++;
+                        }
+
+                        foreach (var item in empleadosPorRol.OrderBy(x => x.Key))
+                        {
+                            etiquetas.Add(item.Key);
+                            valores.Add(item.Value);
+                        }
+
+                        break;
+                    }
+
+                // -------------------------------------------------
+                // PEDIDOS: DISTRIBUCIÓN POR ESTADO
+                // -------------------------------------------------
+                case "pedidos":
+                    {
+                        titulo = "Pedidos por estado";
+                        nombreSerie = "Cantidad de pedidos";
+                        tipoGrafico = "doughnut";
+
+                        DataColumn columnaEstado = ObtenerColumna(
+                            dtDatos, "Estado");
+
+                        DataColumn columnaId = ObtenerColumna(
+                            dtDatos, "Número de pedido");
+
+                        if (columnaEstado == null)
+                            return "";
+
+                        Dictionary<string, HashSet<string>> pedidosPorEstado =
+                            new Dictionary<string, HashSet<string>>();
+
+                        int indice = 0;
+
+                        foreach (DataRow fila in dtDatos.Rows)
+                        {
+                            string estado = Convert.ToString(
+                                fila[columnaEstado]).Trim();
+
+                            if (string.IsNullOrWhiteSpace(estado))
+                                estado = "Sin estado";
+
+                            string idPedido = columnaId != null
+                                ? Convert.ToString(fila[columnaId])
+                                : indice.ToString();
+
+                            if (!pedidosPorEstado.ContainsKey(estado))
+                            {
+                                pedidosPorEstado[estado] =
+                                    new HashSet<string>();
+                            }
+
+                            pedidosPorEstado[estado].Add(idPedido);
+
+                            indice++;
+                        }
+
+                        foreach (var item in pedidosPorEstado.OrderBy(x => x.Key))
+                        {
+                            etiquetas.Add(item.Key);
+                            valores.Add(item.Value.Count);
+                        }
+
+                        break;
+                    }
+
+                // -------------------------------------------------
+                // PRODUCTOS: SITUACIÓN DEL STOCK
+                // -------------------------------------------------
+                case "productos":
+                    {
+                        titulo = "Productos según situación del stock";
+                        nombreSerie = "Cantidad de productos";
+
+                        DataColumn columnaSituacion = ObtenerColumna(
+                            dtDatos, "Situación del stock");
+
+                        if (columnaSituacion == null)
+                            return "";
+
+                        Dictionary<string, decimal> stockPorSituacion =
+                            new Dictionary<string, decimal>();
+
+                        foreach (DataRow fila in dtDatos.Rows)
+                        {
+                            string situacion = Convert.ToString(
+                                fila[columnaSituacion]);
+
+                            if (!stockPorSituacion.ContainsKey(situacion))
+                                stockPorSituacion[situacion] = 0;
+
+                            stockPorSituacion[situacion]++;
+                        }
+
+                        foreach (var item in stockPorSituacion.OrderBy(x => x.Key))
+                        {
+                            etiquetas.Add(item.Key);
+                            valores.Add(item.Value);
+                        }
+
+                        break;
+                    }
+
+                default:
+                    return "";
+            }
+
+            if (etiquetas.Count == 0)
+                return "";
+
+            string etiquetasJs = string.Join(",",
+                etiquetas.Select(EscaparJavaScript));
+
+            string valoresJs = string.Join(",",
+                valores.Select(v => v.ToString(
+                    CultureInfo.InvariantCulture)));
+
+            string idCanvas = "graficoReporte";
+
+            StringBuilder html = new StringBuilder();
+
+            html.AppendLine("<div class='grafico-container'>");
+            html.AppendLine($"<h2>{System.Net.WebUtility.HtmlEncode(titulo)}</h2>");
+            html.AppendLine("<div class='grafico-area'>");
+            html.AppendLine($"<canvas id='{idCanvas}'></canvas>");
+            html.AppendLine("</div>");
+            html.AppendLine("</div>");
+
+            html.AppendLine("<script>");
+            html.AppendLine("(function() {");
+
+            html.AppendLine($"const etiquetas = [{etiquetasJs}];");
+            html.AppendLine($"const valores = [{valoresJs}];");
+
+            html.AppendLine(
+                $"const contexto = document.getElementById('{idCanvas}');");
+
+            html.AppendLine("new Chart(contexto, {");
+
+            html.AppendLine($"type: '{tipoGrafico}',");
+
+            html.AppendLine("data: {");
+            html.AppendLine("labels: etiquetas,");
+
+            html.AppendLine("datasets: [{");
+            html.AppendLine(
+                $"label: {EscaparJavaScript(nombreSerie)},");
+
+            html.AppendLine("data: valores,");
+
+            if (tipoGrafico == "doughnut")
+            {
+                html.AppendLine(
+                    "backgroundColor: ['#e9a6a7','#437eaf','#6bd6a1','#fff0a6'],");
+                html.AppendLine("borderWidth: 2,");
+                html.AppendLine("borderColor: '#ffffff'");
+            }
+            else
+            {
+                html.AppendLine("backgroundColor: '#e9a6a7',");
+                html.AppendLine("borderColor: '#d8898b',");
+                html.AppendLine("borderWidth: 1,");
+                html.AppendLine("borderRadius: 5");
+            }
+
+            html.AppendLine("}]");
+            html.AppendLine("},");
+
+            html.AppendLine("options: {");
+            html.AppendLine("responsive: true,");
+            html.AppendLine("maintainAspectRatio: false,");
+
+            html.AppendLine("plugins: {");
+            html.AppendLine("legend: { display: true, position: 'bottom' }");
+            html.AppendLine("},");
+
+            html.AppendLine("scales: {");
+            html.AppendLine("y: { beginAtZero: true }");
+            html.AppendLine("}");
+
+            html.AppendLine("}");
+            html.AppendLine("});");
+
+            html.AppendLine("})();");
+            html.AppendLine("</script>");
+
+            return html.ToString();
+        }
+
+
+        // Busca una columna utilizando sus nombres posibles.
+        private DataColumn ObtenerColumna(
+            DataTable tabla,
+            params string[] nombres)
+        {
+            foreach (string nombre in nombres)
+            {
+                DataColumn columna = tabla.Columns
+                    .Cast<DataColumn>()
+                    .FirstOrDefault(c =>
+                        c.ColumnName.Equals(
+                            nombre,
+                            StringComparison.OrdinalIgnoreCase));
+
+                if (columna != null)
+                    return columna;
+            }
+
+            return null;
+        }
+
+
+        // Convierte un valor a decimal de manera segura.
+        private decimal ObtenerDecimal(object valor)
+        {
+            if (valor == null || valor == DBNull.Value)
+                return 0;
+
+            decimal resultado;
+
+            if (decimal.TryParse(
+                Convert.ToString(valor),
+                NumberStyles.Any,
+                CultureInfo.CurrentCulture,
+                out resultado))
+                return resultado;
+
+            if (decimal.TryParse(
+                Convert.ToString(valor),
+                NumberStyles.Any,
+                CultureInfo.InvariantCulture,
+                out resultado))
+                return resultado;
+
+            return 0;
+        }
+
+
+        // Escapa textos para utilizarlos como cadenas JavaScript.
+        private string EscaparJavaScript(string valor)
+        {
+            string texto = valor ?? "";
+
+            texto = texto.Replace("\\", "\\\\");
+            texto = texto.Replace("\"", "\\\"");
+            texto = texto.Replace("\r", "\\r");
+            texto = texto.Replace("\n", "\\n");
+            texto = texto.Replace("<", "\\u003C");
+            texto = texto.Replace(">", "\\u003E");
+            texto = texto.Replace("&", "\\u0026");
+
+            return "\"" + texto + "\"";
+        }
+
 
         private void FiltrarReportes()
         {
@@ -1022,7 +1452,40 @@ namespace SistemaJugueteria
                 "tr:nth-child(even){background:#fcfcfc;}");
             html.AppendLine(
                 ".footer{margin-top:40px;font-size:11px;text-align:center;color:#888;border-top:1px solid #eee;padding-top:15px;}");
-            html.AppendLine("</style></head><body>");
+            html.AppendLine(@"
+                .grafico-container {
+                    margin: 35px auto;
+                    padding: 25px;
+                    max-width: 950px;
+                    border: 1px solid #eeeeee;
+                    border-radius: 12px;
+                    background: #ffffff;
+                    page-break-inside: avoid;
+                }
+
+                .grafico-container h2 {
+                    text-align: center;
+                    color: #437eaf;
+                    font-size: 20px;
+                    margin-bottom: 25px;
+                }
+
+                .grafico-area {
+                    position: relative;
+                    width: 100%;
+                    height: 360px;
+                }
+
+                @media print {
+                    .grafico-container {
+                        break-inside: avoid;
+                    }
+                }
+            ");
+
+            html.AppendLine("</style>");
+            html.AppendLine("<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>");
+            html.AppendLine("</head><body>");
 
             string motivoHtml =
                 System.Net.WebUtility.HtmlEncode(motivo);
@@ -1057,6 +1520,8 @@ namespace SistemaJugueteria
                 $"<p><strong>Generado por:</strong> {usuarioHtml}</p>");
 
             html.AppendLine("</div></div>");
+
+            html.AppendLine(CrearGraficoHtml(motivo, dtDatos));
 
             if (dtDatos != null && dtDatos.Rows.Count > 0)
             {
