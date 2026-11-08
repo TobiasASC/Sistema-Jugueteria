@@ -838,41 +838,46 @@ namespace SistemaJugueteria
         // --- GENERACIÓN DEL COMPROBANTE HTML ---
         private void GenerarFacturaFisica(string numFactura, string cliente, DataTable dtDatos, decimal total)
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            try
             {
-                saveFileDialog.Filter = "Documento HTML (*.html)|*.html";
-                saveFileDialog.FileName = $"Factura_{numFactura}.html";
-                saveFileDialog.Title = "Guardar factura de venta";
+                // 1. Definir la ruta de la carpeta principal en el disco C:
+                string directorioFacturas = @"C:\Jugueteria_Facturas";
 
-                if (saveFileDialog.ShowDialog() != DialogResult.OK)
-                    return;
-
-                try
+                // 2. Crear la carpeta automáticamente si no existe
+                if (!Directory.Exists(directorioFacturas))
                 {
-                    CrearDocumentoFacturaHtml(saveFileDialog.FileName, numFactura, cliente, dtDatos, total);
-
-                    MessageBox.Show(
-                        "Factura generada. Se abrirá en el navegador para visualizarla o imprimirla en PDF.",
-                        "Generación completada",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = saveFileDialog.FileName,
-                        UseShellExecute = true
-                    });
+                    Directory.CreateDirectory(directorioFacturas);
                 }
-                catch (Exception ex)
+
+                // 3. Armar el nombre del archivo y la ruta completa
+                string nombreArchivo = $"Factura_{numFactura}.html";
+                string rutaArchivo = Path.Combine(directorioFacturas, nombreArchivo);
+
+                // 4. Generar el documento HTML y guardarlo en la ruta física
+                CrearDocumentoFacturaHtml(rutaArchivo, numFactura, cliente, dtDatos, total);
+
+                MessageBox.Show(
+                    $"Factura guardada exitosamente en:\n{rutaArchivo}\n\nSe abrirá a continuación para visualizarla o imprimirla en PDF.",
+                    "Generación completada",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // 5. Abrir el archivo automáticamente con el navegador predeterminado
+                Process.Start(new ProcessStartInfo
                 {
-                    MessageBox.Show(
-                        "Ocurrió un error al generar la factura: " + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                    FileName = rutaArchivo,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al generar la factura: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 

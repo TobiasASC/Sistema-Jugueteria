@@ -46,7 +46,7 @@ namespace SistemaJugueteria
         private void label12_Click(object sender, EventArgs e) { }
 
         // =========================================================================
-        // BÚSQUEDA POR LUPA (MODIFICADO: Sin autocompletar contraseña hasheada)
+        // BÚSQUEDA POR LUPA 
         // =========================================================================
         private void btnLupaDniEmpleado_Click(object sender, EventArgs e)
         {
@@ -258,8 +258,8 @@ namespace SistemaJugueteria
                 MessageBox.Show(ex.Message, "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
-        
+
+
         //1
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
@@ -709,5 +709,10 @@ namespace SistemaJugueteria
         }
 
         private void checkBox1_TextChanged(object sender, EventArgs e) { }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

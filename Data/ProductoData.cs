@@ -228,7 +228,7 @@ namespace SistemaJugueteria.Data
             // Si no se eligió un orden por stock, ordenar por descripción
             if (criterioStock != "Mayor stock" && criterioStock != "Menor stock")
             {
-                query += ", p.id_producto ASC";
+                query += " ORDER BY p.descripcion_producto ASC, p.id_producto ASC";
             }
 
             using (SqlConnection conexion = Conexion.ObtenerConexion())

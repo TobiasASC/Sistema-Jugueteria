@@ -45,26 +45,26 @@ namespace SistemaJugueteria.Business
 
         public void RegistrarUsuario(Usuario nuevoUsuario, string confirmarContraseña, char operacion)
         {
-            // 1. Validar que las contraseñas ingresadas en los TextBox coincidan
+            //  Validar que las contraseñas ingresadas en los TextBox coincidan
             if (nuevoUsuario.Contraseña != confirmarContraseña)
             {
                 throw new ArgumentException("Las contraseñas no coinciden. Por favor, verifíquelas.");
             }
 
-            // 2. Validar que tenga un empleado asociado (búsqueda por DNI previa)
+            // Validar que tenga un empleado asociado (búsqueda por DNI previa)
             if (nuevoUsuario.IdEmpleado <= 0)
             {
                 throw new ArgumentException("Debe buscar y seleccionar un empleado válido antes de crear el usuario.");
             }
 
-            // 3. Hashear la contraseña usando BCrypt (Validando que no se encripte dos veces si ya viene encriptada)
+            // Hashear la contraseña usando BCrypt (Validando que no se encripte dos veces si ya viene encriptada)
             // Los hashes de BCrypt siempre empiezan con "$2a$", "$2b$" o "$2y$"
             if (!nuevoUsuario.Contraseña.StartsWith("$2"))
             {
                 nuevoUsuario.Contraseña = BCrypt.Net.BCrypt.HashPassword(nuevoUsuario.Contraseña);
             }
 
-            // 4. Llamar a la capa de Datos enviando la operación dinámica ('A' o 'M')
+            // Llamar a la capa de Datos enviando la operación dinámica ('A' o 'M')
             UsuarioData data = new UsuarioData();
             data.ABMUsuario(nuevoUsuario, operacion);
         }
@@ -88,7 +88,7 @@ namespace SistemaJugueteria.Business
                 }
 
                 // Si el usuario no tiene un PIN configurado todavía
-                if (string.IsNullOrEmpty(usuarioBD.Pin_Seguridad)) // Asegúrate de que la entidad Usuario tenga esta propiedad
+                if (string.IsNullOrEmpty(usuarioBD.Pin_Seguridad)) 
                 {
                     throw new ArgumentException("El usuario ingresado no tiene un PIN de seguridad configurado.");
                 }

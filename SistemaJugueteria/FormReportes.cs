@@ -1234,186 +1234,116 @@ namespace SistemaJugueteria
         // GENERAR ARCHIVO HTML
         // =========================================================
 
-        private bool GenerarReporteFisicoConFiltros(
-            string numReporte,
-            string fechaEmision,
-            string motivo)
+        private bool GenerarReporteFisicoConFiltros(string numReporte, string fechaEmision, string motivo)
         {
-            if (motivo.Equals("Ventas",
-                StringComparison.OrdinalIgnoreCase))
+            // 1. Validaciones de fechas
+            if (motivo.Equals("Ventas", StringComparison.OrdinalIgnoreCase))
             {
-                if (dateTimePicker1.Value.Date >
-                    dateTimePicker2.Value.Date)
+                if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
                 {
-                    MessageBox.Show(
-                        "La fecha desde no puede ser posterior a la fecha hasta.",
-                        "Fechas incorrectas",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
+                    MessageBox.Show("La fecha desde no puede ser posterior a la fecha hasta.", "Fechas incorrectas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
-            else if (motivo.Equals("Pedidos",
-                StringComparison.OrdinalIgnoreCase))
+            else if (motivo.Equals("Pedidos", StringComparison.OrdinalIgnoreCase))
             {
-                if (dateTimePicker3.Value.Date >
-                    dateTimePicker4.Value.Date)
+                if (dateTimePicker3.Value.Date > dateTimePicker4.Value.Date)
                 {
-                    MessageBox.Show(
-                        "La fecha desde no puede ser posterior a la fecha hasta.",
-                        "Fechas incorrectas",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
+                    MessageBox.Show("La fecha desde no puede ser posterior a la fecha hasta.", "Fechas incorrectas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
 
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            try
             {
-                saveFileDialog.Filter =
-                    "Documento HTML (*.html)|*.html";
+                DataTable dtDatos = new DataTable();
 
-                saveFileDialog.FileName =
-                    $"Reporte_{motivo.Replace(" ", "_")}_{numReporte}.html";
-
-                saveFileDialog.Title = "Guardar Reporte del Sistema";
-                saveFileDialog.DefaultExt = "html";
-                saveFileDialog.AddExtension = true;
-
-                if (saveFileDialog.ShowDialog() != DialogResult.OK)
-                    return false;
-
-                try
+                // 2. Obtención de datos según el motivo
+                // REPORTE DE VENTAS
+                if (motivo.Equals("Ventas", StringComparison.OrdinalIgnoreCase))
                 {
-                    DataTable dtDatos = new DataTable();
+                    DateTime desde = dateTimePicker1.Value.Date;
+                    DateTime hasta = dateTimePicker2.Value.Date;
+                    bool detallado = chkEstado.Checked;
 
-                    // REPORTE DE VENTAS
-                    if (motivo.Equals("Ventas",
-                        StringComparison.OrdinalIgnoreCase))
+                    object valorEmpleado = cyberComboBox1.GetType().GetProperty("SelectedValue")?.GetValue(cyberComboBox1);
+                    int? idEmpleado = null;
+
+                    if (valorEmpleado != null && valorEmpleado != DBNull.Value && int.TryParse(valorEmpleado.ToString(), out int idSeleccionado))
                     {
-                        DateTime desde = dateTimePicker1.Value.Date;
-                        DateTime hasta = dateTimePicker2.Value.Date;
-                        bool detallado = chkEstado.Checked;
-
-                        object valorEmpleado = cyberComboBox1
-                            .GetType()
-                            .GetProperty("SelectedValue")
-                            ?.GetValue(cyberComboBox1);
-
-                        int? idEmpleado = null;
-
-                        if (valorEmpleado != null &&
-                            valorEmpleado != DBNull.Value &&
-                            int.TryParse(
-                                valorEmpleado.ToString(),
-                                out int idSeleccionado))
-                        {
-                            idEmpleado = idSeleccionado;
-                        }
-
-                        VentaBusiness negocioVentas =
-                            new VentaBusiness();
-
-                        dtDatos = negocioVentas.ObtenerReporteVentas(
-                            desde, hasta, idEmpleado, detallado);
+                        idEmpleado = idSeleccionado;
                     }
 
-                    // REPORTE DE CLIENTES
-                    else if (motivo.Equals("Clientes",
-                        StringComparison.OrdinalIgnoreCase))
-                    {
-                        string orden = cyberComboBox2.Text;
-                        bool soloActivos = cyberSwitch1.Checked;
-
-                        SocioBusiness negocioSocios =
-                            new SocioBusiness();
-
-                        dtDatos = negocioSocios.ObtenerReporteClientes(
-                            incluirActivos: soloActivos,
-                            incluirInactivos: !soloActivos,
-                            criterioOrden: orden);
-                    }
-
-                    // REPORTE DE EMPLEADOS
-                    else if (motivo.Equals("Empleados",
-                        StringComparison.OrdinalIgnoreCase))
-                    {
-                        bool soloActivos = cyberSwitch2.Checked;
-                        string rolSeleccionado = cyberComboBox3.Text;
-
-                        EmpleadoBusiness negocioEmpleados =
-                            new EmpleadoBusiness();
-
-                        dtDatos = negocioEmpleados.ObtenerReporteEmpleados(
-                            incluirActivos: soloActivos,
-                            incluirInactivos: !soloActivos,
-                            rolBuscado: rolSeleccionado);
-                    }
-
-                    // REPORTE DE PEDIDOS
-                    else if (motivo.Equals("Pedidos",
-                        StringComparison.OrdinalIgnoreCase))
-                    {
-                        DateTime desde = dateTimePicker3.Value.Date;
-                        DateTime hasta = dateTimePicker4.Value.Date;
-
-                        string estadoPedido = cyberComboBox4.Text;
-                        bool incluirDetalle = cyberSwitch3.Checked;
-
-                        PedidoBusiness negocioPedidos =
-                            new PedidoBusiness();
-
-                        dtDatos = negocioPedidos.ObtenerReportePedidos(
-                            desde, hasta, estadoPedido, incluirDetalle);
-                    }
-
-                    // REPORTE DE PRODUCTOS
-                    else if (motivo.Equals("Productos",
-                        StringComparison.OrdinalIgnoreCase))
-                    {
-                        bool verSoloInactivos = cyberSwitch4.Checked;
-                        string criterioStock = cyberComboBox5.Text;
-
-                        ProductoBusiness negocioProductos =
-                            new ProductoBusiness();
-
-                        dtDatos = negocioProductos.ObtenerReporteProductos(
-                            verSoloInactivos, criterioStock);
-                    }
-
-                    CrearDocumentoReporteConGrafico(
-                        saveFileDialog.FileName,
-                        numReporte,
-                        fechaEmision,
-                        motivo,
-                        dtDatos);
-
-                    MessageBox.Show(
-                        "Reporte generado exitosamente.",
-                        "Completado",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = saveFileDialog.FileName,
-                        UseShellExecute = true
-                    });
-
-                    return true;
+                    VentaBusiness negocioVentas = new VentaBusiness();
+                    dtDatos = negocioVentas.ObtenerReporteVentas(desde, hasta, idEmpleado, detallado);
                 }
-                catch (Exception ex)
+                // REPORTE DE CLIENTES
+                else if (motivo.Equals("Clientes", StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show(
-                        $"Ocurrió un error al generar el reporte: {ex.Message}",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    string orden = cyberComboBox2.Text;
+                    bool soloActivos = cyberSwitch1.Checked;
 
-                    return false;
+                    SocioBusiness negocioSocios = new SocioBusiness();
+                    dtDatos = negocioSocios.ObtenerReporteClientes(incluirActivos: soloActivos, incluirInactivos: !soloActivos, criterioOrden: orden);
                 }
+                // REPORTE DE EMPLEADOS
+                else if (motivo.Equals("Empleados", StringComparison.OrdinalIgnoreCase))
+                {
+                    bool soloActivos = cyberSwitch2.Checked;
+                    string rolSeleccionado = cyberComboBox3.Text;
+
+                    EmpleadoBusiness negocioEmpleados = new EmpleadoBusiness();
+                    dtDatos = negocioEmpleados.ObtenerReporteEmpleados(incluirActivos: soloActivos, incluirInactivos: !soloActivos, rolBuscado: rolSeleccionado);
+                }
+                // REPORTE DE PEDIDOS
+                else if (motivo.Equals("Pedidos", StringComparison.OrdinalIgnoreCase))
+                {
+                    DateTime desde = dateTimePicker3.Value.Date;
+                    DateTime hasta = dateTimePicker4.Value.Date;
+                    string estadoPedido = cyberComboBox4.Text;
+                    bool incluirDetalle = cyberSwitch3.Checked;
+
+                    PedidoBusiness negocioPedidos = new PedidoBusiness();
+                    dtDatos = negocioPedidos.ObtenerReportePedidos(desde, hasta, estadoPedido, incluirDetalle);
+                }
+                // REPORTE DE PRODUCTOS
+                else if (motivo.Equals("Productos", StringComparison.OrdinalIgnoreCase))
+                {
+                    bool verSoloInactivos = cyberSwitch4.Checked;
+                    string criterioStock = cyberComboBox5.Text;
+
+                    ProductoBusiness negocioProductos = new ProductoBusiness();
+                    dtDatos = negocioProductos.ObtenerReporteProductos(verSoloInactivos, criterioStock);
+                }
+
+                // 3. --- LÓGICA DE GUARDADO AUTOMÁTICO EN C:\ ---
+                string directorioReportes = @"C:\Jugueteria_Reportes";
+
+                if (!Directory.Exists(directorioReportes))
+                {
+                    Directory.CreateDirectory(directorioReportes);
+                }
+
+                string nombreArchivo = $"Reporte_{motivo.Replace(" ", "_")}_{numReporte}.html";
+                string rutaArchivo = Path.Combine(directorioReportes, nombreArchivo);
+
+                // 4. Crear el documento HTML
+                CrearDocumentoReporteConGrafico(rutaArchivo, numReporte, fechaEmision, motivo, dtDatos);
+
+                // 5. Abrir el archivo automáticamente
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = rutaArchivo,
+                    UseShellExecute = true
+                });
+
+                // Retornamos true para que btnGenerarReportePDF_Click continúe y registre en la Base de Datos
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al generar el reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

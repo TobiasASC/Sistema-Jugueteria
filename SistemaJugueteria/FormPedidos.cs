@@ -231,7 +231,7 @@ namespace SistemaJugueteria
                     IdProveedor = Convert.ToInt32(cbProveedor.SelectedValue),
                     IdUsuario = Sesion.IdUsuario,
                     TotalPedido = totalPedidoActual,
-                    // Si no lo tocan, guarda la fecha y hora actual automáticamente
+                    
                     FechaEntrega = dtpFechaEstimadaPedido.Checked ? (DateTime?)dtpFechaEstimadaPedido.Value : DateTime.Now,
                     Detalles = listaDetalles
                 };

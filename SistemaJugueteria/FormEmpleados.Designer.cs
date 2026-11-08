@@ -73,6 +73,7 @@
             btnGuardarEmpleado = new ReaLTaiizor.Controls.CyberButton();
             btnCancelarEmpleado = new ReaLTaiizor.Controls.CyberButton();
             panel1 = new ReaLTaiizor.Controls.Panel();
+            chkMostrarPassword = new CheckBox();
             checkBox1 = new CheckBox();
             btnGuardarUsuario = new ReaLTaiizor.Controls.CyberButton();
             btnCancelarUsuario = new ReaLTaiizor.Controls.CyberButton();
@@ -92,7 +93,6 @@
             cyberButton6 = new ReaLTaiizor.Controls.CyberButton();
             button2 = new Button();
             label16 = new Label();
-            chkMostrarPassword = new CheckBox();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             panel2.SuspendLayout();
@@ -738,6 +738,7 @@
             panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             panel2.TabIndex = 56;
             panel2.Text = "panel2";
+            panel2.Click += panel2_Click;
             // 
             // btnNuevoEmpleado
             // 
@@ -999,6 +1000,16 @@
             panel1.TabIndex = 63;
             panel1.Text = "panel1";
             panel1.Click += panel1_Click;
+            // 
+            // chkMostrarPassword
+            // 
+            chkMostrarPassword.AutoSize = true;
+            chkMostrarPassword.Location = new Point(384, 160);
+            chkMostrarPassword.Name = "chkMostrarPassword";
+            chkMostrarPassword.Size = new Size(15, 14);
+            chkMostrarPassword.TabIndex = 76;
+            chkMostrarPassword.UseVisualStyleBackColor = true;
+            chkMostrarPassword.Click += chkMostrarPassword_CheckedChanged;
             // 
             // checkBox1
             // 
@@ -1468,16 +1479,6 @@
             label16.TabIndex = 19;
             label16.Text = "DATOS DE USUARIO";
             label16.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // chkMostrarPassword
-            // 
-            chkMostrarPassword.AutoSize = true;
-            chkMostrarPassword.Location = new Point(384, 160);
-            chkMostrarPassword.Name = "chkMostrarPassword";
-            chkMostrarPassword.Size = new Size(15, 14);
-            chkMostrarPassword.TabIndex = 76;
-            chkMostrarPassword.UseVisualStyleBackColor = true;
-            chkMostrarPassword.Click += chkMostrarPassword_CheckedChanged;
             // 
             // FormEmpleados
             // 
