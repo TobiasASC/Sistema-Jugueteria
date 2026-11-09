@@ -114,7 +114,7 @@ namespace SistemaJugueteria
         {
             dgvClientes.Rows.Clear();
             bool verInactivos = chkEstado != null && chkEstado.Checked;
-            List<Socio> lista = negocioSocio.ListarSocios(verInactivos);
+            List<Socio> lista = negocioSocio.ListarClientesAdministracion(verInactivos);
 
             string filtroDni = LeerCyberTextBox(txtDniClienteBuscar).Trim();
             string filtroNombre = LeerCyberTextBox(txtNombreClienteBuscar).Trim().ToLower();

@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Diagnostics;
+using System.IO;
 
 namespace SistemaJugueteria
 {
@@ -147,6 +149,64 @@ namespace SistemaJugueteria
                 panelProductos.BringToFront();
                 CargarFiltrosProductos();
             }
+        }
+
+        private void dgvReportes_CellContentClick(
+    object sender,
+    DataGridViewCellEventArgs e)
+        {
+            // Evitar encabezados y filas inválidas.
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            // Verificar que se haya presionado el botón Detalles.
+            if (dgvReportes.Columns[e.ColumnIndex].Name != "detalleColum")
+                return;
+
+            // Recuperar el número del reporte seleccionado.
+            int numeroReporte = Convert.ToInt32(
+                dgvReportes.Rows[e.RowIndex]
+                    .Cells["NumeroColum"].Value
+            );
+
+            string carpetaReportes = @"C:\Jugueteria_Reportes";
+
+            if (!Directory.Exists(carpetaReportes))
+            {
+                MessageBox.Show(
+                    "No se encontró la carpeta donde se almacenan los reportes.",
+                    "Reportes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
+            // Buscar el HTML correspondiente al número de reporte.
+            string[] archivos = Directory.GetFiles(
+                carpetaReportes,
+                $"Reporte_*_{numeroReporte}.html"
+            );
+
+            if (archivos.Length == 0)
+            {
+                MessageBox.Show(
+                    $"No se encontró el archivo HTML del reporte N.º {numeroReporte}.",
+                    "Reporte no encontrado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
+            // Abrir el reporte HTML original.
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = archivos[0],
+                UseShellExecute = true
+            });
         }
 
         // =========================================================
@@ -1532,6 +1592,11 @@ namespace SistemaJugueteria
             dtpFechaReporte.Enabled = false;
 
             CargarHistorialReportes();
+        }
+
+        private void cyberComboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

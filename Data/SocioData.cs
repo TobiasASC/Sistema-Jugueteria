@@ -121,6 +121,55 @@ namespace SistemaJugueteria.Data
             }
         }
 
+        public List<Socio> ListarClientesAdministracion(bool verSoloInactivos)
+        {
+            List<Socio> lista = new List<Socio>();
+
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                string query = @"
+            SELECT id_socio, dni_socio, nombre_socio, apellido_socio,
+                   correo_socio, direccion_socio, puntos_acumulados
+            FROM Socio
+            WHERE activo = @estadoActivo
+              AND dni_socio <> @dniConsumidorFinal
+            ORDER BY apellido_socio, nombre_socio";
+
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue(
+                        "@estadoActivo", verSoloInactivos ? 0 : 1
+                    );
+
+                    comando.Parameters.AddWithValue(
+                        "@dniConsumidorFinal", "00000000"
+                    );
+
+                    conexion.Open();
+
+                    using (SqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            lista.Add(new Socio
+                            {
+                                IdSocio = lector.GetInt32(0),
+                                DniSocio = lector.GetString(1),
+                                NombreSocio = lector.GetString(2),
+                                ApellidoSocio = lector.GetString(3),
+                                CorreoSocio = lector.GetString(4),
+                                DireccionSocio = lector.GetString(5),
+                                PuntosAcumulados = lector["puntos_acumulados"] != DBNull.Value
+                                    ? lector.GetInt32(6)
+                                    : 0
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
 
         public DataTable ObtenerReporteClientes(
             bool incluirActivos,
@@ -167,9 +216,12 @@ namespace SistemaJugueteria.Data
         LEFT JOIN Venta v
             ON s.id_socio = v.id_socio
         WHERE
-            (@Activos = 1 AND s.activo = 1)
-            OR
-            (@Inactivos = 1 AND s.activo = 0)
+            (
+                (@Activos = 1 AND s.activo = 1)
+                OR
+                (@Inactivos = 1 AND s.activo = 0)
+            )
+            AND s.dni_socio <> @DniConsumidorFinal
         GROUP BY
             s.id_socio,
             s.dni_socio,
@@ -185,6 +237,7 @@ namespace SistemaJugueteria.Data
             {
                 comando.Parameters.AddWithValue("@Activos", incluirActivos ? 1 : 0);
                 comando.Parameters.AddWithValue("@Inactivos", incluirInactivos ? 1 : 0);
+                comando.Parameters.AddWithValue("@DniConsumidorFinal", "00000000");
 
                 using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
                 {

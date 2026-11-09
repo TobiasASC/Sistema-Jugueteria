@@ -341,6 +341,7 @@
             cyberComboBox5.Size = new Size(269, 34);
             cyberComboBox5.TabIndex = 79;
             cyberComboBox5.Timer_RGB = 300;
+            cyberComboBox5.SelectedIndexChanged += cyberComboBox5_SelectedIndexChanged;
             // 
             // label24
             // 
@@ -3725,6 +3726,7 @@
             dgvReportes.RowHeadersVisible = false;
             dgvReportes.Size = new Size(868, 122);
             dgvReportes.TabIndex = 79;
+            dgvReportes.CellClick += dgvReportes_CellContentClick;
             // 
             // NumeroColum
             // 

@@ -26,6 +26,10 @@ namespace SistemaJugueteria.Business
                 datosSocio.Actualizar(socio);
             }
         }
+        public List<Socio> ListarClientesAdministracion(bool verSoloInactivos)
+        {
+            return datosSocio.ListarClientesAdministracion(verSoloInactivos);
+        }
 
         public void EliminarSocio(int idSocio)
         {
