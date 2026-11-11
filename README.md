@@ -27,7 +27,7 @@ Para compilar y ejecutar este proyecto, se requiere:
 *   **Base de Datos:** Microsoft SQL Server (Express o superior).
 *   **Librerías de terceros (NuGet):** `BCrypt.Net-Next` (para el hasheo de contraseñas y pines).
 
-## 🚀 Pasos para la Instalación
+## Pasos para la Instalación
 
 **1. Preparar la Base de Datos:**
 * Abra SQL Server Management Studio (SSMS).
