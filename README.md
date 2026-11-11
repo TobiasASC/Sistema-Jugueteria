@@ -1,4 +1,4 @@
-# Sistema de Gestión para Juguetería (TN Toys) 🧸💻
+# Sistema de Gestión para Juguetería (TN Toys) 🧸
 
 Aplicación de escritorio integral desarrollada en C# (Windows Forms) para la administración eficiente, segura y escalable de una tienda de juguetes.
 
