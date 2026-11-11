@@ -56,10 +56,6 @@ namespace SistemaJugueteria
             CargarHistorialReportes();
         }
 
-        // =========================================================
-        // INICIALIZACIÓN
-        // =========================================================
-
         private void CargarDatosInicialesBD()
         {
             try
@@ -208,10 +204,6 @@ namespace SistemaJugueteria
                 UseShellExecute = true
             });
         }
-
-        // =========================================================
-        // CARGA DE COMBOS
-        // =========================================================
 
         private void CargarEmpleadosEnCyberCombo(Control control)
         {
@@ -388,10 +380,6 @@ namespace SistemaJugueteria
             }
         }
 
-        // =========================================================
-        // HISTORIAL Y BÚSQUEDA DE REPORTES
-        // =========================================================
-
         private void ConfigurarBusquedaHistorial()
         {
             cargandoFiltrosHistorial = true;
@@ -474,12 +462,7 @@ namespace SistemaJugueteria
             FiltrarReportes();
         }
 
-
-        // =========================================================
-        // GENERACIÓN DE GRÁFICOS PARA LOS REPORTES
-        // =========================================================
-
-        private string CrearGraficoHtml(string motivo, DataTable dtDatos)
+        private string CrearGraficoHtml(string motivo, DataTable dtDatos, string criterioClientes = null)
         {
             if (dtDatos == null || dtDatos.Rows.Count == 0)
                 return "";
@@ -575,16 +558,46 @@ namespace SistemaJugueteria
                         break;
                     }
 
-                // -------------------------------------------------
-                // CLIENTES: 10 MAYORES COMPRADORES
-                // -------------------------------------------------
                 case "clientes":
                     {
-                        titulo = "Top 10 clientes por compras";
-                        nombreSerie = "Total comprado";
+                        string criterio = (criterioClientes ?? "").Trim();
 
-                        DataColumn columnaTotal = ObtenerColumna(
-                            dtDatos, "Total comprado");
+                        if (criterio.Equals(
+                            "Más tiempo registrados",
+                            StringComparison.OrdinalIgnoreCase))
+                        {
+                            return "";
+                        }
+
+                        DataColumn columnaValor = null;
+
+                        // MAYORES COMPRADORES
+                        if (criterio.Equals(
+                            "Mayores compradores",
+                            StringComparison.OrdinalIgnoreCase))
+                        {
+                            titulo = "Top 10 clientes por compras";
+                            nombreSerie = "Total comprado";
+
+                            columnaValor = ObtenerColumna(
+                                dtDatos, "Total comprado");
+                        }
+
+                        // MAYOR CANTIDAD DE PUNTOS
+                        else if (criterio.Equals(
+                            "Mayor cantidad de puntos",
+                            StringComparison.OrdinalIgnoreCase))
+                        {
+                            titulo = "Top 10 clientes por puntos acumulados";
+                            nombreSerie = "Puntos acumulados";
+
+                            columnaValor = ObtenerColumna(
+                                dtDatos, "Puntos");
+                        }
+                        else
+                        {
+                            return "";
+                        }
 
                         DataColumn columnaNombre = ObtenerColumna(
                             dtDatos, "Nombre");
@@ -592,32 +605,35 @@ namespace SistemaJugueteria
                         DataColumn columnaApellido = ObtenerColumna(
                             dtDatos, "Apellido");
 
-                        if (columnaTotal == null || columnaNombre == null)
+                        if (columnaValor == null || columnaNombre == null)
                             return "";
 
                         var clientes = dtDatos.Rows.Cast<DataRow>()
                             .OrderByDescending(fila =>
-                                ObtenerDecimal(fila[columnaTotal]))
+                                ObtenerDecimal(fila[columnaValor]))
                             .Take(10)
                             .ToList();
 
                         foreach (DataRow fila in clientes)
                         {
-                            string nombre =
-                                Convert.ToString(fila[columnaNombre]);
+                            string nombre = Convert.ToString(
+                                fila[columnaNombre]);
 
                             if (columnaApellido != null)
+                            {
                                 nombre += " " +
                                     Convert.ToString(fila[columnaApellido]);
+                            }
 
                             etiquetas.Add(nombre.Trim());
 
                             valores.Add(
-                                ObtenerDecimal(fila[columnaTotal]));
+                                ObtenerDecimal(fila[columnaValor]));
                         }
 
                         break;
                     }
+
 
                 // -------------------------------------------------
                 // EMPLEADOS: CANTIDAD POR ROL
@@ -1511,7 +1527,13 @@ namespace SistemaJugueteria
 
             html.AppendLine("</div></div>");
 
-            html.AppendLine(CrearGraficoHtml(motivo, dtDatos));
+            string criterioClientes =
+            motivo.Equals("Clientes", StringComparison.OrdinalIgnoreCase)
+            ? cyberComboBox2.Text
+            : null;
+
+            html.AppendLine(
+                CrearGraficoHtml(motivo, dtDatos, criterioClientes));
 
             if (dtDatos != null && dtDatos.Rows.Count > 0)
             {
